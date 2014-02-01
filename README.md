@@ -1,6 +1,6 @@
 node-gw2
 ========
-Wrapper for calling ArenaNet's GuildWars2 API
+Wrapper for calling ArenaNet's GuildWars2 API  
 http://wiki.guildwars2.com/wiki/API:Main
 
 ## Supported Endpoints:
@@ -28,7 +28,8 @@ http://wiki.guildwars2.com/wiki/API:Main
 ## PUBLIC METHODS
 
 **.get(key, params, callback)**  
-Used internally, but exposed since it can be convenient to call directly. 'key' corresponds to the above endpoints
+Used internally, but exposed since it can be convenient to call directly.  
+'key' corresponds to the above endpoints
 
 ### EVENTS
 

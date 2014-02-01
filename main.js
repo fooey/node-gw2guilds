@@ -188,7 +188,7 @@ Anet.getRecipeDetails = function (params, callback) {
 
 
 /*
-*	Map information
+*	MAP INFORMATION
 */
 
 // NO PARAMS
@@ -219,7 +219,7 @@ Anet.getMapFloor = function (params, callback) {
 
 
 /*
-*	World vs World
+*	WORLD vs WORLD
 */
 
 // NO PARAMS

@@ -1,25 +1,32 @@
 {
-	"author": {
-		"name": "Jason Rushton",
-		"email": "npm@the-ln.com",
-		"url": "http://jasonrushton.com"
-	},
-	"name": "node-gw2",
-	"version": "0.0.4",
-	"description": "Node wrapper for ArenaNet's GuildWars2 API",
-	"keywords": ["GuildWars2","GW2","Guild Wars 2","Anet","ArenaNet","API"],
-	"homepage": "https://github.com/fooey/node-gw2",
-	"repository": {
-		"type": "git",
-		"url": "git@github.com:fooey/node-gw2.git"
-	},
-	"main": "main",
-	"dependencies": {
-    	"request": "~2.31.0"
-	},
-	"devDependencies": {},
-	"optionalDependencies": {},
-	"engines": {
-		"node": "*"
-	}
+  "author": {
+    "name": "Jason Rushton",
+    "email": "npm@the-ln.com",
+    "url": "http://jasonrushton.com"
+  },
+  "name": "node-gw2",
+  "version": "0.0.5",
+  "description": "Node wrapper for ArenaNet's GuildWars2 API",
+  "keywords": [
+    "GuildWars2",
+    "GW2",
+    "Guild Wars 2",
+    "Anet",
+    "ArenaNet",
+    "API"
+  ],
+  "homepage": "https://github.com/fooey/node-gw2",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:fooey/node-gw2.git"
+  },
+  "main": "main",
+  "dependencies": {
+    "request": "~2.31.0"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
 }

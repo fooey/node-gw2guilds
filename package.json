@@ -5,7 +5,7 @@
 		"url": "http://jasonrushton.com"
 	},
 	"name": "node-gw2",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "Node wrapper for ArenaNet's GuildWars2 API",
 	"keywords": ["GuildWars2","GW2","Guild Wars 2","Anet","ArenaNet","API"],
 	"homepage": "https://github.com/fooey/node-gw2",

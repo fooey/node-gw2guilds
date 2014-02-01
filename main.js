@@ -1,24 +1,11 @@
 "use strict"
 
 /*
-*
+*	
+*	https://github.com/fooey/node-gw2
 *   http://wiki.guildwars2.com/wiki/API:Main
 *
 */
-
-
-
-/*
-*   Internal Modules
-*/
-
-const url = require('url');
-
-
-/*
-*   Dependencies
-*/
-const request = require('request');
 
 
 
@@ -40,6 +27,8 @@ var Anet = {
 module.exports = Anet;
 
 
+
+
 /*
 *
 *   PRIVATE PROPERTIES
@@ -47,6 +36,7 @@ module.exports = Anet;
 */
 
 const __INSTANCE = {
+	
 	api: {
 		timeout: (10*1000),
 		protocol: 'https',
@@ -67,8 +57,8 @@ const __INSTANCE = {
 			recipeDetails: '/v1/recipe_details.json',			// http://wiki.guildwars2.com/wiki/API:1/recipe_details
 
 			continents: '/v1/continents.json',					// http://wiki.guildwars2.com/wiki/API:1/continents
-			maps: '/v1/maps.json',						// http://wiki.guildwars2.com/wiki/API:1/maps
-			mapFloor: '/v1/map_floor.json',					// http://wiki.guildwars2.com/wiki/API:1/map_floor
+			maps: '/v1/maps.json',								// http://wiki.guildwars2.com/wiki/API:1/maps
+			mapFloor: '/v1/map_floor.json',						// http://wiki.guildwars2.com/wiki/API:1/map_floor
 
 			objectiveNames: '/v1/wvw/objective_names.json',		// http://wiki.guildwars2.com/wiki/API:1/wvw/matches
 			matches: '/v1/wvw/matches.json',					// http://wiki.guildwars2.com/wiki/API:1/wvw/match_details
@@ -359,7 +349,7 @@ Anet.getFileRenderUrl = function (params, callback) {
 function __getRemote (requestUrl, callback) {
 	const startTime = Date.now();
 	// console.log(Date.now(), requestUrl)
-	request({
+	require('request')({
 			url: requestUrl,
 			timeout: __INSTANCE.api.timeout
 		},
@@ -383,7 +373,7 @@ function __getApiUrl (endpoint, params) {
 	if(!__INSTANCE.api.endPoints[endpoint]){
 		throw('Invalid endpoint: ' + endpoint);
 	}
-	return url.format({
+	return require('url').format({
 		protocol: __INSTANCE.api.protocol
 		, hostname: __INSTANCE.api.hostname
 		, pathname: __INSTANCE.api.endPoints[endpoint]

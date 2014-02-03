@@ -4,16 +4,15 @@
     "email": "npm@the-ln.com",
     "url": "http://jasonrushton.com"
   },
-  "name": "node-gw2",
-  "version": "0.0.5",
+  "name": "gw2api",
+  "version": "0.1.0",
   "description": "Node wrapper for ArenaNet's GuildWars2 API",
   "keywords": [
     "GuildWars2",
     "GW2",
     "Guild Wars 2",
     "Anet",
-    "ArenaNet",
-    "API"
+    "ArenaNet"
   ],
   "homepage": "https://github.com/fooey/node-gw2",
   "repository": {

@@ -14,10 +14,10 @@
     "Anet",
     "ArenaNet"
   ],
-  "homepage": "https://github.com/fooey/node-gw2",
+  "homepage": "https://github.com/fooey/node-gw2api",
   "repository": {
     "type": "git",
-    "url": "git@github.com:fooey/node-gw2.git"
+    "url": "git@github.com:fooey/node-gw2api.git"
   },
   "main": "main",
   "dependencies": {

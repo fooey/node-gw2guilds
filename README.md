@@ -1,4 +1,4 @@
-node-gw2
+node-gw2api
 ========
 Wrapper for calling ArenaNet's GuildWars2 API  
 http://wiki.guildwars2.com/wiki/API:Main

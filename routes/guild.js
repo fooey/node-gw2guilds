@@ -1,5 +1,7 @@
 "use strict"
 
+const qs = require('querystring')
+
 const guilds = require('../lib/guilds')
 
 module.exports = function (req, res) {
@@ -10,8 +12,10 @@ module.exports = function (req, res) {
 
 	guilds.getByName(guildName, function(err, data){
 		if(data && data.guild_name){
-			const guildNameUrl = data.guildNameUrl = data.guild_name.replace(/ /g, '-');
+			const guildNameUrl = data.guildNameUrl = qs.escape(data.guild_name.replace(/ /g, '-'));
 			const canonical = '/guilds/' + guildNameUrl;
+
+			console.log(canonical, req.url)
 
 			if(req.url !== canonical){
 				res.redirect(301, canonical);

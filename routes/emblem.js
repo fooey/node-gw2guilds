@@ -1,5 +1,7 @@
 "use strict"
 
+const qs = require('querystring')
+
 const guilds = require('../lib/guilds');
 const emblem = require('../lib/emblem.js');
 
@@ -12,7 +14,7 @@ module.exports = function (req, res) {
 
 	guilds.getByName(guildName, function(err, data){
 		if(data && data.guild_name){
-			const guildNameUrl = data.guild_name.replace(/ /g, '-');
+			const guildNameUrl = data.guildNameUrl = qs.escape(data.guild_name.replace(/ /g, '-'));
 			const canonical = '/guilds/' + guildNameUrl + '/' + size + '.svg';
 
 			if(req.url !== canonical){

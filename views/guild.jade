@@ -1,16 +1,16 @@
 extends layout
 
 block headClose
-	link(rel="icon", type="image/svg+xml", href='/guilds/' + guild.guildNameUrl + '/32.svg')
+	//- link(rel="icon", type="image/svg+xml", href='/guilds/' + guild.guildNameUrl + '/32.svg')
 	link(rel="img_src", type="image/svg+xml", href='/guilds/' + guild.guildNameUrl + '/256.svg')
 	meta(property="og:image", content='/guilds/' + guild.guildNameUrl + '/256.svg')
 
 block content
 	.container
 		h1= guild.guild_name +  ' [' + guild.tag + ']'
+		h2: img(width=256, height=256, src='/guilds/' + guild.guildNameUrl + '/256.svg')
 
-		dl
-			for size in [256,128,64,32]
+		ul
+			for size in [256,192,128,64,32,16]
 				-var thisSrc = '/guilds/' + guild.guildNameUrl + '/' + size + '.svg'
-				dt: a(href=thisSrc)= size + 'x' + size
-				dd: img(src=thisSrc, width=size, height=size)
+				li: a(href=thisSrc)= size + 'x' + size + ' = ' + thisSrc

@@ -3,3 +3,9 @@ extends layout
 block content
 	.container
 		h1 Welcome
+
+		form.guildSearch
+			.form-group
+				label(for="guildName") Guild Name
+				input.guildName.form-control(name="guildName", placeholder="Guild Name")
+			button.btn.btn-default Submit

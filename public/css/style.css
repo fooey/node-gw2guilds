@@ -1,0 +1,20 @@
+body{
+	font-family: menomonia;
+	font-size: 14px;
+	margin-bottom: 80px;
+	background-color:#fff;
+}
+
+
+
+.strong{font-weight: bold;}
+.text-center{text-align: center !important}
+.text-left{text-align: left !important}
+.text-right{text-align: right !important}
+.small {font-size: 85%; line-height: 140%;}
+.capitalize {text-transform: capitalize;}
+
+.block-center{display: block; margin-left: auto; margin-right: auto;}
+.block-left{display: block; margin-left: 0; margin-right: auto;}
+.block-right{display: block; margin-left: auto; margin-right: 0;}
+.nowrap{display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}

@@ -1,0 +1,92 @@
+doctype html
+html
+	head
+		title= title
+
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+		link(href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css", rel="stylesheet")
+		link(href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css", rel="stylesheet")
+		link(href="https://d1h9a8s8eodvjz.cloudfront.net/fonts/menomonia/08-02-12/menomonia.css", rel='stylesheet')
+		link(href="https://d1h9a8s8eodvjz.cloudfront.net/fonts/menomonia/08-02-12/menomonia-italic.css", rel='stylesheet')
+		link(href='/css/style.min.css', rel='stylesheet')
+
+		block headClose
+
+	body
+		nav#site-navbar.navbar.navbar-default(role='navigation')
+			.navbar-header
+				button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand(href='/')
+					| GW2 Guilds
+			//- 		img(src="/images/logo-96x36.png")
+
+			//- #navbar-collapse.collapse.navbar-collapse
+			//- 	ul.nav.navbar-nav.navbar-right
+			//- 		li#indicator.navbarIcon.text-muted.hidden
+			//- 			i.fa.fa-2x.fa-spinner.fa-spin.hidden
+			//- 		li.divider-vertical
+			//- 		li#audioToggle.navbarIcon.text-muted(data-enabled="false")
+			//- 			span.fa-stack
+			//- 				i.fa.fa-stack-2x.fa-ban.text-error
+			//- 				i.fa.fa-stack-1x.fa-volume-up
+			//- 		li.divider-vertical
+			//- 		if(langs)
+			//- 			each lang, langIndex in langs
+			//- 				-var liClass = [];
+			//- 				if urlLang == lang.key
+			//- 					-liClass.push('active')
+			//- 				li(class=liClass): a(href=lang.href, title=lang.name)= lang.label
+
+			//- 	ul.nav.navbar-nav
+			//- 		block worldLinks
+
+
+
+
+
+		#content
+			block content
+
+
+
+		hr
+		footer
+			div.container
+				div.row
+					div.col-md-12.text-center
+						p
+							|Please send comments, bugs, and sweet, sweet donations to fooey.5824
+							|Or, /wave at Zyrrii [HOPE] if you wander by on Fort Aspenwood <br>
+							|Source available at 
+							a(href="https://github.com/fooey/node-gw2guilds", target="_blank")
+								|https://github.com/fooey/node-gw2guilds
+
+						p.muted
+							|© 2013 ArenaNet, Inc. All rights reserved. NCsoft, the interlocking NC logo, ArenaNet, Guild Wars, Guild Wars Factions, 
+							|Guild Wars Nightfall, Guild Wars: Eye of the North, Guild Wars 2, and all associated logos and designs are trademarks or 
+							|registered trademarks of NCsoft Corporation. All other trademarks are the property of their respective owners.
+
+						-var now = new Date();
+						p.muted
+							span Generated #{now}
+							span <br>Render time #{now - renderStart} ms
+
+
+		script(src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js")
+		script(src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js")
+		script(src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+		//- script(src="//cdnjs.cloudflare.com/ajax/libs/jquery-color/2.1.2/jquery.color.min.js")
+		script(src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js")
+		script(src="//cdnjs.cloudflare.com/ajax/libs/async/0.2.7/async.min.js")
+		script(src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js")
+		script(src="/js/humanize.min.js")
+		script(src="/js/script.min.js")
+
+
+
+		block bodyClose

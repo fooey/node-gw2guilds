@@ -1,0 +1,30 @@
+{
+    "name": "node-raphael",
+    "description": "wrapper for raphael for usage in nodejs",
+    "version": "0.1.7",
+    "homepage": "https://github.com/dodo/node-raphael",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/dodo/node-raphael.git"
+    },
+    "author": "dodo (https://github.com/dodo)",
+    "main": "node-raphael.js",
+    "keywords": ["raphael", "svg"],
+    "directories": {
+        "lib": "./src",
+        "examples": "./example"
+    },
+    "engines": {
+        "node": ">= 0.4.x"
+    },
+    "scripts": {
+        "prepublish": "cake build"
+    },
+    "dependencies": {
+        "jsdom": "0.2.19"
+    },
+    "devDependencies": {
+        "coffee-script": ">= 1.2.0",
+        "muffin": ">= 0.2.6"
+    }
+}

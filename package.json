@@ -1,0 +1,27 @@
+{
+  "name": "gw2w2w-ws",
+  "description": "node-gw2guilds",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fooey/node-gw2guilds.git"
+  },
+  "engines": {
+    "node": "~0.10.25",
+    "npm": "~1.3.24"
+  },
+  "dependencies": {
+    "raphael": "~2.1.0",
+    "jsdom": "~0.8.11",
+    "gw2api": "~0.1.1",
+    "express": "~3.4.8",
+    "lodash": "~2.4.1",
+    "async": "~0.2.10",
+    "jade": "~1.1.5",
+    "uuid": "~1.4.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-nodemon": "~0.1.2"
+  }
+}

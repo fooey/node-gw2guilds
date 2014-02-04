@@ -10,10 +10,11 @@ module.exports = function (req, res) {
 
 	guilds.getByName(guildName, function(err, data){
 		if(data && data.guild_name){
-			const guildNameUrl = data.guild_name.replace(/ /g, '-');
+			const guildNameUrl = data.guildNameUrl = data.guild_name.replace(/ /g, '-');
+			const canonical = '/guilds/' + guildNameUrl;
 
-			if(req.url !== '/guilds/' + guildNameUrl){
-				res.redirect(301, '/guilds/' + guildNameUrl);
+			if(req.url !== canonical){
+				res.redirect(301, canonical);
 			}
 			else{
 				res.render("guild", {

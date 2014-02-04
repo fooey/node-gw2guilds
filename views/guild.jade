@@ -6,6 +6,6 @@ block content
 
 		dl
 			for size in [256,128,64,32]
-				-var thisSrc = '/guilds/' + guild.guild_name + '/' + size + '.svg'
+				-var thisSrc = '/guilds/' + guild.guildNameUrl + '/' + size + '.svg'
 				dt: a(href=thisSrc)= size + 'x' + size
 				dd: img(src=thisSrc, width=size, height=size)

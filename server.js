@@ -1,3 +1,12 @@
+
+if(process.env.NODETIME_ACCOUNT_KEY) {
+    require('nodetime').profile({
+        accountKey: process.env.NODETIME_ACCOUNT_KEY,
+        appName: 'gw2guilds' // optional
+    });
+}
+
+
 console.log(Date.now(), 'Starting Node.js', process.version)
 
 

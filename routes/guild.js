@@ -18,8 +18,10 @@ module.exports = function (req, res) {
 			}
 			else{
 				res.render("guild", {
+					renderStart: renderStart,
+
 					title: data.guild_name,
-					guild: data
+					guild: data,
 				})
 			}
 		}

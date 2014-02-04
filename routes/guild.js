@@ -15,7 +15,7 @@ module.exports = function (req, res) {
 			const guildNameUrl = data.guildNameUrl = qs.escape(data.guild_name.replace(/ /g, '-'));
 			const canonical = '/guilds/' + guildNameUrl;
 
-			console.log(canonical, req.url)
+			// console.log(canonical, req.url)
 
 			if(req.url !== canonical){
 				res.redirect(301, canonical);

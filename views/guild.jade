@@ -1,5 +1,10 @@
 extends layout
 
+block headClose
+	link(rel="icon", type="image/svg+xml", href='/guilds/' + guild.guildNameUrl + '/32.svg')
+	link(rel="img_src", type="image/svg+xml", href='/guilds/' + guild.guildNameUrl + '/256.svg')
+	meta(property="og:image", content='/guilds/' + guild.guildNameUrl + '/256.svg')
+
 block content
 	.container
 		h1= guild.guild_name +  ' [' + guild.tag + ']'

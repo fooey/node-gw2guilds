@@ -23,7 +23,12 @@ module.exports = function (req, res) {
 			else{
 				GLOBAL.emblem.draw(data.emblem, size, 'transparent', function(svg){
 					res.header("Content-Type", "image/svg+xml");
-					res.send(svg);
+					res.header("Content-Encoding", "gzip");
+					// res.writeHead(200, {'Content-Type': 'image/svg+xml', 'Content-Encoding': 'gzip'});
+					
+					require('zlib').gzip(svg, function (err, data) {
+						res.end(data);
+					});
 				});
 			}
 		}

@@ -7,7 +7,7 @@ if(process.env.NODETIME_ACCOUNT_KEY) {
 }
 
 
-console.log(Date.now(), 'Starting Node.js', process.version)
+console.log(Date.now(), 'Starting Node.js', process.version);
 
 
 
@@ -21,6 +21,8 @@ const server = http.createServer(app);
 const config = require('./config/server')(app, express);
 const routes = require('./routes')(app, express);
 
+
+GLOBAL.emblem = require('./lib/emblem');
 
 
 require('./lib/cache').init(function(){

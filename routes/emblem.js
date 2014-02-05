@@ -22,10 +22,14 @@ module.exports = function (req, res) {
 			}
 			else{
 				GLOBAL.emblem.draw(data.emblem, size, 'transparent', function(svg){
-					res.header("Content-Type", "image/svg+xml");
-					res.header("Content-Encoding", "gzip");
-					// res.writeHead(200, {'Content-Type': 'image/svg+xml', 'Content-Encoding': 'gzip'});
-					
+
+					res.writeHead(200, {
+						'Content-Type': 'image/svg+xml',
+						'Content-Encoding': 'gzip',
+						'Cache-Control': 'public, max-age=86400',
+						'Expires': new Date(Date.now() + 86400000).toUTCString(),
+					});
+
 					require('zlib').gzip(svg, function (err, data) {
 						res.end(data);
 					});

@@ -17,12 +17,8 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 
-
 const config = require('./config/server')(app, express);
 const routes = require('./routes')(app, express);
-
-
-GLOBAL.emblem = require('./lib/emblem');
 
 
 require('./lib/cache').init(function(){

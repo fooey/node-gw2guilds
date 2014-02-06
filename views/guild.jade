@@ -7,10 +7,22 @@ block headClose
 
 block content
 	.container
-		h1= guild.guild_name +  ' [' + guild.tag + ']'
+		-var guildFullName = guild.guild_name +  ' [' + guild.tag + ']';
+		h1= guildFullName
 		h2: img(width=256, height=256, src='/guilds/' + guild.guildNameUrl + '/256.svg')
 
-		ul
-			for size in [256,192,128,64,32,16]
+		dl#image-links
+			for size in [256,192,128,96,64,48,32,24,16]
 				-var thisSrc = '/guilds/' + guild.guildNameUrl + '/' + size + '.svg'
-				li: a(href=thisSrc)= size + 'x' + size + ' = ' + thisSrc
+				-var fullPath = 'http://guilds.gw2w2w.com' + thisSrc;
+				dt
+					h3= size + 'x' + size
+					dd: dl.dl-horizontal
+						dt URL 
+						dd: a(href=thisSrc)= fullPath
+						dt HTML 
+						dd='<img src="' +  fullPath + '" width=' + size + ' height=' + size + '"/>'
+						dt BBCODE 
+						dd= '[img width="' + size + '" height="' + size + ']' +  fullPath + '[/img]'
+						//- dt PREVIEW
+						//- dd: img(width=size, height=size, src='/guilds/' + guild.guildNameUrl + '/' + size + '.svg')

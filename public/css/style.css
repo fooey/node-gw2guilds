@@ -18,3 +18,12 @@ body{
 .block-left{display: block; margin-left: 0; margin-right: auto;}
 .block-right{display: block; margin-left: auto; margin-right: 0;}
 .nowrap{display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+
+
+
+#image-links dl.dl-horizontal dt{
+	width: 80px;
+}
+#image-links dl.dl-horizontal dd{
+	margin-left: 90px;
+}

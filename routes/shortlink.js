@@ -7,7 +7,7 @@ module.exports = function (req, res) {
 
 	const guildId = req.params.guildId;
 	const extension = req.params.extension;
-	console.log(req.params)
+	// console.log(req.params)
 
 	guilds.getById(guildId, function(err, data){
 		if(data && data.guild_name){

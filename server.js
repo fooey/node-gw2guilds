@@ -6,6 +6,10 @@ if(process.env.NODETIME_ACCOUNT_KEY) {
     });
 }
 
+if(process.env.NODE_ENV === 'development'){
+	require('look').start(5959, '127.0.0.1');
+}
+
 
 console.log(Date.now(), 'Starting Node.js', process.version);
 

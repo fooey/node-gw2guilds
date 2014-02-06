@@ -32,7 +32,11 @@ module.exports = function (req, res) {
 
 					require('zlib').gzip(svg, function (err, data) {
 						res.end(data);
+						svg = null;
+						data = null;
 					});
+
+					data = null;
 				});
 			}
 		}

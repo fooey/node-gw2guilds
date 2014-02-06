@@ -9,6 +9,10 @@ module.exports = function(app, express){
     app.get('/:guildId([A-Z0-9-]{36}):extension(.svg)?', require('./shortlink.js'));
     app.get('/guilds/:guildName/:size([0-9]+).svg', require('./emblem.js'));
     app.get('/guilds/:guildName', require('./guild.js'));
+
+
+    app.get('/robots.txt', require('./robots.js'));
+    app.get('/sitemap.xml', require('./sitemap.js'));
     
     return routes;
 };

@@ -26,8 +26,8 @@ module.exports = function (req, res) {
 					res.writeHead(200, {
 						'Content-Type': 'image/svg+xml',
 						'Content-Encoding': 'gzip',
-						'Cache-Control': 'public, max-age=86400',
-						'Expires': new Date(Date.now() + 86400000).toUTCString(),
+						// 'Cache-Control': 'public, max-age=86400',
+						// 'Expires': new Date(Date.now() + 86400000).toUTCString(),
 					});
 
 					require('zlib').gzip(svg, function (err, data) {

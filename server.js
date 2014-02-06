@@ -1,13 +1,11 @@
-
-if(process.env.NODETIME_ACCOUNT_KEY) {
+if(process.env.NODE_ENV === 'development'){
+	require('look').start(5959, '127.0.0.1');
+}
+else if(process.env.NODETIME_ACCOUNT_KEY) {
     require('nodetime').profile({
         accountKey: process.env.NODETIME_ACCOUNT_KEY,
         appName: 'gw2guilds' // optional
     });
-}
-
-if(process.env.NODE_ENV === 'development'){
-	require('look').start(5959, '127.0.0.1');
 }
 
 

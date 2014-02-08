@@ -23,6 +23,7 @@ module.exports = function (req, res) {
 			else{
 				res.render("guild", {
 					renderStart: renderStart,
+					searchBar: true,
 
 					title: data.guild_name,
 					guild: data,

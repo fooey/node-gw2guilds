@@ -23,9 +23,14 @@ html
 					span.icon-bar
 				a.navbar-brand(href='/')
 					| GW2 Guilds
-			//- 		img(src="/images/logo-96x36.png")
 
-			//- #navbar-collapse.collapse.navbar-collapse
+			#navbar-collapse.collapse.navbar-collapse
+				if(searchBar)
+					form.guildSearch.navbar-form.navbar-right(action="/", role="search")
+						.form-group
+							input.guildName.form-control(name="guildName", type="text", placeholder="Guild Name")
+						button.btn.btn-default(type="submit") Lookup
+
 			//- 	ul.nav.navbar-nav.navbar-right
 			//- 		li#indicator.navbarIcon.text-muted.hidden
 			//- 			i.fa.fa-2x.fa-spinner.fa-spin.hidden
@@ -42,8 +47,6 @@ html
 			//- 					-liClass.push('active')
 			//- 				li(class=liClass): a(href=lang.href, title=lang.name)= lang.label
 
-			//- 	ul.nav.navbar-nav
-			//- 		block worldLinks
 
 
 
@@ -81,7 +84,7 @@ html
 		script(src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js")
 		script(src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js")
 		//- script(src="//cdnjs.cloudflare.com/ajax/libs/jquery-color/2.1.2/jquery.color.min.js")
-		//- script(src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js")
+		script(src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js")
 		//- script(src="//cdnjs.cloudflare.com/ajax/libs/async/0.2.7/async.min.js")
 		//- script(src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js")
 		//- script(src="/js/humanize.min.js")

@@ -2,10 +2,10 @@ extends layout
 
 block content
 	.container
-		h1 Welcome
+		h1.page-header Welcome
 
-		form.guildSearch
+		form.guildSearch(action="/", role="search")
 			.form-group
-				label(for="guildName") Guild Name
+				label(for="guildName") Lookup a guild
 				input.guildName.form-control(name="guildName", placeholder="Guild Name")
-			button.btn.btn-default Submit
+			button.btn.btn-default Lookup

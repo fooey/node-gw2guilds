@@ -11,6 +11,8 @@ module.exports = function (req, res) {
 	else{
 		res.render('home', {
 			renderStart: renderStart,
+			searchBar: false,
+			
 			title: 'GW2 Guilds',
 		});
 	}

@@ -35,7 +35,7 @@ module.exports = function (req, res) {
 				// '<changefreq>monthly</changefreq>',
 				// '<priority>0.8</priority>',
 			'</url> ',
-		].join('\n'));
+		].join(''));
 	}
 	
 

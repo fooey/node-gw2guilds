@@ -2,11 +2,19 @@
 
 
 module.exports = function (req, res) {
-    const renderStart = Date.now()
+	const renderStart = Date.now();
 
-    res.render('home', {
-        renderStart: renderStart,
+	if(req.query.guildName && req.query.guildName.length){
+		const guildNameUrl = req.query.guildName.replace(/ /g, '-');
+		res.redirect(301, '/guilds/' + guildNameUrl);
+	}
+	else{
 
-        title: 'GW2 Guilds',
-    });
+		res.render('home', {
+			renderStart: renderStart,
+
+			title: 'GW2 Guilds',
+		});
+	}
+
 };

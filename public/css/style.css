@@ -21,9 +21,9 @@ body{
 
 
 
-#image-links dl.dl-horizontal dt{
-	width: 80px;
+#linkBuilder dl.dl-horizontal dt{
+	width: 100px;
 }
-#image-links dl.dl-horizontal dd{
-	margin-left: 90px;
+#linkBuilder dl.dl-horizontal dd{
+	margin-left: 120px;
 }

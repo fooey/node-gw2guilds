@@ -1,28 +1,52 @@
 extends layout
 
 block headClose
-	//- link(rel="icon", type="image/svg+xml", href='/guilds/' + guild.guildNameUrl + '/32.svg')
-	link(rel="img_src", type="image/svg+xml", href='/guilds/' + guild.guildNameUrl + '/256.svg')
-	meta(property="og:image", content='/guilds/' + guild.guildNameUrl + '/256.svg')
+	-var defaultEmblemSrc = '/guilds/' + guild.guildNameUrl + '/256.svg';
+	link(rel="icon", type="image/svg+xml", href=defaultEmblemSrc)
+	link(rel="img_src", type="image/svg+xml", href=defaultEmblemSrc)
+	meta(property="og:image", content=defaultEmblemSrc)
 
 block content
-	.container
-		-var guildFullName = guild.guild_name +  ' [' + guild.tag + ']';
-		h1= guildFullName
-		h2: img(width=256, height=256, src='/guilds/' + guild.guildNameUrl + '/256.svg')
+	-var guildFullName = guild.guild_name +  ' [' + guild.tag + ']';
+	-var defaultEmblemSrc = '/guilds/' + guild.guildNameUrl + '/256.svg';
 
-		dl#image-links
-			for size in [256,192,128,96,64,48,32,24,16]
-				-var thisSrc = '/guilds/' + guild.guildNameUrl + '/' + size + '.svg'
-				-var fullPath = 'http://guilds.gw2w2w.com' + thisSrc;
-				dt
-					h3= size + 'x' + size
-					dd: dl.dl-horizontal
-						dt URL 
-						dd: a(href=thisSrc)= fullPath
-						dt HTML 
-						dd='<img src="' +  fullPath + '" width=' + size + ' height=' + size + '"/>'
-						dt BBCODE 
-						dd= '[img width="' + size + '" height="' + size + ']' +  fullPath + '[/img]'
-						//- dt PREVIEW
-						//- dd: img(width=size, height=size, src='/guilds/' + guild.guildNameUrl + '/' + size + '.svg')
+	.container
+		h1.text-center#guildName.page-header= guildFullName
+
+		#linkBuilder(data-guildnameurl=guild.guildNameUrl)
+			div.text-center
+				img#emblem(src=defaultEmblemSrc, style="width:256px;height:256px")
+			div
+				.form-group
+					label(for="size") Emblem Dimensions
+					input#emblemSize.form-control(name="size", type="text", value=256) 
+				.form-group
+					label(for="bgColor") Background Color
+					input#emblemBgColor.form-control(name="bgColor", type="text", value="transparent")
+				dl#emblemCodes.dl-horizontal
+					-var fullPath = 'http://guilds.gw2w2w.com' + defaultEmblemSrc;
+					dt URL 
+					dd#emblemURL
+						//- a(href=thisSrc)= fullPath
+					dt HTML 
+					dd#emblemHTML
+						//- ='<img src="' +  fullPath + '" width=256 height=256"/>'
+					dt BBCODE 
+					dd#emblemBBCODE
+						//- = '[img width="256" height="256"]' +  fullPath + '[/img]'
+
+
+		//- dl#image-links
+		//- 	for size in [256,192,128,96,64,48,32,24,16]
+		//- 		-var thisSrc = '/guilds/' + guild.guildNameUrl + '/' + size + '.svg'
+		//- 		dt
+		//- 			h3= size + 'x' + size
+		//- 			dd: dl.dl-horizontal
+		//- 				dt URL 
+		//- 				dd: a(href=thisSrc)= fullPath
+		//- 				dt HTML 
+		//- 				dd='<img src="' +  fullPath + '" width=' + size + ' height=' + size + '"/>'
+		//- 				dt BBCODE 
+		//- 				dd= '[img width="' + size + '" height="' + size + ']' +  fullPath + '[/img]'
+		//- 				//- dt PREVIEW
+		//- 				//- dd: img(width=size, height=size, src='/guilds/' + guild.guildNameUrl + '/' + size + '.svg')

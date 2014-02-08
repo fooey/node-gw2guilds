@@ -6,8 +6,9 @@ module.exports = function (req, res) {
 	const renderStart = Date.now()
 
 	const guildId = req.params.guildId;
+	const size = req.params.size || 256;
+	const bgColor = req.params.bgColor;
 	const extension = req.params.extension;
-	// console.log(req.params)
 
 	guilds.getById(guildId, function(err, data){
 		if(data && data.guild_name){
@@ -15,8 +16,12 @@ module.exports = function (req, res) {
 			if(!extension){
 				res.redirect(301, '/guilds/' + guildNameUrl);
 			}
-			else if(extension === '.svg'){
-				res.redirect(301, '/guilds/' + guildNameUrl + '/256.svg');
+			else if(extension === 'svg'){
+				let svgPath = [size];
+				if(bgColor){svgPath.push(bgColor);}
+				svgPath.push('svg');
+
+				res.redirect(301, '/guilds/' + guildNameUrl + '/' + svgPath.join('.'));
 			}
 			else{
 				console.log(req.params)

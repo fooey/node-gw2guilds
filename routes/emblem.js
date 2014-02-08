@@ -10,18 +10,29 @@ module.exports = function (req, res) {
 
 	const guildName = req.params.guildName.replace(/-/g, ' ');
 	const size = req.params.size;
+	const bgColor = req.params.bgColor;
 
 
 	guilds.getByName(guildName, function(err, data){
 		if(data && data.guild_name){
 			const guildNameUrl = data.guildNameUrl = qs.escape(data.guild_name.replace(/ /g, '-'));
-			const canonical = '/guilds/' + guildNameUrl + '/' + size + '.svg';
+
+			let svgPath = [size];
+			if(bgColor){svgPath.push(bgColor);}
+			svgPath.push('svg');
+
+			const canonical = [
+				'',
+				'guilds',
+				guildNameUrl,
+				svgPath.join('.')
+			].join('/');
 
 			if(req.url !== canonical){
 				res.redirect(301, canonical);
 			}
 			else{
-				emblem.draw(data.emblem, size, 'transparent', function(svg){
+				emblem.draw(data.emblem, size, bgColor || 'transparent', function(svg){
 
 					res.writeHead(200, {
 						'Content-Type': 'image/svg+xml',

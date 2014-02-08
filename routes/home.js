@@ -9,10 +9,8 @@ module.exports = function (req, res) {
 		res.redirect(301, '/guilds/' + guildNameUrl);
 	}
 	else{
-
 		res.render('home', {
 			renderStart: renderStart,
-
 			title: 'GW2 Guilds',
 		});
 	}

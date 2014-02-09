@@ -14,6 +14,9 @@ module.exports = function(app, express){
 
     app.get('/guilds/:guildName', require('./guild.js'));
 
+    if(process.env.NODE_ENV === 'development'){
+        app.get('/stressTest', require('./stressTest.js'));
+    }
 
     app.get('/robots.txt', require('./robots.js'));
     app.get('/sitemap.xml', require('./sitemap.js'));

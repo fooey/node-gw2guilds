@@ -4,7 +4,7 @@ const qs = require('querystring')
 const _ = require('lodash')
 
 const guilds = require('../lib/guilds');
-const emblem = require('../lib/emblem.js');
+const emblem = require('../lib/emblem2.js');
 
 module.exports = function (req, res) {
 	const renderStart = Date.now()

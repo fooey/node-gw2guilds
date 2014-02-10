@@ -11,16 +11,13 @@
     "npm": "~1.3.24"
   },
   "dependencies": {
-    "raphael": "~2.1.0",
-    "jsdom": "~0.8.11",
     "gw2api": "~0.1.1",
     "express": "~3.4.8",
     "lodash": "~2.4.1",
     "async": "~0.2.10",
     "jade": "~1.1.5",
     "uuid": "~1.4.1",
-    "nodetime": "~0.8.15",
-    "memwatch": "~0.2.2"
+    "nodetime": "~0.8.15"
   },
   "devDependencies": {
     "grunt": "~0.4.2",

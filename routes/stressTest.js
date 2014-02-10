@@ -42,13 +42,7 @@ module.exports = function (req, res) {
     
 
     function __buildHtml(err, urlNodes){
-        _sendToClient([
-            '<ul style="list-style:none">',
-                '<li>',
-                    urlNodes.join('</li><li>'),
-                '</li>',
-            '</ul>'
-        ]);
+        _sendToClient(urlNodes);
     }
     
 

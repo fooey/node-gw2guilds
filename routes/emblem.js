@@ -13,12 +13,6 @@ module.exports = function (req, res) {
 	const size = req.params.size;
 	const bgColor = req.params.bgColor;
 
-	const isDebug = req.query.debug || false;
-	if(isDebug){
-		const memwatch = require('memwatch');
-		var hd = new memwatch.HeapDiff();
-	}
-
 
 	guilds.getByName(guildName, __returnGuildEmblem);
 
@@ -38,37 +32,24 @@ module.exports = function (req, res) {
 				svgPath.join('.')
 			].join('/');
 
-			if(!isDebug && req.url !== canonical){
+			if(req.url !== canonical){
 				res.redirect(301, canonical);
 			}
 			else{
 				emblem.draw(data.emblem, size, bgColor || 'transparent', function(svg){
+					require('zlib').gzip(svg, function (err, data) {
 
-
-					if(isDebug){
-						let diff = hd.end();
-						diff.change.details = _.filter(diff.change.details, function(o){return parseInt(o.size_bytes) > 1024 * 10});
-						diff.change.details = _.sortBy(diff.change.details, function(o){return -parseInt(o.size_bytes)});
-
-						res.json(diff);
-					}
-					else{
-						require('zlib').gzip(svg, function (err, data) {
-
-							res.writeHead(200, {
-								'Content-Type': 'image/svg+xml',
-								'Content-Encoding': 'gzip',
-								'Cache-Control': 'public, max-age=86400',
-								'Expires': new Date(Date.now() + 86400000).toUTCString(),
-							});
-							res.end(data);
-							
-							svg = null;
-							data = null;
+						res.writeHead(200, {
+							'Content-Type': 'image/svg+xml',
+							'Content-Encoding': 'gzip',
+							'Cache-Control': 'public, max-age=86400',
+							'Expires': new Date(Date.now() + 86400000).toUTCString(),
 						});
-
+						res.end(data);
+						
+						svg = null;
 						data = null;
-					}
+					});
 
 				});
 			}

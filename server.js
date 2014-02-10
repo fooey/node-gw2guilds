@@ -1,10 +1,3 @@
-if(process.env.NODE_ENV === 'development'){
-	// require('look').start(5959, '127.0.0.1');
-
-	const memwatch = require('memwatch');
-	memwatch.on('leak', console.log.bind(null, 'memwatch.leak\n'));
-	memwatch.on('stats', console.log.bind(null, 'memwatch.stats\n'));
-}
 if(process.env.NODETIME_ACCOUNT_KEY) {
     require('nodetime').profile({
         accountKey: process.env.NODETIME_ACCOUNT_KEY,

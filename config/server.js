@@ -7,6 +7,17 @@ module.exports = function (app, express) {
 
 
 
+	app.configure('development', function(){
+		app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+		app.locals.pretty = true;
+		app.use(express.logger('dev'));
+	});
+
+	app.configure('production', function(){
+		app.use(express.errorHandler());
+		app.use(express.logger('default'));
+	});
+
 	app.configure(function () {
 		app.set('port', process.env.PORT || 3000);
 
@@ -20,16 +31,6 @@ module.exports = function (app, express) {
 		app.use(app.router);
 		app.use(express.static(pubFolder));
 
-		app.use(express.logger('dev'));
-	});
-
-	app.configure('development', function(){
-		app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-		app.locals.pretty = true;
-	});
-
-	app.configure('production', function(){
-		app.use(express.errorHandler());
 	});
 
 

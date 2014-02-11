@@ -102,7 +102,7 @@ $(function(){
 
 	function __getSvgFileName(size, bgColor){
 		var svgFileName = [size];
-		if(bgColor && bgColor.length && bgColor !== 'transparent'){
+		if(bgColor && bgColor.length && bgColor !== 'transparent' && bgColor !== 'none'){
 			svgFileName.push(bgColor);
 		}
 		svgFileName.push('svg');

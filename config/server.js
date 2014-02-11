@@ -7,31 +7,27 @@ module.exports = function (app, express) {
 
 
 
-	app.configure('development', function(){
+	if(process.env.NODE_ENV === 'development'){
 		app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 		app.locals.pretty = true;
 		app.use(express.logger('dev'));
-	});
-
-	app.configure('production', function(){
+	}
+	else{
 		app.use(express.errorHandler());
 		app.use(express.logger('default'));
-	});
+	}
 
-	app.configure(function () {
-		app.set('port', process.env.PORT || 3000);
+	app.set('port', process.env.PORT || 3000);
 
-		app.set('views', path.join(process.cwd(),'views'));
-		app.set('view engine', 'jade');
-		app.set('view cache', true);
+	app.set('views', path.join(process.cwd(),'views'));
+	app.set('view engine', 'jade');
+	app.set('view cache', true);
 
-		app.use(express.favicon(faviconPath));
-		app.use(express.urlencoded());
-		app.use(express.methodOverride());
-		app.use(app.router);
-		app.use(express.static(pubFolder));
-
-	});
+	app.use(express.favicon(faviconPath));
+	app.use(express.urlencoded());
+	app.use(express.methodOverride());
+	app.use(app.router);
+	app.use(express.static(pubFolder));
 
 
 

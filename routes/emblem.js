@@ -36,7 +36,7 @@ module.exports = function (req, res) {
 				res.redirect(301, canonical);
 			}
 			else{
-				emblem.draw(data.emblem, size, bgColor || 'transparent', function(svg){
+				emblem.draw(data.emblem, size, bgColor, function(svg){
 					require('zlib').gzip(svg, function (err, data) {
 
 						res.writeHead(200, {

@@ -7,6 +7,8 @@
 *
 */
 
+const url = require('url');
+const request = require('request');
 
 
 /*
@@ -225,13 +227,14 @@ Anet.getMapFloor = function (params, callback) {
 // NO PARAMS
 Anet.getMatches = function (callback) {
 	__get('matches', {}, function(err, data){
-		const wvw_matches = (data && data.wvw_matches) ? data.wvw_matches : [];
+		let wvw_matches = (data && data.wvw_matches) ? data.wvw_matches : [];
 		callback(err, wvw_matches)
+		wvw_matches = null;
 	})
 };
 
 // OPTIONAL: lang
-Anet.getObjectives = function (params, callback) {
+Anet.getObjectiveNames = function (params, callback) {
 	const args = __fixNoParams(params, callback);
 	__get('objectiveNames', args.params, args.callback)
 };
@@ -349,7 +352,7 @@ Anet.getFileRenderUrl = function (params, callback) {
 function __getRemote (requestUrl, callback) {
 	const startTime = Date.now();
 	// console.log(Date.now(), requestUrl)
-	require('request')({
+	request({
 			url: requestUrl,
 			timeout: __INSTANCE.api.timeout
 		},
@@ -363,6 +366,8 @@ function __getRemote (requestUrl, callback) {
 				// throw('unexepcted response in __getRemote()')
 				callback(err, null);
 			}
+			response = null;
+			body = null;
 		}
 	);
 }
@@ -373,7 +378,7 @@ function __getApiUrl (endpoint, params) {
 	if(!__INSTANCE.api.endPoints[endpoint]){
 		throw('Invalid endpoint: ' + endpoint);
 	}
-	return require('url').format({
+	return url.format({
 		protocol: __INSTANCE.api.protocol
 		, hostname: __INSTANCE.api.hostname
 		, pathname: __INSTANCE.api.endPoints[endpoint]

@@ -76,7 +76,8 @@ module.exports = function (req, res) {
 		);
 		if(isHotlink){
 			const ua = require('universal-analytics');
-			const visitor = ua('UA-51384-40', req.cookies.uaUUID);
+			const uaUUID = (req.cookies && req.cookies.uaUUID) ? req.cookies.uaUUID : null;
+			const visitor = ua('UA-51384-40', uaUUID);
 
 			//Visitor#event(category, action, label, value)
 			visitor.event('emblem-hotlink', guildName, referer, size).send();

@@ -1,6 +1,8 @@
 "use strict"
 
-const qs = require('querystring')
+const qs = require('querystring');
+const util = require('util');
+
 const async = require('async');
 const cache = require('../lib/cache');
 
@@ -20,35 +22,42 @@ module.exports = function (req, res) {
     function __onGuildData(err, guilds){
         async.concat(
             Object.keys(guilds),
-            __buildImg,
+            __getImageTags,
             __buildHtml
         );
     }
     
 
 
-    function __buildImg(guildName, nextGuild){        
-        nextGuild(null, [
-            '<img src="' + __getImageUrl(guildName, 256) + '" />',
-            // '<img src="' + __getImageUrl(guildName, 190) + '" />',
-            // '<img src="' + __getImageUrl(guildName, 128) + '" />',
-            // '<img src="' + __getImageUrl(guildName, 96) + '" />',
-            // '<img src="' + __getImageUrl(guildName, 64) + '" />',
-            // '<img src="' + __getImageUrl(guildName, 32) + '" />',
-            // '<img src="' + __getImageUrl(guildName, 24) + '" />',
-            // '<img src="' + __getImageUrl(guildName, 16) + '" />',
-        ].join(''));
+    function __getImageTags(guildName, nextGuild){
+        async.concat([
+            // 256,
+            // 190,
+            128,
+            // 96,
+            // 64,
+            // 48,
+            // 32,
+            // 24,
+            // 16,
+        ],
+        function(size, nextSize){
+            nextSize(null, util.format('<img src="%s" style="width:%dpx;height:%dpx;" />', __getImageUrl(guildName, size), size, size));
+        },
+        function(err, results){
+            nextGuild(null, results.join(''))
+        });
     }
     
 
     function __buildHtml(err, urlNodes){
-        _sendToClient(urlNodes);
+        _sendToClient(urlNodes.join('\n'));
     }
     
 
-    function _sendToClient(xmlArray){
+    function _sendToClient(html){
         res.header('content-type', 'text/html');
-        res.end(xmlArray.join('\n'));
+        res.send(html);
     }
 
 

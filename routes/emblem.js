@@ -8,7 +8,6 @@ const guilds = require('../lib/guilds');
 const emblem = require('../lib/emblem2.js');
 
 module.exports = function (req, res) {
-	const visitor = require('./universal-analytics')(req, res);
 	const renderStart = Date.now()
 
 	const guildName = req.params.guildName.replace(/-/g, ' ');
@@ -17,9 +16,6 @@ module.exports = function (req, res) {
 
 	const cacheTime = 60 * 60 * 24 * 1; // 1 day
 
-
-
-	console.log('options', req.method)
 
 	guilds.getByName(guildName, __returnGuildEmblem);
 
@@ -79,6 +75,9 @@ module.exports = function (req, res) {
 			)
 		);
 		if(isHotlink){
+			const ua = require('universal-analytics');
+			const visitor = ua('UA-51384-40', req.cookies.uaUUID);
+
 			//Visitor#event(category, action, label, value)
 			visitor.event('emblem-hotlink', guildName, referer, size).send();
 		}

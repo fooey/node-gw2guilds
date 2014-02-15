@@ -2,6 +2,7 @@
 
 
 module.exports = function (req, res) {
+	const visitor = require('./universal-analytics')(req, res);
 	const renderStart = Date.now();
 
 	if(req.query.guildName && req.query.guildName.length){

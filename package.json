@@ -17,7 +17,8 @@
     "async": "~0.2.10",
     "jade": "~1.1.5",
     "uuid": "~1.4.1",
-    "nodetime": "~0.8.15"
+    "nodetime": "~0.8.15",
+    "universal-analytics": "~0.3.2"
   },
   "devDependencies": {
     "grunt": "~0.4.2",

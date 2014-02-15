@@ -79,7 +79,8 @@ module.exports = function (req, res) {
 			)
 		);
 		if(isHotlink){
-			visitor.event('emblem', 'hotlink', guildName, size).send();
+			//Visitor#event(category, action, label, value)
+			visitor.event('emblem-hotlink', guildName, referer, size).send();
 		}
 	}
 

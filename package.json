@@ -18,7 +18,8 @@
     "jade": "~1.1.5",
     "uuid": "~1.4.1",
     "nodetime": "~0.8.15",
-    "universal-analytics": "~0.3.2"
+    "universal-analytics": "~0.3.2",
+    "svgo": "~0.4.4"
   },
   "devDependencies": {
     "grunt": "~0.4.2",

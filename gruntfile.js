@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 			dev: {
 				options: {
 					file: 'server.js',
-					nodeArgs: ['--harmony','--debug'],
+					nodeArgs: ['--harmony'],//,'--debug'
 					watchedExtensions: ['js', 'jade', 'json'],
 					delayTime: 1,
 					env: {

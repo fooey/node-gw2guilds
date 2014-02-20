@@ -25,7 +25,7 @@ module.exports = function (req, res) {
 					renderStart: renderStart,
 					searchBar: true,
 
-					title: data.guild_name,
+					title: data.guild_name + ' [' + data.tag + ']',
 					guild: data,
 				})
 			}

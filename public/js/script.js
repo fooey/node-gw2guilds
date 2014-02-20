@@ -70,7 +70,7 @@ $(function(){
 
 	function __updateEmblemInfo(forceUpdate, e){
 		var size = $emblemSize.val();
-		var bgColor = $emblemBgColor.val();
+		var bgColor = $emblemBgColor.val().replace(/#/g, '');
 
 		var emblemUrl = __getEmblemUrl(size, bgColor);
 		if(forceUpdate || $emblem.attr('src') !== emblemUrl){

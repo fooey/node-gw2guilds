@@ -37,7 +37,7 @@ module.exports = function (app, express) {
 		next(); // <-- important!
 	});
 
-	app.set('port', process.env.PORT || 3000);
+	app.set('port', process.env.PORT || 3001);
 
 	app.set('views', path.join(process.cwd(),'views'));
 	app.set('view engine', 'jade');

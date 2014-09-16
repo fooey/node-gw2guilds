@@ -11,15 +11,16 @@
     "npm": "~1.3.24"
   },
   "dependencies": {
-    "gw2api": "~0.1.1",
-    "express": "~3.4.8",
-    "lodash": "~2.4.1",
     "async": "~0.2.10",
+    "express": "~3.4.8",
+    "gw2api": "~0.1.1",
     "jade": "~1.1.5",
-    "uuid": "~1.4.1",
+    "lodash": "~2.4.1",
+    "newrelic": "^1.11.1",
     "nodetime": "~0.8.15",
+    "svgo": "~0.4.4",
     "universal-analytics": "~0.3.2",
-    "svgo": "~0.4.4"
+    "uuid": "~1.4.1"
   },
   "devDependencies": {
     "grunt": "~0.4.2",

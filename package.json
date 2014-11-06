@@ -21,7 +21,7 @@
   },
   "main": "main",
   "dependencies": {
-    "request": "~2.33.0"
+    "request": "^2.33.0"
   },
   "devDependencies": {},
   "optionalDependencies": {},

@@ -1,13 +1,15 @@
-"use strict"
+'use strict';
 
 /*
-*	
+*
 *	https://github.com/fooey/node-gw2
 *   http://wiki.guildwars2.com/wiki/API:Main
 *
 */
 
 const url = require('url');
+const zlib = require('zlib');
+
 const request = require('request');
 
 
@@ -37,10 +39,9 @@ module.exports = Anet;
 *
 */
 
-const __INSTANCE = {
-	
+const INSTANCE = {
 	api: {
-		timeout: (10*1000),
+		timeout: (10 * 1000),
 		protocol: 'https',
 		hostname: 'api.guildwars2.com',
 
@@ -50,9 +51,9 @@ const __INSTANCE = {
 			eventDetails: '/v1/event_details.json',				// https://api.guildwars2.com/v1/event_details.json
 			mapNames: '/v1/map_names.json',						// http://wiki.guildwars2.com/wiki/API:1/map_names
 			worldNames: '/v1/world_names.json',					// http://wiki.guildwars2.com/wiki/API:1/world_names
-			
+
 			guildDetails: '/v1/guild_details.json',				// http://wiki.guildwars2.com/wiki/API:1/guild_details
-			
+
 			items: '/v1/items.json',							// http://wiki.guildwars2.com/wiki/API:1/items
 			itemDetails: '/v1/item_details.json',				// http://wiki.guildwars2.com/wiki/API:1/item_details
 			recipes: '/v1/recipes.json',						// http://wiki.guildwars2.com/wiki/API:1/recipes
@@ -92,8 +93,9 @@ const __INSTANCE = {
 *   API Calls
 */
 
-const __get = Anet.get = function (key, params, callback) {
-	__getRemote(__getApiUrl(key, params), callback);
+const get = Anet.get = function(key, params, callback) {
+	var apiUrl = getApiUrl(key, params);
+	requestJson(apiUrl, callback);
 };
 
 
@@ -102,38 +104,38 @@ const __get = Anet.get = function (key, params, callback) {
 *	EVENTS
 */
 
-// OPTIONAL: world_id, map_id, event_id
-Anet.getEvents = function (params, callback) {
-	const args = __fixNoParams(params, callback);
-	__get('events', args.params, args.callback);
+// // OPTIONAL: world_id, map_id, event_id
+// Anet.getEvents = function(params, callback) {
+// 	const args = fixNoParams(params, callback);
+// 	get('events', args.params, args.callback);
+// };
+
+
+// // OPTIONAL: lang
+// Anet.getEventNames = function(params, callback) {
+// 	const args = fixNoParams(params, callback);
+// 	get('eventNames', args.params, args.callback);
+// };
+
+
+// // OPTIONAL: lang, event_id
+// Anet.getEventDetails = function(params, callback) {
+// 	const args = fixNoParams(params, callback);
+// 	get('eventDetails', args.params, args.callback);
+// };
+
+
+// OPTIONAL: lang
+Anet.getMapNames = function(params, callback) {
+	const args = fixNoParams(params, callback);
+	get('mapNames', params, callback);
 };
 
 
 // OPTIONAL: lang
-Anet.getEventNames = function (params, callback) {
-	const args = __fixNoParams(params, callback);
-	__get('eventNames', args.params, args.callback);
-};
-
-
-// OPTIONAL: lang, event_id
-Anet.getEventDetails = function (params, callback) {
-	const args = __fixNoParams(params, callback);
-	__get('eventDetails', args.params, args.callback);
-};
-
-
-// OPTIONAL: lang
-Anet.getMapNames = function (params, callback) {
-	const args = __fixNoParams(params, callback);
-	__get('mapNames',params, callback);
-};
-
-
-// OPTIONAL: lang
-Anet.getWorldNames = function (params, callback) {
-	const args = __fixNoParams(params, callback);
-	__get('worldNames', args.params, args.callback);
+Anet.getWorldNames = function(params, callback) {
+	const args = fixNoParams(params, callback);
+	get('worldNames', args.params, args.callback);
 };
 
 
@@ -143,12 +145,12 @@ Anet.getWorldNames = function (params, callback) {
 */
 
 // REQUIRED: guild_id || guild_name (id takes priority)
-Anet.getGuildDetails = function (params, callback) {
-	if(!params.guild_id && !params.guild_name){
-		throw('Either guild_id or guild_name must be passed')
+Anet.getGuildDetails = function(params, callback) {
+	if (!params.guild_id && !params.guild_name) {
+		throw ('Either guild_id or guild_name must be passed');
 	}
-	const args = __fixNoParams(params, callback);
-	__get('guildDetails', params, callback)
+	const args = fixNoParams(params, callback);
+	get('guildDetails', params, callback)
 };
 
 
@@ -158,33 +160,33 @@ Anet.getGuildDetails = function (params, callback) {
 */
 
 // NO PARAMS
-Anet.getItems = function (callback) {
-	__get('items', {}, callback);
+Anet.getItems = function(callback) {
+	get('items', {}, callback);
 };
 
 
 // REQUIRED: item_id
 // OPTIONAL: lang
-Anet.getItemDetails = function (params, callback) {
-	if(!params.item_id){
-		throw('item_id is a required parameter')
+Anet.getItemDetails = function(params, callback) {
+	if (!params.item_id) {
+		throw ('item_id is a required parameter');
 	}
-	__get('itemDetails', params, callback);
+	get('itemDetails', params, callback);
 };
 
 
 // NO PARAMS
-Anet.getRecipes = function (callback) {
-	__get('recipes', {}, callback);
+Anet.getRecipes = function(callback) {
+	get('recipes', {}, callback);
 };
 
 // REQUIRED: recipe_id
 // OPTIONAL: lang
-Anet.getRecipeDetails = function (params, callback) {
-	if(!params.recipe_id){
-		throw('recipe_id is a required parameter')
+Anet.getRecipeDetails = function(params, callback) {
+	if (!params.recipe_id) {
+		throw ('recipe_id is a required parameter');
 	}
-	__get('recipeDetails', params, callback);
+	get('recipeDetails', params, callback);
 };
 
 
@@ -194,28 +196,28 @@ Anet.getRecipeDetails = function (params, callback) {
 */
 
 // NO PARAMS
-Anet.getContinents = function (callback) {
-	__get('continents', {}, callback);
+Anet.getContinents = function(callback) {
+	get('continents', {}, callback);
 };
 
 
 // OPTIONAL: map_id, lang
-Anet.getMaps = function (params, callback) {
-	const args = __fixNoParams(params, callback);
-	__get('maps', {}, callback);
+Anet.getMaps = function(params, callback) {
+	const args = fixNoParams(params, callback);
+	get('maps', {}, callback);
 };
 
 
 // REQUIRED: continent_id, floor
 // OPTIONAL: lang
-Anet.getMapFloor = function (params, callback) {
-	if(!params.continent_id){
-		throw('continent_id is a required parameter')
+Anet.getMapFloor = function(params, callback) {
+	if (!params.continent_id) {
+		throw ('continent_id is a required parameter');
 	}
-	else if(!params.floor){
-		throw('floor is a required parameter')
+	else if (!params.floor) {
+		throw ('floor is a required parameter');
 	}
-	__get('mapFloor', {}, callback);
+	get('mapFloor', {}, callback);
 };
 
 
@@ -225,26 +227,25 @@ Anet.getMapFloor = function (params, callback) {
 */
 
 // NO PARAMS
-Anet.getMatches = function (callback) {
-	__get('matches', {}, function(err, data){
-		let wvw_matches = (data && data.wvw_matches) ? data.wvw_matches : [];
-		callback(err, wvw_matches)
-		wvw_matches = null;
+Anet.getMatches = function(callback) {
+	get('matches', {}, function(err, data) {
+		var wvw_matches = (data && data.wvw_matches) ? data.wvw_matches : [];
+		callback(err, wvw_matches);
 	})
 };
 
 // OPTIONAL: lang
-Anet.getObjectiveNames = function (params, callback) {
-	const args = __fixNoParams(params, callback);
-	__get('objectiveNames', args.params, args.callback)
+Anet.getObjectiveNames = function(params, callback) {
+	const args = fixNoParams(params, callback);
+	get('objectiveNames', args.params, args.callback)
 };
 
 // REQUIRED: match_id
-Anet.getMatchDetails = function (params, callback) {
-	if(!params.match_id){
-		throw('match_id is a required parameter')
+Anet.getMatchDetails = function(params, callback) {
+	if (!params.match_id) {
+		throw ('match_id is a required parameter');
 	}
-	__get('matchDetails', params, callback)
+	get('matchDetails', params, callback)
 };
 
 
@@ -254,23 +255,23 @@ Anet.getMatchDetails = function (params, callback) {
 */
 
 // NO PARAMS
-Anet.getBuild = function (callback) {
-	__get('build', {}, callback);
+Anet.getBuild = function(callback) {
+	get('build', {}, callback);
 };
 
 
 // OPTIONAL: lang
-Anet.getColors = function (params, callback) {
-	const args = __fixNoParams(params, callback);
-	__get('colors', {}, callback);
+Anet.getColors = function(params, callback) {
+	const args = fixNoParams(params, callback);
+	get('colors', {}, callback);
 };
 
 
 // NO PARAMS
 // to get files: https://render.guildwars2.com/file/{signature}/{file_id}.{format}
-Anet.getFiles = function (params, callback) {
-	const args = __fixNoParams(params, callback);
-	__get('files', {}, callback);
+Anet.getFiles = function(params, callback) {
+	const args = fixNoParams(params, callback);
+	get('files', {}, callback);
 };
 
 
@@ -286,38 +287,38 @@ Anet.getFiles = function (params, callback) {
 *   WVW
 */
 
-Anet.wvwGetCommonName = function(lang, objectiveId){
-	return __INSTANCE.wvw.commonNames[lang][objectiveId];
+Anet.wvwGetCommonName = function(lang, objectiveId) {
+	return INSTANCE.wvw.commonNames[lang][objectiveId];
 };
 
 
 // SPECIAL CASE
 // REQUIRED: signature, file_id, format
-Anet.getFile = function (params, callback) {
-	if(!params.signature){
-		throw('signature is a required parameter')
+Anet.getFile = function(params, callback) {
+	if (!params.signature) {
+		throw ('signature is a required parameter');
 	}
-	else if(!params.file_id){
-		throw('file_id is a required parameter')
+	else if (!params.file_id) {
+		throw ('file_id is a required parameter');
 	}
-	else if(!params.format){
-		throw('format is a required parameter')
+	else if (!params.format) {
+		throw ('format is a required parameter');
 	}
 
-	__getRemote(Anet.getFileRenderUrl(params), callback);
+	requestJson(Anet.getFileRenderUrl(params), callback);
 };
 
 
 // REQUIRED: signature, file_id, format
-Anet.getFileRenderUrl = function (params, callback) {
-	if(!params.signature){
-		throw('signature is a required parameter')
+Anet.getFileRenderUrl = function(params, callback) {
+	if (!params.signature) {
+		throw ('signature is a required parameter');
 	}
-	else if(!params.file_id){
-		throw('file_id is a required parameter')
+	else if (!params.file_id) {
+		throw ('file_id is a required parameter');
 	}
-	else if(!params.format){
-		throw('format is a required parameter')
+	else if (!params.format) {
+		throw ('format is a required parameter');
 	}
 
 	const renderUrl = (
@@ -339,49 +340,85 @@ Anet.getFileRenderUrl = function (params, callback) {
 *
 */
 
- function __fixNoParams (params, callback){
-	if(typeof(params) === "function"){
+ function fixNoParams(params, callback) {
+	if (typeof(params) === "function") {
 		callback = params;
 		params = {};
 	}
-	return {params:params, callback:callback}
+	return {params: params, callback: callback};
 }
 
 
 
-function __getRemote (requestUrl, callback) {
-	const startTime = Date.now();
-	// console.log(Date.now(), requestUrl)
-	request({
-			url: requestUrl,
-			timeout: __INSTANCE.api.timeout
-		},
-		function (err, response, body) {
-			//console.log(Date.now(), requestUrl, Date.now() - startTime, 'elapsed')
-			if (response && response.statusCode == 200) {
-				callback(err, JSON.parse(body));
-			}
-			else{
-				// console.log('__getRemote()', response)
-				// throw('unexepcted response in __getRemote()')
-				callback(err, null);
-			}
-			response = null;
-			body = null;
-		}
-	);
-}
-
-
-
-function __getApiUrl (endpoint, params) {
-	if(!__INSTANCE.api.endPoints[endpoint]){
-		throw('Invalid endpoint: ' + endpoint);
+function getApiUrl(endpoint, params) {
+	if (!INSTANCE.api.endPoints[endpoint]) {
+		throw ('Invalid endpoint: ' + endpoint);
 	}
 	return url.format({
-		protocol: __INSTANCE.api.protocol
-		, hostname: __INSTANCE.api.hostname
-		, pathname: __INSTANCE.api.endPoints[endpoint]
-		, query: params
+		protocol: INSTANCE.api.protocol,
+		hostname: INSTANCE.api.hostname,
+		pathname: INSTANCE.api.endPoints[endpoint],
+		query: params
 	});
-};
+}
+
+
+function requestJson(requestUrl, fnCallback) {
+	requestCompressed(requestUrl, function(err, data) {
+		fnCallback(err, parseJson(data));
+	});
+}
+
+
+function requestCompressed(requestUrl, fnCallback) {
+	var requestOptions = {
+		uri: requestUrl,
+		headers: {
+			'accept-encoding': 'gzip,deflate',
+		}
+	};
+
+	var req = request.get(requestOptions);
+
+	req.on('response', function(res) {
+		var chunks = [];
+		res.on('data', function(chunk) {
+			chunks.push(chunk);
+		});
+
+		res.on('end', function() {
+			var buffer = Buffer.concat(chunks);
+			var encoding = res.headers['content-encoding'];
+			if (encoding == 'gzip') {
+				zlib.gunzip(buffer, function(err, decoded) {
+					fnCallback(err, decoded && decoded.toString());
+				});
+			}
+			else if (encoding == 'deflate') {
+				zlib.inflate(buffer, function(err, decoded) {
+					fnCallback(err, decoded && decoded.toString());
+				});
+			}
+			else {
+				fnCallback(null, buffer.toString());
+			}
+		});
+	});
+
+	req.on('error', function(err) {
+		fnCallback(err);
+	});
+}
+
+
+
+function parseJson(data) {
+	var results;
+
+	try {
+		results = JSON.parse(data);
+	}
+	catch (e) {}
+
+	return results;
+}

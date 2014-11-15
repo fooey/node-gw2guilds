@@ -21,11 +21,15 @@
   },
   "main": "main",
   "dependencies": {
+    "lodash": "^2.4.1",
     "request": "^2.33.0"
   },
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
     "node": "*"
+  },
+  "browser": {
+    "./lib/getData.js": "./lib/getDataBrowser.js"
   }
 }

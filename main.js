@@ -7,10 +7,7 @@
 *
 */
 
-const url = require('url');
-const zlib = require('zlib');
 
-const request = require('request');
 
 
 /*
@@ -19,16 +16,33 @@ const request = require('request');
 *
 */
 
-var Anet = {
-	langs: [
-		{key: 'en', label: 'EN', href: '/en', name: 'English'},
-		{key: 'de', label: 'DE', href: '/de', name: 'Deutsch'},
-		{key: 'fr', label: 'FR', href: '/fr', name: 'Français'},
-		{key: 'es', label: 'ES', href: '/es', name: 'Español'},
-	],
-};
+module.exports = {
+	getMatches: getMatches,
+	getMatchesState: getMatchesState,
+	getObjectiveNames: getObjectiveNames,
+	getMatchDetails: getMatchDetails,
+	getMatchDetailsState: getMatchDetailsState,
 
-module.exports = Anet;
+	getItems: getItems,
+	getItemDetails: getItemDetails,
+	getRecipes: getRecipes,
+	getRecipeDetails: getRecipeDetails,
+
+	getWorldNames: getWorldNames,
+	getGuildDetails: getGuildDetails,
+
+	getMapNames: getMapNames,
+	getContinents: getContinents,
+	getMaps: getMaps,
+	getMapFloor: getMapFloor,
+
+	getBuild: getBuild,
+	getColors: getColors,
+
+	getFiles: getFiles,
+	getFile: getFile,
+	getFileRenderUrl: getFileRenderUrl,
+};
 
 
 
@@ -39,46 +53,27 @@ module.exports = Anet;
 *
 */
 
-const INSTANCE = {
-	api: {
-		timeout: (10 * 1000),
-		protocol: 'https',
-		hostname: 'api.guildwars2.com',
+var endPoints = {
+	worldNames: 'https://api.guildwars2.com/v2/worlds',							// https://api.guildwars2.com/v2/worlds?page=0
 
-		endPoints: {
- 			events: '/v1/events.json',							// http://wiki.guildwars2.com/wiki/API:1/events
- 			eventNames: '/v1/event_names.json',					// http://wiki.guildwars2.com/wiki/API:1/event_names
-			eventDetails: '/v1/event_details.json',				// https://api.guildwars2.com/v1/event_details.json
-			mapNames: '/v1/map_names.json',						// http://wiki.guildwars2.com/wiki/API:1/map_names
-			worldNames: '/v1/world_names.json',					// http://wiki.guildwars2.com/wiki/API:1/world_names
+	guildDetails: 'https://api.guildwars2.com/v1/guild_details.json',			// http://wiki.guildwars2.com/wiki/API:1/guild_details
 
-			guildDetails: '/v1/guild_details.json',				// http://wiki.guildwars2.com/wiki/API:1/guild_details
+	items: 'https://api.guildwars2.com/v1/items.json',							// http://wiki.guildwars2.com/wiki/API:1/items
+	itemDetails: 'https://api.guildwars2.comv1/item_details.json',				// http://wiki.guildwars2.com/wiki/API:1/item_details
+	recipes: 'https://api.guildwars2.com/v1/recipes.json',						// http://wiki.guildwars2.com/wiki/API:1/recipes
+	recipeDetails: 'https://api.guildwars2.com/v1/recipe_details.json',			// http://wiki.guildwars2.com/wiki/API:1/recipe_details
 
-			items: '/v1/items.json',							// http://wiki.guildwars2.com/wiki/API:1/items
-			itemDetails: '/v1/item_details.json',				// http://wiki.guildwars2.com/wiki/API:1/item_details
-			recipes: '/v1/recipes.json',						// http://wiki.guildwars2.com/wiki/API:1/recipes
-			recipeDetails: '/v1/recipe_details.json',			// http://wiki.guildwars2.com/wiki/API:1/recipe_details
+	mapNames: 'https://api.guildwars2.com/v1/map_names.json',					// http://wiki.guildwars2.com/wiki/API:1/map_names
+	continents: 'https://api.guildwars2.com/v1/continents.json',				// http://wiki.guildwars2.com/wiki/API:1/continents
+	maps: 'https://api.guildwars2.com/v1/maps.json',							// http://wiki.guildwars2.com/wiki/API:1/maps
+	mapFloor: 'https://api.guildwars2.com/v1/map_floor.json',					// http://wiki.guildwars2.com/wiki/API:1/map_floor
 
-			continents: '/v1/continents.json',					// http://wiki.guildwars2.com/wiki/API:1/continents
-			maps: '/v1/maps.json',								// http://wiki.guildwars2.com/wiki/API:1/maps
-			mapFloor: '/v1/map_floor.json',						// http://wiki.guildwars2.com/wiki/API:1/map_floor
+	objectiveNames: 'https://api.guildwars2.com/v1/wvw/objective_names.json',	// http://wiki.guildwars2.com/wiki/API:1/wvw/matches
+	matches: 'https://api.guildwars2.com/v1/wvw/matches.json',					// http://wiki.guildwars2.com/wiki/API:1/wvw/match_details
+	matchDetails: 'https://api.guildwars2.com/v1/wvw/match_details.json',		// http://wiki.guildwars2.com/wiki/API:1/wvw/objective_names
 
-			objectiveNames: '/v1/wvw/objective_names.json',		// http://wiki.guildwars2.com/wiki/API:1/wvw/matches
-			matches: '/v1/wvw/matches.json',					// http://wiki.guildwars2.com/wiki/API:1/wvw/match_details
-			matchDetails: '/v1/wvw/match_details.json',			// http://wiki.guildwars2.com/wiki/API:1/wvw/objective_names
-		},
-
-	},
-
-	wvw: {
-		colors: ['red', 'blue', 'green'],
-		commonNames: {
-			'en': ",Overlook,Valley,Lowlands,Golanta Clearing,Pangloss Rise,Speldan Clearcut,Danelon Passage,Umberglade Woods,Stonemist Castle,Rogue's Quarry,Aldon's Ledge,Wildcreek Run,Jerrifer's Slough,Klovan Gully,Langor Gulch,Quentin Lake,Mendon's Gap,Anzalias Pass,Ogrewatch Cut,Veloka Slope,Durios Gulch,Bravost Escarpment,Garrison,Champion's Demense,Redbriar,Greenlake,Ascension Bay,Dawn's Eyrie,The Spiritholme,Woodhaven,Askalion Hills,Etheron Hills,Dreaming Bay,Victor's Lodge,Greenbriar,Bluelake,Garrison,Longview,The Godsword,Cliffside,Shadaran Hills,Redlake,Hero's Lodge,Dreadfall Bay,Bluebriar,Garrison,Sunnyhill,Faithleap,Bluevale Refuge,Bluewater Lowlands,Astralholme,Arah's Hope,Greenvale Refuge,Foghaven,Redwater Lowlands,The Titanpaw,Cragtop,Godslore,Redvale Refuge,Stargrove,Greenwater Lowlands,Temple of Lost Prayers,Battle's Hollow,Bauer's Estate,Orchard Overlook,Carver's Ascent,Carver's Ascent,Orchard Overlook,Bauer's Estate,Battle's Hollow,Temple of Lost Prayers,Carver's Ascent,Orchard Overlook,Bauer's Estate,Battle's Hollow,Temple of Lost Prayers".split(',')
-			, 'fr': ",Belvédère,Vallée,Basses terres,Clairière de Golanta,Montée de Pangloss,Forêt rasée de Speldan,Passage Danelon,Bois d'Ombreclair,Château Brumepierre,Carrière des voleurs,Corniche d'Aldon,Piste du Ruisseau sauvage,Bourbier de Jerrifer,Petit ravin de Klovan,Ravin de Langor,Lac Quentin,Faille de Mendon,Col d'Anzalias,Percée de Gardogre,Flanc de Veloka,Ravin de Durios,Falaise de Bravost,Garnison,Fief du champion,Bruyerouge,Lac Vert,Baie de l'Ascension,Promontoire de l'aube,L'antre des esprits,Gentesylve,Collines d'Askalion,Collines d'Etheron,Baie des rêves,Pavillon du vainqueur,Vertebranche,Lac bleu,Garnison,Longuevue,L'Epée divine,Flanc de falaise,Collines de Shadaran,Rougelac,Pavillon du Héros,Baie du Noir déclin,Bruyazur,Garnison,Colline ensoleillée,Ferveur,Refuge de bleuval,Basses terres d'Eau-Azur,Astralholme,Espoir d'Arah,Refuge de Valvert,Havre gris,Basses terres de Rubicon,Bras du titan,Sommet de l'escarpement,Divination,Refuge de Valrouge,Bosquet stellaire,Basses terres d'Eau-Verdoyante,Temple des prières perdues,Vallon de bataille,Domaine de Bauer,Belvédère du Verger,Côte du couteau,Côte du couteau,Belvédère du Verger,Domaine de Bauer,Vallon de bataille,Temple des prières perdues,Côte du couteau,Belvédère du Verger,Domaine de Bauer,Vallon de bataille,Temple des prières perdues".split(',')
-			, 'es': ",Mirador,Valle,Vega,Claro Golanta,Colina Pangloss,Claro Espeldia,Pasaje Danelon,Bosques Clarosombra,Castillo Piedraniebla,Cantera del Pícaro,Cornisa de Aldon,Pista Arroyosalvaje,Cenagal de Jerrifer,Barranco Klovan,Barranco Langor,Lago Quentin,Zanja de Mendon,Paso Anzalias,Tajo de la Guardia del Ogro,Pendiente Veloka,Barranco Durios,Escarpadura Bravost,Fuerte,Dominio del Campeón,Zarzarroja,Lagoverde,Bahía de la Ascensión,Aguilera del Alba,La Isleta Espiritual,Refugio Forestal,Colinas Askalion,Colinas Etheron,Bahía Onírica,Albergue del Vencedor,Zarzaverde,Lagoazul,Fuerte,Vistaluenga,La Hoja Divina,Despeñadero,Colinas Shadaran,Lagorrojo,Albergue del Héroe,Bahía Salto Aciago,Zarzazul,Fuerte,Colina Soleada,Salto de Fe,Refugio Valleazul,Tierras Bajas de Aguazul,Isleta Astral,Esperanza de Arah,Refugio de Valleverde,Refugio Neblinoso,Tierras Bajas de Aguarroja,La Garra del Titán,Cumbrepeñasco,Sabiduría de los Dioses,Refugio Vallerojo,Arboleda de las Estrellas,Tierras Bajas de Aguaverde,Templo de las Pelgarias,Hondonada de la Battalla,Hacienda de Bauer,Mirador del Huerto,Ascenso del Trinchador,Ascenso del Trinchador,Mirador del Huerto,Hacienda de Bauer,Hondonada de la Battalla,Templo de las Pelgarias,Ascenso del Trinchador,Mirador del Huerto,Hacienda de Bauer,Hondonada de la Battalla,Templo de las Pelgarias".split(',')
-			, 'de': ",Aussichtspunkt,Tal,Tiefland,Golanta-Lichtung,Pangloss-Anhöhe,Speldan Kahlschlag,Danelon-Passage,Umberlichtung-Forst,Schloss Steinnebel,Schurkenbruch,Aldons Vorsprung,Wildbachstrecke,Jerrifers Sumpfloch,Klovan-Senke,Langor - Schlucht,Quentinsee,Mendons Spalt,Anzalias-Pass,Ogerwacht-Kanal,Veloka-Hang,Durios-Schlucht,Bravost-Abhang,Festung,Landgut des Champions,Rotdornstrauch,Grünsee,Bucht des Aufstiegs,Horst der Morgendammerung,Der Geisterholm,Wald - Freistatt,Askalion - Hügel,Etheron - Hügel,Traumbucht,Sieger - Hütte,Grünstrauch,Blausee,Festung,Weitsicht,Das Gottschwert,Felswand,Shadaran Hügel,Rotsee,Hütte des Helden,Schreckensfall - Bucht,Blaudornstrauch,Festung,Sonnenlichthügel,Glaubenssprung,Blautal - Zuflucht,Blauwasser - Tiefland,Astralholm,Arahs Hoffnung,Grüntal - Zuflucht,Nebel - Freistatt,Rotwasser - Tiefland,Die Titanenpranke,Felsenspitze,Götterkunde,Rottal - Zuflucht,Sternenhain,Grünwasser - Tiefland,Tempel der Verlorenen Gebete,Schlachten-Senke,Bauers Anwesen,Obstgarten Aussichtspunkt,Aufstieg des Schnitzers,Aufstieg des Schnitzers,Obstgarten Aussichtspunkt,Bauers Anwesen,Schlachten-Senke,Tempel der Verlorenen Gebete,Aufstieg des Schnitzers,Obstgarten Aussichtspunkt,Bauers Anwesen,Schlachten-Senke,Tempel der Verlorenen Gebete".split(',')
-		},
-	},
+	matchesState: 'http://state.gw2w2w.com/matches',
+	matchDetailsState: 'http://state.gw2w2w.com/',
 };
 
 
@@ -89,69 +84,99 @@ const INSTANCE = {
 *
 */
 
-/*
-*   API Calls
-*/
-
-const get = Anet.get = function(key, params, callback) {
-	var apiUrl = getApiUrl(key, params);
-	requestJson(apiUrl, callback);
-};
-
 
 
 /*
-*	EVENTS
+*	WORLD vs WORLD
 */
-
-// // OPTIONAL: world_id, map_id, event_id
-// Anet.getEvents = function(params, callback) {
-// 	const args = fixNoParams(params, callback);
-// 	get('events', args.params, args.callback);
-// };
-
-
-// // OPTIONAL: lang
-// Anet.getEventNames = function(params, callback) {
-// 	const args = fixNoParams(params, callback);
-// 	get('eventNames', args.params, args.callback);
-// };
-
-
-// // OPTIONAL: lang, event_id
-// Anet.getEventDetails = function(params, callback) {
-// 	const args = fixNoParams(params, callback);
-// 	get('eventDetails', args.params, args.callback);
-// };
-
 
 // OPTIONAL: lang
-Anet.getMapNames = function(params, callback) {
-	const args = fixNoParams(params, callback);
-	get('mapNames', params, callback);
-};
+function getObjectiveNames(callback, params) {
+	params = params || {};
+	get('objectiveNames', params, callback);
+}
 
 
-// OPTIONAL: lang
-Anet.getWorldNames = function(params, callback) {
-	const args = fixNoParams(params, callback);
-	get('worldNames', args.params, args.callback);
-};
+
+// NO PARAMS
+function getMatches(callback) {
+	get('matches', {}, function(err, data) {
+		var wvw_matches = (data && data.wvw_matches) ? data.wvw_matches : [];
+		callback(err, wvw_matches);
+	});
+}
+
+
+
+// REQUIRED: match_id
+function getMatchDetails(callback, params) {
+	if (!params.match_id) {
+		throw ('match_id is a required parameter');
+	}
+	get('matchDetails', params, callback);
+}
+
+
+
+
+
+// OPTIONAL: match_id
+function getMatchesState(callback, params) {
+	params = params || {};
+	var requestUrl = endPoints['matchesState'];
+
+	if (params.match_id) {
+		requestUrl += '' + match_id;
+	}
+
+	get(requestUrl, {}, callback);
+}
+
+
+// REQUIRED: match_id || world_slug
+function getMatchDetailsState(callback, params) {
+	var requestUrl = endPoints['matchDetailsState'];
+
+	if (!params.match_id && !params.world_slug) {
+		throw ('Either match_id or world_slug must be passed');
+	}
+	else if (params.match_id) {
+		requestUrl += params.match_id;
+	}
+	else if (params.world_slug) {
+		requestUrl += 'world/' + params.world_slug;
+	}
+	get(requestUrl, {}, callback);
+}
 
 
 
 /*
-*	GUILDS
+*	GENERAL
 */
+
+
+// OPTIONAL: lang, ids
+function getWorldNames(callback, params) {
+	params = params || {};
+
+	if (!params.ids) {
+		params.page = 0;
+	}
+	else if (Array.isArray(params.ids)) {
+		params.ids = params.ids.join(',');
+	}
+	get('worldNames', params, callback);
+}
 
 // REQUIRED: guild_id || guild_name (id takes priority)
-Anet.getGuildDetails = function(params, callback) {
+function getGuildDetails(callback, params) {
 	if (!params.guild_id && !params.guild_name) {
 		throw ('Either guild_id or guild_name must be passed');
 	}
-	const args = fixNoParams(params, callback);
-	get('guildDetails', params, callback)
-};
+
+	get('guildDetails', params, callback);
+}
 
 
 
@@ -160,34 +185,36 @@ Anet.getGuildDetails = function(params, callback) {
 */
 
 // NO PARAMS
-Anet.getItems = function(callback) {
+function getItems(callback) {
 	get('items', {}, callback);
-};
+}
 
 
 // REQUIRED: item_id
 // OPTIONAL: lang
-Anet.getItemDetails = function(params, callback) {
+function getItemDetails(callback, params) {
+	params = params || {};
+
 	if (!params.item_id) {
 		throw ('item_id is a required parameter');
 	}
 	get('itemDetails', params, callback);
-};
+}
 
 
 // NO PARAMS
-Anet.getRecipes = function(callback) {
+function getRecipes(callback) {
 	get('recipes', {}, callback);
-};
+}
 
 // REQUIRED: recipe_id
 // OPTIONAL: lang
-Anet.getRecipeDetails = function(params, callback) {
+function getRecipeDetails(callback, params) {
 	if (!params.recipe_id) {
 		throw ('recipe_id is a required parameter');
 	}
 	get('recipeDetails', params, callback);
-};
+}
 
 
 
@@ -195,22 +222,28 @@ Anet.getRecipeDetails = function(params, callback) {
 *	MAP INFORMATION
 */
 
+// OPTIONAL: lang
+function getMapNames(callback, params) {
+	params = params || {};
+	get('mapNames', params, callback);
+}
+
 // NO PARAMS
-Anet.getContinents = function(callback) {
+function getContinents(callback) {
 	get('continents', {}, callback);
-};
+}
 
 
 // OPTIONAL: map_id, lang
-Anet.getMaps = function(params, callback) {
-	const args = fixNoParams(params, callback);
-	get('maps', {}, callback);
-};
+function getMaps(callback, params) {
+	params = params || {};
+	get('maps', params, callback);
+}
 
 
 // REQUIRED: continent_id, floor
 // OPTIONAL: lang
-Anet.getMapFloor = function(params, callback) {
+function getMapFloor(callback, params) {
 	if (!params.continent_id) {
 		throw ('continent_id is a required parameter');
 	}
@@ -218,35 +251,7 @@ Anet.getMapFloor = function(params, callback) {
 		throw ('floor is a required parameter');
 	}
 	get('mapFloor', {}, callback);
-};
-
-
-
-/*
-*	WORLD vs WORLD
-*/
-
-// NO PARAMS
-Anet.getMatches = function(callback) {
-	get('matches', {}, function(err, data) {
-		var wvw_matches = (data && data.wvw_matches) ? data.wvw_matches : [];
-		callback(err, wvw_matches);
-	})
-};
-
-// OPTIONAL: lang
-Anet.getObjectiveNames = function(params, callback) {
-	const args = fixNoParams(params, callback);
-	get('objectiveNames', args.params, args.callback)
-};
-
-// REQUIRED: match_id
-Anet.getMatchDetails = function(params, callback) {
-	if (!params.match_id) {
-		throw ('match_id is a required parameter');
-	}
-	get('matchDetails', params, callback)
-};
+}
 
 
 
@@ -255,24 +260,23 @@ Anet.getMatchDetails = function(params, callback) {
 */
 
 // NO PARAMS
-Anet.getBuild = function(callback) {
+function getBuild(callback) {
 	get('build', {}, callback);
-};
+}
 
 
 // OPTIONAL: lang
-Anet.getColors = function(params, callback) {
-	const args = fixNoParams(params, callback);
-	get('colors', {}, callback);
-};
+function getColors(callback, params) {
+	params = params || {};
+	get('colors', params, callback);
+}
 
 
 // NO PARAMS
 // to get files: https://render.guildwars2.com/file/{signature}/{file_id}.{format}
-Anet.getFiles = function(params, callback) {
-	const args = fixNoParams(params, callback);
+function getFiles(callback) {
 	get('files', {}, callback);
-};
+}
 
 
 
@@ -283,18 +287,9 @@ Anet.getFiles = function(params, callback) {
 */
 
 
-/*
-*   WVW
-*/
-
-Anet.wvwGetCommonName = function(lang, objectiveId) {
-	return INSTANCE.wvw.commonNames[lang][objectiveId];
-};
-
-
 // SPECIAL CASE
 // REQUIRED: signature, file_id, format
-Anet.getFile = function(params, callback) {
+function getFile(callback, params) {
 	if (!params.signature) {
 		throw ('signature is a required parameter');
 	}
@@ -305,12 +300,12 @@ Anet.getFile = function(params, callback) {
 		throw ('format is a required parameter');
 	}
 
-	requestJson(Anet.getFileRenderUrl(params), callback);
-};
+	requestJson(getFileRenderUrl(params), callback);
+}
 
 
 // REQUIRED: signature, file_id, format
-Anet.getFileRenderUrl = function(params, callback) {
+function getFileRenderUrl(callback, params) {
 	if (!params.signature) {
 		throw ('signature is a required parameter');
 	}
@@ -321,7 +316,7 @@ Anet.getFileRenderUrl = function(params, callback) {
 		throw ('format is a required parameter');
 	}
 
-	const renderUrl = (
+	var renderUrl = (
 		'https://render.guildwars2.com/file/'
 		+ params.signature
 		+ '/'
@@ -330,7 +325,9 @@ Anet.getFileRenderUrl = function(params, callback) {
 		+ params.format
 	);
 	return renderUrl;
-};
+}
+
+
 
 
 
@@ -340,85 +337,28 @@ Anet.getFileRenderUrl = function(params, callback) {
 *
 */
 
- function fixNoParams(params, callback) {
-	if (typeof(params) === "function") {
-		callback = params;
-		params = {};
+function get(key, params, callback) {
+	var apiUrl = getApiUrl(key, params);
+	var getData = require('./lib/getData.js');
+
+	getData(apiUrl, callback);
+}
+
+
+
+function getApiUrl(requestUrl, params) {
+	var qs = require('querystring');
+
+	var requestUrl = (endPoints[requestUrl])
+		? endPoints[requestUrl]
+		: requestUrl;
+
+	var query = qs.stringify(params);
+
+	if (query.length) {
+		requestUrl += '?' + query;
 	}
-	return {params: params, callback: callback};
+
+	return requestUrl;
 }
 
-
-
-function getApiUrl(endpoint, params) {
-	if (!INSTANCE.api.endPoints[endpoint]) {
-		throw ('Invalid endpoint: ' + endpoint);
-	}
-	return url.format({
-		protocol: INSTANCE.api.protocol,
-		hostname: INSTANCE.api.hostname,
-		pathname: INSTANCE.api.endPoints[endpoint],
-		query: params
-	});
-}
-
-
-function requestJson(requestUrl, fnCallback) {
-	requestCompressed(requestUrl, function(err, data) {
-		fnCallback(err, parseJson(data));
-	});
-}
-
-
-function requestCompressed(requestUrl, fnCallback) {
-	var requestOptions = {
-		uri: requestUrl,
-		headers: {
-			'accept-encoding': 'gzip,deflate',
-		}
-	};
-
-	var req = request.get(requestOptions);
-
-	req.on('response', function(res) {
-		var chunks = [];
-		res.on('data', function(chunk) {
-			chunks.push(chunk);
-		});
-
-		res.on('end', function() {
-			var buffer = Buffer.concat(chunks);
-			var encoding = res.headers['content-encoding'];
-			if (encoding == 'gzip') {
-				zlib.gunzip(buffer, function(err, decoded) {
-					fnCallback(err, decoded && decoded.toString());
-				});
-			}
-			else if (encoding == 'deflate') {
-				zlib.inflate(buffer, function(err, decoded) {
-					fnCallback(err, decoded && decoded.toString());
-				});
-			}
-			else {
-				fnCallback(null, buffer.toString());
-			}
-		});
-	});
-
-	req.on('error', function(err) {
-		fnCallback(err);
-	});
-}
-
-
-
-function parseJson(data) {
-	var results;
-
-	try {
-		results = JSON.parse(data);
-	}
-	catch (e) {}
-
-	return results;
-}

@@ -45,7 +45,7 @@ module.exports = function (app, express) {
 
 	app.use(express.favicon(faviconPath));
 	app.use(express.urlencoded());
-	app.use(express.methodOverride());
+	// app.use(express.methodOverride());
 	app.use(app.router);
 	app.use(express.static(pubFolder));
 

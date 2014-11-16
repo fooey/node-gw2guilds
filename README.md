@@ -1,9 +1,9 @@
 node-gw2api
 ========
-Wrapper for calling ArenaNet's GuildWars2 API  
-http://wiki.guildwars2.com/wiki/API:Main
+Wrapper for calling ArenaNet's GuildWars2 APIs
+http://wiki.guildwars2.com/wiki/API:Main and http://state.gw2w2w.com/
 
-##World vs World
+#World vs World
 
 ###getMatches(callback)
 - no params
@@ -30,7 +30,7 @@ http://wiki.guildwars2.com/wiki/API:Main
 	- world_slugs from https://github.com/fooey/gw2w2w-static/blob/master/data/world_names.js
 
 
-##Static Data
+#Static Data
 
 ###getObjectiveNames(callback, params)
 - Optional Param: lang

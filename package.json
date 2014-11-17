@@ -13,9 +13,9 @@
   "dependencies": {
     "async": "^0.2.10",
     "express": "^3.18.3",
-    "gw2api": "^1.0.0",
+    "gw2api": "^1.1.0",
     "jade": "^1.7.0",
-    "lodash": "~2.4.1",
+    "lodash": "^2.4.1",
     "newrelic": "^1.13.3",
     "nodetime": "~0.8.15",
     "svgo": "^0.4.5",

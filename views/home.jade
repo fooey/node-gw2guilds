@@ -7,5 +7,17 @@ block content
 		form.guildSearch(action="/", role="search")
 			.form-group
 				label(for="guildName") Lookup a guild
-				input.guildName.form-control(name="guildName", placeholder="Guild Name")
-			button.btn.btn-default Lookup
+				.row
+					.col-xs-6.col-sm-8.col-md-10
+						input.guildName.form-control(name="guildName", placeholder="Guild Name")
+					.col-xs-6.col-sm-3.col-md-2
+						button.btn.btn-default.btn-block Lookup
+
+		#example
+			h1.page-header Examples
+
+			div.text-center
+				-var size = 192;
+				each guildId, ixGuild in guilds
+					a(href="/#{guildId}")
+						img(src="/#{guildId}.svg", width=size, height=size, onerror="$(this).parent().remove()")

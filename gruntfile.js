@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 					watchedExtensions: ['js', 'jade', 'json'],
 					delayTime: 1,
 					env: {
-						PORT: '3001',
+						PORT: '3000',
 						NODE_ENV: 'development'
 					}
 				}
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
 			css: {
 				files: 'public/css/style.css',
 				options: {
-					livereload: true, 
+					livereload: true,
 					interval: 500,
 					debounceDelay: 500,
 				},
@@ -57,5 +57,6 @@ module.exports = function(grunt) {
 
 
 
+	grunt.registerTask('default', ['dev']);
 	grunt.registerTask('dev', ['concurrent']);
 };

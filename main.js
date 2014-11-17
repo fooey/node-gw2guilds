@@ -91,8 +91,11 @@ var endPoints = {
 */
 
 // OPTIONAL: lang
-function getObjectiveNames(callback, params) {
-	params = params || {};
+function getObjectiveNames(params, callback) {
+	if (typeof params === 'function') {
+		callback = params;
+		params = {};
+	}
 	get('objectiveNames', params, callback);
 }
 
@@ -109,7 +112,7 @@ function getMatches(callback) {
 
 
 // REQUIRED: match_id
-function getMatchDetails(callback, params) {
+function getMatchDetails(params, callback) {
 	if (!params.match_id) {
 		throw ('match_id is a required parameter');
 	}
@@ -121,8 +124,12 @@ function getMatchDetails(callback, params) {
 
 
 // OPTIONAL: match_id
-function getMatchesState(callback, params) {
-	params = params || {};
+function getMatchesState(params, callback) {
+	if (typeof params === 'function') {
+		callback = params;
+		params = {};
+	}
+
 	var requestUrl = endPoints['matchesState'];
 
 	if (params.match_id) {
@@ -134,7 +141,7 @@ function getMatchesState(callback, params) {
 
 
 // REQUIRED: match_id || world_slug
-function getMatchDetailsState(callback, params) {
+function getMatchDetailsState(params, callback) {
 	var requestUrl = endPoints['matchDetailsState'];
 
 	if (!params.match_id && !params.world_slug) {
@@ -157,8 +164,11 @@ function getMatchDetailsState(callback, params) {
 
 
 // OPTIONAL: lang, ids
-function getWorldNames(callback, params) {
-	params = params || {};
+function getWorldNames(params, callback) {
+	if (typeof params === 'function') {
+		callback = params;
+		params = {};
+	}
 
 	if (!params.ids) {
 		params.page = 0;
@@ -169,8 +179,10 @@ function getWorldNames(callback, params) {
 	get('worldNames', params, callback);
 }
 
+
+
 // REQUIRED: guild_id || guild_name (id takes priority)
-function getGuildDetails(callback, params) {
+function getGuildDetails(params, callback) {
 	if (!params.guild_id && !params.guild_name) {
 		throw ('Either guild_id or guild_name must be passed');
 	}
@@ -192,9 +204,7 @@ function getItems(callback) {
 
 // REQUIRED: item_id
 // OPTIONAL: lang
-function getItemDetails(callback, params) {
-	params = params || {};
-
+function getItemDetails(params, callback) {
 	if (!params.item_id) {
 		throw ('item_id is a required parameter');
 	}
@@ -209,7 +219,7 @@ function getRecipes(callback) {
 
 // REQUIRED: recipe_id
 // OPTIONAL: lang
-function getRecipeDetails(callback, params) {
+function getRecipeDetails(params, callback) {
 	if (!params.recipe_id) {
 		throw ('recipe_id is a required parameter');
 	}
@@ -223,8 +233,11 @@ function getRecipeDetails(callback, params) {
 */
 
 // OPTIONAL: lang
-function getMapNames(callback, params) {
-	params = params || {};
+function getMapNames(params, callback) {
+	if (typeof params === 'function') {
+		callback = params;
+		params = {};
+	}
 	get('mapNames', params, callback);
 }
 
@@ -235,15 +248,18 @@ function getContinents(callback) {
 
 
 // OPTIONAL: map_id, lang
-function getMaps(callback, params) {
-	params = params || {};
+function getMaps(params, callback) {
+	if (typeof params === 'function') {
+		callback = params;
+		params = {};
+	}
 	get('maps', params, callback);
 }
 
 
 // REQUIRED: continent_id, floor
 // OPTIONAL: lang
-function getMapFloor(callback, params) {
+function getMapFloor(params, callback) {
 	if (!params.continent_id) {
 		throw ('continent_id is a required parameter');
 	}
@@ -266,8 +282,11 @@ function getBuild(callback) {
 
 
 // OPTIONAL: lang
-function getColors(callback, params) {
-	params = params || {};
+function getColors(params, callback) {
+	if (typeof params === 'function') {
+		callback = params;
+		params = {};
+	}
 	get('colors', params, callback);
 }
 
@@ -289,7 +308,7 @@ function getFiles(callback) {
 
 // SPECIAL CASE
 // REQUIRED: signature, file_id, format
-function getFile(callback, params) {
+function getFile(params, callback) {
 	if (!params.signature) {
 		throw ('signature is a required parameter');
 	}
@@ -305,7 +324,7 @@ function getFile(callback, params) {
 
 
 // REQUIRED: signature, file_id, format
-function getFileRenderUrl(callback, params) {
+function getFileRenderUrl(params, callback) {
 	if (!params.signature) {
 		throw ('signature is a required parameter');
 	}
@@ -338,6 +357,8 @@ function getFileRenderUrl(callback, params) {
 */
 
 function get(key, params, callback) {
+	params = params || {};
+
 	var apiUrl = getApiUrl(key, params);
 	var getData = require('./lib/getData.js');
 

@@ -9,19 +9,19 @@ http://wiki.guildwars2.com/wiki/API:Main and http://state.gw2w2w.com/
 - no params
 - returns JSON from https://api.guildwars2.com/v1/wvw/matches.json
 
-###getMatchDetails(callback, params)
+###getMatchDetails(params, callback)
 - Required Param: match_id
 - getMatchDetails(fn, {match_id: '1-1'})  
     - returns JSON from https://api.guildwars2.com/v1/wvw/match_details.json?match_id=1-1
 
-###getMatchesState(callback, params)
+###getMatchesState(params, callback)
 - Optional Param: match_id
 - getMatchesState(fn)  
     - returns JSON from http://state.gw2w2w.com/matches
 - getMatchesState(fn, {match_id: '1-1'})  
     - returns JSON from http://state.gw2w2w.com/matches/1-1
 
-###getMatchDetailsState(callback, params)
+###getMatchDetailsState(params, callback)
 - Required Param: match_id OR world_slug
 - getMatchDetailsState(fn, {match_id: '1-1'})  
     - returns JSON from http://state.gw2w2w.com/1-1
@@ -32,19 +32,19 @@ http://wiki.guildwars2.com/wiki/API:Main and http://state.gw2w2w.com/
 
 #Static Data
 
-###getObjectiveNames(callback, params)
+###getObjectiveNames(params, callback)
 - Optional Param: lang
 - getObjectiveNames(fn, {lang: 'en'})  
     - returns JSON from https://api.guildwars2.com/v1/wvw/objective_names.json?lang=en
 
-###getWorldNames(callback, params)
+###getWorldNames(params, callback)
 - Optional Param: lang, ids
 - getWorldNames(fn, {lang: 'en'})  
     - returns JSON from https://api.guildwars2.com/v2/worlds?page=0&lang=en
 - getWorldNames(fn, {lang: 'en', ids=[1001, 1002]})  
     - returns JSON from https://api.guildwars2.com/v2/worlds?lang=en&ids=1001,1002
 
-###getGuildDetails(callback, params)
+###getGuildDetails(params, callback)
 - Required Param: guild_id OR guild_name (guild_id takes priority)
 - getGuildDetails(fn, {guild_id: '4BBB52AA-D768-4FC6-8EDE-C299F2822F0'})  
     - returns JSON from https://api.guildwars2.com/v1/guild_details.json?guild_id=4BBB52AA-D768-4FC6-8EDE-C299F2822F0F

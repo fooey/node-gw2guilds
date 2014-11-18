@@ -3,6 +3,9 @@ node-gw2api
 Wrapper for calling ArenaNet's GuildWars2 APIs
 http://wiki.guildwars2.com/wiki/API:Main and http://state.gw2w2w.com/
 
+###Results
+All methods are async, and return callbacks in the format of **function(err, data){}**
+
 #World vs World
 
 ###getMatches(callback)

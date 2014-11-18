@@ -10,7 +10,8 @@ All methods are async, and return callbacks in the format of **function(err, dat
 
 ###getMatches(callback)
 - no params
-- returns JSON from https://api.guildwars2.com/v1/wvw/matches.json
+- getMatches(fn)
+	- returns JSON from https://api.guildwars2.com/v1/wvw/matches.json
 
 ###getMatchDetails(params, callback)
 - Required Param: match_id

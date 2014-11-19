@@ -1,7 +1,7 @@
 extends layout
 
 block headClose
-	-var defaultEmblemSrc = '/guilds/' + guild.guildNameUrl + '/256.svg';
+	-var defaultEmblemSrc = '/guilds/' + guild.slug + '/256.svg';
 	-var guildFullName = guild.guild_name +  ' [' + guild.tag + ']';
 	//- link(rel="icon", type="image/svg+xml", href=defaultEmblemSrc)
 	link(itemprop="image", rel="img_src", type="image/svg+xml", href=defaultEmblemSrc)
@@ -10,14 +10,14 @@ block headClose
 
 block content
 	-var guildFullName = guild.guild_name +  ' [' + guild.tag + ']';
-	-var defaultEmblemSrc = '/guilds/' + guild.guildNameUrl + '/256.svg';
+	-var defaultEmblemSrc = '/guilds/' + guild.slug + '/256.svg';
 
 	.container(itemprop="about", itemscope, itemtype="http://schema.org/Organization")
 		div.row: div.col-md-12
 			header.page-header.text-center
 				h1#guildName(itemprop="name")= guildFullName
 
-			#linkBuilder(data-guildnameurl=guild.guildNameUrl)
+			#linkBuilder(data-guildnameurl=guild.slug)
 				div.text-center
 					img#emblem(src=defaultEmblemSrc, style="width:256px;height:256px", itemprop="logo image")
 				hr

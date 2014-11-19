@@ -12,8 +12,9 @@
   },
   "dependencies": {
     "async": "^0.2.10",
+    "compression": "^1.2.0",
     "express": "^3.18.3",
-    "gw2api": "^1.1.0",
+    "gw2api": "^1.1.2",
     "jade": "^1.7.0",
     "lodash": "^2.4.1",
     "newrelic": "^1.13.3",

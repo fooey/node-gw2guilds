@@ -1,72 +1,64 @@
-"use strict"
-
-const qs = require('querystring')
-const _ = require('lodash')
-const async = require('async')
+"use strict";
 
 const guilds = require('../lib/guilds');
 const emblem = require('../lib/emblem2.js');
 
-module.exports = function (req, res) {
-	const renderStart = Date.now()
+module.exports = function(req, res) {
+	const renderStart = Date.now();
 
-	const guildName = req.params.guildName.replace(/-/g, ' ');
+	const slug = req.params.guildSlug;
 	const size = req.params.size;
 	const bgColor = req.params.bgColor;
 
-	const cacheTime = 60 * 60 * 24 * 1; // 1 day
+	const cacheTime = 60 * 60 * 1; // 1 hour
 
+	guilds.getBySlug(slug, function __returnGuildEmblem(err, data) {
+		if (data && data.guild_name) {
 
-	guilds.getByName(guildName, __returnGuildEmblem);
-
-
-	function __returnGuildEmblem(err, data){
-		if(data && data.guild_name){
-			const guildName = data.guild_name;
-			const guildNameUrl = data.guildNameUrl = qs.escape(guildName.replace(/ /g, '-'));
-
-			let svgPath = [size];
-			if(bgColor){svgPath.push(bgColor);}
+			var svgPath = [size];
+			if (bgColor) {
+				svgPath.push(bgColor);
+			}
 			svgPath.push('svg');
 
 			const canonical = [
 				'',
 				'guilds',
-				guildNameUrl,
+				data.slug,
 				svgPath.join('.')
 			].join('/');
 
-			if(req.url !== canonical){
+
+			if (req.url !== canonical) {
 				res.redirect(301, canonical);
 			}
-			else{
-				emblem.draw(data.emblem, size, bgColor, function(svg){
-					require('zlib').gzip(svg, function (err, data) {
+			else {
+				emblem.draw(data.emblem, size, bgColor, function(svg) {
+					res.type('svg');
 
-						res.writeHead(200, {
-							'Content-Type': 'image/svg+xml',
-							'Content-Encoding': 'gzip',
-							'Cache-Control': 'public, max-age=' + (cacheTime),
-							'Expires': new Date(Date.now() + (cacheTime * 1000)).toUTCString(),
-						});
-						res.end(data);
-
-						_.defer(__trackEmblemHotLink);
+					res.set({
+						// 'Content-Type': 'image/svg+xml',
+						'Cache-Control': 'public, max-age=' + (cacheTime),
+						'Expires': new Date(Date.now() + (cacheTime * 1000)).toUTCString(),
 					});
+					res.send(svg);
+
+					process.nextTick(gaqTrackEvent.bind(null, req));
 
 				});
 			}
 		}
-		else{
-			res.send(404, 'Sorry, we cannot find guild named ' + guildName);
+		else {
+			res.send(404, 'Request guild not found');
 		}
+	});
 
 
-	}
 
 
-	function __trackEmblemHotLink(){
+	function gaqTrackEvent(req) {
 		const referer = req.get('referer');
+
 		const isHotlink = (
 			!referer
 			|| (
@@ -74,13 +66,14 @@ module.exports = function (req, res) {
 				&& referer.indexOf('guilds.gw2w2w.com') === -1
 			)
 		);
-		if(isHotlink){
+
+		if (isHotlink) {
 			const ua = require('universal-analytics');
 			const uaUUID = (req.cookies && req.cookies.uaUUID) ? req.cookies.uaUUID : null;
 			const visitor = ua('UA-51384-40', uaUUID);
 
 			//Visitor#event(category, action, label, value)
-			visitor.event('emblem-hotlink', guildName, referer, size).send();
+			visitor.event('emblem-hotlink', req.params.guildSlug, referer, size).send();
 		}
 	}
 

@@ -17,7 +17,7 @@ block content
 			h1.page-header Examples
 
 			div.text-center
-				-var size = 192;
-				each guildId, ixGuild in guilds
-					a(href="/#{guildId}")
-						img(src="/#{guildId}.svg", width=size, height=size, onerror="$(this).parent().remove()")
+				-var size = 160;
+				each guild, ixGuild in guilds
+					a(href="/guilds/#{guild.slug}")
+						img(src="/guilds/#{guild.slug}/#{size}.svg", title=guild.guild_name width=size, height=size, onerror="$(this).parent().remove()")

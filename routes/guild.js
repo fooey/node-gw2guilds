@@ -27,7 +27,7 @@ module.exports = function(req, res) {
 			}
 		}
 		else {
-			res.send(404, 'Sorry, we cannot find guild named ' + guildName);
+			res.send(404, 'Guild not found');
 		}
 	});
 

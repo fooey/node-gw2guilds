@@ -49,7 +49,7 @@ module.exports = function(req, res) {
 			}
 		}
 		else {
-			res.send(404, 'Request guild not found');
+			res.send(404, 'Guild not found');
 		}
 	});
 

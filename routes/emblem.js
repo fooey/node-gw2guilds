@@ -10,7 +10,7 @@ module.exports = function(req, res) {
 	const size = req.params.size;
 	const bgColor = req.params.bgColor;
 
-	const cacheTime = 60 * 60 * 1; // 1 hour
+	const cacheTime = 60 * 60 * 24 * 1; // 1 day
 
 	guilds.getBySlug(slug, function __returnGuildEmblem(err, data) {
 		if (data && data.guild_name) {

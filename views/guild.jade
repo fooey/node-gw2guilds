@@ -29,24 +29,36 @@ block content
 							.form-group
 								label.control-label.col-md-8(for="size") Emblem Dimensions
 								.col-md-4
-									input#emblemSize.form-control(name="size", type="number", value=256) 
+									input#emblemSize.form-control(name="size", type="number", value=256)
 							.form-group
 								label.control-label.col-md-8(for="bgColor") Background Color
 								.col-md-4
 									input#emblemBgColor.form-control(name="bgColor", type="text", value="none")
 									span.help-block.small.muted HTML Hex
 					div.col-md-8
+						dl.dl-horizontal
+							dt Preview
+							dd
+								a#previewSVG
+								| &nbsp;
+								a#previewPNG
+
+							dt Download
+							dd
+								a#downloadSVG
+								| &nbsp;
+								a#downloadPNG
+
 						dl#emblemCodes.dl-horizontal
 							-var fullPath = 'http://guilds.gw2w2w.com' + defaultEmblemSrc;
-							dt URL 
+							dt URL
 							dd#emblemURL
 								//- a(href=thisSrc)= fullPath
-							dt HTML 
+							dt HTML
 							dd#emblemHTML
 								//- ='<img src="' +  fullPath + '" width=256 height=256"/>'
-							dt BBCODE 
+							dt BBCODE
 							dd#emblemBBCODE
-								//- = '[img width="256" height="256"]' +  fullPath + '[/img]'
 
 
 		//- dl#image-links
@@ -55,11 +67,11 @@ block content
 		//- 		dt
 		//- 			h3= size + 'x' + size
 		//- 			dd: dl.dl-horizontal
-		//- 				dt URL 
+		//- 				dt URL
 		//- 				dd: a(href=thisSrc)= fullPath
-		//- 				dt HTML 
+		//- 				dt HTML
 		//- 				dd='<img src="' +  fullPath + '" width=' + size + ' height=' + size + '"/>'
-		//- 				dt BBCODE 
+		//- 				dt BBCODE
 		//- 				dd= '[img width="' + size + '" height="' + size + ']' +  fullPath + '[/img]'
 		//- 				//- dt PREVIEW
 		//- 				//- dd: img(width=size, height=size, src='/guilds/' + guild.guildNameUrl + '/' + size + '.svg')

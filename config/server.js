@@ -20,6 +20,19 @@ module.exports = function(app, express) {
 
 	app.use(express.cookieParser());
 
+
+
+	/*
+	* Full CORS
+	*/
+	app.use(function(req, res, next) {
+		res.header("Access-Control-Allow-Origin", "*");
+		res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+		next();
+	});
+
+
+
 	// set a cookie
 	app.use(function(req, res, next) {
 		var uaUUID = req.cookies.uaUUID;

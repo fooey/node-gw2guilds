@@ -4,6 +4,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-nodemon');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
+	grunt.loadNpmTasks('grunt-browserify');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+
 
 	// Project configuration.
 	grunt.initConfig({
@@ -26,7 +29,7 @@ module.exports = function(grunt) {
 					watchedExtensions: ['js', 'jade', 'json'],
 					delayTime: 1,
 					env: {
-						PORT: '3000',
+						PORT: '3001',
 						NODE_ENV: 'development'
 					}
 				}
@@ -42,9 +45,11 @@ module.exports = function(grunt) {
 					debounceDelay: 500,
 				},
 			},
-			appJs: {
+
+
+			jsCompiled: {
 				files: [
-					'public/js/script.js'
+					'public/js/dist/app.js'
 				],
 				options: {
 					livereload: true,
@@ -52,11 +57,56 @@ module.exports = function(grunt) {
 					debounceDelay: 500,
 				},
 			},
+
+
+			jsDev: {
+				files: [
+					'./public/js/src/**/*.js',
+					'./lib/**/*.js',
+				],
+				tasks: ['compile-js'],
+				options: {
+					livereload: false,
+				},
+			},
+
+		},
+
+
+
+		browserify: {
+			app: {
+				src: 'public/js/src/app.js',
+				dest: 'public/js/dist/app.js',
+			}
+		},
+
+
+
+		uglify: {
+			options: {
+				report: 'min',
+				stripBanners: false,
+				mangle: true,
+				preserveComments: 'some',
+			},
+			app: {
+				options: {
+					sourceMap: true,
+				},
+				files: {
+					'public/js/dist/app.min.js': [
+						'public/js/dist/app.js',
+					]
+				}
+			},
 		},
 	});
 
 
 
+	grunt.registerTask('compile-js', ['browserify', 'uglify']);
 	grunt.registerTask('default', ['dev']);
-	grunt.registerTask('dev', ['concurrent']);
+
+	grunt.registerTask('dev', ['compile-js', 'concurrent']);
 };

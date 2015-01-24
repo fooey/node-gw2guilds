@@ -1,7 +1,7 @@
 "use strict";
 
 
-module.exports = function(app, express) { 
+module.exports = function(app, express) {
 	var routes = this;
 
 	if (process.env.NODE_ENV === 'development') {
@@ -25,8 +25,6 @@ module.exports = function(app, express) {
 
 	app.get('/robots.txt', require('./robots.js'));
 	app.get('/sitemap.xml', require('./sitemap.js'));
-
-
 
 	return routes;
 };

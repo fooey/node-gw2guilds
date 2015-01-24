@@ -75,7 +75,9 @@ module.exports = function($form) {
 	);
 
 
-	$emblem.on("load", setDownloadLinks).trigger('load');
+	$emblem
+		.on("load", setDownloadLinks)
+		.trigger('load');
 };
 
 
@@ -210,7 +212,7 @@ function setSvgDownload() {
 function setPngPreview() {
 	try {
 		if (canvas && canvas.toDataURL) {
-			$previewPNG.attr('href', canvas.toDataURL('image/png'));
+			$previewPNG.attr('href', canvas.toDataURL('data:image/png'));
 			$previewPNG.text('PNG');
 		}
 	}
@@ -224,7 +226,7 @@ function setPngPreview() {
 function setPngDownload() {
 	try {
 		if (canvas && canvas.toDataURL) {
-			$downloadPNG.attr('href', canvas.toDataURL('image/png'));
+			$downloadPNG.attr('href', canvas.toDataURL('data:image/png'));
 			$downloadPNG.attr('download', guildNameUrl + '.png');
 			$downloadPNG.text('PNG');
 		}
@@ -250,6 +252,7 @@ function generatePng() {
 	}
 	catch (junk) {
 		console.log('png generation failed', junk);
+		delete canvas;
 	}
 }
 

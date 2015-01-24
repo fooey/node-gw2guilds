@@ -2,34 +2,33 @@
 
 const path = require('path');
 
+const errorHandler = require('errorHandler');
+const morgan = require('morgan');
+const serveFavicon = require('serve-favicon');
+const serveStatic = require('serve-static');
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
+
 const pubFolder = path.join(process.cwd(), 'public');
 const faviconPath = path.join(pubFolder, 'images/gw2-dragon-32.png');
 
 
 module.exports = function(app, express) {
 	if (process.env.NODE_ENV === 'development') {
-		app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+		app.use(errorHandler({ dumpExceptions: true, showStack: true }));
 		app.locals.pretty = true;
-		app.use(express.logger('dev'));
+		app.use(morgan('dev'));
 	}
 	else {
-		app.use(express.errorHandler());
-		app.use(express.logger('default'));
+		app.use(errorHandler());
+		app.use(morgan('combined'));
 	}
 
 
-	app.use(express.cookieParser());
 
 
-
-	/*
-	* Full CORS
-	*/
-	app.use(function(req, res, next) {
-		res.header("Access-Control-Allow-Origin", "*");
-		res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-		next();
-	});
+	app.use(cors());
+	app.use(cookieParser());
 
 
 
@@ -54,9 +53,9 @@ module.exports = function(app, express) {
 	app.set('view cache', true);
 
 
-	app.use(express.favicon(faviconPath));
-	app.use(app.router);
-	app.use(express.static(pubFolder));
+	app.use(serveFavicon(faviconPath));
+	// app.use(app.router);
+	app.use(serveStatic(pubFolder));
 	app.use(require('compression')({
 		threshold: 512
 	}));

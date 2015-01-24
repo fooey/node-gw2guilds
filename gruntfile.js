@@ -16,22 +16,27 @@ module.exports = function(grunt) {
 			target: {
 				tasks: ['nodemon', 'watch'],
 				options: {
-					logConcurrentOutput: true
+      				logConcurrentOutput: true,
 				}
 			}
 		},
 
 		nodemon: {
 			dev: {
+				script: 'server.js',
 				options: {
-					file: 'server.js',
 					nodeArgs: ['--harmony'],//,'--debug'
 					watchedExtensions: ['js', 'jade', 'json'],
-					delayTime: 1,
+					// delayTime: 1,
 					env: {
 						PORT: '3001',
 						NODE_ENV: 'development'
-					}
+					},
+					callback: function(nodemon) {
+						nodemon.on('log', function(event) {
+							console.log(event.colour);
+						});
+					},
 				}
 			}
 		},

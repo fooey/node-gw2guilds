@@ -1,6 +1,6 @@
-if (process.env.NODE_ENV !== 'development') {
-	require('newrelic');
-}
+// if (process.env.NODE_ENV !== 'development') {
+// 	require('newrelic');
+// }
 
 const gw2api = require('gw2api');
 

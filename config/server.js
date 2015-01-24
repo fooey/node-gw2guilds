@@ -2,7 +2,7 @@
 
 const path = require('path');
 
-const errorHandler = require('errorHandler');
+const errorHandler = require('errorhandler');
 const morgan = require('morgan');
 const serveFavicon = require('serve-favicon');
 const serveStatic = require('serve-static');

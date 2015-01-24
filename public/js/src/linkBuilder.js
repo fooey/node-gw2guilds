@@ -8,16 +8,10 @@ var $emblemCodes, $emblemURL, $emblemHTML, $emblemBBCODE;
 
 var $previewPNG, $previewSVG, $downloadPNG, $downloadSVG;
 
-try {
-	var canvas = document.createElement('canvas');
-}
-catch (junk) {}
-
 
 
 module.exports = function($form) {
 	$linkBuilder = $form;
-	console.log('linkBuilder', $form);
 
 	// init globals
 	setGlobals($linkBuilder);
@@ -36,8 +30,9 @@ module.exports = function($form) {
 
 
 	$emblem
-		.on("load", setDownloadLinks)
+		.on('load', setDownloadLinks)
 		.trigger('load');
+
 };
 
 
@@ -143,76 +138,76 @@ function setEmblemSampleBBCode(emblemUrl, size) {
 */
 
 function setDownloadLinks() {
-	generatePng();
+	var emblemUrl = $emblem.attr('src');
 
-	setSvgDownload();
-	setSvgPreview();
+	setSvgDownload(emblemUrl);
+	setSvgPreview(emblemUrl);
 
-	setPngPreview();
-	setPngDownload();
+	generatePng(function(err, pngData) {
+
+		if (!err && pngData && pngData.length) {
+			setPngPreview(pngData);
+			setPngDownload(pngData);
+		}
+		else {
+			$previewPNG.hide();
+			$downloadPNG.hide();
+		}
+
+	});
 }
 
 
 
-function setSvgPreview() {
+function setSvgPreview(emblemUrl) {
 	$previewSVG.text('SVG');
-	$previewSVG.attr('href', $emblem.attr('src'));
+	$previewSVG.attr('href', emblemUrl);
 }
 
 
 
-function setSvgDownload() {
+function setSvgDownload(emblemUrl) {
 	$downloadSVG.text('SVG');
 	$downloadSVG.attr('download', guildNameUrl + '.svg');
-	$downloadSVG.attr('href', $emblem.attr('src'));
+	$downloadSVG.attr('href', emblemUrl);
 }
 
 
 
-function setPngPreview() {
-	try {
-		if (canvas && canvas.toDataURL) {
-			$previewPNG.attr('href', canvas.toDataURL('data:image/png'));
-			$previewPNG.text('PNG');
-		}
-	}
-	catch (junk) {
-		console.log('png generation failed', junk);
-	}
+function setPngPreview(pngData) {
+	$previewPNG.attr('href', pngData);
+	$previewPNG.text('PNG');
+	$previewPNG.show();
 }
 
 
 
-function setPngDownload() {
-	try {
-		if (canvas && canvas.toDataURL) {
-			$downloadPNG.attr('href', canvas.toDataURL('data:image/png'));
-			$downloadPNG.attr('download', guildNameUrl + '.png');
-			$downloadPNG.text('PNG');
-		}
-	}
-	catch (junk) {
-		console.log('png generation failed', junk);
-	}
+function setPngDownload(pngData) {
+	$downloadPNG.attr('href', pngData);
+	$downloadPNG.attr('download', guildNameUrl + '.png');
+	$downloadPNG.text('PNG');
+	$downloadPNG.show();
 }
 
 
-function generatePng() {
+
+function generatePng(cb) {
+	var $img = $emblem.clone();
+	var size = $emblemSize.val();
+
 	try {
-		var size = $emblemSize.val();
+		var canvas = document.createElement('canvas');
+		var context = canvas.getContext('2d');
+
 		canvas.width = size;
 		canvas.height = size;
+		context.drawImage($emblem.get(0), 0, 0);
 
-		var context = canvas.getContext('2d');
-		context.drawImage($emblem[0], 0, 0);
-
-		$downloadPNG.text('PNG');
-		// $downloadPNG.attr('download', guildNameUrl + '.png');
-		$downloadPNG.attr('href', canvas.toDataURL('image/png'));
+		cb(null, canvas.toDataURL('data:image/png'));
 	}
-	catch (junk) {
-		console.log('png generation failed', junk);
-		delete canvas;
+	catch (err) {
+		console.log('png generation failed', err);
+		cb(err);
 	}
 }
 

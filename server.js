@@ -1,10 +1,5 @@
-if (process.env.NODETIME_ACCOUNT_KEY) {
+if (process.env.NODE_ENV !== 'development') {
 	require('newrelic');
-
-    // require('nodetime').profile({
-    //     accountKey: process.env.NODETIME_ACCOUNT_KEY,
-    //     appName: 'gw2guilds' // optional
-    // });
 }
 
 const gw2api = require('gw2api');

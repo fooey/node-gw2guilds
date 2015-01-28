@@ -140,36 +140,47 @@ function setEmblemSampleBBCode(emblemUrl, size) {
 function setDownloadLinks() {
 	var emblemUrl = $emblem.attr('src');
 
-	setSvgDownload(emblemUrl);
-	setSvgPreview(emblemUrl);
 
-	generatePng(function(err, pngData) {
+	$.ajax({
+		url: emblemUrl,
+		crossDomain: true,
+		dataType: 'xml',
+	})
+		.done(function onAjaxDone(svgData) {
+			var svgDataUri = generateSvgDataUri(svgData);
 
-		if (!err && pngData && pngData.length) {
-			setPngPreview(pngData);
-			setPngDownload(pngData);
-		}
-		else {
-			$previewPNG.hide();
-			$downloadPNG.hide();
-		}
+			setSvgDownload(svgDataUri);
+			setSvgPreview(svgDataUri);
 
-	});
+			generatePng(svgDataUri, function(err, pngData) {
+
+				if (!err && pngData && pngData.length) {
+					setPngPreview(pngData);
+					setPngDownload(pngData);
+				}
+				else {
+					$previewPNG.hide();
+					$downloadPNG.hide();
+				}
+
+			});
+
+		});
 }
 
 
 
-function setSvgPreview(emblemUrl) {
+function setSvgPreview(dataUri) {
 	$previewSVG.text('SVG');
-	$previewSVG.attr('href', emblemUrl);
+	$previewSVG.attr('href', dataUri);
 }
 
 
 
-function setSvgDownload(emblemUrl) {
+function setSvgDownload(dataUri) {
 	$downloadSVG.text('SVG');
 	$downloadSVG.attr('download', guildNameUrl + '.svg');
-	$downloadSVG.attr('href', emblemUrl);
+	$downloadSVG.attr('href', dataUri);
 }
 
 
@@ -191,24 +202,36 @@ function setPngDownload(pngData) {
 
 
 
-function generatePng(cb) {
-	var $img = $emblem.clone();
+function generatePng(dataUri, cb) {
 	var size = $emblemSize.val();
 
-	try {
-		var canvas = document.createElement('canvas');
-		var context = canvas.getContext('2d');
+	var image = new Image();
+	image.src = dataUri;
+	image.width = size;
+	image.height = size;
 
-		canvas.width = size;
-		canvas.height = size;
-		context.drawImage($emblem.get(0), 0, 0);
+	image.onload = function() {
+		try {
+			var canvas = document.createElement('canvas');
+			var context = canvas.getContext('2d');
 
-		cb(null, canvas.toDataURL('data:image/png'));
-	}
-	catch (err) {
+			canvas.width = size;
+			canvas.height = size;
+			context.drawImage(image, 0, 0);
+
+			cb(null, canvas.toDataURL('image/png'));
+		}
+		catch (err) {
+			console.log('png generation failed', err);
+			cb(err);
+		}
+	};
+
+	image.onerror = function() {
+		var err = 'failed to load source image';
 		console.log('png generation failed', err);
 		cb(err);
-	}
+	};
 }
 
 
@@ -243,4 +266,22 @@ function getSvgFileName(size, bgColor) {
 function getCanonical(stub) {
 	var hostName = (window.location.port === '80') ? window.location.hostname : window.location.host;
 	return 'http://' + hostName + stub;
+}
+
+
+
+function generateSvgDataUri(svgData) {
+	var size = $emblemSize.val();
+	var $svg = $(svgData);
+
+	$svg.find('svg')
+		.attr({
+			'width': size,
+			'height': size,
+		});
+
+	// convert dom nodes to xml string
+	var svgXml = (new XMLSerializer()).serializeToString($svg[0]);
+
+	return 'data:image/svg+xml,' + escape(svgXml);
 }

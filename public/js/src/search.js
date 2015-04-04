@@ -1,3 +1,4 @@
+'use strict';
 
 var slugifier = require('../../../lib/slugifier.js');
 

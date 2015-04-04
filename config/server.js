@@ -13,7 +13,7 @@ const pubFolder = path.join(process.cwd(), 'public');
 const faviconPath = path.join(pubFolder, 'images/gw2-dragon-32.png');
 
 
-module.exports = function(app, express) {
+module.exports = function(app/*, express*/) {
 	if (process.env.NODE_ENV === 'development') {
 		app.use(errorHandler({ dumpExceptions: true, showStack: true }));
 		app.locals.pretty = true;
@@ -33,7 +33,7 @@ module.exports = function(app, express) {
 
 
 	// set a cookie
-	app.use(function(req, res, next) {
+	app.use((req, res, next) => {
 		var uaUUID = req.cookies.uaUUID;
 
 		if (!uaUUID) {

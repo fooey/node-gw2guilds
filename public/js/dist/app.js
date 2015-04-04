@@ -1,4 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
 
 /*
 *
@@ -7,38 +8,31 @@
 */
 
 module.exports = {
-	slugify: slugify,
-	deslugify: deslugify,
-};
-
-
-
-function slugify(str) {
-	return encodeURIComponent(str.replace(/ /g, '-')).toLowerCase();
-}
-
-function deslugify(str) {
-	return decodeURIComponent(str).replace(/-/g, ' ');
-}
+	slugify: function slugify(str) {
+		return encodeURIComponent(str.replace(/ /g, '-')).toLowerCase();
+	},
+	deslugify: function deslugify(str) {
+		return decodeURIComponent(str).replace(/-/g, ' ');
+	} };
 
 },{}],2:[function(require,module,exports){
-$(function() {
+'use strict';
+
+$(function () {
 
 	var $searchForm = $('form.guildSearch');
 	if ($searchForm && $searchForm.length) {
 		require('./search.js')($searchForm);
 	}
 
-
 	var $linkBuilder = $('#linkBuilder');
 	if ($linkBuilder && $linkBuilder.length) {
 		require('./linkBuilder.js')($linkBuilder);
 	}
-
 });
 
 },{"./linkBuilder.js":3,"./search.js":4}],3:[function(require,module,exports){
-
+'use strict';
 
 var $linkBuilder;
 var guildNameUrl;
@@ -48,35 +42,20 @@ var $emblemCodes, $emblemURL, $emblemHTML, $emblemBBCODE;
 
 var $previewPNG, $previewSVG, $downloadPNG, $downloadSVG;
 
-
-
-module.exports = function($form) {
+module.exports = function ($form) {
 	$linkBuilder = $form;
 
 	// init globals
 	setGlobals($linkBuilder);
 
-
 	// init DOM
 	updateDOM(true);
 
-
 	// attach event listeners
-	$linkBuilder.on(
-		'keyup change blur load',
-		'#emblemSize,#emblemBgColor',
-		debouncedUpdateDOM.bind($linkBuilder, false)
-	);
+	$linkBuilder.on('keyup change blur load', '#emblemSize,#emblemBgColor', debouncedUpdateDOM.bind($linkBuilder, false));
 
-
-	$emblem
-		.on('load', setDownloadLinks)
-		.trigger('load');
-
+	$emblem.on('load', setDownloadLinks).trigger('load');
 };
-
-
-
 
 function setGlobals($linkBuilder) {
 	guildNameUrl = $linkBuilder.data('guildnameurl');
@@ -98,8 +77,6 @@ function setGlobals($linkBuilder) {
 	$downloadSVG = $linkBuilder.find('#downloadSVG');
 }
 
-
-
 /*
 *	DOM Updaters
 */
@@ -117,16 +94,9 @@ function updateDOM(forceUpdate, e) {
 
 var debouncedUpdateDOM = _.debounce(updateDOM, 250);
 
-
-
 function setImage(emblemUrl, size) {
-	$emblem
-		.attr('src', emblemUrl)
-		.css({width: size, height: size});
-
+	$emblem.attr('src', emblemUrl).css({ width: size, height: size });
 }
-
-
 
 /*
 *	Sample Codes
@@ -138,18 +108,11 @@ function setCodes(emblemUrl, size) {
 	setEmblemSampleBBCode(emblemUrl, size);
 }
 
-
-
 function setEmblemSampleURL(emblemUrl) {
-	$emblemURL.empty().append(
-		$('<a>', {
-			'href': emblemUrl,
-			'text': getCanonical(emblemUrl),
-		})
-	);
+	$emblemURL.empty().append($('<a>', {
+		href: emblemUrl,
+		text: getCanonical(emblemUrl) }));
 }
-
-
 
 function setEmblemSampleHtml(emblemUrl, size) {
 	var text = '<img src="' + getCanonical(emblemUrl) + '" width=' + size + ' height=' + size + ' />';
@@ -158,20 +121,12 @@ function setEmblemSampleHtml(emblemUrl, size) {
 	$emblemHTML.text(text);
 }
 
-
-
 function setEmblemSampleBBCode(emblemUrl, size) {
-	var text = (
-		'[img width="' + size + '" height="' + size + '"]'
-			+ getCanonical(emblemUrl)
-		+ '[/img]'
-	);
+	var text = '[img width="' + size + '" height="' + size + '"]' + getCanonical(emblemUrl) + '[/img]';
 	// console.log('setEmblemSampleBBCode()', text);
 
 	$emblemBBCODE.text(text);
 }
-
-
 
 /*
 *	Image Preview and Download
@@ -180,42 +135,32 @@ function setEmblemSampleBBCode(emblemUrl, size) {
 function setDownloadLinks() {
 	var emblemUrl = $emblem.attr('src');
 
-
 	$.ajax({
 		url: emblemUrl,
 		crossDomain: true,
-		dataType: 'xml',
-	})
-		.done(function onAjaxDone(svgData) {
-			var svgDataUri = generateSvgDataUri(svgData);
+		dataType: 'xml' }).done(function onAjaxDone(svgData) {
+		var svgDataUri = generateSvgDataUri(svgData);
 
-			setSvgDownload(svgDataUri);
-			setSvgPreview(svgDataUri);
+		setSvgDownload(svgDataUri);
+		setSvgPreview(svgDataUri);
 
-			generatePng(svgDataUri, function(err, pngData) {
+		generatePng(svgDataUri, function (err, pngData) {
 
-				if (!err && pngData && pngData.length) {
-					setPngPreview(pngData);
-					setPngDownload(pngData);
-				}
-				else {
-					$previewPNG.hide();
-					$downloadPNG.hide();
-				}
-
-			});
-
+			if (!err && pngData && pngData.length) {
+				setPngPreview(pngData);
+				setPngDownload(pngData);
+			} else {
+				$previewPNG.hide();
+				$downloadPNG.hide();
+			}
 		});
+	});
 }
-
-
 
 function setSvgPreview(dataUri) {
 	$previewSVG.text('SVG');
 	$previewSVG.attr('href', dataUri);
 }
-
-
 
 function setSvgDownload(dataUri) {
 	$downloadSVG.text('SVG');
@@ -223,15 +168,11 @@ function setSvgDownload(dataUri) {
 	$downloadSVG.attr('href', dataUri);
 }
 
-
-
 function setPngPreview(pngData) {
 	$previewPNG.attr('href', pngData);
 	$previewPNG.text('PNG');
 	$previewPNG.show();
 }
-
-
 
 function setPngDownload(pngData) {
 	$downloadPNG.attr('href', pngData);
@@ -239,8 +180,6 @@ function setPngDownload(pngData) {
 	$downloadPNG.text('PNG');
 	$downloadPNG.show();
 }
-
-
 
 function generatePng(dataUri, cb) {
 	var size = $emblemSize.val();
@@ -250,7 +189,7 @@ function generatePng(dataUri, cb) {
 	image.width = size;
 	image.height = size;
 
-	image.onload = function() {
+	image.onload = function () {
 		try {
 			var canvas = document.createElement('canvas');
 			var context = canvas.getContext('2d');
@@ -259,37 +198,27 @@ function generatePng(dataUri, cb) {
 			canvas.height = size;
 			context.drawImage(image, 0, 0);
 
-			cb(null, canvas.toDataURL('image/png'));
-		}
-		catch (err) {
+			cb(null, canvas.toDataURL('data:image/png'));
+		} catch (err) {
 			console.log('png generation failed', err);
 			cb(err);
 		}
 	};
 
-	image.onerror = function() {
+	image.onerror = function () {
 		var err = 'failed to load source image';
 		console.log('png generation failed', err);
 		cb(err);
 	};
 }
 
-
-
 /*
 *	UTILITY
 */
 
 function getEmblemUrl(size, bgColor) {
-	return [
-		'',
-		'guilds',
-		guildNameUrl,
-		getSvgFileName(size, bgColor)
-	].join('/');
+	return ['', 'guilds', guildNameUrl, getSvgFileName(size, bgColor)].join('/');
 }
-
-
 
 function getSvgFileName(size, bgColor) {
 	var svgFileName = [size];
@@ -301,35 +230,29 @@ function getSvgFileName(size, bgColor) {
 	return svgFileName.join('.');
 }
 
-
-
 function getCanonical(stub) {
-	var hostName = (window.location.port === '80') ? window.location.hostname : window.location.host;
+	var hostName = window.location.port === '80' ? window.location.hostname : window.location.host;
 	return 'http://' + hostName + stub;
 }
-
-
 
 function generateSvgDataUri(svgData) {
 	var size = $emblemSize.val();
 	var $svg = $(svgData);
 
-	$svg.find('svg')
-		.attr({
-			'width': size,
-			'height': size,
-		});
+	$svg.find('svg').attr({
+		width: size,
+		height: size });
 
 	// convert dom nodes to xml string
-	var svgXml = (new XMLSerializer()).serializeToString($svg[0]);
+	var svgXml = new XMLSerializer().serializeToString($svg[0]);
 
 	return 'data:image/svg+xml,' + escape(svgXml);
 }
 
 },{}],4:[function(require,module,exports){
+'use strict';
 
 var slugifier = require('../../../lib/slugifier.js');
-
 
 /*
 *
@@ -340,8 +263,6 @@ var slugifier = require('../../../lib/slugifier.js');
 module.exports = function init($form) {
 	$form.on('submit', search);
 };
-
-
 
 function search(e) {
 	e.preventDefault();

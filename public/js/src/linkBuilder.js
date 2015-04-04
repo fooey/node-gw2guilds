@@ -1,4 +1,4 @@
-
+'use strict';
 
 var $linkBuilder;
 var guildNameUrl;
@@ -219,7 +219,7 @@ function generatePng(dataUri, cb) {
 			canvas.height = size;
 			context.drawImage(image, 0, 0);
 
-			cb(null, canvas.toDataURL('image/png'));
+			cb(null, canvas.toDataURL('data:image/png'));
 		}
 		catch (err) {
 			console.log('png generation failed', err);

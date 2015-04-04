@@ -25,11 +25,12 @@ module.exports = function(grunt) {
 			dev: {
 				script: 'server.js',
 				options: {
-					nodeArgs: ['--harmony'],//,'--debug'
+					"execMap": {
+						"js": "iojs",
+					},
 					watchedExtensions: ['js', 'jade', 'json'],
-					// delayTime: 1,
 					env: {
-						PORT: '3001',
+						PORT: '3000',
 						NODE_ENV: 'development'
 					},
 					callback: function(nodemon) {
@@ -80,6 +81,9 @@ module.exports = function(grunt) {
 
 
 		browserify: {
+			options: {
+				transform: [require('babelify')],
+			},
 			app: {
 				src: 'public/js/src/app.js',
 				dest: 'public/js/dist/app.js',

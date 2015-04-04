@@ -4,16 +4,16 @@ const guilds = require('../lib/guilds');
 const emblem = require('../lib/emblem2.js');
 
 module.exports = function(req, res) {
-	const renderStart = Date.now();
-
 	const slug = req.params.guildSlug;
 	const size = req.params.size;
 	const bgColor = req.params.bgColor;
 
-	const cacheTime = 60 * 60 * 24 * 1; // 1 day
-
-	guilds.getBySlug(slug, function __returnGuildEmblem(err, data) {
+	guilds.getBySlug(slug, (err, data) => {
 		if (data && data.guild_name) {
+
+			const cacheTime = 60 * 60 * 4; // 4 hours
+			const lastmod = data.lastmod.toString();
+			const etag = `${slug}::${lastmod}`;
 
 			var svgPath = [size];
 			if (bgColor) {
@@ -33,20 +33,26 @@ module.exports = function(req, res) {
 				res.redirect(301, canonical);
 			}
 			else {
-				emblem.draw(data.emblem, size, bgColor, function(svg) {
-					res.type('svg');
+				res
+					.set('Last-Modified', lastmod)
+					.set('ETag', etag)
+					.set('Cache-Control', 'public, max-age=' + (cacheTime))
+					.set('Expires', new Date(Date.now() + (cacheTime * 1000)).toUTCString());
 
-					res.set({
-						// 'Content-Type': 'image/svg+xml',
-						'Cache-Control': 'public, max-age=' + (cacheTime),
-						'Expires': new Date(Date.now() + (cacheTime * 1000)).toUTCString(),
+				if (isResponseCached(req, lastmod, etag)) {
+					res.sendStatus(304);
+				}
+				else {
+					emblem.draw(data.emblem, size, bgColor, (svg) => {
+
+						res.type('svg').send(svg);
+
 					});
-					res.send(svg);
-
-					process.nextTick(gaqTrackEvent.bind(null, req));
-
-				});
+				}
 			}
+
+
+			setImmediate(gaqTrackEvent.bind(null, req));
 		}
 		else {
 			res.send(404, 'Guild not found');
@@ -79,3 +85,17 @@ module.exports = function(req, res) {
 
 
 };
+
+
+function isResponseCached(req, lastmod, etag) {
+	const notModified = !!(req.get('if-modified-since') && req.get('if-modified-since') === lastmod);
+	const isMatch = !!(req.get('if-none-match') && req.get('if-none-match') === etag);
+
+	const isCached = notModified || isMatch;
+
+	// console.log('notModified', req.get('if-modified-since'), lastmod, req.get('if-modified-since') === lastmod);
+	// console.log('isMatch', req.get('if-none-match'), lastmod, req.get('if-none-match') === etag);
+	// console.log('isCached', isCached);
+
+	return isCached;
+}

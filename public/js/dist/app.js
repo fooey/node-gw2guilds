@@ -110,8 +110,8 @@ function setCodes(emblemUrl, size) {
 
 function setEmblemSampleURL(emblemUrl) {
 	$emblemURL.empty().append($('<a>', {
-		href: emblemUrl,
-		text: getCanonical(emblemUrl) }));
+		'href': emblemUrl,
+		'text': getCanonical(emblemUrl) }));
 }
 
 function setEmblemSampleHtml(emblemUrl, size) {
@@ -240,8 +240,8 @@ function generateSvgDataUri(svgData) {
 	var $svg = $(svgData);
 
 	$svg.find('svg').attr({
-		width: size,
-		height: size });
+		'width': size,
+		'height': size });
 
 	// convert dom nodes to xml string
 	var svgXml = new XMLSerializer().serializeToString($svg[0]);

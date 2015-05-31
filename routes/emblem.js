@@ -40,7 +40,7 @@ module.exports = function(req, res) {
 					.set('Expires', new Date(Date.now() + (cacheTime * 1000)).toUTCString());
 
 				if (isResponseCached(req, lastmod, etag)) {
-					res.sendStatus(304);
+					res.status(304);
 				}
 				else {
 					emblem.draw(data.emblem, size, bgColor, (svg) => {

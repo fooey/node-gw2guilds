@@ -7,33 +7,33 @@
     "url": "git://github.com/fooey/node-gw2guilds.git"
   },
   "engines": {
-    "iojs": "~1.6.3"
+    "iojs": "~2.1.0"
   },
   "dependencies": {
-    "async": "^0.9.0",
-    "babel": "^5.0.7",
+    "async": "^1.0.0",
+    "babel": "^5.4.7",
     "compression": "^1.4.3",
-    "cookie-parser": "^1.3.4",
-    "cors": "^2.5.3",
-    "errorhandler": "^1.3.5",
-    "express": "^4.12.3",
+    "cookie-parser": "^1.3.5",
+    "cors": "^2.7.1",
+    "errorhandler": "^1.3.6",
+    "express": "^4.12.4",
     "gw2api": "^1.2.0",
-    "jade": "^1.9.2",
-    "lodash": "^3.6.0",
-    "morgan": "^1.5.2",
-    "newrelic": "^1.18.1",
-    "serve-favicon": "^2.2.0",
-    "serve-static": "^1.9.2",
-    "svgo": "^0.5.1",
-    "universal-analytics": "^0.3.6",
+    "jade": "^1.10.0",
+    "lodash": "^3.9.3",
+    "morgan": "^1.5.3",
+    "newrelic": "^1.19.2",
+    "serve-favicon": "^2.2.1",
+    "serve-static": "^1.9.3",
+    "svgo": "^0.5.2",
+    "universal-analytics": "^0.3.8",
     "uuid": "^2.0.1"
   },
   "devDependencies": {
-    "babelify": "^6.0.1",
+    "babelify": "^6.1.2",
     "grunt": "^0.4.5",
-    "grunt-browserify": "^3.6.0",
+    "grunt-browserify": "^3.8.0",
     "grunt-concurrent": "^1.0.0",
-    "grunt-contrib-uglify": "^0.8.1",
+    "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-nodemon": "^0.4.0"
   }

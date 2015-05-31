@@ -22,7 +22,7 @@ module.exports = function(req, res) {
 
 
 	function __onGuildData(err, guilds) {
-		var sampleGuilds = _.sample(_.keys(guilds), 32);
+		var sampleGuilds = _.sample(_.keys(guilds), 8);
 
 		// console.log(guilds);
 		console.log(sampleGuilds);
@@ -50,7 +50,7 @@ module.exports = function(req, res) {
 		],
 		function(size, nextSize) {
 			var slug = guilds.slugify(guildName);
-			nextSize(null, util.format('<img src="/guilds/%s/256.svg" style="width:%dpx;height:%dpx;" />', slug, size, size));
+			nextSize(null, `<img src="/guilds/${slug}/256.svg" style="width:${size}px;height:${size}px;" title="${guildName}" />`);
 		},
 		function(err, results) {
 			nextGuild(null, results.join(''));

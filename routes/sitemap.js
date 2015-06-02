@@ -18,7 +18,7 @@ module.exports = function(req, res) {
 
 
 	function getNode(guild) {
-		return ('<url><loc>http://guilds.gw2w2w.com/guild/' + guild.get('slug') + '</loc></url>');
+		return ('<url><loc>http://guilds.gw2w2w.com/guilds/' + guild.get('slug') + '</loc></url>');
 	}
 
 

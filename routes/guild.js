@@ -10,10 +10,9 @@ module.exports = function(req, res) {
 
 
 	guilds.getBySlug(slug, function(err, data) {
-		console.log('data', data);
 		if (data && data.has('guild_name')) {
 			const canonical = '/guilds/' + data.get('slug');
-			console.log(req.url, canonical);
+			// console.log(req.url, canonical);
 
 			if (req.url !== canonical) {
 				res.redirect(301, canonical);

@@ -1,8 +1,10 @@
 extends layout
 
 block headClose
-	-var defaultEmblemSrc = '/guilds/' + guild.slug + '/256.svg';
-	-var guildFullName = guild.guild_name +  ' [' + guild.tag + ']';
+	-var guildUrl = `http://guilds.gw2w2w.com/guilds/${guild.slug}`;
+	-var defaultEmblemSrc = `${guildUrl}/256.svg`;
+	-var guildFullName = `${guild.guild_name} [${guild.tag}]`;
+
 	//- link(rel="icon", type="image/svg+xml", href=defaultEmblemSrc)
 	link(itemprop="image", rel="img_src", type="image/svg+xml", href=defaultEmblemSrc)
 	meta(property="og:image", content=defaultEmblemSrc)
@@ -15,13 +17,13 @@ block content
 	.container(itemprop="about", itemscope, itemtype="http://schema.org/Organization")
 		div.row: div.col-md-12
 			header.page-header.text-center
-				h1#guildName(itemprop="name")= guildFullName
+				h1#guildName(itemprop="name"): a(href=guild.slug)= guildFullName
 
 			#linkBuilder(data-guildnameurl=guild.slug)
 				div.text-center
 					img#emblem(src=defaultEmblemSrc, style="width:256px;height:256px", itemprop="logo image", crossorigin="anonymous")
 				hr
-				h5.text-center: em Download or hotlink the GuildWars2 guild emblem of #{guildFullName} in any resolution and with any background color.
+				h5.text-center: em Download or hotlink the GuildWars2 guild emblem of <a href="#{guild.slug}">#{guildFullName}</a> in any resolution and with any background color.
 				br
 				div.row
 					div.col-md-4
@@ -59,6 +61,20 @@ block content
 								//- ='<img src="' +  fullPath + '" width=256 height=256"/>'
 							dt BBCODE
 							dd#emblemBBCODE
+
+
+						dl.dl-horizontal
+							dt Guild Name
+							dd= guild.guild_name
+
+							dt Guild Tag
+							dd= guild.tag
+
+							dt Guild ID
+							dd= guild.guild_id
+
+							dt Guild URL
+							dd: a(href=guildurl)= guildUrl
 
 
 		//- dl#image-links

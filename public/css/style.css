@@ -20,6 +20,9 @@ body{
 .nowrap{display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 
 
+#guildName a{
+    color: inherit;
+}
 
 #linkBuilder dl.dl-horizontal dt{
 	width: 100px;

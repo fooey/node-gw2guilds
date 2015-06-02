@@ -1,20 +1,21 @@
 "use strict";
 
-var _ = require('lodash');
+const DB = require('../lib/data');
 
 
 module.exports = function(req, res) {
 	const renderStart = Date.now();
 
-	var sampleGuilds = _.chain(GLOBAL.guilds)
-		.filter(function(g) { return !!g.emblem; })
-		.sample(5)
-		.value();
+	let sampleGuilds = DB.guilds.index
+		.toSeq()
+		.filter(g => g.has('emblem'))
+		.sortBy(g => Math.random())
+		.take(5);
 
 	res.render('home', {
 		renderStart: renderStart,
 		searchBar: false,
-		guilds: sampleGuilds,
+		guilds: sampleGuilds.toJS(),
 
 		title: 'GW2 Guilds',
 	});

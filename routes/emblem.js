@@ -1,101 +1,103 @@
 "use strict";
 
+const Immutable = require('immutable');
+
 const guilds = require('../lib/guilds');
 const emblem = require('../lib/emblem2.js');
+
 
 module.exports = function(req, res) {
 	const slug = req.params.guildSlug;
 	const size = req.params.size;
 	const bgColor = req.params.bgColor;
 
-	guilds.getBySlug(slug, (err, data) => {
-		if (data && data.guild_name) {
+	guilds.getBySlug(slug, function(err, guild) {
+		if (guild && Immutable.Map.isMap(guild)) {
 
-			const cacheTime = 60 * 60 * 4; // 4 hours
-			const lastmod = data.lastmod.toString();
-			const etag = `${slug}::${lastmod}`;
-
-			var svgPath = [size];
-			if (bgColor) {
-				svgPath.push(bgColor);
-			}
-			svgPath.push('svg');
-
-			const canonical = [
-				'',
-				'guilds',
-				data.slug,
-				svgPath.join('.')
-			].join('/');
-
+			const canonical = getCanonical(size, bgColor, guild);
 
 			if (req.url !== canonical) {
 				res.redirect(301, canonical);
 			}
+			else if (!guild.has('emblem')) {
+				// console.log('no emblem', guild);
+				res.sendFile('./public/images/none.svg', {root: process.cwd()});
+			}
 			else {
-				res
-					.set('Last-Modified', lastmod)
-					.set('ETag', etag)
-					.set('Cache-Control', 'public, max-age=' + (cacheTime))
-					.set('Expires', new Date(Date.now() + (cacheTime * 1000)).toUTCString());
-
-				if (isResponseCached(req, lastmod, etag)) {
-					res.status(304);
-				}
-				else {
-					emblem.draw(data.emblem, size, bgColor, (svg) => {
-
-						res.type('svg').send(svg);
-
-					});
-				}
+				sendEmblem(res, guild, size, bgColor);
 			}
 
-
-			setImmediate(gaqTrackEvent.bind(null, req));
+			setTimeout(gaqTrackEvent.bind(null, req), 10);
 		}
 		else {
-			res.send(404, 'Guild not found');
+			res.status(404).send('Guild not found');
 		}
 	});
-
-
-
-
-	function gaqTrackEvent(req) {
-		const referer = req.get('referer');
-
-		const isHotlink = (
-			!referer
-			|| (
-				referer.indexOf('localhost') === -1
-				&& referer.indexOf('guilds.gw2w2w.com') === -1
-			)
-		);
-
-		if (isHotlink) {
-			const ua = require('universal-analytics');
-			const uaUUID = (req.cookies && req.cookies.uaUUID) ? req.cookies.uaUUID : null;
-			const visitor = ua('UA-51384-40', uaUUID);
-
-			//Visitor#event(category, action, label, value)
-			visitor.event('emblem-hotlink', req.params.guildSlug, referer, size).send();
-		}
-	}
-
-
 };
 
 
-function isResponseCached(req, lastmod, etag) {
-	const notModified = !!(req.get('if-modified-since') && req.get('if-modified-since') === lastmod);
-	const isMatch = !!(req.get('if-none-match') && req.get('if-none-match') === etag);
 
-	const isCached = notModified || isMatch;
+function getCanonical(size, bgColor, guild) {
+	let svgPath = [size];
+	if (bgColor) {
+		svgPath.push(bgColor);
+	}
+	svgPath.push('svg');
 
-	// console.log('notModified', req.get('if-modified-since'), lastmod, req.get('if-modified-since') === lastmod);
-	// console.log('isMatch', req.get('if-none-match'), lastmod, req.get('if-none-match') === etag);
-	// console.log('isCached', isCached);
+	return [
+		'',
+		'guilds',
+		guild.get('slug'),
+		svgPath.join('.')
+	].join('/');
+}
 
-	return isCached;
+
+function sendEmblem(res, guild, size, bgColor) {
+	const path = require('path');
+	const fs   = require('fs-extra');
+
+	const emblemHash = guild.get('emblem').hashCode();
+	const emblemFile = [emblemHash, size, ''].join('/') + (bgColor || 'emblem') + '.svg';
+	const emblemPath = path.join(process.cwd(), 'data', 'emblems', emblemFile);
+
+	// console.log(emblemHash, emblemFile, emblemPath);
+	fs.exists(emblemPath, function(exists) {
+		if (exists) {
+			res.sendFile(emblemPath);
+		}
+		else {
+			emblem.draw(guild.get('emblem').toJS(), size, bgColor, function(svg) {
+
+				fs.outputFile(emblemPath, svg, function(){
+					res.sendFile(emblemPath);
+				});
+
+			});
+		}
+
+	});
+
+}
+
+
+function gaqTrackEvent(req) {
+	const referer = req.get('referer');
+
+	const isHotlink = (
+		!referer
+		|| (
+			referer.indexOf('localhost') === -1
+			&& referer.indexOf('guilds.gw2w2w.com') === -1
+		)
+	);
+
+	if (isHotlink) {
+		const ua = require('universal-analytics');
+		const uaUUID = (req.cookies && req.cookies.uaUUID) ? req.cookies.uaUUID : null;
+		const visitor = ua('UA-51384-40', uaUUID);
+
+		//Visitor#event(category, action, label, value)
+		visitor.event('emblem-hotlink', req.params.guildSlug, referer, size).send();
+	}
 }

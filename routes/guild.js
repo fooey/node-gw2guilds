@@ -10,8 +10,10 @@ module.exports = function(req, res) {
 
 
 	guilds.getBySlug(slug, function(err, data) {
-		if (data && data.guild_name) {
-			const canonical = '/guilds/' + data.slug;
+		console.log('data', data);
+		if (data && data.has('guild_name')) {
+			const canonical = '/guilds/' + data.get('slug');
+			console.log(req.url, canonical);
 
 			if (req.url !== canonical) {
 				res.redirect(301, canonical);
@@ -21,8 +23,8 @@ module.exports = function(req, res) {
 					renderStart: renderStart,
 					searchBar: true,
 
-					title: data.guild_name + ' [' + data.tag + ']',
-					guild: data,
+					title: data.get('guild_name') + ' [' + data.get('tag') + ']',
+					guild: data.toJS(),
 				});
 			}
 		}

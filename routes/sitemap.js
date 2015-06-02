@@ -1,17 +1,14 @@
 "use strict";
 
 const _ = require('lodash');
-const cache = require('../lib/cache');
+const DB = require('../lib/data');
 
 
 module.exports = function(req, res) {
 	const renderStart = Date.now();
 
 
-	var nodes = _.chain(GLOBAL.guilds)
-		.filter(function(g) { return !!g.guild_id; })
-		.map(getNode)
-		.values();
+	var nodes = DB.guilds.index.map(getNode);
 
 	var xmlArray = getXml(nodes);
 
@@ -21,7 +18,7 @@ module.exports = function(req, res) {
 
 
 	function getNode(guild) {
-		return ('<url><loc>http://guilds.gw2w2w.com/guild/' + guild.slug + '</loc></url>');
+		return ('<url><loc>http://guilds.gw2w2w.com/guild/' + guild.get('slug') + '</loc></url>');
 	}
 
 

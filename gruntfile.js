@@ -39,6 +39,24 @@ module.exports = function(grunt) {
 						});
 					},
 				}
+			},
+			data: {
+				script: 'data.js',
+				options: {
+					"execMap": {
+						"js": "iojs",
+					},
+					watchedExtensions: ['js', 'jade', 'json'],
+					env: {
+						PORT: '3000',
+						NODE_ENV: 'development'
+					},
+					callback: function(nodemon) {
+						nodemon.on('log', function(event) {
+							console.log(event.colour);
+						});
+					},
+				}
 			}
 		},
 

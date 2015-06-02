@@ -8,7 +8,8 @@ module.exports = function(app, express) {
 		app.get('/stressTest', require('./stressTest.js'));
 
 		app.get('/dump', function(req, res) {
-			res.json(GLOBAL.guilds);
+			const DB = require('../lib/data');
+			res.json(DB.guilds.index.toJS());
 		});
 	}
 

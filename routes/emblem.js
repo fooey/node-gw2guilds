@@ -27,7 +27,7 @@ module.exports = function(req, res) {
 				sendEmblem(res, guild, size, bgColor);
 			}
 
-			setTimeout(gaqTrackEvent.bind(null, req), 10);
+			setTimeout(gaqTrackEvent.bind(null, req, size), 10);
 		}
 		else {
 			res.status(404).send('Guild not found');
@@ -81,7 +81,7 @@ function sendEmblem(res, guild, size, bgColor) {
 }
 
 
-function gaqTrackEvent(req) {
+function gaqTrackEvent(req, size) {
 	const referer = req.get('referer');
 
 	const isHotlink = (

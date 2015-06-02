@@ -9,10 +9,6 @@ if (nodeEnv !== 'development') {
 }
 
 
-GLOBAL.guilds = {};
-
-
-
 
 const express = require('express');
 const app = express();

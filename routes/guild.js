@@ -28,7 +28,7 @@ module.exports = function(req, res) {
 			}
 		}
 		else {
-			res.send(404, 'Guild not found');
+			res.status(404).send('Guild not found');
 		}
 	});
 

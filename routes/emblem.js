@@ -3,7 +3,7 @@
 const Immutable = require('immutable');
 
 const guilds = require('../lib/guilds');
-const emblem = require('../lib/emblem2.js');
+const emblem = require('../lib/emblem.js');
 
 
 module.exports = function(req, res) {

@@ -5,10 +5,11 @@ html(itemscope, itemtype="http://schema.org/WebPage")
 
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 
-		link(href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css", rel="stylesheet")
-		link(href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css", rel="stylesheet")
-		link(href="https://d1h9a8s8eodvjz.cloudfront.net/fonts/menomonia/08-02-12/menomonia.css", rel='stylesheet')
-		link(href="https://d1h9a8s8eodvjz.cloudfront.net/fonts/menomonia/08-02-12/menomonia-italic.css", rel='stylesheet')
+		link(href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css", rel="stylesheet")
+		link(href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css", rel="stylesheet")
+
+		link(href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300,500,700,100italic,400italic,500italic,700italic|Roboto+Condensed:300italic,400italic,700italic,400,300,700|Roboto:400,100,300,500,700,900,100italic,300italic,400italic,500italic,700italic,900italic", rel='stylesheet')
+
 		link(href='/css/style.css', rel='stylesheet')
 
 		block headClose
@@ -69,13 +70,10 @@ html(itemscope, itemtype="http://schema.org/WebPage")
 							a(href="https://github.com/fooey/node-gw2guilds", target="_blank")
 								|  https://github.com/fooey/node-gw2guilds
 
-						p.
-							<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-								<input type="hidden" name="cmd" value="_s-xclick">
-								<input type="hidden" name="hosted_button_id" value="WDKULTFJPJGHL">
-								<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-								<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-							</form>
+						p
+							a.btn.btn-lg.btn-danger(href="https://squareup.com/market/the-ln/donate-to-gw-w-w-com")
+								i.fa.fa-heart
+								| &nbsp; Donate to gw2w2w.com
 
 
 						p.muted
@@ -89,9 +87,9 @@ html(itemscope, itemtype="http://schema.org/WebPage")
 							span <br>Render time #{now - renderStart} ms
 
 
-		script(src="//cdn.polyfill.io/v1/polyfill.min.js")
-		script(src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js")
-		script(src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js")
+		script(src="https://cdn.polyfill.io/v1/polyfill.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.min.js")
 
 		if (process.env.NODE_ENV === 'development')
 			script(src="/js/dist/app.js")

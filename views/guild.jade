@@ -4,6 +4,7 @@ block headClose
 	-var guildUrl = `http://guilds.gw2w2w.com/guilds/${guild.slug}`;
 	-var defaultEmblemSrc = `${guildUrl}/256.svg`;
 	-var guildFullName = `${guild.guild_name} [${guild.tag}]`;
+	-var apiUrl = `https://api.guildwars2.com/v1/guild_details?guild_id=${guild.guild_id}`;
 
 	//- link(rel="icon", type="image/svg+xml", href=defaultEmblemSrc)
 	link(itemprop="image", rel="img_src", type="image/svg+xml", href=defaultEmblemSrc)
@@ -53,14 +54,14 @@ block content
 
 						dl#emblemCodes.dl-horizontal
 							-var fullPath = 'http://guilds.gw2w2w.com' + defaultEmblemSrc;
-							dt URL
-							dd#emblemURL
+							dt Emblem URL
+							dd#emblemURL.mono
 								//- a(href=thisSrc)= fullPath
 							dt HTML
-							dd#emblemHTML
+							dd#emblemHTML.mono
 								//- ='<img src="' +  fullPath + '" width=256 height=256"/>'
 							dt BBCODE
-							dd#emblemBBCODE
+							dd#emblemBBCODE.mono
 
 
 						dl.dl-horizontal
@@ -70,11 +71,17 @@ block content
 							dt Guild Tag
 							dd= guild.tag
 
-							dt Guild ID
-							dd= guild.guild_id
-
 							dt Guild URL
 							dd: a(href=guildurl)= guildUrl
+
+
+						dl.dl-horizontal
+
+							dt Guild ID
+							dd.mono= guild.guild_id
+
+							dt API URL
+							dd: a(href=apiUrl)= apiUrl
 
 
 		//- dl#image-links

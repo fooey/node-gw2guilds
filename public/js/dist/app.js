@@ -30,30 +30,32 @@ $(function () {
         require('./linkBuilder.js')($linkBuilder);
     }
 
-    (function nospam(selector) {
-        var addr = getAddr();
-        var newEl = console.log(selector, addr);
-
-        $(selector).each(function (i, el) {
-            var $el = $(el);
-            console.log($el);
-
-            $el.replaceWith($('<a>', {
-                href: 'mailto:' + addr,
-                html: addr
-            }));
-        });
-    })('.contact');
-
-    function getAddr() {
-        var src = '@ gw2w2w schtuph com .'.split(' ');
-        var addr = [src[1], src[0], src[2], src[4], src[3]].join('');
-
-        return addr;
-    }
+    require('./contact.js')('.contact');
 });
 
-},{"./linkBuilder.js":3,"./search.js":4}],3:[function(require,module,exports){
+},{"./contact.js":3,"./linkBuilder.js":4,"./search.js":5}],3:[function(require,module,exports){
+'use strict';
+
+module.exports = function nospam(selector) {
+    var addr = getAddr();
+
+    $(selector).each(function (i, el) {
+        var $el = $(el);
+
+        $el.replaceWith($('<a>', {
+            href: 'mailto:' + addr,
+            html: addr }));
+    });
+};
+
+function getAddr() {
+    var src = '@ gw2w2w schtuph com .'.split(' ');
+    var addr = [src[1], src[0], src[2], src[4], src[3]].join('');
+
+    return addr;
+}
+
+},{}],4:[function(require,module,exports){
 'use strict';
 
 var $linkBuilder;
@@ -271,7 +273,7 @@ function generateSvgDataUri(svgData) {
 	return 'data:image/svg+xml,' + escape(svgXml);
 }
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 var slugifier = require('../../../lib/slugifier.js');

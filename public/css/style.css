@@ -1,13 +1,23 @@
-body{
-	font-family: menomonia;
+
+
+body {
+    font-family: 'Roboto', 'verdana', sans-serif;
 	font-size: 14px;
 	margin-bottom: 80px;
 	background-color:#fff;
 }
 
+h1, h2, h3, h4, h5, h6, strong {
+    font-family: 'Roboto Condensed', 'arial', sans-serif;
+    font-weight: 700;
+}
+
+.mono {
+    font-family: 'Roboto Mono', 'consolas', 'courier new', 'monospace';
+    font-size: 80%;
+}
 
 
-.strong{font-weight: bold;}
 .text-center{text-align: center !important}
 .text-left{text-align: left !important}
 .text-right{text-align: right !important}
@@ -20,13 +30,13 @@ body{
 .nowrap{display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 
 
-#guildName a{
+#guildName a {
     color: inherit;
 }
 
-#linkBuilder dl.dl-horizontal dt{
+#linkBuilder dl.dl-horizontal dt {
 	width: 100px;
 }
-#linkBuilder dl.dl-horizontal dd{
+#linkBuilder dl.dl-horizontal dd {
 	margin-left: 120px;
 }

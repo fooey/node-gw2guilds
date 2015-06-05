@@ -28,7 +28,11 @@ module.exports = function(grunt) {
                     "execMap": {
                         "js": "iojs",
                     },
-                    ext: 'js,jade,json',
+                    ext: 'js,jade',
+                    ignore: [
+                        './node_modules/**',
+                        './data/**',
+                    ],
                     env: {
                         PORT: '3000',
                         NODE_ENV: 'development'
@@ -52,7 +56,11 @@ module.exports = function(grunt) {
                     "execMap": {
                         "js": "iojs",
                     },
-                    ext: 'js,jade,json',
+                    ext: 'js,jade',
+                    ignore: [
+                        './node_modules/**',
+                        './data/**',
+                    ],
                     env: {
                         PORT: '3000',
                         NODE_ENV: 'development'

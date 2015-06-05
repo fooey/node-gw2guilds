@@ -19,7 +19,7 @@
     "errorhandler": "^1.3.6",
     "express": "^4.12.4",
     "fs-extra": "^0.18.4",
-    "gw2api": "^1.2.0",
+    "gw2api": "^1.2.1",
     "immutable": "^3.7.3",
     "jade": "^1.10.0",
     "lodash": "^3.9.3",

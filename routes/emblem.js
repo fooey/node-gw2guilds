@@ -3,7 +3,7 @@
 const Immutable = require('immutable');
 
 const guilds = require('../lib/guilds');
-const emblem = require('../lib/emblem.js');
+const emblem = require('../lib/emblem');
 
 
 module.exports = function(req, res) {
@@ -67,12 +67,14 @@ function sendEmblem(res, guild, size, bgColor) {
 
     // console.log(emblemHash, emblemFile, emblemPath);
 
+    // const startTime = Date.now();
     fs.exists(emblemPath, function(exists) {
         if (exists) {
             res.sendFile(emblemPath);
+            // console.log('Output Time: ', Date.now() - startTime, guild.get('slug'));
         }
         else {
-            emblem.draw(guild.get('emblem').toJS(), size, bgColor, function(svg) {
+            emblem.get(guild.get('emblem').toJS(), size, bgColor, function(svg) {
 
                 fs.outputFile(emblemPath, svg, function(err){
                     if (err) {
@@ -82,6 +84,7 @@ function sendEmblem(res, guild, size, bgColor) {
                     else {
                         res.sendFile(emblemPath);
                     }
+                    // console.log('Render Time: ', Date.now() - startTime, guild.get('slug'));
                 });
 
             });

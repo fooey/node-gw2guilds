@@ -6,11 +6,11 @@ const async = require('async');
 // const cache = require('../lib/cache');
 // const guilds = require('../lib/guilds');
 
-const sampleSize = 128;
 
 // const guildList = require('../cache/guildMap.json');
 
 const guildList = require('../cache/seed.json');
+const sampleSize = 32;//guildList.length;
 
 module.exports = function(req, res) {
     // let sampleGuilds = _.sample(_.keys(guildList), sampleSize);
@@ -41,9 +41,12 @@ module.exports = function(req, res) {
         ],
         function(size, nextSize) {
             // let slug = guilds.slugify(guildName);
-            let slug = guildName;
-            // nextSize(null, `<img src="http://guilds.gw2w2w.com/guilds/${slug}/${size}.svg" title="${slug}" />`);
-            nextSize(null, `<a href="/guilds/${slug}"><img src="/guilds/${slug}/256.svg" title="${slug}" /></a>`);
+            const slug = guildName;
+            let guildLink;
+            guildLink = `/guilds/${slug}`;
+            // guildLink = `http://guilds.gw2w2w.com/guilds/${slug}`;
+
+            nextSize(null, `<a href="${guildLink}"><img src="${guildLink}/256.svg" title="${slug}" /></a>`);
         },
         function(err, results) {
             nextGuild(null, results.join(''));

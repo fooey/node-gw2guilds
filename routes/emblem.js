@@ -1,9 +1,14 @@
-"use strict";
+'use strict';
+
+const path = require('path');
+const fs   = require('fs-extra');
 
 const Immutable = require('immutable');
 
 const guilds = require('../lib/guilds');
 const emblem = require('../lib/emblem');
+
+const dataRoot = path.join(process.cwd(), 'data');
 
 
 module.exports = function(req, res) {
@@ -48,18 +53,12 @@ function getCanonical(size, bgColor, guild) {
         '',
         'guilds',
         guild.get('slug'),
-        svgPath.join('.')
+        svgPath.join('.'),
     ].join('/');
 }
 
 
 function sendEmblem(res, guild, size, bgColor) {
-    const path = require('path');
-    const fs   = require('fs-extra');
-
-    const dataRoot = (process.env.NODE_ENV === 'development')
-        ? path.join(process.cwd(), 'data')
-        : '/data';
 
     const emblemHash = guild.get('emblem').hashCode();
     const emblemFile = [emblemHash, size, ''].join('/') + (bgColor || 'emblem') + '.svg';
@@ -76,7 +75,7 @@ function sendEmblem(res, guild, size, bgColor) {
         else {
             emblem.get(guild.get('emblem').toJS(), size, bgColor, function(svg) {
 
-                fs.outputFile(emblemPath, svg, function(err){
+                fs.outputFile(emblemPath, svg, function(err) {
                     if (err) {
                         console.log('writeSvg()::err', err);
                         res.send(svg);

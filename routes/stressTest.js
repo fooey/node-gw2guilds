@@ -28,36 +28,22 @@ module.exports = function(req, res) {
 
 
     function __getImageTags(guildName, nextGuild) {
-        async.concat([
-            // 256,
-            // 190,
-            160,
-            // 96,
-            // 64,
-            // 48,
-            // 32,
-            // 24,
-            // 16,
-        ],
-        function(size, nextSize) {
-            // let slug = guilds.slugify(guildName);
-            const slug = guildName;
-            let guildLink;
-            guildLink = `/guilds/${slug}`;
-            // guildLink = `http://guilds.gw2w2w.com/guilds/${slug}`;
+        // let slug = guilds.slugify(guildName);
+        const slug = guildName;
+        let guildLink;
+        guildLink = `/guilds/${slug}`;
+        // guildLink = `http://www.guilds.gw2w2w.com${guildLink}`;
+        // guildLink = `http://guilds.gw2w2w.node.the-ln.com${guildLink}`;
 
-            nextSize(null, `<a href="${guildLink}"><img src="${guildLink}/256.svg" title="${slug}" /></a>`);
-        },
-        function(err, results) {
-            nextGuild(null, results.join(''));
-        });
+        nextGuild(null, `<a href="${guildLink}"><img src="${guildLink}/256.svg" title="${slug}" /></a>`);
     }
 
 
     function __buildHtml(err, urlNodes) {
         urlNodes.unshift(`<style>
+            body {text-align: center;}
             a {border: none;}
-            img {width: 64px; height: 64px; pading: 0; margin: 0; display: inline-block;}
+            img {width: 72px; height: 72px; pading: 0; margin: 0; display: inline-block;}
         </style>`);
         let html = urlNodes.join('\n');
 

@@ -1,9 +1,8 @@
 'use strict';
 
-const path = require('path');
-const fs   = require('fs-extra');
-
-const Immutable = require('immutable');
+const path  = require('path');
+const fs    = require('fs-extra');
+const async = require('async');
 
 const guilds = require('../lib/guilds');
 const emblem = require('../lib/emblem');
@@ -12,86 +11,132 @@ const dataRoot = path.join(process.cwd(), 'data');
 
 
 module.exports = function(req, res) {
-    const slug = req.params.guildSlug;
-    const size = req.params.size;
+    const slug    = req.params.guildSlug;
+    const size    = req.params.size;
     const bgColor = req.params.bgColor;
 
-    guilds.getBySlug(slug, function(err, guild) {
-        if (guild && Immutable.Map.isMap(guild)) {
+    const opts    = {size, bgColor};
 
-            const canonical = getCanonical(size, bgColor, guild);
+    // console.log('Routes::emblem', req.params);
 
-            if (req.url !== canonical) {
-                res.redirect(301, canonical);
+
+    // const startTime = Date.now();
+
+    async.auto({
+        guild    : [guilds.getBySlug.bind(guilds, slug)],
+        canonical: ['guild', (cb, results) => isCanonical(req.url, results.guild, opts, cb)],
+        svg      : ['canonical', (cb, results) => emblem.getGuildSVG(results.guild, opts, cb)],
+    }, (err, results) => {
+        if (err) {
+            if (err === 'NotCanonical') {
+                res.redirect(301, results.canonical);
             }
-            else if (!guild.has('emblem')) {
-                // console.log('no emblem', guild);
+            else if (err === 'NotFound') {
+                res.status(404).send('Guild not found');
+            }
+            else if (err === 'NoEmblem') {
                 res.sendFile('./public/images/none.svg', {root: process.cwd()});
             }
             else {
-                sendEmblem(res, guild, size, bgColor);
+                console.log('ERROR', slug, err);
+                res.status(500).send(JSON.stringify(err));
             }
-
-            setTimeout(gaqTrackEvent.bind(null, req, size), 10);
         }
         else {
-            res.status(404).send('Guild not found');
+            res.type('image/svg+xml').send(results.svg);
+
+            // console.log('Render Time: ', Date.now() - startTime, slug);
+
+            async.nextTick(gaqTrackEvent.bind(null, req, size));
         }
     });
+
+    // guilds.getBySlug(slug, function(err, guild) {
+    //     emblem.getGuildSVG(guild, (err, svg) => {
+
+    //     });
+
+    //     // if (guild && Immutable.Map.isMap(guild)) {
+
+    //     //     const canonical = getCanonical(size, bgColor, guild);
+
+    //     //     if (req.url !== canonical) {
+    //     //         res.redirect(301, canonical);
+    //     //     }
+    //     //     else if (!guild.has('emblem')) {
+    //     //         // console.log('no emblem', guild);
+    //     //         res.sendFile('./public/images/none.svg', {root: process.cwd()});
+    //     //     }
+    //     //     else {
+    //     //         sendEmblem(res, guild, size, bgColor);
+    //     //     }
+
+    //     //     setTimeout(gaqTrackEvent.bind(null, req, size), 10);
+    //     // }
+    //     // else {
+    //     //     res.status(404).send('Guild not found');
+    //     // }
+    // });
 };
 
 
 
-function getCanonical(size, bgColor, guild) {
-    let svgPath = [size];
-    if (bgColor) {
-        svgPath.push(bgColor);
+function isCanonical(currentUrl, guild, opts, cb) {
+    let svgPath = [opts.size];
+    if (opts.bgColor) {
+        svgPath.push(opts.bgColor);
     }
     svgPath.push('svg');
 
-    return [
+    const canonicalUrl = [
         '',
         'guilds',
         guild.get('slug'),
         svgPath.join('.'),
     ].join('/');
+
+    const err = (currentUrl !== canonicalUrl)
+        ? 'NotCanonical'
+        : null;
+
+    cb(err, canonicalUrl);
 }
 
 
-function sendEmblem(res, guild, size, bgColor) {
+// function sendEmblem(res, guild, size, bgColor) {
 
-    const emblemHash = guild.get('emblem').hashCode();
-    const emblemFile = [emblemHash, size, ''].join('/') + (bgColor || 'emblem') + '.svg';
-    const emblemPath = path.join(dataRoot, 'emblems', emblemFile);
+//     const emblemHash = guild.get('emblem').hashCode();
+//     const emblemFile = [emblemHash, size, ''].join('/') + (bgColor || 'emblem') + '.svg';
+//     const emblemPath = path.join(dataRoot, 'emblems', emblemFile);
 
-    // console.log(emblemHash, emblemFile, emblemPath);
+//     // console.log(emblemHash, emblemFile, emblemPath);
 
-    // const startTime = Date.now();
-    fs.exists(emblemPath, function(exists) {
-        if (exists) {
-            res.sendFile(emblemPath);
-            // console.log('Output Time: ', Date.now() - startTime, guild.get('slug'));
-        }
-        else {
-            emblem.get(guild.get('emblem').toJS(), size, bgColor, function(svg) {
+//     // const startTime = Date.now();
+//     fs.exists(emblemPath, function(exists) {
+//         if (exists) {
+//             res.sendFile(emblemPath);
+//             // console.log('Output Time: ', Date.now() - startTime, guild.get('slug'));
+//         }
+//         else {
+//             emblem.getGuildSVG(guild, size, bgColor, function(err, svg) {
 
-                fs.outputFile(emblemPath, svg, function(err) {
-                    if (err) {
-                        console.log('writeSvg()::err', err);
-                        res.send(svg);
-                    }
-                    else {
-                        res.sendFile(emblemPath);
-                    }
-                    // console.log('Render Time: ', Date.now() - startTime, guild.get('slug'));
-                });
+//                 fs.outputFile(emblemPath, svg, function(err) {
+//                     if (err) {
+//                         console.log('writeSvg()::err', err);
+//                         res.send(svg);
+//                     }
+//                     else {
+//                         res.sendFile(emblemPath);
+//                     }
+//                     // console.log('Render Time: ', Date.now() - startTime, guild.get('slug'));
+//                 });
 
-            });
-        }
+//             });
+//         }
 
-    });
+//     });
 
-}
+// }
 
 
 function gaqTrackEvent(req, size) {

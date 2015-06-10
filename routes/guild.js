@@ -8,6 +8,8 @@ module.exports = function(req, res) {
 	const renderStart = Date.now();
 	const slug = req.params.guildSlug;
 
+    // console.log('Routes::guild', req.params);
+
 
 	guilds.getBySlug(slug, function(err, data) {
 		if (data && data.has('guild_name')) {

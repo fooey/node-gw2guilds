@@ -21,6 +21,7 @@ module.exports = function(app, express) {
 
 	app.get('/guilds/:guildSlug/:size([0-9]+).:bgColor([a-z0-9]+)?.svg', require('./emblem.js'));
 	app.get('/guilds/:guildSlug.svg', function(req, res) {
+		console.log('NoSize', req.params);
 		res.redirect(301, `/guilds/${req.params.guildSlug}/256.svg`);
 	});
 	// app.get('/guilds/:guildSlug/:size([0-9]+).svg', require('./emblem.js'));

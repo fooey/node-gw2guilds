@@ -9,7 +9,7 @@ module.exports = function(req, res) {
 	let sampleGuilds = DB.guilds.index
 		.toSeq()
 		.filter(g => g.has('emblem'))
-		.sortBy(g => Math.random())
+		.sortBy(g => g.get('expires'))
 		.take(5);
 
 	res.render('home', {

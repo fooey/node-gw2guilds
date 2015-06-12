@@ -10,25 +10,26 @@ module.exports = function(req, res) {
 	const bgColor = req.params.bgColor;
 	const extension = req.params.extension;
 
+
 	guilds.getById(guildId, function(err, data) {
-		if (data && data.guild_name) {
+		if (data && data.has('guild_name')) {
 			if (!extension) {
-				res.redirect(301, '/guilds/' + data.slug);
+				res.redirect(301, '/guilds/' + data.get('slug'));
 			}
 			else if (extension === 'svg') {
 				let svgPath = [size];
 				if (bgColor) {svgPath.push(bgColor);}
 				svgPath.push('svg');
 
-				res.redirect(301, '/guilds/' + data.slug + '/' + svgPath.join('.'));
+				res.redirect(301, '/guilds/' + data.get('slug') + '/' + svgPath.join('.'));
 			}
 			else {
 				console.log(req.params);
-				res.send(500, 'kaboom');
+				res.status(500).send('kaboom');
 			}
 		}
 		else {
-			res.send(404, 'Guild not found');
+			res.status(404).send('Guild not found');
 		}
 	});
 

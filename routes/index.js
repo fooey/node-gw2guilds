@@ -1,5 +1,6 @@
 "use strict";
 
+const path = require('path');
 const DB = require('../lib/data');
 
 
@@ -33,7 +34,7 @@ module.exports = function(app, express) {
 	app.get('/sitemap.xml', require('./sitemap.js'));
 
 	app.get('/dump', function(req, res) {
-		res.json(DB.guilds.index.toJS());
+		res.sendFile('./data/guilds/guilds-index.json', {root: process.cwd()});
 	});
 
 	return routes;

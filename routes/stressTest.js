@@ -3,14 +3,14 @@
 const _ = require('lodash');
 const async = require('async');
 // const Immutable = require('immutable');
-// const cache = require('../lib/cache');
-// const guilds = require('../lib/guilds');
+// const cache = require('lib/cache');
+// const guilds = require('lib/guilds');
 
 
-// const guildList = require('../cache/guildMap.json');
+// const guildList = require('cache/guildMap.json');
 
-const guildList = require('../cache/seed.json');
-const sampleSize = 32;//guildList.length;
+const guildList = require('cache/seed.json');
+const sampleSize = 1024; // guildList.length;
 
 module.exports = function(req, res) {
     // let sampleGuilds = _.sample(_.keys(guildList), sampleSize);

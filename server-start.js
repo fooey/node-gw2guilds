@@ -10,13 +10,13 @@ if (nodeEnv !== 'development') {
 
 
 
-require('./lib/data').init(function(){
+require('lib/data').init(function() {
 
     const express = require('express');
     const app = express();
 
-    require('./config/server')(app, express);
-    require('./routes')(app, express);
+    require('config/server')(app, express);
+    require('routes')(app, express);
 
 
     app.listen(serverPort, function() {

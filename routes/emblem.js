@@ -1,13 +1,10 @@
 'use strict';
 
 const path  = require('path');
-const fs    = require('fs-extra');
 const async = require('async');
 
-const guilds = require('../lib/guilds');
-const emblem = require('../lib/emblem');
-
-const dataRoot = path.join(process.cwd(), 'data');
+const guilds = require('lib/guilds');
+const emblem = require('lib/emblem');
 
 
 module.exports = function(req, res) {
@@ -35,7 +32,7 @@ module.exports = function(req, res) {
                 res.status(404).send('Guild not found');
             }
             else if (err === 'NoEmblem') {
-                res.sendFile('./public/images/none.svg', {root: process.cwd()});
+                res.sendFile('public/images/none.svg', {root: process.cwd()});
             }
             else {
                 console.log('ERROR', slug, err);
@@ -50,33 +47,6 @@ module.exports = function(req, res) {
             async.nextTick(gaqTrackEvent.bind(null, req, size));
         }
     });
-
-    // guilds.getBySlug(slug, function(err, guild) {
-    //     emblem.getGuildSVG(guild, (err, svg) => {
-
-    //     });
-
-    //     // if (guild && Immutable.Map.isMap(guild)) {
-
-    //     //     const canonical = getCanonical(size, bgColor, guild);
-
-    //     //     if (req.url !== canonical) {
-    //     //         res.redirect(301, canonical);
-    //     //     }
-    //     //     else if (!guild.has('emblem')) {
-    //     //         // console.log('no emblem', guild);
-    //     //         res.sendFile('./public/images/none.svg', {root: process.cwd()});
-    //     //     }
-    //     //     else {
-    //     //         sendEmblem(res, guild, size, bgColor);
-    //     //     }
-
-    //     //     setTimeout(gaqTrackEvent.bind(null, req, size), 10);
-    //     // }
-    //     // else {
-    //     //     res.status(404).send('Guild not found');
-    //     // }
-    // });
 };
 
 

@@ -4,11 +4,6 @@ const nodeEnv = process.env.NODE_ENV ? process.env.NODE_ENV : 'production';
 const serverPort = process.env.PORT ? process.env.PORT : 3000;
 
 
-if (nodeEnv !== 'development') {
-    require('newrelic');
-}
-
-
 
 require('lib/data').init(function() {
 
@@ -31,6 +26,7 @@ require('lib/data').init(function() {
         console.log('Arch:     %s', process.arch);
         console.log('Node:     %s', process.versions.node);
         console.log('V8:       %s', process.versions.v8);
+        console.log('Env:      %s', JSON.stringify(process.env));
         console.log('**************************************************');
         console.log('');
     });

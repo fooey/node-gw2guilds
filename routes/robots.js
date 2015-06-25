@@ -12,6 +12,6 @@ module.exports = function(req, res) {
         // 'User-agent: *',
         // 'Disallow: *.svg$',
         // '',
-        'Sitemap: http://' + req.headers.host + '/sitemap.xml',
+        'Sitemap: http://guilds.gw2w2w.com/sitemap.xml',
     ].join('\n'));
 };

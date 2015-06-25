@@ -26,7 +26,7 @@ require('lib/data').init(function() {
         console.log('Arch:     %s', process.arch);
         console.log('Node:     %s', process.versions.node);
         console.log('V8:       %s', process.versions.v8);
-        console.log('Env:      %s', JSON.stringify(process.env));
+        // console.log('Env:      %s', JSON.stringify(process.env));
         console.log('**************************************************');
         console.log('');
     });

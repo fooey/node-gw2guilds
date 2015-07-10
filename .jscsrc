@@ -1,6 +1,6 @@
 {
     "preset": "node-style-guide",
-    "esprima": "esprima-fb",
+    "esprima": "babel-jscs",
     "fileExtensions": [".js", ".jsx"],
     "excludeFiles": ["node_modules/**", "**/dist/**"],
     "esnext": true,

@@ -11,6 +11,7 @@ const cors = require('cors');
 const compression = require('compression');
 
 const pubFolder = path.join(process.cwd(), 'public');
+const pubDataFolder = path.join(process.cwd(), 'data');
 const faviconPath = path.join(pubFolder, 'images/gw2-dragon-32.png');
 
 
@@ -25,6 +26,7 @@ module.exports = function(app/*, express*/) {
     app.use(cookieParser());
     app.use(serveFavicon(faviconPath));
     app.use(serveStatic(pubFolder));
+    app.use('/data', serveStatic(pubDataFolder));
 
     if (process.env.NODE_ENV === 'development') {
         app.use(errorHandler({ dumpExceptions: true, showStack: true }));

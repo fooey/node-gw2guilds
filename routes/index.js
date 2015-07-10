@@ -31,9 +31,7 @@ module.exports = function(app /*, express*/) {
     app.get('/sitemap.xml', require('routes/sitemap.js'));
 
     app.get('/dump', function(req, res) {
-        res.sendFile('routes/data/guilds/guilds-index.json', {
-            root: process.cwd(),
-        });
+        res.redirect(301, '/data/guilds/guilds-index.json');
     });
 
     return routes;

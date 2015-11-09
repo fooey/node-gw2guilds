@@ -14,7 +14,7 @@ require('lib/data').init(function() {
     require('routes')(app, express);
 
 
-    app.listen(serverPort, function() {
+    app.listen(serverPort, () => {
         console.log('');
         console.log('**************************************************');
         console.log('Express server started');

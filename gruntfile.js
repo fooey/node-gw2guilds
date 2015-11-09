@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.loadNpmTasks('grunt-browserify');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
+    // grunt.loadNpmTasks('grunt-contrib-uglify');
 
 
     // Project configuration.
@@ -25,9 +25,6 @@ module.exports = function(grunt) {
             dev: {
                 script: 'server.js',
                 options: {
-                    "execMap": {
-                        "js": "iojs",
-                    },
                     ext: 'js,jade',
                     ignore: [
                         './node_modules/**',
@@ -153,7 +150,7 @@ module.exports = function(grunt) {
 
 
 
-    grunt.registerTask('compile-js', ['browserify', 'uglify']);
+    grunt.registerTask('compile-js', ['browserify']);
     grunt.registerTask('default', ['dev']);
 
     grunt.registerTask('dev', ['compile-js', 'concurrent']);

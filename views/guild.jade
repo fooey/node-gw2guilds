@@ -1,7 +1,7 @@
 extends layout
 
 block headClose
-	-var guildUrl = `http://guilds.gw2w2w.com/guilds/${guild.slug}`;
+	-var guildUrl = `https://guilds.gw2w2w.com/guilds/${guild.slug}`;
 	-var defaultEmblemSrc = `${guildUrl}/256.svg`;
 	-var guildFullName = `${guild.guild_name} [${guild.tag}]`;
 	-var apiUrl = `https://api.guildwars2.com/v1/guild_details?guild_id=${guild.guild_id}`;
@@ -53,7 +53,7 @@ block content
 								a#downloadPNG
 
 						dl#emblemCodes.dl-horizontal
-							-var fullPath = 'http://guilds.gw2w2w.com' + defaultEmblemSrc;
+							-var fullPath = 'https://guilds.gw2w2w.com' + defaultEmblemSrc;
 							dt Emblem URL
 							dd#emblemURL.mono
 								//- a(href=thisSrc)= fullPath

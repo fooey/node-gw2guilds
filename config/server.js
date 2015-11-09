@@ -1,14 +1,13 @@
 'use strict';
 
-const path = require('path');
+import path from 'path';
 
-const errorHandler = require('errorhandler');
-const morgan = require('morgan');
-const serveFavicon = require('serve-favicon');
-const serveStatic = require('serve-static');
-const cookieParser = require('cookie-parser');
-const cors = require('cors');
-const compression = require('compression');
+import errorHandler from 'errorhandler';
+import morgan from 'morgan';
+import serveFavicon from 'serve-favicon';
+import serveStatic from 'serve-static';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 const pubFolder = path.join(process.cwd(), 'public');
 const pubDataFolder = path.join(process.cwd(), 'data');
@@ -21,7 +20,6 @@ module.exports = function(app/*, express*/) {
     app.set('view engine', 'jade');
 
 
-    app.use(compression());
     app.use(cors());
     app.use(cookieParser());
     app.use(serveFavicon(faviconPath));

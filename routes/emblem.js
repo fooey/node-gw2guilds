@@ -65,7 +65,7 @@ function isCanonical(currentUrl, guild, opts, cb) {
         svgPath.join('.'),
     ].join('/');
 
-    const err = (currentUrl !== canonicalUrl && decodeURI(req.url) !== decodeURI(canonical))
+    const err = (currentUrl !== canonicalUrl && decodeURI(currentUrl) !== decodeURI(canonicalUrl))
         ? 'NotCanonical'
         : null;
 

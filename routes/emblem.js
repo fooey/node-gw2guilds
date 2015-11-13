@@ -1,6 +1,6 @@
 'use strict';
 
-const path  = require('path');
+const path = require('path');
 const async = require('async');
 
 const guilds = require('lib/guilds');
@@ -8,11 +8,11 @@ const emblem = require('lib/emblem');
 
 
 module.exports = function(req, res) {
-    const slug    = req.params.guildSlug;
-    const size    = req.params.size;
+    const slug = req.params.guildSlug;
+    const size = req.params.size;
     const bgColor = req.params.bgColor;
 
-    const opts    = {size, bgColor};
+    const opts = {size, bgColor};
 
     // console.log('Routes::emblem', req.params);
 

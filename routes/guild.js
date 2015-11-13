@@ -14,9 +14,14 @@ module.exports = function(req, res) {
     guilds.getBySlug(slug, function(err, data) {
         if (data && data.has('guild_name')) {
             const canonical = '/guilds/' + data.get('slug');
-            // console.log(req.url, canonical);
 
-            if (req.url !== canonical) {
+            console.log('canonical', canonical);
+            console.log('req.url', req.url);
+            console.log('decodeURI', decodeURI(req.url));
+            console.log('eq', req.url === canonical);
+            console.log('eq decodeURI', decodeURI(req.url) === decodeURI(canonical));
+
+            if (req.url !== canonical && decodeURI(req.url) !== decodeURI(canonical)) {
                 res.redirect(301, canonical);
             }
             else {

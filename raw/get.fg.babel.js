@@ -32,7 +32,7 @@ request(
 
         _.each(data, (fg) => {
             _.each(fg.layers, (remotePath, layerIndex) => {
-                const localPath = path.resolve(localRoot, fg.id.toString(), `${layerIndex}.png`);
+                const localPath = path.resolve(localRoot, `${fg.id}-${layerIndex}.png`);
                 // console.log(localRoot, fg.id, layerIndex, localPath);
                 dlQueue.push({
                     remotePath,

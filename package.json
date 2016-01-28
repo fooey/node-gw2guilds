@@ -9,22 +9,22 @@
   "license": "ISC",
   "dependencies": {
     "app-module-path": "^1.0.4",
-    "async": "^1.5.0",
+    "async": "^1.5.2",
     "babel": "^5",
     "babelify": "^6",
-    "cookie-parser": "^1.4.0",
+    "cookie-parser": "^1.4.1",
     "cors": "^2.7.1",
-    "errorhandler": "^1.4.2",
-    "express": "^4.13.3",
+    "errorhandler": "^1.4.3",
+    "express": "^4.13.4",
     "fs-extra": "^0.24.0",
-    "gw2api": "^1.2.1",
-    "immutable": "^3.7.5",
+    "immutable": "^3.7.6",
     "jade": "^1.11.0",
     "lodash": "^3.10.1",
     "morgan": "^1.6.1",
-    "newrelic": "^1.23.1",
+    "newrelic": "^1.25.1",
+    "request": "^2.69.0",
     "serve-favicon": "^2.3.0",
-    "serve-static": "^1.10.0",
+    "serve-static": "^1.10.2",
     "universal-analytics": "^0.3.9",
     "uuid": "^2.0.1"
   },
@@ -36,7 +36,6 @@
     "grunt-concurrent": "^2.0.3",
     "grunt-contrib-uglify": "^0.9.2",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-nodemon": "^0.4.0",
-    "request": "^2.67.0"
+    "grunt-nodemon": "^0.4.0"
   }
 }

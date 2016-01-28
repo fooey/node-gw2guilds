@@ -1,17 +1,22 @@
 'use strict';
 
+import express from 'express';
+
+import libData from 'lib/data';
+import routes from 'routes';
+import serverConfig from 'config/server';
+
+
 const nodeEnv = process.env.NODE_ENV ? process.env.NODE_ENV : 'production';
 const serverPort = process.env.PORT ? process.env.PORT : 3000;
 
 
 
-require('lib/data').init(function() {
-
-    const express = require('express');
+libData.init(() => {
     const app = express();
 
-    require('config/server')(app, express);
-    require('routes')(app, express);
+    serverConfig(app, express);
+    routes(app, express);
 
 
     app.listen(serverPort, () => {
@@ -30,6 +35,4 @@ require('lib/data').init(function() {
         console.log('**************************************************');
         console.log('');
     });
-
-
 });

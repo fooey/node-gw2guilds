@@ -25,7 +25,8 @@
         "saturation": 0.101563,
         "lightness": 1.36719,
         "rgb": [96, 91, 83]
-    }
+    },
+    "categories": []
 }, {
     "id": 2,
     "name": "Black",
@@ -53,7 +54,9 @@
         "saturation": 0.0234375,
         "lightness": 1.09375,
         "rgb": [37, 35, 38]
-    }
+    },
+    "item": 20358,
+    "categories": ["Gray", "Metal", "Rare"]
 }, {
     "id": 3,
     "name": "Chalk",
@@ -81,7 +84,9 @@
         "saturation": 0.0234375,
         "lightness": 1.36719,
         "rgb": [84, 81, 81]
-    }
+    },
+    "item": 20360,
+    "categories": ["Gray", "Metal", "Uncommon"]
 }, {
     "id": 4,
     "name": "Gray",
@@ -109,7 +114,9 @@
         "saturation": 0.0234375,
         "lightness": 1.28906,
         "rgb": [66, 63, 64]
-    }
+    },
+    "item": 20363,
+    "categories": ["Gray", "Metal", "Common"]
 }, {
     "id": 5,
     "name": "Pitch",
@@ -137,7 +144,9 @@
         "saturation": 0.0234375,
         "lightness": 1.17188,
         "rgb": [44, 42, 45]
-    }
+    },
+    "item": 20366,
+    "categories": ["Gray", "Metal", "Uncommon"]
 }, {
     "id": 6,
     "name": "Celestial",
@@ -165,7 +174,9 @@
         "saturation": 0.0234375,
         "lightness": 1.91406,
         "rgb": [197, 193, 192]
-    }
+    },
+    "item": 20359,
+    "categories": ["Gray", "Metal", "Rare"]
 }, {
     "id": 7,
     "name": "Ocean",
@@ -193,7 +204,9 @@
         "saturation": 0.78125,
         "lightness": 1.01563,
         "rgb": [0, 44, 57]
-    }
+    },
+    "item": 20368,
+    "categories": ["Blue", "Vibrant", "Uncommon"]
 }, {
     "id": 8,
     "name": "Robin",
@@ -221,7 +234,9 @@
         "saturation": 0.78125,
         "lightness": 1.09375,
         "rgb": [26, 98, 118]
-    }
+    },
+    "item": 20365,
+    "categories": ["Blue", "Vibrant", "Uncommon"]
 }, {
     "id": 9,
     "name": "Blue Rose",
@@ -249,7 +264,9 @@
         "saturation": 0.859375,
         "lightness": 1.05469,
         "rgb": [0, 70, 91]
-    }
+    },
+    "item": 20367,
+    "categories": ["Blue", "Vibrant", "Uncommon"]
 }, {
     "id": 10,
     "name": "Sky",
@@ -277,7 +294,9 @@
         "saturation": 0.546875,
         "lightness": 1.32813,
         "rgb": [65, 123, 146]
-    }
+    },
+    "item": 20370,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 11,
     "name": "Starry Night",
@@ -305,7 +324,9 @@
         "saturation": 0.78125,
         "lightness": 0.625,
         "rgb": [0, 19, 32]
-    }
+    },
+    "item": 20369,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 12,
     "name": "Adobe",
@@ -333,7 +354,9 @@
         "saturation": 0.492188,
         "lightness": 1.17188,
         "rgb": [90, 52, 32]
-    }
+    },
+    "item": 20388,
+    "categories": ["Orange", "Leather", "Common"]
 }, {
     "id": 13,
     "name": "Calfskin",
@@ -361,7 +384,9 @@
         "saturation": 0.3125,
         "lightness": 1.17188,
         "rgb": [80, 64, 44]
-    }
+    },
+    "item": 20397,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 14,
     "name": "Camel",
@@ -389,7 +414,8 @@
         "saturation": 0.375,
         "lightness": 1.44531,
         "rgb": [100, 77, 56]
-    }
+    },
+    "categories": ["Brown", "Leather", "Starter"]
 }, {
     "id": 15,
     "name": "Charcoal",
@@ -417,7 +443,9 @@
         "saturation": 0.078125,
         "lightness": 1.28906,
         "rgb": [60, 58, 51]
-    }
+    },
+    "item": 20408,
+    "categories": ["Brown", "Leather", "Rare"]
 }, {
     "id": 16,
     "name": "Chocolate",
@@ -445,7 +473,9 @@
         "saturation": 0.296875,
         "lightness": 1.25,
         "rgb": [60, 40, 25]
-    }
+    },
+    "item": 20398,
+    "categories": ["Brown", "Leather", "Rare"]
 }, {
     "id": 17,
     "name": "Pottery",
@@ -473,7 +503,8 @@
         "saturation": 0.390625,
         "lightness": 1.28906,
         "rgb": [80, 55, 34]
-    }
+    },
+    "categories": ["Brown", "Leather", "Starter"]
 }, {
     "id": 18,
     "name": "Earthen",
@@ -501,7 +532,9 @@
         "saturation": 0.429688,
         "lightness": 1.17188,
         "rgb": [71, 47, 21]
-    }
+    },
+    "item": 20410,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 19,
     "name": "Ebony",
@@ -529,7 +562,8 @@
         "saturation": 0.117188,
         "lightness": 1.09375,
         "rgb": [53, 50, 40]
-    }
+    },
+    "categories": ["Gray", "Leather", "Starter"]
 }, {
     "id": 20,
     "name": "Ivory",
@@ -557,7 +591,9 @@
         "saturation": 0.351563,
         "lightness": 1.99219,
         "rgb": [169, 148, 118]
-    }
+    },
+    "item": 20411,
+    "categories": ["Brown", "Leather", "Rare"]
 }, {
     "id": 21,
     "name": "Mahogany",
@@ -585,7 +621,9 @@
         "saturation": 0.351563,
         "lightness": 1.21094,
         "rgb": [66, 37, 26]
-    }
+    },
+    "item": 20412,
+    "categories": ["Orange", "Leather", "Common"]
 }, {
     "id": 22,
     "name": "Natural",
@@ -613,7 +651,9 @@
         "saturation": 0.257813,
         "lightness": 1.52344,
         "rgb": [99, 87, 69]
-    }
+    },
+    "item": 20414,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 23,
     "name": "Rawhide",
@@ -641,7 +681,9 @@
         "saturation": 0.453125,
         "lightness": 1.40625,
         "rgb": [137, 110, 79]
-    }
+    },
+    "item": 20415,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 24,
     "name": "Terracotta",
@@ -669,7 +711,9 @@
         "saturation": 0.523438,
         "lightness": 1.17188,
         "rgb": [110, 69, 43]
-    }
+    },
+    "item": 20402,
+    "categories": ["Orange", "Leather", "Uncommon"]
 }, {
     "id": 25,
     "name": "Walnut",
@@ -697,7 +741,9 @@
         "saturation": 0.203125,
         "lightness": 1.17188,
         "rgb": [49, 43, 26]
-    }
+    },
+    "item": 20417,
+    "categories": ["Brown", "Leather", "Uncommon"]
 }, {
     "id": 26,
     "name": "Wheat",
@@ -725,7 +771,9 @@
         "saturation": 0.507813,
         "lightness": 1.44531,
         "rgb": [106, 80, 47]
-    }
+    },
+    "item": 20393,
+    "categories": ["Brown", "Leather", "Uncommon"]
 }, {
     "id": 27,
     "name": "Blueberry",
@@ -753,7 +801,9 @@
         "saturation": 0.507813,
         "lightness": 1.09375,
         "rgb": [40, 68, 106]
-    }
+    },
+    "item": 20418,
+    "categories": ["Blue", "Vibrant", "Uncommon"]
 }, {
     "id": 28,
     "name": "Breeze",
@@ -781,7 +831,9 @@
         "saturation": 0.546875,
         "lightness": 1.28906,
         "rgb": [79, 108, 161]
-    }
+    },
+    "item": 20403,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 29,
     "name": "Sapphire",
@@ -809,7 +861,9 @@
         "saturation": 0.3125,
         "lightness": 0.976563,
         "rgb": [18, 27, 53]
-    }
+    },
+    "item": 20419,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 30,
     "name": "Royal Blue",
@@ -837,7 +891,9 @@
         "saturation": 0.390625,
         "lightness": 1.09375,
         "rgb": [29, 41, 73]
-    }
+    },
+    "item": 20395,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 31,
     "name": "Summer Sky",
@@ -865,7 +921,9 @@
         "saturation": 0.585938,
         "lightness": 1.17188,
         "rgb": [48, 87, 126]
-    }
+    },
+    "item": 20452,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 32,
     "name": "Blush",
@@ -893,7 +951,9 @@
         "saturation": 0.507813,
         "lightness": 1.36719,
         "rgb": [132, 82, 73]
-    }
+    },
+    "item": 20436,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 33,
     "name": "Bold",
@@ -921,7 +981,9 @@
         "saturation": 0.742188,
         "lightness": 1.21094,
         "rgb": [134, 65, 53]
-    }
+    },
+    "item": 20453,
+    "categories": ["Orange", "Vibrant", "Uncommon"]
 }, {
     "id": 34,
     "name": "Dusky",
@@ -949,7 +1011,9 @@
         "saturation": 0.585938,
         "lightness": 1.25,
         "rgb": [94, 40, 30]
-    }
+    },
+    "item": 20428,
+    "categories": ["Red", "Leather", "Rare"]
 }, {
     "id": 35,
     "name": "Peach",
@@ -977,7 +1041,9 @@
         "saturation": 0.546875,
         "lightness": 1.99219,
         "rgb": [162, 105, 84]
-    }
+    },
+    "item": 20454,
+    "categories": ["Orange", "Metal", "Uncommon"]
 }, {
     "id": 36,
     "name": "Peach Sunset",
@@ -1005,7 +1071,9 @@
         "saturation": 0.742188,
         "lightness": 1.28906,
         "rgb": [150, 80, 64]
-    }
+    },
+    "item": 20437,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 37,
     "name": "Autumn Sky",
@@ -1033,7 +1101,9 @@
         "saturation": 0.257813,
         "lightness": 1.28906,
         "rgb": [95, 108, 132]
-    }
+    },
+    "item": 20420,
+    "categories": ["Blue", "Leather", "Rare"]
 }, {
     "id": 38,
     "name": "Country Blue",
@@ -1061,7 +1131,9 @@
         "saturation": 0.3125,
         "lightness": 1.21094,
         "rgb": [54, 72, 91]
-    }
+    },
+    "item": 20438,
+    "categories": ["Blue", "Leather", "Rare"]
 }, {
     "id": 39,
     "name": "Country Teal",
@@ -1089,7 +1161,9 @@
         "saturation": 0.3125,
         "lightness": 1.21094,
         "rgb": [44, 70, 80]
-    }
+    },
+    "item": 20457,
+    "categories": ["Blue", "Leather", "Common"]
 }, {
     "id": 40,
     "name": "Dusty Grape",
@@ -1117,7 +1191,9 @@
         "saturation": 0.234375,
         "lightness": 1.17188,
         "rgb": [54, 56, 79]
-    }
+    },
+    "item": 20429,
+    "categories": ["Blue", "Leather", "Uncommon"]
 }, {
     "id": 41,
     "name": "Eucalyptus",
@@ -1145,7 +1221,9 @@
         "saturation": 0.203125,
         "lightness": 1.21094,
         "rgb": [63, 91, 88]
-    }
+    },
+    "item": 20458,
+    "categories": ["Blue", "Leather", "Uncommon"]
 }, {
     "id": 42,
     "name": "Frosted Sea",
@@ -1173,7 +1251,9 @@
         "saturation": 0.195313,
         "lightness": 1.32813,
         "rgb": [78, 108, 106]
-    }
+    },
+    "item": 20459,
+    "categories": ["Blue", "Leather", "Common"]
 }, {
     "id": 43,
     "name": "Old Jeans",
@@ -1201,7 +1281,9 @@
         "saturation": 0.195313,
         "lightness": 1.17188,
         "rgb": [47, 57, 70]
-    }
+    },
+    "item": 20440,
+    "categories": ["Blue", "Leather", "Rare"]
 }, {
     "id": 44,
     "name": "Shy Blue",
@@ -1229,7 +1311,9 @@
         "saturation": 0.390625,
         "lightness": 1.25,
         "rgb": [54, 86, 98]
-    }
+    },
+    "item": 20461,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 45,
     "name": "Tea Jeans",
@@ -1257,7 +1341,8 @@
         "saturation": 0.195313,
         "lightness": 1.21094,
         "rgb": [52, 70, 73]
-    }
+    },
+    "categories": ["Blue", "Leather", "Starter"]
 }, {
     "id": 46,
     "name": "Denim",
@@ -1285,7 +1370,9 @@
         "saturation": 0.3125,
         "lightness": 1.25,
         "rgb": [68, 87, 107]
-    }
+    },
+    "item": 20455,
+    "categories": ["Blue", "Vibrant", "Uncommon"]
 }, {
     "id": 47,
     "name": "Grape",
@@ -1313,7 +1400,9 @@
         "saturation": 0.351563,
         "lightness": 0.9375,
         "rgb": [64, 26, 60]
-    }
+    },
+    "item": 20606,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 48,
     "name": "Grape Gum",
@@ -1341,7 +1430,9 @@
         "saturation": 0.507813,
         "lightness": 1.25,
         "rgb": [90, 40, 94]
-    }
+    },
+    "item": 20498,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 49,
     "name": "Morning Glory",
@@ -1369,7 +1460,9 @@
         "saturation": 0.429688,
         "lightness": 1.19531,
         "rgb": [112, 64, 118]
-    }
+    },
+    "item": 20607,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 50,
     "name": "Plum",
@@ -1397,7 +1490,9 @@
         "saturation": 0.351563,
         "lightness": 1.28906,
         "rgb": [134, 90, 139]
-    }
+    },
+    "item": 20545,
+    "categories": ["Purple", "Vibrant", "Rare"]
 }, {
     "id": 51,
     "name": "Wine",
@@ -1425,7 +1520,9 @@
         "saturation": 0.234375,
         "lightness": 0.9375,
         "rgb": [41, 14, 34]
-    }
+    },
+    "item": 20544,
+    "categories": ["Purple", "Vibrant", "Rare"]
 }, {
     "id": 52,
     "name": "Avocado",
@@ -1453,7 +1550,9 @@
         "saturation": 1.05469,
         "lightness": 1.09375,
         "rgb": [98, 93, 0]
-    }
+    },
+    "item": 20492,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 53,
     "name": "Ceylon",
@@ -1481,7 +1580,9 @@
         "saturation": 0.351563,
         "lightness": 1.40625,
         "rgb": [102, 126, 70]
-    }
+    },
+    "item": 20445,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 54,
     "name": "Chartreuse",
@@ -1509,7 +1610,9 @@
         "saturation": 0.742188,
         "lightness": 1.40625,
         "rgb": [140, 127, 40]
-    }
+    },
+    "item": 20559,
+    "categories": ["Yellow", "Vibrant", "Uncommon"]
 }, {
     "id": 55,
     "name": "Crisp Mint",
@@ -1537,7 +1640,9 @@
         "saturation": 0.429688,
         "lightness": 1.05469,
         "rgb": [38, 91, 60]
-    }
+    },
+    "item": 20471,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 56,
     "name": "Emerald",
@@ -1565,7 +1670,9 @@
         "saturation": 0.390625,
         "lightness": 0.859375,
         "rgb": [0, 38, 19]
-    }
+    },
+    "item": 20423,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 57,
     "name": "Kelly",
@@ -1593,7 +1700,9 @@
         "saturation": 0.273438,
         "lightness": 1.09375,
         "rgb": [33, 54, 22]
-    }
+    },
+    "item": 20446,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 58,
     "name": "Key Lime",
@@ -1621,7 +1730,9 @@
         "saturation": 0.390625,
         "lightness": 1.17188,
         "rgb": [71, 128, 91]
-    }
+    },
+    "item": 20473,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 59,
     "name": "Leprechaun",
@@ -1649,7 +1760,9 @@
         "saturation": 0.429688,
         "lightness": 0.976563,
         "rgb": [19, 69, 40]
-    }
+    },
+    "item": 20433,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 60,
     "name": "Spearmint",
@@ -1677,7 +1790,9 @@
         "saturation": 0.257813,
         "lightness": 1.01563,
         "rgb": [28, 58, 47]
-    }
+    },
+    "item": 20474,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 61,
     "name": "Summer Grass",
@@ -1705,7 +1820,9 @@
         "saturation": 0.351563,
         "lightness": 0.859375,
         "rgb": [9, 50, 27]
-    }
+    },
+    "item": 20447,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 62,
     "name": "Antique Bronze",
@@ -1733,7 +1850,9 @@
         "saturation": 0.3125,
         "lightness": 1.5625,
         "rgb": [63, 47, 12]
-    }
+    },
+    "item": 20426,
+    "categories": ["Brown", "Metal", "Rare"]
 }, {
     "id": 63,
     "name": "Antique Olive",
@@ -1761,7 +1880,9 @@
         "saturation": 0.234375,
         "lightness": 1.36719,
         "rgb": [65, 70, 42]
-    }
+    },
+    "item": 20448,
+    "categories": ["Green", "Metal", "Common"]
 }, {
     "id": 64,
     "name": "Brass",
@@ -1789,7 +1910,9 @@
         "saturation": 0.78125,
         "lightness": 1.40625,
         "rgb": [128, 75, 0]
-    }
+    },
+    "item": 20477,
+    "categories": ["Yellow", "Metal", "Common"]
 }, {
     "id": 65,
     "name": "Bronze",
@@ -1817,7 +1940,9 @@
         "saturation": 0.507813,
         "lightness": 1.5625,
         "rgb": [72, 57, 0]
-    }
+    },
+    "item": 20434,
+    "categories": ["Green", "Metal", "Common"]
 }, {
     "id": 66,
     "name": "Copper",
@@ -1845,7 +1970,9 @@
         "saturation": 0.742188,
         "lightness": 1.5625,
         "rgb": [124, 58, 23]
-    }
+    },
+    "item": 20449,
+    "categories": ["Orange", "Metal", "Uncommon"]
 }, {
     "id": 67,
     "name": "Gold",
@@ -1873,7 +2000,9 @@
         "saturation": 0.859375,
         "lightness": 1.99219,
         "rgb": [181, 127, 44]
-    }
+    },
+    "item": 20480,
+    "categories": ["Yellow", "Metal", "Uncommon"]
 }, {
     "id": 68,
     "name": "Gunmetal",
@@ -1901,7 +2030,9 @@
         "saturation": 0.078125,
         "lightness": 1.28906,
         "rgb": [59, 65, 68]
-    }
+    },
+    "item": 20450,
+    "categories": ["Blue", "Metal", "Uncommon"]
 }, {
     "id": 69,
     "name": "Iron",
@@ -1929,7 +2060,9 @@
         "saturation": 0.101563,
         "lightness": 1.17188,
         "rgb": [35, 43, 47]
-    }
+    },
+    "item": 20481,
+    "categories": ["Gray", "Metal", "Common"]
 }, {
     "id": 70,
     "name": "Mithril",
@@ -1957,7 +2090,9 @@
         "saturation": 0.234375,
         "lightness": 1.99219,
         "rgb": [183, 158, 138]
-    }
+    },
+    "item": 20435,
+    "categories": ["Brown", "Vibrant", "Rare"]
 }, {
     "id": 71,
     "name": "Oxblood",
@@ -1985,7 +2120,9 @@
         "saturation": 0.703125,
         "lightness": 1.21094,
         "rgb": [55, 0, 0]
-    }
+    },
+    "item": 20427,
+    "categories": ["Red", "Metal", "Rare"]
 }, {
     "id": 72,
     "name": "Pewter",
@@ -2013,7 +2150,9 @@
         "saturation": 0.195313,
         "lightness": 1.36719,
         "rgb": [76, 71, 50]
-    }
+    },
+    "item": 20547,
+    "categories": ["Gray", "Metal", "Uncommon"]
 }, {
     "id": 73,
     "name": "Rust",
@@ -2041,7 +2180,9 @@
         "saturation": 0.703125,
         "lightness": 1.28906,
         "rgb": [73, 19, 0]
-    }
+    },
+    "item": 20515,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 74,
     "name": "Silver",
@@ -2069,7 +2210,9 @@
         "saturation": 0.125,
         "lightness": 1.99219,
         "rgb": [136, 146, 157]
-    }
+    },
+    "item": 20548,
+    "categories": ["Gray", "Metal", "Rare"]
 }, {
     "id": 75,
     "name": "Steel",
@@ -2097,7 +2240,9 @@
         "saturation": 0.101563,
         "lightness": 1.48438,
         "rgb": [80, 74, 64]
-    }
+    },
+    "item": 20499,
+    "categories": ["Gray", "Metal", "Uncommon"]
 }, {
     "id": 76,
     "name": "Midnight Blue",
@@ -2125,7 +2270,9 @@
         "saturation": 0.195313,
         "lightness": 0.976563,
         "rgb": [17, 30, 40]
-    }
+    },
+    "item": 20551,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 77,
     "name": "Midnight Sky",
@@ -2153,7 +2300,9 @@
         "saturation": 0.15625,
         "lightness": 0.976563,
         "rgb": [25, 30, 43]
-    }
+    },
+    "item": 20501,
+    "categories": ["Blue", "Leather", "Rare"]
 }, {
     "id": 78,
     "name": "Midnight Fuchsia",
@@ -2181,7 +2330,9 @@
         "saturation": 0.117188,
         "lightness": 0.976563,
         "rgb": [38, 25, 35]
-    }
+    },
+    "item": 20552,
+    "categories": ["Purple", "Vibrant", "Uncommon"]
 }, {
     "id": 79,
     "name": "Midnight Gold",
@@ -2209,7 +2360,9 @@
         "saturation": 0.3125,
         "lightness": 0.976563,
         "rgb": [50, 35, 13]
-    }
+    },
+    "item": 20500,
+    "categories": ["Brown", "Vibrant", "Rare"]
 }, {
     "id": 80,
     "name": "Midnight Green",
@@ -2237,7 +2390,9 @@
         "saturation": 0.117188,
         "lightness": 0.976563,
         "rgb": [26, 40, 32]
-    }
+    },
+    "item": 20553,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 81,
     "name": "Midnight Olive",
@@ -2265,7 +2420,9 @@
         "saturation": 0.234375,
         "lightness": 0.976563,
         "rgb": [44, 37, 17]
-    }
+    },
+    "item": 20554,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 82,
     "name": "Midnight Purple",
@@ -2293,7 +2450,9 @@
         "saturation": 0.117188,
         "lightness": 0.976563,
         "rgb": [33, 26, 40]
-    }
+    },
+    "item": 20484,
+    "categories": ["Purple", "Leather", "Rare"]
 }, {
     "id": 83,
     "name": "Midnight Red",
@@ -2321,7 +2480,9 @@
         "saturation": 0.234375,
         "lightness": 0.976563,
         "rgb": [48, 27, 23]
-    }
+    },
+    "item": 20555,
+    "categories": ["Red", "Leather", "Rare"]
 }, {
     "id": 84,
     "name": "Midnight Rose",
@@ -2349,7 +2510,9 @@
         "saturation": 0.195313,
         "lightness": 0.976563,
         "rgb": [46, 25, 27]
-    }
+    },
+    "item": 20519,
+    "categories": ["Red", "Leather", "Uncommon"]
 }, {
     "id": 85,
     "name": "Midnight Rust",
@@ -2377,7 +2540,9 @@
         "saturation": 0.3125,
         "lightness": 0.976563,
         "rgb": [53, 29, 16]
-    }
+    },
+    "item": 20556,
+    "categories": ["Brown", "Vibrant", "Common"]
 }, {
     "id": 86,
     "name": "Midnight Teal",
@@ -2405,7 +2570,9 @@
         "saturation": 0.15625,
         "lightness": 0.976563,
         "rgb": [18, 35, 33]
-    }
+    },
+    "item": 20557,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 87,
     "name": "Midnight Violet",
@@ -2433,7 +2600,9 @@
         "saturation": 0.15625,
         "lightness": 0.976563,
         "rgb": [28, 27, 43]
-    }
+    },
+    "item": 20520,
+    "categories": ["Purple", "Vibrant", "Rare"]
 }, {
     "id": 88,
     "name": "Midnight Yew",
@@ -2461,7 +2630,9 @@
         "saturation": 0.117188,
         "lightness": 0.976563,
         "rgb": [33, 39, 25]
-    }
+    },
+    "item": 20558,
+    "categories": ["Green", "Metal", "Uncommon"]
 }, {
     "id": 89,
     "name": "Chalkboard",
@@ -2489,7 +2660,9 @@
         "saturation": 0.125,
         "lightness": 1.17188,
         "rgb": [50, 60, 65]
-    }
+    },
+    "item": 20486,
+    "categories": ["Blue", "Metal", "Uncommon"]
 }, {
     "id": 90,
     "name": "Cream",
@@ -2517,7 +2690,9 @@
         "saturation": 0.273438,
         "lightness": 1.99219,
         "rgb": [154, 131, 114]
-    }
+    },
+    "item": 20563,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 91,
     "name": "Cream Shade",
@@ -2545,7 +2720,9 @@
         "saturation": 0.28125,
         "lightness": 1.44531,
         "rgb": [124, 108, 83]
-    }
+    },
+    "item": 20523,
+    "categories": ["Brown", "Leather", "Uncommon"]
 }, {
     "id": 92,
     "name": "Dusk",
@@ -2573,7 +2750,9 @@
         "saturation": 0.078125,
         "lightness": 1.17188,
         "rgb": [64, 61, 70]
-    }
+    },
+    "item": 20564,
+    "categories": ["Purple", "Metal", "Uncommon"]
 }, {
     "id": 93,
     "name": "Frost",
@@ -2601,7 +2780,9 @@
         "saturation": 0.101563,
         "lightness": 1.875,
         "rgb": [131, 144, 144]
-    }
+    },
+    "item": 20565,
+    "categories": ["Gray", "Metal", "Rare"]
 }, {
     "id": 94,
     "name": "Frosting",
@@ -2629,7 +2810,9 @@
         "saturation": 0.273438,
         "lightness": 1.99219,
         "rgb": [150, 138, 118]
-    }
+    },
+    "item": 20524,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 96,
     "name": "Riverbed",
@@ -2657,7 +2840,9 @@
         "saturation": 0.273438,
         "lightness": 1.17188,
         "rgb": [82, 62, 51]
-    }
+    },
+    "item": 20576,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 97,
     "name": "Sage",
@@ -2685,7 +2870,9 @@
         "saturation": 0.078125,
         "lightness": 1.17188,
         "rgb": [55, 63, 56]
-    }
+    },
+    "item": 20530,
+    "categories": ["Green", "Metal", "Rare"]
 }, {
     "id": 98,
     "name": "Shy Violet",
@@ -2713,7 +2900,9 @@
         "saturation": 0.125,
         "lightness": 1.99219,
         "rgb": [118, 103, 113]
-    }
+    },
+    "item": 20578,
+    "categories": ["Purple", "Metal", "Common"]
 }, {
     "id": 99,
     "name": "Silt",
@@ -2741,7 +2930,9 @@
         "saturation": 0.0234375,
         "lightness": 1.44531,
         "rgb": [96, 99, 97]
-    }
+    },
+    "item": 20485,
+    "categories": ["Gray", "Metal", "Common"]
 }, {
     "id": 100,
     "name": "Silver Lead",
@@ -2769,7 +2960,9 @@
         "saturation": 0.078125,
         "lightness": 1.25,
         "rgb": [69, 70, 62]
-    }
+    },
+    "item": 20579,
+    "categories": ["Gray", "Metal", "Common"]
 }, {
     "id": 101,
     "name": "Stone",
@@ -2797,7 +2990,8 @@
         "saturation": 0.125,
         "lightness": 1.25,
         "rgb": [102, 100, 85]
-    }
+    },
+    "categories": ["Gray", "Metal", "Starter"]
 }, {
     "id": 102,
     "name": "Strawberry Cream",
@@ -2825,7 +3019,9 @@
         "saturation": 0.570313,
         "lightness": 1.5625,
         "rgb": [176, 115, 96]
-    }
+    },
+    "item": 20387,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 103,
     "name": "Truffle",
@@ -2853,7 +3049,9 @@
         "saturation": 0.195313,
         "lightness": 1.28906,
         "rgb": [97, 84, 73]
-    }
+    },
+    "item": 20507,
+    "categories": ["Brown", "Leather", "Uncommon"]
 }, {
     "id": 104,
     "name": "Olive",
@@ -2881,7 +3079,9 @@
         "saturation": 1.28906,
         "lightness": 0.859375,
         "rgb": [56, 48, 0]
-    }
+    },
+    "item": 20583,
+    "categories": ["Green", "Leather", "Common"]
 }, {
     "id": 105,
     "name": "Grape Leaf",
@@ -2909,7 +3109,9 @@
         "saturation": 1.17188,
         "lightness": 0.9375,
         "rgb": [58, 63, 0]
-    }
+    },
+    "item": 20533,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 106,
     "name": "Olive Oil",
@@ -2937,7 +3139,9 @@
         "saturation": 0.9375,
         "lightness": 1.09375,
         "rgb": [94, 101, 0]
-    }
+    },
+    "item": 20584,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 107,
     "name": "Pine",
@@ -2965,7 +3169,9 @@
         "saturation": 1.01563,
         "lightness": 0.78125,
         "rgb": [38, 36, 0]
-    }
+    },
+    "item": 20508,
+    "categories": ["Green", "Leather", "Uncommon"]
 }, {
     "id": 108,
     "name": "Olive Yew",
@@ -2993,7 +3199,9 @@
         "saturation": 0.664063,
         "lightness": 1.25,
         "rgb": [119, 124, 34]
-    }
+    },
+    "item": 20585,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 109,
     "name": "Apricot",
@@ -3021,7 +3229,8 @@
         "saturation": 0.820313,
         "lightness": 1.09375,
         "rgb": [149, 70, 22]
-    }
+    },
+    "categories": ["Orange", "Vibrant", "Starter"]
 }, {
     "id": 110,
     "name": "Cinnamon",
@@ -3049,7 +3258,9 @@
         "saturation": 0.859375,
         "lightness": 0.898438,
         "rgb": [62, 14, 0]
-    }
+    },
+    "item": 20487,
+    "categories": ["Orange", "Vibrant", "Uncommon"]
 }, {
     "id": 111,
     "name": "Creamsicle",
@@ -3077,7 +3288,9 @@
         "saturation": 0.898438,
         "lightness": 1.40625,
         "rgb": [191, 100, 52]
-    }
+    },
+    "item": 20587,
+    "categories": ["Orange", "Vibrant", "Rare"]
 }, {
     "id": 112,
     "name": "Orange",
@@ -3105,7 +3318,9 @@
         "saturation": 0.820313,
         "lightness": 1.09375,
         "rgb": [144, 58, 18]
-    }
+    },
+    "item": 20534,
+    "categories": ["Orange", "Vibrant", "Uncommon"]
 }, {
     "id": 113,
     "name": "Sunset",
@@ -3133,7 +3348,9 @@
         "saturation": 1.01563,
         "lightness": 0.820313,
         "rgb": [99, 19, 0]
-    }
+    },
+    "item": 20535,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 114,
     "name": "Grapevine",
@@ -3161,7 +3378,9 @@
         "saturation": 0.351563,
         "lightness": 1.09375,
         "rgb": [69, 49, 90]
-    }
+    },
+    "item": 20588,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 115,
     "name": "Indigo",
@@ -3189,7 +3408,9 @@
         "saturation": 0.195313,
         "lightness": 0.9375,
         "rgb": [36, 26, 49]
-    }
+    },
+    "item": 20509,
+    "categories": ["Purple", "Vibrant", "Rare"]
 }, {
     "id": 116,
     "name": "Iris Blush",
@@ -3217,7 +3438,9 @@
         "saturation": 0.351563,
         "lightness": 1.25,
         "rgb": [90, 73, 121]
-    }
+    },
+    "item": 20589,
+    "categories": ["Purple", "Vibrant", "Uncommon"]
 }, {
     "id": 117,
     "name": "Orchid",
@@ -3245,7 +3468,8 @@
         "saturation": 0.273438,
         "lightness": 1.01563,
         "rgb": [49, 35, 67]
-    }
+    },
+    "categories": ["Purple", "Vibrant", "Starter"]
 }, {
     "id": 118,
     "name": "Thistle",
@@ -3273,7 +3497,9 @@
         "saturation": 0.390625,
         "lightness": 1.27344,
         "rgb": [130, 106, 163]
-    }
+    },
+    "item": 20590,
+    "categories": ["Purple", "Vibrant", "Uncommon"]
 }, {
     "id": 119,
     "name": "Burgundy",
@@ -3301,7 +3527,9 @@
         "saturation": 0.664063,
         "lightness": 1.09375,
         "rgb": [48, 0, 0]
-    }
+    },
+    "item": 20496,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 120,
     "name": "Coral",
@@ -3329,7 +3557,9 @@
         "saturation": 0.859375,
         "lightness": 1.28906,
         "rgb": [176, 54, 59]
-    }
+    },
+    "item": 20591,
+    "categories": ["Red", "Vibrant", "Uncommon"]
 }, {
     "id": 121,
     "name": "Pink",
@@ -3357,7 +3587,9 @@
         "saturation": 0.78125,
         "lightness": 1.40625,
         "rgb": [185, 74, 85]
-    }
+    },
+    "item": 20537,
+    "categories": ["Red", "Vibrant", "Uncommon"]
 }, {
     "id": 122,
     "name": "Ruby",
@@ -3385,7 +3617,9 @@
         "saturation": 1.17188,
         "lightness": 1.09375,
         "rgb": [72, 0, 0]
-    }
+    },
+    "item": 20592,
+    "categories": ["Red", "Vibrant", "Uncommon"]
 }, {
     "id": 123,
     "name": "Scarlet",
@@ -3413,7 +3647,9 @@
         "saturation": 1.21094,
         "lightness": 1.09375,
         "rgb": [119, 0, 0]
-    }
+    },
+    "item": 20510,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 124,
     "name": "Cotton Candy",
@@ -3441,7 +3677,9 @@
         "saturation": 0.429688,
         "lightness": 1.25,
         "rgb": [159, 94, 121]
-    }
+    },
+    "item": 20593,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 125,
     "name": "Fuchsia",
@@ -3469,7 +3707,9 @@
         "saturation": 0.546875,
         "lightness": 1.25,
         "rgb": [103, 38, 68]
-    }
+    },
+    "item": 20538,
+    "categories": ["Red", "Vibrant", "Uncommon"]
 }, {
     "id": 126,
     "name": "Hot Pink",
@@ -3497,7 +3737,9 @@
         "saturation": 0.585938,
         "lightness": 1.44531,
         "rgb": [151, 69, 98]
-    }
+    },
+    "item": 20594,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 127,
     "name": "Lipstick",
@@ -3525,7 +3767,9 @@
         "saturation": 0.507813,
         "lightness": 1.09375,
         "rgb": [66, 6, 38]
-    }
+    },
+    "item": 20490,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 128,
     "name": "Maroon",
@@ -3553,7 +3797,9 @@
         "saturation": 0.390625,
         "lightness": 0.78125,
         "rgb": [39, 0, 23]
-    }
+    },
+    "item": 20595,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 129,
     "name": "Green Apple",
@@ -3581,7 +3827,9 @@
         "saturation": 0.507813,
         "lightness": 1.36719,
         "rgb": [81, 99, 40]
-    }
+    },
+    "item": 20470,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 130,
     "name": "Evergreen",
@@ -3609,7 +3857,9 @@
         "saturation": 0.585938,
         "lightness": 0.9375,
         "rgb": [18, 41, 0]
-    }
+    },
+    "item": 20539,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 131,
     "name": "Jalapeno",
@@ -3637,7 +3887,8 @@
         "saturation": 0.507813,
         "lightness": 0.9375,
         "rgb": [31, 56, 0]
-    }
+    },
+    "categories": ["Green", "Vibrant", "Starter"]
 }, {
     "id": 132,
     "name": "Lime",
@@ -3665,7 +3916,9 @@
         "saturation": 0.585938,
         "lightness": 0.976563,
         "rgb": [38, 67, 0]
-    }
+    },
+    "item": 20511,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 133,
     "name": "Sprout",
@@ -3693,7 +3946,9 @@
         "saturation": 0.429688,
         "lightness": 1.17188,
         "rgb": [98, 131, 66]
-    }
+    },
+    "item": 20597,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 134,
     "name": "Seafoam",
@@ -3721,7 +3976,9 @@
         "saturation": 0.507813,
         "lightness": 1.28906,
         "rgb": [61, 130, 121]
-    }
+    },
+    "item": 20601,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 135,
     "name": "Sea Green",
@@ -3749,7 +4006,9 @@
         "saturation": 0.898438,
         "lightness": 1.05469,
         "rgb": [0, 74, 70]
-    }
+    },
+    "item": 20512,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 136,
     "name": "Spruce",
@@ -3777,7 +4036,9 @@
         "saturation": 0.585938,
         "lightness": 0.78125,
         "rgb": [0, 57, 51]
-    }
+    },
+    "item": 20542,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 137,
     "name": "Turquoise",
@@ -3805,7 +4066,9 @@
         "saturation": 0.664063,
         "lightness": 1.13281,
         "rgb": [16, 87, 87]
-    }
+    },
+    "item": 20602,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 138,
     "name": "Wintergreen",
@@ -3833,7 +4096,9 @@
         "saturation": 0.585938,
         "lightness": 0.859375,
         "rgb": [0, 31, 31]
-    }
+    },
+    "item": 20489,
+    "categories": ["Blue", "Vibrant", "Uncommon"]
 }, {
     "id": 139,
     "name": "Violet",
@@ -3861,7 +4126,9 @@
         "saturation": 0.46875,
         "lightness": 1.09375,
         "rgb": [58, 58, 106]
-    }
+    },
+    "item": 20603,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 140,
     "name": "Iris",
@@ -3889,7 +4156,9 @@
         "saturation": 0.351563,
         "lightness": 1.01563,
         "rgb": [45, 40, 78]
-    }
+    },
+    "item": 20543,
+    "categories": ["Purple", "Vibrant", "Rare"]
 }, {
     "id": 141,
     "name": "Lilac",
@@ -3917,7 +4186,9 @@
         "saturation": 0.46875,
         "lightness": 1.36719,
         "rgb": [108, 110, 173]
-    }
+    },
+    "item": 20604,
+    "categories": ["Purple", "Vibrant", "Uncommon"]
 }, {
     "id": 142,
     "name": "Periwinkle",
@@ -3945,7 +4216,9 @@
         "saturation": 0.46875,
         "lightness": 1.17188,
         "rgb": [84, 88, 140]
-    }
+    },
+    "item": 20513,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 143,
     "name": "Royal Purple",
@@ -3973,7 +4246,9 @@
         "saturation": 0.273438,
         "lightness": 0.976563,
         "rgb": [26, 25, 53]
-    }
+    },
+    "item": 20605,
+    "categories": ["Purple", "Vibrant", "Uncommon"]
 }, {
     "id": 144,
     "name": "Butterscotch",
@@ -4001,7 +4276,9 @@
         "saturation": 1.5625,
         "lightness": 0.9375,
         "rgb": [124, 55, 0]
-    }
+    },
+    "item": 20608,
+    "categories": ["Yellow", "Leather", "Common"]
 }, {
     "id": 145,
     "name": "Caramel",
@@ -4029,7 +4306,9 @@
         "saturation": 1.48438,
         "lightness": 0.9375,
         "rgb": [100, 37, 0]
-    }
+    },
+    "item": 20514,
+    "categories": ["Yellow", "Metal", "Common"]
 }, {
     "id": 146,
     "name": "Harvest Gold",
@@ -4057,7 +4336,9 @@
         "saturation": 1.5625,
         "lightness": 1.13281,
         "rgb": [142, 74, 0]
-    }
+    },
+    "item": 20609,
+    "categories": ["Yellow", "Vibrant", "Uncommon"]
 }, {
     "id": 147,
     "name": "Lemon",
@@ -4085,7 +4366,9 @@
         "saturation": 1.25,
         "lightness": 1.17188,
         "rgb": [159, 96, 0]
-    }
+    },
+    "item": 20546,
+    "categories": ["Yellow", "Vibrant", "Common"]
 }, {
     "id": 148,
     "name": "Lemonade",
@@ -4113,7 +4396,9 @@
         "saturation": 0.9375,
         "lightness": 1.25,
         "rgb": [178, 129, 38]
-    }
+    },
+    "item": 20610,
+    "categories": ["Yellow", "Vibrant", "Rare"]
 }, {
     "id": 314,
     "name": "Tungsten",
@@ -4141,7 +4426,9 @@
         "saturation": 0.101563,
         "lightness": 1.36719,
         "rgb": [71, 59, 61]
-    }
+    },
+    "item": 20550,
+    "categories": ["Purple", "Metal", "Uncommon"]
 }, {
     "id": 315,
     "name": "White Gold",
@@ -4169,7 +4456,9 @@
         "saturation": 0.390625,
         "lightness": 1.99219,
         "rgb": [175, 154, 110]
-    }
+    },
+    "item": 20491,
+    "categories": ["Yellow", "Metal", "Rare"]
 }, {
     "id": 332,
     "name": "Shy Peach",
@@ -4197,7 +4486,9 @@
         "saturation": 0.546875,
         "lightness": 1.44531,
         "rgb": [163, 110, 71]
-    }
+    },
+    "item": 20378,
+    "categories": ["Orange", "Metal", "Common"]
 }, {
     "id": 333,
     "name": "Sand",
@@ -4225,7 +4516,9 @@
         "saturation": 0.507813,
         "lightness": 1.44531,
         "rgb": [150, 120, 65]
-    }
+    },
+    "item": 20375,
+    "categories": ["Yellow", "Leather", "Rare"]
 }, {
     "id": 334,
     "name": "Tang",
@@ -4253,7 +4546,9 @@
         "saturation": 0.453125,
         "lightness": 1.44531,
         "rgb": [137, 131, 67]
-    }
+    },
+    "item": 20379,
+    "categories": ["Yellow", "Leather", "Common"]
 }, {
     "id": 335,
     "name": "Pale",
@@ -4281,7 +4576,9 @@
         "saturation": 0.234375,
         "lightness": 1.75781,
         "rgb": [137, 110, 104]
-    }
+    },
+    "item": 20528,
+    "categories": ["Red", "Leather", "Common"]
 }, {
     "id": 336,
     "name": "Refresh",
@@ -4309,7 +4606,9 @@
         "saturation": 0.28125,
         "lightness": 1.75781,
         "rgb": [153, 139, 112]
-    }
+    },
+    "item": 20529,
+    "categories": ["Brown", "Leather", "Uncommon"]
 }, {
     "id": 337,
     "name": "Far Mountain",
@@ -4337,7 +4636,9 @@
         "saturation": 0.3125,
         "lightness": 1.48438,
         "rgb": [124, 93, 79]
-    }
+    },
+    "item": 20503,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 338,
     "name": "Clove",
@@ -4365,7 +4666,9 @@
         "saturation": 1.25,
         "lightness": 0.9375,
         "rgb": [92, 28, 0]
-    }
+    },
+    "item": 20444,
+    "categories": ["Yellow", "Vibrant", "Common"]
 }, {
     "id": 339,
     "name": "Wasabi",
@@ -4393,7 +4696,9 @@
         "saturation": 0.429688,
         "lightness": 1.05469,
         "rgb": [67, 100, 43]
-    }
+    },
+    "item": 20540,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 340,
     "name": "Khaki",
@@ -4421,7 +4726,9 @@
         "saturation": 1.36719,
         "lightness": 0.9375,
         "rgb": [79, 67, 0]
-    }
+    },
+    "item": 20521,
+    "categories": ["Brown", "Metal", "Common"]
 }, {
     "id": 341,
     "name": "Patina",
@@ -4449,7 +4756,9 @@
         "saturation": 1.36719,
         "lightness": 0.9375,
         "rgb": [69, 49, 0]
-    }
+    },
+    "item": 20560,
+    "categories": ["Yellow", "Metal", "Common"]
 }, {
     "id": 342,
     "name": "Tarnish",
@@ -4477,7 +4786,9 @@
         "saturation": 1.09375,
         "lightness": 0.859375,
         "rgb": [38, 25, 0]
-    }
+    },
+    "item": 20502,
+    "categories": ["Yellow", "Metal", "Uncommon"]
 }, {
     "id": 343,
     "name": "Flush",
@@ -4505,7 +4816,9 @@
         "saturation": 0.507813,
         "lightness": 1.75781,
         "rgb": [190, 115, 115]
-    }
+    },
+    "item": 20374,
+    "categories": ["Red", "Vibrant", "Uncommon"]
 }, {
     "id": 344,
     "name": "Orange Frost",
@@ -4533,7 +4846,9 @@
         "saturation": 0.585938,
         "lightness": 1.75781,
         "rgb": [192, 135, 92]
-    }
+    },
+    "item": 20384,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 345,
     "name": "Lemon Zest",
@@ -4561,7 +4876,9 @@
         "saturation": 0.546875,
         "lightness": 1.75781,
         "rgb": [181, 149, 89]
-    }
+    },
+    "item": 20376,
+    "categories": ["Yellow", "Vibrant", "Uncommon"]
 }, {
     "id": 346,
     "name": "Quickstalk",
@@ -4589,7 +4906,9 @@
         "saturation": 0.421875,
         "lightness": 1.75781,
         "rgb": [157, 163, 98]
-    }
+    },
+    "item": 20377,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 347,
     "name": "Spring",
@@ -4617,7 +4936,9 @@
         "saturation": 0.3125,
         "lightness": 1.75781,
         "rgb": [133, 159, 106]
-    }
+    },
+    "item": 20386,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 348,
     "name": "Wintermint",
@@ -4645,7 +4966,9 @@
         "saturation": 0.273438,
         "lightness": 1.75781,
         "rgb": [118, 164, 137]
-    }
+    },
+    "item": 20405,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 349,
     "name": "Dapple",
@@ -4673,7 +4996,9 @@
         "saturation": 0.3125,
         "lightness": 1.75781,
         "rgb": [109, 150, 159]
-    }
+    },
+    "item": 20380,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 350,
     "name": "Dewdrop",
@@ -4701,7 +5026,9 @@
         "saturation": 0.28125,
         "lightness": 1.75781,
         "rgb": [124, 128, 167]
-    }
+    },
+    "item": 20381,
+    "categories": ["Blue", "Vibrant", "Uncommon"]
 }, {
     "id": 351,
     "name": "Scenic",
@@ -4729,7 +5056,9 @@
         "saturation": 0.273438,
         "lightness": 1.75781,
         "rgb": [144, 114, 160]
-    }
+    },
+    "item": 20385,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 352,
     "name": "Demure",
@@ -4757,7 +5086,9 @@
         "saturation": 0.507813,
         "lightness": 1.36719,
         "rgb": [155, 89, 74]
-    }
+    },
+    "item": 20372,
+    "categories": ["Red", "Leather", "Uncommon"]
 }, {
     "id": 353,
     "name": "Hint",
@@ -4785,7 +5116,9 @@
         "saturation": 0.234375,
         "lightness": 1.36719,
         "rgb": [120, 108, 86]
-    }
+    },
+    "item": 20525,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 354,
     "name": "Pink Tint",
@@ -4813,7 +5146,9 @@
         "saturation": 0.351563,
         "lightness": 1.99219,
         "rgb": [163, 121, 115]
-    }
+    },
+    "item": 20494,
+    "categories": ["Red", "Vibrant", "Uncommon"]
 }, {
     "id": 355,
     "name": "Olive Tint",
@@ -4841,7 +5176,9 @@
         "saturation": 0.234375,
         "lightness": 1.99219,
         "rgb": [143, 143, 113]
-    }
+    },
+    "item": 20505,
+    "categories": ["Green", "Metal", "Common"]
 }, {
     "id": 356,
     "name": "Blue Tint",
@@ -4869,7 +5206,9 @@
         "saturation": 0.117188,
         "lightness": 1.99219,
         "rgb": [115, 128, 131]
-    }
+    },
+    "item": 20562,
+    "categories": ["Gray", "Metal", "Uncommon"]
 }, {
     "id": 357,
     "name": "Rose Tint",
@@ -4897,7 +5236,9 @@
         "saturation": 0.195313,
         "lightness": 1.99219,
         "rgb": [141, 114, 119]
-    }
+    },
+    "item": 20577,
+    "categories": ["Red", "Leather", "Rare"]
 }, {
     "id": 358,
     "name": "Tea Shade",
@@ -4925,7 +5266,9 @@
         "saturation": 0.0625,
         "lightness": 1.17188,
         "rgb": [43, 50, 46]
-    }
+    },
+    "item": 20580,
+    "categories": ["Green", "Metal", "Uncommon"]
 }, {
     "id": 359,
     "name": "Celery",
@@ -4953,7 +5296,9 @@
         "saturation": 0.3125,
         "lightness": 1.36719,
         "rgb": [114, 127, 76]
-    }
+    },
+    "item": 20371,
+    "categories": ["Green", "Leather", "Uncommon"]
 }, {
     "id": 360,
     "name": "Mist",
@@ -4981,7 +5326,9 @@
         "saturation": 0.195313,
         "lightness": 1.36719,
         "rgb": [98, 125, 95]
-    }
+    },
+    "item": 20383,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 361,
     "name": "Night Air",
@@ -5009,7 +5356,9 @@
         "saturation": 0.195313,
         "lightness": 1.40625,
         "rgb": [90, 121, 115]
-    }
+    },
+    "item": 20373,
+    "categories": ["Blue", "Leather", "Uncommon"]
 }, {
     "id": 362,
     "name": "Winter Sky",
@@ -5037,7 +5386,8 @@
         "saturation": 0.195313,
         "lightness": 1.40625,
         "rgb": [94, 115, 126]
-    }
+    },
+    "categories": ["Blue", "Leather", "Starter"]
 }, {
     "id": 363,
     "name": "Hush",
@@ -5065,7 +5415,9 @@
         "saturation": 0.203125,
         "lightness": 1.36719,
         "rgb": [94, 97, 126]
-    }
+    },
+    "item": 20382,
+    "categories": ["Blue", "Leather", "Uncommon"]
 }, {
     "id": 364,
     "name": "Taro",
@@ -5093,7 +5445,9 @@
         "saturation": 0.203125,
         "lightness": 1.44531,
         "rgb": [115, 82, 101]
-    }
+    },
+    "item": 20404,
+    "categories": ["Purple", "Leather", "Rare"]
 }, {
     "id": 365,
     "name": "Crush",
@@ -5121,7 +5475,9 @@
         "saturation": 0.546875,
         "lightness": 1.36719,
         "rgb": [135, 76, 76]
-    }
+    },
+    "item": 20441,
+    "categories": ["Red", "Vibrant", "Uncommon"]
 }, {
     "id": 366,
     "name": "Squash",
@@ -5149,7 +5505,9 @@
         "saturation": 0.585938,
         "lightness": 1.28906,
         "rgb": [132, 94, 51]
-    }
+    },
+    "item": 20443,
+    "categories": ["Yellow", "Leather", "Common"]
 }, {
     "id": 367,
     "name": "Fern",
@@ -5177,7 +5535,9 @@
         "saturation": 0.351563,
         "lightness": 1.32813,
         "rgb": [82, 75, 41]
-    }
+    },
+    "item": 20424,
+    "categories": ["Green", "Leather", "Uncommon"]
 }, {
     "id": 368,
     "name": "Warmth",
@@ -5205,7 +5565,9 @@
         "saturation": 0.546875,
         "lightness": 1.36719,
         "rgb": [106, 57, 41]
-    }
+    },
+    "item": 20467,
+    "categories": ["Red", "Leather", "Rare"]
 }, {
     "id": 369,
     "name": "Peanut Butter",
@@ -5233,7 +5595,9 @@
         "saturation": 0.625,
         "lightness": 1.28906,
         "rgb": [101, 69, 23]
-    }
+    },
+    "item": 20442,
+    "categories": ["Yellow", "Metal", "Common"]
 }, {
     "id": 370,
     "name": "Envy",
@@ -5261,7 +5625,9 @@
         "saturation": 0.429688,
         "lightness": 1.17188,
         "rgb": [59, 67, 20]
-    }
+    },
+    "item": 20612,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 371,
     "name": "Grapesicle",
@@ -5289,7 +5655,9 @@
         "saturation": 0.21875,
         "lightness": 1.17188,
         "rgb": [84, 64, 91]
-    }
+    },
+    "item": 20422,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 372,
     "name": "Night Iris",
@@ -5317,7 +5685,9 @@
         "saturation": 0.179688,
         "lightness": 1.13281,
         "rgb": [53, 47, 69]
-    }
+    },
+    "item": 20460,
+    "categories": ["Purple", "Leather", "Rare"]
 }, {
     "id": 373,
     "name": "Malt",
@@ -5345,7 +5715,9 @@
         "saturation": 0.195313,
         "lightness": 1.48438,
         "rgb": [127, 115, 99]
-    }
+    },
+    "item": 20569,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 374,
     "name": "Cantaloupe",
@@ -5373,7 +5745,9 @@
         "saturation": 0.742188,
         "lightness": 1.40625,
         "rgb": [183, 94, 78]
-    }
+    },
+    "item": 20599,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 375,
     "name": "Sherbert",
@@ -5401,7 +5775,9 @@
         "saturation": 0.78125,
         "lightness": 1.25,
         "rgb": [154, 63, 47]
-    }
+    },
+    "item": 20600,
+    "categories": ["Orange", "Vibrant", "Uncommon"]
 }, {
     "id": 376,
     "name": "Salmon",
@@ -5429,7 +5805,8 @@
         "saturation": 0.703125,
         "lightness": 1.17188,
         "rgb": [126, 41, 32]
-    }
+    },
+    "categories": ["Orange", "Vibrant", "Starter"]
 }, {
     "id": 377,
     "name": "Autumn",
@@ -5457,7 +5834,8 @@
         "saturation": 0.859375,
         "lightness": 1.05469,
         "rgb": [95, 7, 0]
-    }
+    },
+    "categories": ["Orange", "Vibrant", "Starter"]
 }, {
     "id": 378,
     "name": "Brick",
@@ -5485,7 +5863,9 @@
         "saturation": 0.703125,
         "lightness": 1.01563,
         "rgb": [70, 0, 0]
-    }
+    },
+    "item": 20497,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 379,
     "name": "Butter",
@@ -5513,7 +5893,9 @@
         "saturation": 0.898438,
         "lightness": 1.44531,
         "rgb": [191, 128, 51]
-    }
+    },
+    "item": 20468,
+    "categories": ["Yellow", "Vibrant", "Common"]
 }, {
     "id": 380,
     "name": "Honey",
@@ -5541,7 +5923,9 @@
         "saturation": 1.09375,
         "lightness": 1.17188,
         "rgb": [157, 70, 2]
-    }
+    },
+    "item": 20469,
+    "categories": ["Yellow", "Vibrant", "Uncommon"]
 }, {
     "id": 381,
     "name": "Tangerine",
@@ -5569,7 +5953,9 @@
         "saturation": 1.5625,
         "lightness": 1.13281,
         "rgb": [138, 55, 0]
-    }
+    },
+    "item": 20432,
+    "categories": ["Yellow", "Vibrant", "Common"]
 }, {
     "id": 382,
     "name": "Amber",
@@ -5597,7 +5983,9 @@
         "saturation": 1.40625,
         "lightness": 1.01563,
         "rgb": [122, 40, 0]
-    }
+    },
+    "item": 20421,
+    "categories": ["Yellow", "Vibrant", "Rare"]
 }, {
     "id": 383,
     "name": "Mohair",
@@ -5625,7 +6013,9 @@
         "saturation": 0.507813,
         "lightness": 1.21094,
         "rgb": [110, 75, 45]
-    }
+    },
+    "item": 20391,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 384,
     "name": "Mocha",
@@ -5653,7 +6043,9 @@
         "saturation": 0.273438,
         "lightness": 1.28906,
         "rgb": [93, 71, 60]
-    }
+    },
+    "item": 20413,
+    "categories": ["Brown", "Leather", "Uncommon"]
 }, {
     "id": 385,
     "name": "Burnished Steel",
@@ -5681,7 +6073,9 @@
         "saturation": 0.0625,
         "lightness": 1.5625,
         "rgb": [78, 82, 87]
-    }
+    },
+    "item": 20478,
+    "categories": ["Gray", "Metal", "Common"]
 }, {
     "id": 434,
     "name": "Pumpkin",
@@ -5709,7 +6103,9 @@
         "saturation": 0.625,
         "lightness": 1.36719,
         "rgb": [118, 71, 41]
-    }
+    },
+    "item": 20465,
+    "categories": ["Orange", "Leather", "Rare"]
 }, {
     "id": 435,
     "name": "Dijon",
@@ -5737,7 +6133,8 @@
         "saturation": 0.546875,
         "lightness": 1.36719,
         "rgb": [105, 83, 41]
-    }
+    },
+    "categories": ["Yellow", "Metal", "Starter"]
 }, {
     "id": 436,
     "name": "Remembrance",
@@ -5765,7 +6162,9 @@
         "saturation": 0.585938,
         "lightness": 1.36719,
         "rgb": [110, 51, 51]
-    }
+    },
+    "item": 20466,
+    "categories": ["Red", "Leather", "Uncommon"]
 }, {
     "id": 437,
     "name": "Pumpkin Pie",
@@ -5793,7 +6192,9 @@
         "saturation": 0.585938,
         "lightness": 1.28906,
         "rgb": [103, 59, 31]
-    }
+    },
+    "item": 20431,
+    "categories": ["Orange", "Leather", "Uncommon"]
 }, {
     "id": 438,
     "name": "Moss",
@@ -5821,7 +6222,9 @@
         "saturation": 0.351563,
         "lightness": 1.28906,
         "rgb": [69, 73, 35]
-    }
+    },
+    "item": 20464,
+    "categories": ["Green", "Leather", "Common"]
 }, {
     "id": 439,
     "name": "Shy Iris",
@@ -5849,7 +6252,9 @@
         "saturation": 0.195313,
         "lightness": 1.28906,
         "rgb": [89, 83, 106]
-    }
+    },
+    "item": 20430,
+    "categories": ["Purple", "Leather", "Rare"]
 }, {
     "id": 440,
     "name": "Evening",
@@ -5877,7 +6282,9 @@
         "saturation": 0.195313,
         "lightness": 1.13281,
         "rgb": [66, 50, 74]
-    }
+    },
+    "item": 20439,
+    "categories": ["Purple", "Leather", "Uncommon"]
 }, {
     "id": 441,
     "name": "Brandywine",
@@ -5905,7 +6312,9 @@
         "saturation": 0.257813,
         "lightness": 1.17188,
         "rgb": [79, 49, 68]
-    }
+    },
+    "item": 20456,
+    "categories": ["Purple", "Leather", "Rare"]
 }, {
     "id": 442,
     "name": "Matte",
@@ -5933,7 +6342,8 @@
         "saturation": 0.15625,
         "lightness": 1.99219,
         "rgb": [142, 138, 120]
-    }
+    },
+    "categories": ["Brown", "Metal", "Starter"]
 }, {
     "id": 443,
     "name": "White",
@@ -5961,7 +6371,9 @@
         "saturation": 0.0234375,
         "lightness": 1.83594,
         "rgb": [171, 167, 166]
-    }
+    },
+    "item": 20582,
+    "categories": ["Gray", "Metal", "Rare"]
 }, {
     "id": 444,
     "name": "Olive Silk",
@@ -5989,7 +6401,9 @@
         "saturation": 0.257813,
         "lightness": 1.75781,
         "rgb": [133, 122, 96]
-    }
+    },
+    "item": 20572,
+    "categories": ["Brown", "Metal", "Common"]
 }, {
     "id": 445,
     "name": "Mint Frost",
@@ -6017,7 +6431,9 @@
         "saturation": 0.15625,
         "lightness": 1.99219,
         "rgb": [142, 152, 129]
-    }
+    },
+    "item": 20570,
+    "categories": ["Green", "Metal", "Rare"]
 }, {
     "id": 446,
     "name": "Whisper",
@@ -6045,7 +6461,9 @@
         "saturation": 0.101563,
         "lightness": 1.36719,
         "rgb": [135, 122, 122]
-    }
+    },
+    "item": 20532,
+    "categories": ["Purple", "Metal", "Uncommon"]
 }, {
     "id": 447,
     "name": "Peach Tint",
@@ -6073,7 +6491,9 @@
         "saturation": 0.351563,
         "lightness": 1.99219,
         "rgb": [160, 130, 108]
-    }
+    },
+    "item": 20574,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 448,
     "name": "Green Tint",
@@ -6101,7 +6521,9 @@
         "saturation": 0.117188,
         "lightness": 1.99219,
         "rgb": [125, 134, 116]
-    }
+    },
+    "item": 20567,
+    "categories": ["Gray", "Metal", "Common"]
 }, {
     "id": 449,
     "name": "Violet Tint",
@@ -6129,7 +6551,9 @@
         "saturation": 0.117188,
         "lightness": 1.99219,
         "rgb": [119, 121, 135]
-    }
+    },
+    "item": 20581,
+    "categories": ["Gray", "Metal", "Uncommon"]
 }, {
     "id": 450,
     "name": "Mushroom",
@@ -6157,7 +6581,9 @@
         "saturation": 0.390625,
         "lightness": 1.21094,
         "rgb": [89, 63, 43]
-    }
+    },
+    "item": 20488,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 451,
     "name": "Blue Shade",
@@ -6185,7 +6611,9 @@
         "saturation": 0.117188,
         "lightness": 1.17188,
         "rgb": [44, 52, 57]
-    }
+    },
+    "item": 20522,
+    "categories": ["Blue", "Metal", "Common"]
 }, {
     "id": 452,
     "name": "Cashmere",
@@ -6213,7 +6641,9 @@
         "saturation": 0.351563,
         "lightness": 1.28906,
         "rgb": [109, 94, 66]
-    }
+    },
+    "item": 20390,
+    "categories": ["Brown", "Leather", "Uncommon"]
 }, {
     "id": 453,
     "name": "Taupe",
@@ -6241,7 +6671,9 @@
         "saturation": 0.273438,
         "lightness": 1.25,
         "rgb": [81, 58, 46]
-    }
+    },
+    "item": 20416,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 454,
     "name": "Tarnished Steel",
@@ -6269,7 +6701,8 @@
         "saturation": 0.195313,
         "lightness": 1.40625,
         "rgb": [80, 70, 53]
-    }
+    },
+    "categories": ["Brown", "Leather", "Starter"]
 }, {
     "id": 455,
     "name": "Oil Slick",
@@ -6297,7 +6730,9 @@
         "saturation": 0.234375,
         "lightness": 1.32813,
         "rgb": [57, 47, 30]
-    }
+    },
+    "item": 20451,
+    "categories": ["Brown", "Metal", "Rare"]
 }, {
     "id": 456,
     "name": "Cocoa",
@@ -6325,7 +6760,9 @@
         "saturation": 0.195313,
         "lightness": 1.09375,
         "rgb": [57, 40, 34]
-    }
+    },
+    "item": 20392,
+    "categories": ["Brown", "Leather", "Rare"]
 }, {
     "id": 457,
     "name": "Clay",
@@ -6353,7 +6790,8 @@
         "saturation": 0.3125,
         "lightness": 1.28906,
         "rgb": [87, 73, 49]
-    }
+    },
+    "categories": ["Brown", "Leather", "Starter"]
 }, {
     "id": 458,
     "name": "Night Shade",
@@ -6381,7 +6819,9 @@
         "saturation": 0.117188,
         "lightness": 1.17188,
         "rgb": [41, 44, 54]
-    }
+    },
+    "item": 20571,
+    "categories": ["Gray", "Metal", "Rare"]
 }, {
     "id": 459,
     "name": "Orange Shade",
@@ -6409,7 +6849,9 @@
         "saturation": 0.429688,
         "lightness": 1.44531,
         "rgb": [94, 64, 41]
-    }
+    },
+    "item": 20573,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 460,
     "name": "Purple Tint",
@@ -6437,7 +6879,9 @@
         "saturation": 0.117188,
         "lightness": 1.99219,
         "rgb": [128, 115, 131]
-    }
+    },
+    "item": 20575,
+    "categories": ["Purple", "Metal", "Common"]
 }, {
     "id": 461,
     "name": "Aqua Tint",
@@ -6465,7 +6909,9 @@
         "saturation": 0.117188,
         "lightness": 1.99219,
         "rgb": [116, 134, 125]
-    }
+    },
+    "item": 20561,
+    "categories": ["Green", "Metal", "Uncommon"]
 }, {
     "id": 462,
     "name": "Lemon Tint",
@@ -6493,7 +6939,9 @@
         "saturation": 0.390625,
         "lightness": 1.99219,
         "rgb": [158, 139, 102]
-    }
+    },
+    "item": 20504,
+    "categories": ["Yellow", "Leather", "Rare"]
 }, {
     "id": 463,
     "name": "Rose Shade",
@@ -6521,7 +6969,9 @@
         "saturation": 0.390625,
         "lightness": 1.21094,
         "rgb": [79, 39, 39]
-    }
+    },
+    "item": 20506,
+    "categories": ["Red", "Leather", "Uncommon"]
 }, {
     "id": 464,
     "name": "Grape Shade",
@@ -6549,7 +6999,9 @@
         "saturation": 0.101563,
         "lightness": 1.17188,
         "rgb": [52, 45, 56]
-    }
+    },
+    "item": 20566,
+    "categories": ["Purple", "Metal", "Uncommon"]
 }, {
     "id": 465,
     "name": "Shale",
@@ -6577,7 +7029,9 @@
         "saturation": 0.195313,
         "lightness": 1.25,
         "rgb": [71, 67, 49]
-    }
+    },
+    "item": 20394,
+    "categories": ["Green", "Metal", "Common"]
 }, {
     "id": 466,
     "name": "Old Penny",
@@ -6605,7 +7059,9 @@
         "saturation": 0.546875,
         "lightness": 1.28906,
         "rgb": [115, 60, 39]
-    }
+    },
+    "item": 20483,
+    "categories": ["Orange", "Metal", "Common"]
 }, {
     "id": 467,
     "name": "Mudmetal",
@@ -6633,7 +7089,9 @@
         "saturation": 0.429688,
         "lightness": 1.44531,
         "rgb": [111, 89, 54]
-    }
+    },
+    "item": 20482,
+    "categories": ["Brown", "Metal", "Common"]
 }, {
     "id": 468,
     "name": "Copper Pot",
@@ -6661,7 +7119,9 @@
         "saturation": 0.703125,
         "lightness": 1.48438,
         "rgb": [135, 55, 26]
-    }
+    },
+    "item": 20425,
+    "categories": ["Orange", "Metal", "Common"]
 }, {
     "id": 469,
     "name": "Swamp Grass",
@@ -6689,7 +7149,9 @@
         "saturation": 0.46875,
         "lightness": 1.28906,
         "rgb": [82, 62, 23]
-    }
+    },
+    "item": 20549,
+    "categories": ["Brown", "Metal", "Common"]
 }, {
     "id": 470,
     "name": "Marine",
@@ -6717,7 +7179,9 @@
         "saturation": 0.273438,
         "lightness": 1.17188,
         "rgb": [55, 46, 24]
-    }
+    },
+    "item": 20400,
+    "categories": ["Green", "Leather", "Common"]
 }, {
     "id": 471,
     "name": "Wine Shade",
@@ -6745,7 +7209,9 @@
         "saturation": 0.15625,
         "lightness": 1.17188,
         "rgb": [61, 43, 49]
-    }
+    },
+    "item": 20495,
+    "categories": ["Purple", "Metal", "Rare"]
 }, {
     "id": 472,
     "name": "Lemon Shade",
@@ -6773,7 +7239,9 @@
         "saturation": 0.390625,
         "lightness": 1.28906,
         "rgb": [74, 54, 26]
-    }
+    },
+    "item": 20568,
+    "categories": ["Brown", "Leather", "Uncommon"]
 }, {
     "id": 473,
     "name": "Abyss",
@@ -6801,7 +7269,9 @@
         "saturation": 0,
         "lightness": 1.09375,
         "rgb": [15, 15, 15]
-    }
+    },
+    "item": 20356,
+    "categories": ["Gray", "Metal", "Rare"]
 }, {
     "id": 474,
     "name": "Ash",
@@ -6829,7 +7299,9 @@
         "saturation": 0.0234375,
         "lightness": 1.28906,
         "rgb": [74, 71, 71]
-    }
+    },
+    "item": 20357,
+    "categories": ["Gray", "Metal", "Rare"]
 }, {
     "id": 475,
     "name": "Dust",
@@ -6857,7 +7329,9 @@
         "saturation": 0.0234375,
         "lightness": 1.44531,
         "rgb": [94, 91, 90]
-    }
+    },
+    "item": 20362,
+    "categories": ["Gray", "Metal", "Common"]
 }, {
     "id": 476,
     "name": "Graphite",
@@ -6885,7 +7359,9 @@
         "saturation": 0.0234375,
         "lightness": 1.28906,
         "rgb": [51, 49, 52]
-    }
+    },
+    "item": 20361,
+    "categories": ["Gray", "Metal", "Uncommon"]
 }, {
     "id": 477,
     "name": "Icing",
@@ -6913,7 +7389,9 @@
         "saturation": 0.0234375,
         "lightness": 1.67969,
         "rgb": [142, 138, 137]
-    }
+    },
+    "item": 20364,
+    "categories": ["Gray", "Metal", "Rare"]
 }, {
     "id": 478,
     "name": "Beige",
@@ -6941,7 +7419,9 @@
         "saturation": 0.351563,
         "lightness": 1.36719,
         "rgb": [119, 91, 74]
-    }
+    },
+    "item": 20406,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 479,
     "name": "Latte",
@@ -6969,7 +7449,9 @@
         "saturation": 0.390625,
         "lightness": 1.40625,
         "rgb": [137, 107, 80]
-    }
+    },
+    "item": 20389,
+    "categories": ["Brown", "Leather", "Common"]
 }, {
     "id": 480,
     "name": "Antique Gold",
@@ -6997,7 +7479,9 @@
         "saturation": 0.625,
         "lightness": 1.99219,
         "rgb": [187, 149, 90]
-    }
+    },
+    "item": 20476,
+    "categories": ["Yellow", "Metal", "Starter"]
 }, {
     "id": 481,
     "name": "Copper Penny",
@@ -7025,7 +7509,9 @@
         "saturation": 0.78125,
         "lightness": 1.99219,
         "rgb": [168, 93, 59]
-    }
+    },
+    "item": 20479,
+    "categories": ["Orange", "Metal", "Uncommon"]
 }, {
     "id": 482,
     "name": "Midnight Fire",
@@ -7053,7 +7539,9 @@
         "saturation": 0.273438,
         "lightness": 1.01563,
         "rgb": [31, 12, 0]
-    }
+    },
+    "item": 20517,
+    "categories": ["Gray", "Vibrant", "Rare"]
 }, {
     "id": 483,
     "name": "Midnight Ice",
@@ -7081,7 +7569,9 @@
         "saturation": 0.195313,
         "lightness": 1.01563,
         "rgb": [1, 17, 23]
-    }
+    },
+    "item": 20518,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 484,
     "name": "Green Shade",
@@ -7109,7 +7599,9 @@
         "saturation": 0.117188,
         "lightness": 1.28906,
         "rgb": [50, 59, 45]
-    }
+    },
+    "item": 20493,
+    "categories": ["Green", "Metal", "Common"]
 }, {
     "id": 485,
     "name": "Olive Shade",
@@ -7137,7 +7629,9 @@
         "saturation": 0.15625,
         "lightness": 1.28906,
         "rgb": [52, 50, 35]
-    }
+    },
+    "item": 20527,
+    "categories": ["Green", "Metal", "Common"]
 }, {
     "id": 582,
     "name": "Adobe Sunset",
@@ -7165,7 +7659,9 @@
         "saturation": 1.01563,
         "lightness": 0.976563,
         "rgb": [110, 31, 0]
-    }
+    },
+    "item": 20659,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 583,
     "name": "Afternoon",
@@ -7193,7 +7689,9 @@
         "saturation": 0.390625,
         "lightness": 1.09375,
         "rgb": [41, 54, 88]
-    }
+    },
+    "item": 20613,
+    "categories": ["Blue", "Vibrant", "Uncommon"]
 }, {
     "id": 584,
     "name": "Ancient Silver",
@@ -7221,7 +7719,9 @@
         "saturation": 0.273438,
         "lightness": 1.5625,
         "rgb": [139, 124, 90]
-    }
+    },
+    "item": 20647,
+    "categories": ["Yellow", "Vibrant", "Rare"]
 }, {
     "id": 585,
     "name": "Banana",
@@ -7249,7 +7749,9 @@
         "saturation": 0.898438,
         "lightness": 1.36719,
         "rgb": [195, 143, 45]
-    }
+    },
+    "item": 20660,
+    "categories": ["Yellow", "Vibrant", "Common"]
 }, {
     "id": 586,
     "name": "Black Cherry",
@@ -7277,7 +7779,9 @@
         "saturation": 0.703125,
         "lightness": 1.01563,
         "rgb": [65, 0, 0]
-    }
+    },
+    "item": 20648,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 587,
     "name": "Blue Ice",
@@ -7305,7 +7809,9 @@
         "saturation": 0.15625,
         "lightness": 1.48438,
         "rgb": [150, 160, 180]
-    }
+    },
+    "item": 20661,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 588,
     "name": "Blue Sky",
@@ -7333,7 +7839,9 @@
         "saturation": 0.507813,
         "lightness": 1.13281,
         "rgb": [48, 76, 115]
-    }
+    },
+    "item": 20649,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 589,
     "name": "Blurple",
@@ -7361,7 +7869,9 @@
         "saturation": 0.351563,
         "lightness": 1.17188,
         "rgb": [81, 63, 107]
-    }
+    },
+    "item": 20662,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 590,
     "name": "Brook",
@@ -7389,7 +7899,9 @@
         "saturation": 0.46875,
         "lightness": 1.28906,
         "rgb": [110, 135, 180]
-    }
+    },
+    "item": 20614,
+    "categories": ["Blue", "Vibrant", "Uncommon"]
 }, {
     "id": 591,
     "name": "Buttercream",
@@ -7417,7 +7929,9 @@
         "saturation": 0.859375,
         "lightness": 1.36719,
         "rgb": [217, 156, 83]
-    }
+    },
+    "item": 20743,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 592,
     "name": "Cherry",
@@ -7445,7 +7959,9 @@
         "saturation": 1.17188,
         "lightness": 1.05469,
         "rgb": [133, 0, 3]
-    }
+    },
+    "item": 20615,
+    "categories": ["Red", "Vibrant", "Uncommon"]
 }, {
     "id": 593,
     "name": "Chestnut",
@@ -7473,7 +7989,9 @@
         "saturation": 0.9375,
         "lightness": 1.05469,
         "rgb": [114, 23, 0]
-    }
+    },
+    "item": 20663,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 594,
     "name": "Citrus",
@@ -7501,7 +8019,9 @@
         "saturation": 0.898438,
         "lightness": 1.32813,
         "rgb": [211, 120, 72]
-    }
+    },
+    "item": 20665,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 595,
     "name": "Citrus Breeze",
@@ -7529,7 +8049,9 @@
         "saturation": 0.898438,
         "lightness": 1.36719,
         "rgb": [235, 142, 93]
-    }
+    },
+    "item": 20664,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 596,
     "name": "Citrus Ice",
@@ -7557,7 +8079,9 @@
         "saturation": 0.507813,
         "lightness": 1.48438,
         "rgb": [217, 162, 119]
-    }
+    },
+    "item": 20666,
+    "categories": ["Yellow", "Vibrant", "Common"]
 }, {
     "id": 597,
     "name": "Cobalt",
@@ -7585,7 +8109,9 @@
         "saturation": 0.117188,
         "lightness": 1.32813,
         "rgb": [63, 78, 82]
-    }
+    },
+    "item": 20650,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 598,
     "name": "Cornsilk",
@@ -7613,7 +8139,9 @@
         "saturation": 0.820313,
         "lightness": 1.32813,
         "rgb": [182, 165, 67]
-    }
+    },
+    "item": 20744,
+    "categories": ["Yellow", "Vibrant", "Common"]
 }, {
     "id": 599,
     "name": "Cucumber",
@@ -7641,7 +8169,9 @@
         "saturation": 0.507813,
         "lightness": 0.976563,
         "rgb": [33, 63, 3]
-    }
+    },
+    "item": 20667,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 600,
     "name": "Daffodil",
@@ -7669,7 +8199,9 @@
         "saturation": 1.09375,
         "lightness": 1.21094,
         "rgb": [172, 109, 12]
-    }
+    },
+    "item": 20668,
+    "categories": ["Yellow", "Vibrant", "Common"]
 }, {
     "id": 601,
     "name": "Dark Chocolate",
@@ -7697,7 +8229,9 @@
         "saturation": 1.32813,
         "lightness": 0.820313,
         "rgb": [71, 39, 0]
-    }
+    },
+    "item": 20616,
+    "categories": ["Brown", "Vibrant", "Uncommon"]
 }, {
     "id": 602,
     "name": "Dark Olive",
@@ -7725,7 +8259,9 @@
         "saturation": 1.05469,
         "lightness": 0.859375,
         "rgb": [43, 41, 0]
-    }
+    },
+    "item": 20669,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 603,
     "name": "Deep Lilac",
@@ -7753,7 +8289,9 @@
         "saturation": 0.46875,
         "lightness": 1.21094,
         "rgb": [92, 97, 154]
-    }
+    },
+    "item": 20651,
+    "categories": ["Purple", "Vibrant", "Rare"]
 }, {
     "id": 604,
     "name": "Deep Maple",
@@ -7781,7 +8319,8 @@
         "saturation": 1.48438,
         "lightness": 0.859375,
         "rgb": [79, 22, 0]
-    }
+    },
+    "categories": ["Brown", "Vibrant", "Starter"]
 }, {
     "id": 605,
     "name": "Deep Pine",
@@ -7809,7 +8348,9 @@
         "saturation": 1.17188,
         "lightness": 0.859375,
         "rgb": [50, 35, 0]
-    }
+    },
+    "item": 20671,
+    "categories": ["Brown", "Vibrant", "Common"]
 }, {
     "id": 606,
     "name": "Deep Teal",
@@ -7837,7 +8378,9 @@
         "saturation": 0.585938,
         "lightness": 0.976563,
         "rgb": [3, 65, 59]
-    }
+    },
+    "item": 20672,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 607,
     "name": "Evening Grass",
@@ -7865,7 +8408,9 @@
         "saturation": 0.585938,
         "lightness": 0.9375,
         "rgb": [18, 41, 0]
-    }
+    },
+    "item": 20652,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 608,
     "name": "Evening Red",
@@ -7893,7 +8438,9 @@
         "saturation": 1.17188,
         "lightness": 0.78125,
         "rgb": [81, 10, 0]
-    }
+    },
+    "item": 20617,
+    "categories": ["Red", "Vibrant", "Uncommon"]
 }, {
     "id": 609,
     "name": "Evening Wine",
@@ -7921,7 +8468,9 @@
         "saturation": 0.273438,
         "lightness": 0.9375,
         "rgb": [53, 22, 47]
-    }
+    },
+    "item": 20618,
+    "categories": ["Purple", "Vibrant", "Uncommon"]
 }, {
     "id": 610,
     "name": "Fluff",
@@ -7949,7 +8498,9 @@
         "saturation": 0.0234375,
         "lightness": 1.5625,
         "rgb": [109, 106, 105]
-    }
+    },
+    "item": 20673,
+    "categories": ["Gray", "Vibrant", "Common"]
 }, {
     "id": 611,
     "name": "Fog",
@@ -7977,7 +8528,9 @@
         "saturation": 0.0390625,
         "lightness": 1.64063,
         "rgb": [131, 126, 124]
-    }
+    },
+    "item": 20674,
+    "categories": ["Gray", "Vibrant", "Common"]
 }, {
     "id": 612,
     "name": "Fresh Green",
@@ -8005,7 +8558,9 @@
         "saturation": 0.859375,
         "lightness": 1.13281,
         "rgb": [98, 104, 5]
-    }
+    },
+    "item": 20675,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 613,
     "name": "Freshen",
@@ -8033,7 +8588,9 @@
         "saturation": 0.3125,
         "lightness": 1.28906,
         "rgb": [129, 174, 138]
-    }
+    },
+    "item": 20676,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 614,
     "name": "Frost Breeze",
@@ -8061,7 +8618,9 @@
         "saturation": 0.390625,
         "lightness": 1.32813,
         "rgb": [125, 145, 184]
-    }
+    },
+    "item": 20677,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 615,
     "name": "Glory",
@@ -8089,7 +8648,8 @@
         "saturation": 0.351563,
         "lightness": 1.17188,
         "rgb": [93, 57, 96]
-    }
+    },
+    "categories": ["Purple", "Vibrant", "Starter"]
 }, {
     "id": 616,
     "name": "Grapefruit",
@@ -8117,7 +8677,9 @@
         "saturation": 0.859375,
         "lightness": 1.01563,
         "rgb": [126, 45, 1]
-    }
+    },
+    "item": 20619,
+    "categories": ["Orange", "Vibrant", "Uncommon"]
 }, {
     "id": 617,
     "name": "Green",
@@ -8145,7 +8707,9 @@
         "saturation": 0.390625,
         "lightness": 0.976563,
         "rgb": [35, 80, 47]
-    }
+    },
+    "item": 20679,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 618,
     "name": "Hazel",
@@ -8173,7 +8737,9 @@
         "saturation": 1.44531,
         "lightness": 0.9375,
         "rgb": [82, 27, 0]
-    }
+    },
+    "item": 20620,
+    "categories": ["Orange", "Vibrant", "Uncommon"]
 }, {
     "id": 619,
     "name": "Heather",
@@ -8201,7 +8767,9 @@
         "saturation": 0.507813,
         "lightness": 1.36719,
         "rgb": [156, 80, 109]
-    }
+    },
+    "item": 20621,
+    "categories": ["Red", "Vibrant", "Uncommon"]
 }, {
     "id": 620,
     "name": "Heliotrope",
@@ -8229,7 +8797,9 @@
         "saturation": 0.3125,
         "lightness": 1.36719,
         "rgb": [147, 106, 152]
-    }
+    },
+    "item": 20680,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 621,
     "name": "Honey Ice",
@@ -8257,7 +8827,9 @@
         "saturation": 0.546875,
         "lightness": 1.48438,
         "rgb": [218, 170, 112]
-    }
+    },
+    "item": 20622,
+    "categories": ["Yellow", "Vibrant", "Uncommon"]
 }, {
     "id": 622,
     "name": "Honeybutter",
@@ -8285,7 +8857,9 @@
         "saturation": 1.01563,
         "lightness": 1.28906,
         "rgb": [180, 103, 26]
-    }
+    },
+    "item": 20681,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 623,
     "name": "Honeysuckle",
@@ -8313,7 +8887,9 @@
         "saturation": 0.859375,
         "lightness": 1.36719,
         "rgb": [207, 140, 61]
-    }
+    },
+    "item": 20682,
+    "categories": ["Yellow", "Vibrant", "Common"]
 }, {
     "id": 624,
     "name": "Humiliation",
@@ -8341,7 +8917,9 @@
         "saturation": 0.429688,
         "lightness": 1.32813,
         "rgb": [172, 106, 136]
-    }
+    },
+    "item": 20683,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 625,
     "name": "Hydrangea",
@@ -8369,7 +8947,9 @@
         "saturation": 0.78125,
         "lightness": 1.05469,
         "rgb": [15, 87, 107]
-    }
+    },
+    "item": 20684,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 626,
     "name": "Lavender",
@@ -8397,7 +8977,9 @@
         "saturation": 0.429688,
         "lightness": 1.09375,
         "rgb": [67, 68, 114]
-    }
+    },
+    "item": 20685,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 627,
     "name": "Lead",
@@ -8425,7 +9007,9 @@
         "saturation": 0.0625,
         "lightness": 1.17188,
         "rgb": [47, 56, 51]
-    }
+    },
+    "item": 20653,
+    "categories": ["Gray", "Vibrant", "Rare"]
 }, {
     "id": 628,
     "name": "Lemon Ice",
@@ -8453,7 +9037,9 @@
         "saturation": 0.585938,
         "lightness": 1.48438,
         "rgb": [216, 178, 107]
-    }
+    },
+    "item": 20686,
+    "categories": ["Yellow", "Vibrant", "Common"]
 }, {
     "id": 629,
     "name": "Lifesblood",
@@ -8481,7 +9067,9 @@
         "saturation": 1.36719,
         "lightness": 1.05469,
         "rgb": [96, 0, 0]
-    }
+    },
+    "item": 20623,
+    "categories": ["Red", "Vibrant", "Uncommon"]
 }, {
     "id": 630,
     "name": "Lime Breeze",
@@ -8509,7 +9097,9 @@
         "saturation": 0.390625,
         "lightness": 1.25,
         "rgb": [93, 151, 131]
-    }
+    },
+    "item": 20687,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 631,
     "name": "Lime Ice",
@@ -8537,7 +9127,9 @@
         "saturation": 0.195313,
         "lightness": 1.48438,
         "rgb": [151, 185, 154]
-    }
+    },
+    "item": 20688,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 632,
     "name": "Limette",
@@ -8565,7 +9157,8 @@
         "saturation": 0.507813,
         "lightness": 1.01563,
         "rgb": [51, 86, 26]
-    }
+    },
+    "categories": ["Green", "Vibrant", "Starter"]
 }, {
     "id": 633,
     "name": "Melon",
@@ -8593,7 +9186,9 @@
         "saturation": 0.78125,
         "lightness": 1.32813,
         "rgb": [170, 80, 64]
-    }
+    },
+    "item": 20690,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 634,
     "name": "Midday",
@@ -8621,7 +9216,9 @@
         "saturation": 0.625,
         "lightness": 1.17188,
         "rgb": [47, 111, 129]
-    }
+    },
+    "item": 20691,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 635,
     "name": "Mint",
@@ -8649,7 +9246,9 @@
         "saturation": 0.429688,
         "lightness": 1.21094,
         "rgb": [116, 145, 80]
-    }
+    },
+    "item": 20624,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 636,
     "name": "Mint Breeze",
@@ -8677,7 +9276,9 @@
         "saturation": 0.46875,
         "lightness": 1.36719,
         "rgb": [132, 162, 91]
-    }
+    },
+    "item": 20692,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 637,
     "name": "Mint Ice",
@@ -8705,7 +9306,9 @@
         "saturation": 0.273438,
         "lightness": 1.48438,
         "rgb": [166, 188, 136]
-    }
+    },
+    "item": 20625,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 638,
     "name": "Mintay",
@@ -8733,7 +9336,9 @@
         "saturation": 0.429688,
         "lightness": 1.28906,
         "rgb": [79, 144, 102]
-    }
+    },
+    "item": 20693,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 639,
     "name": "Morning Sea",
@@ -8761,7 +9366,9 @@
         "saturation": 0.46875,
         "lightness": 1.28906,
         "rgb": [80, 146, 137]
-    }
+    },
+    "item": 20694,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 640,
     "name": "Mountain Sky",
@@ -8789,7 +9396,9 @@
         "saturation": 0.507813,
         "lightness": 1.25,
         "rgb": [100, 105, 169]
-    }
+    },
+    "item": 20745,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 641,
     "name": "Mullberry",
@@ -8817,7 +9426,9 @@
         "saturation": 0.585938,
         "lightness": 1.17188,
         "rgb": [128, 50, 83]
-    }
+    },
+    "item": 20626,
+    "categories": ["Red", "Vibrant", "Uncommon"]
 }, {
     "id": 642,
     "name": "Nectar",
@@ -8845,7 +9456,9 @@
         "saturation": 0.859375,
         "lightness": 1.36719,
         "rgb": [210, 164, 66]
-    }
+    },
+    "item": 20627,
+    "categories": ["Yellow", "Vibrant", "Uncommon"]
 }, {
     "id": 643,
     "name": "Nickel",
@@ -8873,7 +9486,9 @@
         "saturation": 0.195313,
         "lightness": 1.5625,
         "rgb": [124, 117, 85]
-    }
+    },
+    "item": 20628,
+    "categories": ["Brown", "Vibrant", "Uncommon"]
 }, {
     "id": 644,
     "name": "Nightsong",
@@ -8901,7 +9516,9 @@
         "saturation": 0.390625,
         "lightness": 1.01563,
         "rgb": [59, 52, 95]
-    }
+    },
+    "item": 20629,
+    "categories": ["Blue", "Vibrant", "Uncommon"]
 }, {
     "id": 645,
     "name": "Old Nickel",
@@ -8929,7 +9546,9 @@
         "saturation": 0.195313,
         "lightness": 1.40625,
         "rgb": [91, 85, 57]
-    }
+    },
+    "item": 20695,
+    "categories": ["Brown", "Vibrant", "Common"]
 }, {
     "id": 646,
     "name": "Olive Ice",
@@ -8957,7 +9576,9 @@
         "saturation": 0.390625,
         "lightness": 1.48438,
         "rgb": [183, 187, 120]
-    }
+    },
+    "item": 20696,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 647,
     "name": "Orange Spring",
@@ -8985,7 +9606,9 @@
         "saturation": 0.9375,
         "lightness": 1.28906,
         "rgb": [167, 74, 32]
-    }
+    },
+    "item": 20697,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 648,
     "name": "Papaya",
@@ -9013,7 +9636,9 @@
         "saturation": 0.820313,
         "lightness": 1.13281,
         "rgb": [146, 48, 42]
-    }
+    },
+    "item": 20698,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 649,
     "name": "Pastel Blue",
@@ -9041,7 +9666,9 @@
         "saturation": 0.390625,
         "lightness": 1.5625,
         "rgb": [143, 166, 210]
-    }
+    },
+    "item": 20630,
+    "categories": ["Blue", "Vibrant", "Uncommon"]
 }, {
     "id": 650,
     "name": "Pastel Citrus",
@@ -9069,7 +9696,9 @@
         "saturation": 0.742188,
         "lightness": 1.48438,
         "rgb": [230, 155, 97]
-    }
+    },
+    "item": 20631,
+    "categories": ["Orange", "Vibrant", "Uncommon"]
 }, {
     "id": 651,
     "name": "Pastel Honey",
@@ -9097,7 +9726,9 @@
         "saturation": 0.742188,
         "lightness": 1.5625,
         "rgb": [246, 184, 110]
-    }
+    },
+    "item": 20699,
+    "categories": ["Yellow", "Vibrant", "Common"]
 }, {
     "id": 652,
     "name": "Pastel Lemon",
@@ -9125,7 +9756,9 @@
         "saturation": 0.78125,
         "lightness": 1.48438,
         "rgb": [227, 183, 86]
-    }
+    },
+    "item": 20700,
+    "categories": ["Yellow", "Vibrant", "Common"]
 }, {
     "id": 653,
     "name": "Pastel Lime",
@@ -9153,7 +9786,9 @@
         "saturation": 0.351563,
         "lightness": 1.52344,
         "rgb": [135, 192, 146]
-    }
+    },
+    "item": 20632,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 654,
     "name": "Pastel Mint",
@@ -9181,7 +9816,9 @@
         "saturation": 0.429688,
         "lightness": 1.48438,
         "rgb": [157, 188, 115]
-    }
+    },
+    "item": 20701,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 655,
     "name": "Pastel Olive",
@@ -9209,7 +9846,9 @@
         "saturation": 0.585938,
         "lightness": 1.52344,
         "rgb": [184, 189, 100]
-    }
+    },
+    "item": 20702,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 656,
     "name": "Pastel Peach",
@@ -9237,7 +9876,9 @@
         "saturation": 0.703125,
         "lightness": 1.48438,
         "rgb": [234, 154, 117]
-    }
+    },
+    "item": 20703,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 657,
     "name": "Pastel Pink",
@@ -9265,7 +9906,9 @@
         "saturation": 0.546875,
         "lightness": 1.40625,
         "rgb": [220, 141, 126]
-    }
+    },
+    "item": 20704,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 658,
     "name": "Pastel Purple",
@@ -9293,7 +9936,9 @@
         "saturation": 0.3125,
         "lightness": 1.5625,
         "rgb": [170, 147, 202]
-    }
+    },
+    "item": 20705,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 659,
     "name": "Pastel Rose",
@@ -9321,7 +9966,9 @@
         "saturation": 0.273438,
         "lightness": 1.5625,
         "rgb": [199, 146, 170]
-    }
+    },
+    "item": 20706,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 660,
     "name": "Pastel Sea",
@@ -9349,7 +9996,9 @@
         "saturation": 0.3125,
         "lightness": 1.48438,
         "rgb": [124, 175, 161]
-    }
+    },
+    "item": 20707,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 661,
     "name": "Pastel Spring",
@@ -9377,7 +10026,9 @@
         "saturation": 0.703125,
         "lightness": 1.48438,
         "rgb": [204, 189, 94]
-    }
+    },
+    "item": 20708,
+    "categories": ["Yellow", "Vibrant", "Common"]
 }, {
     "id": 662,
     "name": "Pastel Violet",
@@ -9405,7 +10056,9 @@
         "saturation": 0.390625,
         "lightness": 1.5625,
         "rgb": [151, 156, 212]
-    }
+    },
+    "item": 20709,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 663,
     "name": "Pastel Wine",
@@ -9433,7 +10086,9 @@
         "saturation": 0.273438,
         "lightness": 1.48438,
         "rgb": [170, 127, 175]
-    }
+    },
+    "item": 20633,
+    "categories": ["Purple", "Vibrant", "Uncommon"]
 }, {
     "id": 664,
     "name": "Pastel Winter",
@@ -9461,7 +10116,9 @@
         "saturation": 0.351563,
         "lightness": 1.48438,
         "rgb": [120, 164, 177]
-    }
+    },
+    "item": 20634,
+    "categories": ["Blue", "Vibrant", "Uncommon"]
 }, {
     "id": 665,
     "name": "Peach Ice",
@@ -9489,7 +10146,9 @@
         "saturation": 0.429688,
         "lightness": 1.48438,
         "rgb": [209, 153, 128]
-    }
+    },
+    "item": 20710,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 666,
     "name": "Persephone",
@@ -9517,7 +10176,9 @@
         "saturation": 0.546875,
         "lightness": 1.40625,
         "rgb": [154, 77, 104]
-    }
+    },
+    "item": 20711,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 667,
     "name": "Phlox",
@@ -9545,7 +10206,9 @@
         "saturation": 0.351563,
         "lightness": 1.25,
         "rgb": [126, 85, 131]
-    }
+    },
+    "item": 20712,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 668,
     "name": "Pink Ice",
@@ -9573,7 +10236,9 @@
         "saturation": 0.429688,
         "lightness": 1.48438,
         "rgb": [211, 145, 134]
-    }
+    },
+    "item": 20713,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 669,
     "name": "Primrose",
@@ -9601,7 +10266,9 @@
         "saturation": 0.703125,
         "lightness": 1.28906,
         "rgb": [191, 95, 85]
-    }
+    },
+    "item": 20654,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 670,
     "name": "Purple",
@@ -9629,7 +10296,9 @@
         "saturation": 0.390625,
         "lightness": 1.09375,
         "rgb": [78, 39, 78]
-    }
+    },
+    "item": 20635,
+    "categories": ["Purple", "Vibrant", "Uncommon"]
 }, {
     "id": 671,
     "name": "Purple Breeze",
@@ -9657,7 +10326,9 @@
         "saturation": 0.3125,
         "lightness": 1.25,
         "rgb": [140, 120, 167]
-    }
+    },
+    "item": 20655,
+    "categories": ["Purple", "Vibrant", "Rare"]
 }, {
     "id": 672,
     "name": "Purple Ice",
@@ -9685,7 +10356,9 @@
         "saturation": 0.195313,
         "lightness": 1.48438,
         "rgb": [162, 146, 183]
-    }
+    },
+    "item": 20636,
+    "categories": ["Purple", "Vibrant", "Uncommon"]
 }, {
     "id": 673,
     "name": "Red",
@@ -9713,7 +10386,9 @@
         "saturation": 1.09375,
         "lightness": 1.09375,
         "rgb": [155, 5, 17]
-    }
+    },
+    "item": 20714,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 674,
     "name": "Regal",
@@ -9741,7 +10416,9 @@
         "saturation": 0.78125,
         "lightness": 1.01563,
         "rgb": [0, 52, 68]
-    }
+    },
+    "item": 20656,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 675,
     "name": "Rich Grape",
@@ -9769,7 +10446,9 @@
         "saturation": 0.273438,
         "lightness": 1.05469,
         "rgb": [60, 45, 77]
-    }
+    },
+    "item": 20637,
+    "categories": ["Purple", "Vibrant", "Uncommon"]
 }, {
     "id": 676,
     "name": "River",
@@ -9797,7 +10476,9 @@
         "saturation": 0.585938,
         "lightness": 1.25,
         "rgb": [60, 95, 143]
-    }
+    },
+    "item": 20715,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 677,
     "name": "Root",
@@ -9825,7 +10506,9 @@
         "saturation": 1.5625,
         "lightness": 0.898438,
         "rgb": [110, 59, 0]
-    }
+    },
+    "item": 20716,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 678,
     "name": "Rose Breeze",
@@ -9853,7 +10536,9 @@
         "saturation": 0.390625,
         "lightness": 1.28906,
         "rgb": [177, 118, 145]
-    }
+    },
+    "item": 20717,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 679,
     "name": "Rose Ice",
@@ -9881,7 +10566,9 @@
         "saturation": 0.195313,
         "lightness": 1.48438,
         "rgb": [183, 145, 162]
-    }
+    },
+    "item": 20718,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 680,
     "name": "Royal Rose",
@@ -9909,7 +10596,8 @@
         "saturation": 0.507813,
         "lightness": 1.17188,
         "rgb": [83, 24, 53]
-    }
+    },
+    "categories": ["Red", "Vibrant", "Starter"]
 }, {
     "id": 681,
     "name": "Sea Breeze",
@@ -9937,7 +10625,9 @@
         "saturation": 0.351563,
         "lightness": 1.25,
         "rgb": [117, 166, 155]
-    }
+    },
+    "item": 20720,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 682,
     "name": "Sea Frost",
@@ -9965,7 +10655,9 @@
         "saturation": 0.507813,
         "lightness": 1.28906,
         "rgb": [95, 166, 151]
-    }
+    },
+    "item": 20638,
+    "categories": ["Blue", "Vibrant", "Uncommon"]
 }, {
     "id": 683,
     "name": "Sea Ice",
@@ -9993,7 +10685,9 @@
         "saturation": 0.195313,
         "lightness": 1.48438,
         "rgb": [142, 179, 169]
-    }
+    },
+    "item": 20721,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 684,
     "name": "Shy Lilac",
@@ -10021,7 +10715,9 @@
         "saturation": 0.390625,
         "lightness": 1.25,
         "rgb": [123, 127, 177]
-    }
+    },
+    "item": 20722,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 685,
     "name": "Shylac",
@@ -10049,7 +10745,9 @@
         "saturation": 0.273438,
         "lightness": 1.25,
         "rgb": [128, 110, 152]
-    }
+    },
+    "item": 20723,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 686,
     "name": "Sienna",
@@ -10077,7 +10775,9 @@
         "saturation": 1.28906,
         "lightness": 0.9375,
         "rgb": [105, 30, 0]
-    }
+    },
+    "item": 20724,
+    "categories": ["Orange", "Vibrant", "Common"]
 }, {
     "id": 687,
     "name": "Sour",
@@ -10105,7 +10805,9 @@
         "saturation": 1.17188,
         "lightness": 1.13281,
         "rgb": [110, 104, 0]
-    }
+    },
+    "item": 20725,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 688,
     "name": "Sour Apple",
@@ -10133,7 +10835,9 @@
         "saturation": 1.40625,
         "lightness": 1.01563,
         "rgb": [88, 76, 0]
-    }
+    },
+    "item": 20639,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 689,
     "name": "Sprig",
@@ -10161,7 +10865,9 @@
         "saturation": 0.429688,
         "lightness": 1.05469,
         "rgb": [47, 104, 71]
-    }
+    },
+    "item": 20640,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 690,
     "name": "Spring Breeze",
@@ -10189,7 +10895,9 @@
         "saturation": 0.585938,
         "lightness": 1.28906,
         "rgb": [143, 151, 70]
-    }
+    },
+    "item": 20726,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 691,
     "name": "Spring Dew",
@@ -10217,7 +10925,9 @@
         "saturation": 0.46875,
         "lightness": 1.32813,
         "rgb": [84, 139, 151]
-    }
+    },
+    "item": 20727,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 692,
     "name": "Spring Grass",
@@ -10245,7 +10955,9 @@
         "saturation": 0.976563,
         "lightness": 1.09375,
         "rgb": [68, 85, 0]
-    }
+    },
+    "item": 20657,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 693,
     "name": "Spring Ice",
@@ -10273,7 +10985,9 @@
         "saturation": 0.46875,
         "lightness": 1.48438,
         "rgb": [193, 186, 111]
-    }
+    },
+    "item": 20728,
+    "categories": ["Yellow", "Vibrant", "Common"]
 }, {
     "id": 694,
     "name": "Spring Leaf",
@@ -10301,7 +11015,9 @@
         "saturation": 0.46875,
         "lightness": 1.05469,
         "rgb": [75, 111, 49]
-    }
+    },
+    "item": 20729,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 695,
     "name": "Spring Moss",
@@ -10329,7 +11045,9 @@
         "saturation": 0.9375,
         "lightness": 1.17188,
         "rgb": [121, 117, 10]
-    }
+    },
+    "item": 20730,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 696,
     "name": "Spring Tide",
@@ -10357,7 +11075,9 @@
         "saturation": 0.664063,
         "lightness": 1.09375,
         "rgb": [29, 103, 97]
-    }
+    },
+    "item": 20731,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 697,
     "name": "Stem",
@@ -10385,7 +11105,9 @@
         "saturation": 0.820313,
         "lightness": 1.32813,
         "rgb": [164, 146, 48]
-    }
+    },
+    "item": 20732,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 698,
     "name": "Strawberry",
@@ -10413,7 +11135,9 @@
         "saturation": 0.898438,
         "lightness": 1.25,
         "rgb": [162, 32, 42]
-    }
+    },
+    "item": 20734,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 699,
     "name": "Strawberry Breeze",
@@ -10441,7 +11165,9 @@
         "saturation": 0.585938,
         "lightness": 1.40625,
         "rgb": [195, 111, 102]
-    }
+    },
+    "item": 20733,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 700,
     "name": "Stream",
@@ -10469,7 +11195,8 @@
         "saturation": 0.546875,
         "lightness": 1.25,
         "rgb": [68, 108, 149]
-    }
+    },
+    "categories": ["Blue", "Vibrant", "Starter"]
 }, {
     "id": 701,
     "name": "Summer Thistle",
@@ -10497,7 +11224,9 @@
         "saturation": 0.351563,
         "lightness": 1.25,
         "rgb": [116, 96, 146]
-    }
+    },
+    "item": 20736,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 702,
     "name": "Sunrise Breeze",
@@ -10525,7 +11254,9 @@
         "saturation": 0.78125,
         "lightness": 1.36719,
         "rgb": [217, 130, 104]
-    }
+    },
+    "item": 20641,
+    "categories": ["Red", "Vibrant", "Uncommon"]
 }, {
     "id": 703,
     "name": "Tarnished Silver",
@@ -10553,7 +11284,9 @@
         "saturation": 0.3125,
         "lightness": 1.5625,
         "rgb": [167, 148, 108]
-    }
+    },
+    "item": 20658,
+    "categories": ["Gray", "Vibrant", "Rare"]
 }, {
     "id": 704,
     "name": "Teal",
@@ -10581,7 +11314,9 @@
         "saturation": 0.664063,
         "lightness": 1.05469,
         "rgb": [5, 76, 76]
-    }
+    },
+    "item": 20642,
+    "categories": ["Blue", "Vibrant", "Uncommon"]
 }, {
     "id": 705,
     "name": "Umber",
@@ -10609,7 +11344,9 @@
         "saturation": 1.17188,
         "lightness": 0.9375,
         "rgb": [69, 33, 0]
-    }
+    },
+    "item": 20738,
+    "categories": ["Brown", "Vibrant", "Common"]
 }, {
     "id": 706,
     "name": "Veronica",
@@ -10637,7 +11374,9 @@
         "saturation": 0.351563,
         "lightness": 1.25,
         "rgb": [105, 87, 133]
-    }
+    },
+    "item": 20739,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 707,
     "name": "Violet Breeze",
@@ -10665,7 +11404,9 @@
         "saturation": 0.390625,
         "lightness": 1.32813,
         "rgb": [124, 128, 181]
-    }
+    },
+    "item": 20643,
+    "categories": ["Purple", "Vibrant", "Uncommon"]
 }, {
     "id": 708,
     "name": "Violet Ice",
@@ -10693,7 +11434,9 @@
         "saturation": 0.273438,
         "lightness": 1.48438,
         "rgb": [146, 150, 194]
-    }
+    },
+    "item": 20740,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 709,
     "name": "Viridian",
@@ -10721,7 +11464,9 @@
         "saturation": 0.46875,
         "lightness": 0.921875,
         "rgb": [9, 64, 36]
-    }
+    },
+    "item": 20644,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 710,
     "name": "Wine Breeze",
@@ -10749,7 +11494,9 @@
         "saturation": 0.3125,
         "lightness": 1.44531,
         "rgb": [159, 114, 164]
-    }
+    },
+    "item": 20645,
+    "categories": ["Purple", "Vibrant", "Uncommon"]
 }, {
     "id": 711,
     "name": "Wine Ice",
@@ -10777,7 +11524,9 @@
         "saturation": 0.234375,
         "lightness": 1.48438,
         "rgb": [174, 137, 178]
-    }
+    },
+    "item": 20746,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 712,
     "name": "Winter Breeze",
@@ -10805,7 +11554,9 @@
         "saturation": 0.390625,
         "lightness": 1.40625,
         "rgb": [102, 151, 166]
-    }
+    },
+    "item": 20741,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 713,
     "name": "Winter Frost",
@@ -10833,7 +11584,9 @@
         "saturation": 0.46875,
         "lightness": 1.28906,
         "rgb": [94, 146, 162]
-    }
+    },
+    "item": 20742,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 714,
     "name": "Winter Ice",
@@ -10861,7 +11614,9 @@
         "saturation": 0.195313,
         "lightness": 1.48438,
         "rgb": [142, 170, 178]
-    }
+    },
+    "item": 20646,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 715,
     "name": "Zest",
@@ -10889,7 +11644,9 @@
         "saturation": 0.664063,
         "lightness": 1.17188,
         "rgb": [134, 139, 52]
-    }
+    },
+    "item": 20611,
+    "categories": ["Green", "Vibrant", "Uncommon"]
 }, {
     "id": 1053,
     "name": "Tulip",
@@ -10917,7 +11674,9 @@
         "saturation": 0.742188,
         "lightness": 1.32813,
         "rgb": [201, 109, 93]
-    }
+    },
+    "item": 20737,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 1054,
     "name": "Grass",
@@ -10945,7 +11704,9 @@
         "saturation": 1.17188,
         "lightness": 0.898438,
         "rgb": [52, 49, 0]
-    }
+    },
+    "item": 20472,
+    "categories": ["Green", "Leather", "Uncommon"]
 }, {
     "id": 1149,
     "name": "Lava",
@@ -10973,7 +11734,9 @@
         "saturation": 0.9375,
         "lightness": 1.40625,
         "rgb": [121, 26, 9]
-    }
+    },
+    "item": 20755,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 1150,
     "name": "Wrath",
@@ -11001,7 +11764,9 @@
         "saturation": 0.9375,
         "lightness": 1.40625,
         "rgb": [68, 0, 0]
-    }
+    },
+    "item": 20748,
+    "categories": ["Red", "Vibrant", "Uncommon"]
 }, {
     "id": 1151,
     "name": "Spitfire",
@@ -11029,7 +11794,9 @@
         "saturation": 0.976563,
         "lightness": 1.40625,
         "rgb": [96, 19, 0]
-    }
+    },
+    "item": 20754,
+    "categories": ["Red", "Vibrant", "Common"]
 }, {
     "id": 1152,
     "name": "Heirloom",
@@ -11057,7 +11824,9 @@
         "saturation": 0.976563,
         "lightness": 1.40625,
         "rgb": [45, 0, 0]
-    }
+    },
+    "item": 20747,
+    "categories": ["Red", "Vibrant", "Uncommon"]
 }, {
     "id": 1153,
     "name": "Blood",
@@ -11085,7 +11854,9 @@
         "saturation": 0.9375,
         "lightness": 1.40625,
         "rgb": [85, 0, 0]
-    }
+    },
+    "item": 20751,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 1154,
     "name": "Redemption",
@@ -11113,7 +11884,9 @@
         "saturation": 1.09375,
         "lightness": 1.99219,
         "rgb": [161, 102, 12]
-    }
+    },
+    "item": 20752,
+    "categories": ["Yellow", "Vibrant", "Rare"]
 }, {
     "id": 1155,
     "name": "Illumination",
@@ -11141,7 +11914,9 @@
         "saturation": 0.78125,
         "lightness": 1.99219,
         "rgb": [217, 161, 74]
-    }
+    },
+    "item": 20753,
+    "categories": ["Yellow", "Vibrant", "Rare"]
 }, {
     "id": 1156,
     "name": "Spite",
@@ -11169,7 +11944,9 @@
         "saturation": 0.15625,
         "lightness": 1.5625,
         "rgb": [69, 81, 57]
-    }
+    },
+    "item": 20756,
+    "categories": ["Green", "Vibrant", "Common"]
 }, {
     "id": 1157,
     "name": "Forgiveness",
@@ -11197,7 +11974,9 @@
         "saturation": 0.15625,
         "lightness": 1.5625,
         "rgb": [62, 87, 79]
-    }
+    },
+    "item": 20757,
+    "categories": ["Blue", "Vibrant", "Common"]
 }, {
     "id": 1158,
     "name": "Sincerity",
@@ -11225,7 +12004,9 @@
         "saturation": 0.15625,
         "lightness": 1.5625,
         "rgb": [66, 72, 90]
-    }
+    },
+    "item": 20749,
+    "categories": ["Blue", "Vibrant", "Uncommon"]
 }, {
     "id": 1159,
     "name": "Pride",
@@ -11253,7 +12034,9 @@
         "saturation": 0.15625,
         "lightness": 1.5625,
         "rgb": [71, 67, 90]
-    }
+    },
+    "item": 20758,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 1160,
     "name": "Arrogance",
@@ -11281,7 +12064,9 @@
         "saturation": 0.15625,
         "lightness": 1.5625,
         "rgb": [87, 62, 79]
-    }
+    },
+    "item": 20759,
+    "categories": ["Purple", "Vibrant", "Common"]
 }, {
     "id": 1161,
     "name": "Mischief",
@@ -11309,7 +12094,9 @@
         "saturation": 0.117188,
         "lightness": 1.5625,
         "rgb": [87, 71, 71]
-    }
+    },
+    "item": 20750,
+    "categories": ["Purple", "Vibrant", "Uncommon"]
 }, {
     "id": 1231,
     "name": "Glacial Teal",
@@ -11337,7 +12124,9 @@
         "saturation": 0.15625,
         "lightness": 1.83594,
         "rgb": [82, 115, 112]
-    }
+    },
+    "item": 41747,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 1232,
     "name": "Glacial Sky",
@@ -11365,7 +12154,9 @@
         "saturation": 0.15625,
         "lightness": 1.83594,
         "rgb": [83, 107, 120]
-    }
+    },
+    "item": 41750,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 1233,
     "name": "Shiver Sky",
@@ -11393,7 +12184,9 @@
         "saturation": 0.195313,
         "lightness": 1.83594,
         "rgb": [115, 145, 160]
-    }
+    },
+    "item": 41751,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 1234,
     "name": "Shiver Sea",
@@ -11421,7 +12214,9 @@
         "saturation": 0.195313,
         "lightness": 1.83594,
         "rgb": [114, 155, 151]
-    }
+    },
+    "item": 41748,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 1235,
     "name": "Deep Glacial Teal",
@@ -11449,7 +12244,9 @@
         "saturation": 0.195313,
         "lightness": 1.75781,
         "rgb": [23, 61, 58]
-    }
+    },
+    "item": 41746,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 1236,
     "name": "Deep Glacial Sky",
@@ -11477,7 +12274,9 @@
         "saturation": 0.195313,
         "lightness": 1.75781,
         "rgb": [24, 51, 66]
-    }
+    },
+    "item": 41749,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 1237,
     "name": "Pyre",
@@ -11505,7 +12304,9 @@
         "saturation": 0.9375,
         "lightness": 1.83594,
         "rgb": [226, 133, 7]
-    }
+    },
+    "item": 41754,
+    "categories": ["Orange", "Vibrant", "Rare"]
 }, {
     "id": 1238,
     "name": "Flare",
@@ -11533,7 +12334,9 @@
         "saturation": 0.703125,
         "lightness": 1.83594,
         "rgb": [226, 183, 66]
-    }
+    },
+    "item": 41755,
+    "categories": ["Yellow", "Vibrant", "Rare"]
 }, {
     "id": 1239,
     "name": "Molten",
@@ -11561,7 +12364,9 @@
         "saturation": 0.78125,
         "lightness": 1.83594,
         "rgb": [193, 96, 25]
-    }
+    },
+    "item": 41753,
+    "categories": ["Orange", "Vibrant", "Rare"]
 }, {
     "id": 1240,
     "name": "Flame",
@@ -11589,7 +12394,9 @@
         "saturation": 0.703125,
         "lightness": 1.83594,
         "rgb": [161, 31, 8]
-    }
+    },
+    "item": 41752,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 1241,
     "name": "Charred",
@@ -11617,7 +12424,9 @@
         "saturation": 0.15625,
         "lightness": 1.5625,
         "rgb": [74, 58, 41]
-    }
+    },
+    "item": 41757,
+    "categories": ["Red", "Metal", "Rare"]
 }, {
     "id": 1242,
     "name": "Cinders",
@@ -11645,7 +12454,9 @@
         "saturation": 0.125,
         "lightness": 1.99219,
         "rgb": [142, 139, 115]
-    }
+    },
+    "item": 41756,
+    "categories": ["Red", "Metal", "Rare"]
 }, {
     "id": 1243,
     "name": "Caustic",
@@ -11673,7 +12484,9 @@
         "saturation": 0.78125,
         "lightness": 1.5625,
         "rgb": [34, 34, 0]
-    }
+    },
+    "item": 47902,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 1244,
     "name": "Acrid",
@@ -11701,7 +12514,9 @@
         "saturation": 0.429688,
         "lightness": 1.83594,
         "rgb": [117, 131, 57]
-    }
+    },
+    "item": 47906,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 1245,
     "name": "Acid",
@@ -11729,7 +12544,9 @@
         "saturation": 0.664063,
         "lightness": 1.5625,
         "rgb": [90, 97, 0]
-    }
+    },
+    "item": 47905,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 1246,
     "name": "Toxin",
@@ -11757,7 +12574,9 @@
         "saturation": 0.703125,
         "lightness": 1.83594,
         "rgb": [62, 84, 0]
-    }
+    },
+    "item": 47903,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 1247,
     "name": "Swampblack",
@@ -11785,7 +12604,9 @@
         "saturation": 0.28125,
         "lightness": 0.9375,
         "rgb": [31, 34, 0]
-    }
+    },
+    "item": 47901,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 1248,
     "name": "Algae",
@@ -11813,7 +12634,9 @@
         "saturation": 0.78125,
         "lightness": 1.40625,
         "rgb": [97, 139, 0]
-    }
+    },
+    "item": 47904,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 1249,
     "name": "Cobolt",
@@ -11841,7 +12664,9 @@
         "saturation": 0.507813,
         "lightness": 1.71875,
         "rgb": [68, 53, 130]
-    }
+    },
+    "item": 48925,
+    "categories": ["Purple", "Vibrant", "Rare"]
 }, {
     "id": 1250,
     "name": "Violite",
@@ -11869,7 +12694,9 @@
         "saturation": 0.351563,
         "lightness": 1.67969,
         "rgb": [102, 71, 133]
-    }
+    },
+    "item": 48929,
+    "categories": ["Purple", "Vibrant", "Rare"]
 }, {
     "id": 1251,
     "name": "Limonite",
@@ -11897,7 +12724,9 @@
         "saturation": 1.17188,
         "lightness": 1.5625,
         "rgb": [139, 122, 0]
-    }
+    },
+    "item": 48927,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 1252,
     "name": "Cyanide",
@@ -11925,7 +12754,9 @@
         "saturation": 1.01563,
         "lightness": 1.5625,
         "rgb": [0, 92, 86]
-    }
+    },
+    "item": 48926,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 1253,
     "name": "Vincent",
@@ -11953,7 +12784,9 @@
         "saturation": 0.390625,
         "lightness": 0.9375,
         "rgb": [35, 0, 40]
-    }
+    },
+    "item": 48928,
+    "categories": ["Purple", "Vibrant", "Rare"]
 }, {
     "id": 1254,
     "name": "Blacklight",
@@ -11981,7 +12814,9 @@
         "saturation": 0.507813,
         "lightness": 1.5625,
         "rgb": [61, 18, 93]
-    }
+    },
+    "item": 48924,
+    "categories": ["Purple", "Vibrant", "Rare"]
 }, {
     "id": 1265,
     "name": "Fling",
@@ -12009,7 +12844,9 @@
         "saturation": 0.429688,
         "lightness": 1.36719,
         "rgb": [145, 64, 64]
-    }
+    },
+    "item": 49526,
+    "categories": ["Orange", "Metal", "Rare"]
 }, {
     "id": 1266,
     "name": "Prosperity",
@@ -12037,7 +12874,9 @@
         "saturation": 0.507813,
         "lightness": 1.36719,
         "rgb": [118, 99, 15]
-    }
+    },
+    "item": 49529,
+    "categories": ["Yellow", "Metal", "Rare"]
 }, {
     "id": 1267,
     "name": "Perseverance",
@@ -12065,7 +12904,9 @@
         "saturation": 0.507813,
         "lightness": 1.36719,
         "rgb": [133, 78, 23]
-    }
+    },
+    "item": 49528,
+    "categories": ["Yellow", "Metal", "Rare"]
 }, {
     "id": 1268,
     "name": "Onset",
@@ -12093,7 +12934,9 @@
         "saturation": 0.390625,
         "lightness": 1.36719,
         "rgb": [78, 120, 35]
-    }
+    },
+    "item": 49527,
+    "categories": ["Green", "Metal", "Rare"]
 }, {
     "id": 1269,
     "name": "Amenity",
@@ -12121,7 +12964,9 @@
         "saturation": 0.390625,
         "lightness": 1.5625,
         "rgb": [38, 90, 117]
-    }
+    },
+    "item": 49525,
+    "categories": ["Blue", "Metal", "Rare"]
 }, {
     "id": 1270,
     "name": "Recall",
@@ -12149,7 +12994,9 @@
         "saturation": 0.390625,
         "lightness": 1.5625,
         "rgb": [90, 38, 117]
-    }
+    },
+    "item": 49530,
+    "categories": ["Purple", "Metal", "Rare"]
 }, {
     "id": 1271,
     "name": "Enameled Legacy",
@@ -12177,7 +13024,9 @@
         "saturation": 1.17188,
         "lightness": 1.5625,
         "rgb": [87, 47, 0]
-    }
+    },
+    "item": 64198,
+    "categories": ["Yellow", "Vibrant", "Rare"]
 }, {
     "id": 1272,
     "name": "Enameled Jungle",
@@ -12205,7 +13054,9 @@
         "saturation": 0.328125,
         "lightness": 1.99219,
         "rgb": [23, 66, 0]
-    }
+    },
+    "item": 64201,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 1273,
     "name": "Enameled Sky",
@@ -12233,7 +13084,9 @@
         "saturation": 0.46875,
         "lightness": 1.99219,
         "rgb": [0, 48, 65]
-    }
+    },
+    "item": 64199,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 1274,
     "name": "Enameled Reign",
@@ -12261,7 +13114,9 @@
         "saturation": 0.390625,
         "lightness": 1.5625,
         "rgb": [76, 14, 76]
-    }
+    },
+    "item": 64200,
+    "categories": ["Purple", "Vibrant", "Rare"]
 }, {
     "id": 1275,
     "name": "Enameled Emblaze",
@@ -12289,7 +13144,9 @@
         "saturation": 1.17188,
         "lightness": 1.5625,
         "rgb": [91, 10, 0]
-    }
+    },
+    "item": 64203,
+    "categories": ["Orange", "Vibrant", "Rare"]
 }, {
     "id": 1276,
     "name": "Enameled Crimson",
@@ -12317,7 +13174,9 @@
         "saturation": 0.898438,
         "lightness": 1.5625,
         "rgb": [63, 0, 0]
-    }
+    },
+    "item": 64202,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 1277,
     "name": "Enameled Perseverance",
@@ -12345,7 +13204,9 @@
         "saturation": 0.976563,
         "lightness": 1.5625,
         "rgb": [0, 34, 21]
-    }
+    },
+    "item": 65164,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 1278,
     "name": "Enameled Longevity",
@@ -12373,7 +13234,9 @@
         "saturation": 0.625,
         "lightness": 1.5625,
         "rgb": [0, 40, 4]
-    }
+    },
+    "item": 65168,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 1279,
     "name": "Enameled Solitude",
@@ -12401,7 +13264,9 @@
         "saturation": 0.273438,
         "lightness": 1.5625,
         "rgb": [28, 28, 67]
-    }
+    },
+    "item": 65167,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 1280,
     "name": "Enameled Sacrifice",
@@ -12429,7 +13294,9 @@
         "saturation": 0.46875,
         "lightness": 1.5625,
         "rgb": [44, 0, 0]
-    }
+    },
+    "item": 65166,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 1281,
     "name": "Enameled Generation",
@@ -12457,7 +13324,9 @@
         "saturation": 0.546875,
         "lightness": 1.5625,
         "rgb": [53, 30, 0]
-    }
+    },
+    "item": 65165,
+    "categories": ["Brown", "Vibrant", "Rare"]
 }, {
     "id": 1282,
     "name": "Enameled Anamnesis",
@@ -12485,7 +13354,9 @@
         "saturation": 0.429688,
         "lightness": 1.5625,
         "rgb": [83, 5, 32]
-    }
+    },
+    "item": 65169,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 1301,
     "name": "Electro Lime",
@@ -12513,7 +13384,9 @@
         "saturation": 0.398438,
         "lightness": 1.54688,
         "rgb": [124, 205, 135]
-    }
+    },
+    "item": 67289,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 1302,
     "name": "Electro Peach",
@@ -12541,7 +13414,9 @@
         "saturation": 0.71875,
         "lightness": 1.60156,
         "rgb": [255, 142, 114]
-    }
+    },
+    "item": 67288,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 1303,
     "name": "Electro Lemon",
@@ -12569,7 +13444,9 @@
         "saturation": 0.625,
         "lightness": 1.60156,
         "rgb": [232, 191, 96]
-    }
+    },
+    "item": 67285,
+    "categories": ["Yellow", "Vibrant", "Rare"]
 }, {
     "id": 1304,
     "name": "Electro Pink",
@@ -12597,7 +13474,9 @@
         "saturation": 0.78125,
         "lightness": 1.60156,
         "rgb": [255, 112, 136]
-    }
+    },
+    "item": 67284,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 1305,
     "name": "Electro Blue",
@@ -12625,7 +13504,9 @@
         "saturation": 0.398438,
         "lightness": 1.66406,
         "rgb": [141, 181, 229]
-    }
+    },
+    "item": 67287,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 1306,
     "name": "Electro Purple",
@@ -12653,7 +13534,9 @@
         "saturation": 0.398438,
         "lightness": 1.66406,
         "rgb": [169, 149, 233]
-    }
+    },
+    "item": 67286,
+    "categories": ["Purple", "Vibrant", "Rare"]
 }, {
     "id": 1307,
     "name": "Glint's Crystal",
@@ -12681,7 +13564,9 @@
         "saturation": 0.234375,
         "lightness": 1.99219,
         "rgb": [174, 182, 215]
-    }
+    },
+    "item": 67991,
+    "categories": ["Purple", "Vibrant", "Rare"]
 }, {
     "id": 1308,
     "name": "Glint's Sanctuary",
@@ -12709,7 +13594,9 @@
         "saturation": 0.234375,
         "lightness": 1.99219,
         "rgb": [169, 189, 212]
-    }
+    },
+    "item": 67996,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 1309,
     "name": "Glint's Purview",
@@ -12737,7 +13624,9 @@
         "saturation": 0.234375,
         "lightness": 1.99219,
         "rgb": [165, 205, 201]
-    }
+    },
+    "item": 67995,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 1310,
     "name": "Glint's Rebellion",
@@ -12765,7 +13654,9 @@
         "saturation": 0.234375,
         "lightness": 1.99219,
         "rgb": [192, 168, 211]
-    }
+    },
+    "item": 67993,
+    "categories": ["Purple", "Vibrant", "Rare"]
 }, {
     "id": 1311,
     "name": "Glint's Ambition",
@@ -12793,7 +13684,9 @@
         "saturation": 0.234375,
         "lightness": 1.99219,
         "rgb": [175, 215, 181]
-    }
+    },
+    "item": 67992,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 1312,
     "name": "Glint's Isolation",
@@ -12821,7 +13714,9 @@
         "saturation": 0.234375,
         "lightness": 1.99219,
         "rgb": [209, 195, 167]
-    }
+    },
+    "item": 67994,
+    "categories": ["Yellow", "Vibrant", "Rare"]
 }, {
     "id": 1333,
     "name": "Aureus",
@@ -12849,7 +13744,9 @@
         "saturation": 1.64063,
         "lightness": 1.48438,
         "rgb": [237, 178, 39]
-    }
+    },
+    "item": 68675,
+    "categories": ["Yellow", "Vibrant", "Rare"]
 }, {
     "id": 1334,
     "name": "Crimson Lion",
@@ -12877,7 +13774,9 @@
         "saturation": 1.875,
         "lightness": 0.703125,
         "rgb": [129, 0, 0]
-    }
+    },
+    "item": 68677,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 1335,
     "name": "Rosewood",
@@ -12905,7 +13804,9 @@
         "saturation": 1.99219,
         "lightness": 0.859375,
         "rgb": [88, 0, 0]
-    }
+    },
+    "item": 68678,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 1336,
     "name": "Imperial Red",
@@ -12933,7 +13834,9 @@
         "saturation": 1.99219,
         "lightness": 0,
         "rgb": [153, 0, 0]
-    }
+    },
+    "item": 68676,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 1337,
     "name": "Imperial Gold",
@@ -12961,7 +13864,9 @@
         "saturation": 1.99219,
         "lightness": 0.390625,
         "rgb": [216, 157, 0]
-    }
+    },
+    "item": 68674,
+    "categories": ["Yellow", "Vibrant", "Rare"]
 }, {
     "id": 1338,
     "name": "Golden Lion",
@@ -12989,7 +13894,9 @@
         "saturation": 1.48438,
         "lightness": 1.99219,
         "rgb": [195, 118, 0]
-    }
+    },
+    "item": 68673,
+    "categories": ["Yellow", "Vibrant", "Rare"]
 }, {
     "id": 1348,
     "name": "Shadow Yellow",
@@ -13017,7 +13924,9 @@
         "saturation": 0.273438,
         "lightness": 0.703125,
         "rgb": [0, 0, 0]
-    }
+    },
+    "item": 69469,
+    "categories": ["Yellow", "Metal", "Rare"]
 }, {
     "id": 1349,
     "name": "Shadow Red",
@@ -13045,7 +13954,9 @@
         "saturation": 0.273438,
         "lightness": 0.703125,
         "rgb": [8, 0, 0]
-    }
+    },
+    "item": 69477,
+    "categories": ["Red", "Leather", "Rare"]
 }, {
     "id": 1350,
     "name": "Shadow Orange",
@@ -13073,7 +13984,9 @@
         "saturation": 0.273438,
         "lightness": 0.703125,
         "rgb": [5, 0, 0]
-    }
+    },
+    "item": 69451,
+    "categories": ["Orange", "Vibrant", "Rare"]
 }, {
     "id": 1351,
     "name": "Shadow Violet",
@@ -13101,7 +14014,9 @@
         "saturation": 0.273438,
         "lightness": 0.703125,
         "rgb": [0, 0, 2]
-    }
+    },
+    "item": 69057,
+    "categories": ["Purple", "Vibrant", "Rare"]
 }, {
     "id": 1352,
     "name": "Shadow Purple",
@@ -13129,7 +14044,9 @@
         "saturation": 0.273438,
         "lightness": 0.703125,
         "rgb": [0, 0, 0]
-    }
+    },
+    "item": 69109,
+    "categories": ["Purple", "Leather", "Rare"]
 }, {
     "id": 1353,
     "name": "Shadow Magenta",
@@ -13157,7 +14074,9 @@
         "saturation": 0.273438,
         "lightness": 0.703125,
         "rgb": [1, 0, 0]
-    }
+    },
+    "item": 69172,
+    "categories": ["Red", "Vibrant", "Rare"]
 }, {
     "id": 1354,
     "name": "Shadow Abyss",
@@ -13185,7 +14104,9 @@
         "saturation": 0,
         "lightness": 0.703125,
         "rgb": [0, 0, 0]
-    }
+    },
+    "item": 69231,
+    "categories": ["Gray", "Vibrant", "Rare"]
 }, {
     "id": 1355,
     "name": "Shadow Green",
@@ -13213,7 +14134,9 @@
         "saturation": 0.273438,
         "lightness": 0.703125,
         "rgb": [0, 6, 0]
-    }
+    },
+    "item": 69229,
+    "categories": ["Green", "Vibrant", "Rare"]
 }, {
     "id": 1356,
     "name": "Shadow Turquoise",
@@ -13241,7 +14164,9 @@
         "saturation": 0.273438,
         "lightness": 0.703125,
         "rgb": [0, 0, 0]
-    }
+    },
+    "item": 69038,
+    "categories": ["Blue", "Vibrant", "Rare"]
 }, {
     "id": 1357,
     "name": "Shadow Blue",
@@ -13269,5 +14194,547 @@
         "saturation": 0.273438,
         "lightness": 0.703125,
         "rgb": [0, 0, 3]
-    }
+    },
+    "item": 68728,
+    "categories": ["Blue", "Vibrant", "Rare"]
+}, {
+    "id": 1358,
+    "name": "Enameled Amenity",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": 17,
+        "contrast": 1.5625,
+        "hue": 190,
+        "saturation": 0.46875,
+        "lightness": 1.95313,
+        "rgb": [59, 125, 140]
+    },
+    "leather": {
+        "brightness": 17,
+        "contrast": 1.5625,
+        "hue": 190,
+        "saturation": 0.46875,
+        "lightness": 1.95313,
+        "rgb": [59, 125, 140]
+    },
+    "metal": {
+        "brightness": 17,
+        "contrast": 1.71875,
+        "hue": 190,
+        "saturation": 0.46875,
+        "lightness": 1.95313,
+        "rgb": [34, 106, 123]
+    },
+    "item": 69864,
+    "categories": ["Blue", "Metal", "Rare"]
+}, {
+    "id": 1359,
+    "name": "Enameled Morning Glory",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": 17,
+        "contrast": 1.5625,
+        "hue": 300,
+        "saturation": 0.390625,
+        "lightness": 1.95313,
+        "rgb": [129, 67, 129]
+    },
+    "leather": {
+        "brightness": 17,
+        "contrast": 1.5625,
+        "hue": 300,
+        "saturation": 0.390625,
+        "lightness": 1.95313,
+        "rgb": [129, 67, 129]
+    },
+    "metal": {
+        "brightness": 17,
+        "contrast": 1.5625,
+        "hue": 300,
+        "saturation": 0.390625,
+        "lightness": 1.95313,
+        "rgb": [129, 67, 129]
+    },
+    "item": 69996,
+    "categories": ["Purple", "Leather", "Rare"]
+}, {
+    "id": 1360,
+    "name": "Enameled Onset",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": 12,
+        "contrast": 1.5625,
+        "hue": 100,
+        "saturation": 0.328125,
+        "lightness": 1.95313,
+        "rgb": [83, 122, 62]
+    },
+    "leather": {
+        "brightness": 12,
+        "contrast": 1.5625,
+        "hue": 100,
+        "saturation": 0.328125,
+        "lightness": 1.95313,
+        "rgb": [83, 122, 62]
+    },
+    "metal": {
+        "brightness": 12,
+        "contrast": 1.71875,
+        "hue": 100,
+        "saturation": 0.328125,
+        "lightness": 1.95313,
+        "rgb": [61, 104, 39]
+    },
+    "item": 70017,
+    "categories": ["Green", "Vibrant", "Rare"]
+}, {
+    "id": 1361,
+    "name": "Enameled Banana",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": 7,
+        "contrast": 1.36719,
+        "hue": 52,
+        "saturation": 1.17188,
+        "lightness": 1.95313,
+        "rgb": [162, 136, 0]
+    },
+    "leather": {
+        "brightness": 7,
+        "contrast": 1.36719,
+        "hue": 52,
+        "saturation": 1.17188,
+        "lightness": 1.95313,
+        "rgb": [162, 136, 0]
+    },
+    "metal": {
+        "brightness": 7,
+        "contrast": 1.36719,
+        "hue": 48,
+        "saturation": 1.17188,
+        "lightness": 1.95313,
+        "rgb": [168, 129, 0]
+    },
+    "item": 70006,
+    "categories": ["Yellow", "Vibrant", "Rare"]
+}, {
+    "id": 1362,
+    "name": "Enameled Brass",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": 2,
+        "contrast": 1.5625,
+        "hue": 45,
+        "saturation": 1.17188,
+        "lightness": 1.95313,
+        "rgb": [138, 82, 0]
+    },
+    "leather": {
+        "brightness": 2,
+        "contrast": 1.5625,
+        "hue": 45,
+        "saturation": 1.17188,
+        "lightness": 1.95313,
+        "rgb": [138, 82, 0]
+    },
+    "metal": {
+        "brightness": -3,
+        "contrast": 1.5625,
+        "hue": 38,
+        "saturation": 1.17188,
+        "lightness": 1.95313,
+        "rgb": [128, 48, 0]
+    },
+    "item": 69843,
+    "categories": ["Orange", "Vibrant", "Rare"]
+}, {
+    "id": 1363,
+    "name": "Enameled Strawberry",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": 2,
+        "contrast": 1.40625,
+        "hue": 350,
+        "saturation": 0.898438,
+        "lightness": 1.95313,
+        "rgb": [155, 15, 41]
+    },
+    "leather": {
+        "brightness": 2,
+        "contrast": 1.40625,
+        "hue": 350,
+        "saturation": 0.898438,
+        "lightness": 1.95313,
+        "rgb": [155, 15, 41]
+    },
+    "metal": {
+        "brightness": -3,
+        "contrast": 1.40625,
+        "hue": 350,
+        "saturation": 0.898438,
+        "lightness": 1.95313,
+        "rgb": [136, 0, 22]
+    },
+    "item": 69889,
+    "categories": ["Red", "Vibrant", "Rare"]
+}, {
+    "id": 1364,
+    "name": "Murky Grey",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": -8,
+        "contrast": 1.21094,
+        "hue": 40,
+        "saturation": 0.078125,
+        "lightness": 1.71875,
+        "rgb": [55, 52, 44]
+    },
+    "leather": {
+        "brightness": -8,
+        "contrast": 1.21094,
+        "hue": 40,
+        "saturation": 0.078125,
+        "lightness": 1.71875,
+        "rgb": [55, 52, 44]
+    },
+    "metal": {
+        "brightness": -8,
+        "contrast": 1.17188,
+        "hue": 40,
+        "saturation": 0.117188,
+        "lightness": 1.99219,
+        "rgb": [71, 65, 55]
+    },
+    "item": 77499,
+    "categories": ["Gray", "Metal", "Rare"]
+}, {
+    "id": 1365,
+    "name": "Matriarch Brass",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": 4,
+        "contrast": 1.36719,
+        "hue": 42,
+        "saturation": 0.585938,
+        "lightness": 1.99219,
+        "rgb": [126, 97, 33]
+    },
+    "leather": {
+        "brightness": 4,
+        "contrast": 1.36719,
+        "hue": 42,
+        "saturation": 0.585938,
+        "lightness": 1.99219,
+        "rgb": [126, 97, 33]
+    },
+    "metal": {
+        "brightness": 4,
+        "contrast": 1.36719,
+        "hue": 42,
+        "saturation": 0.664063,
+        "lightness": 1.99219,
+        "rgb": [131, 98, 27]
+    },
+    "item": 77553,
+    "categories": ["Yellow", "Metal", "Rare"]
+}, {
+    "id": 1366,
+    "name": "Vintage Silver",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": 2,
+        "contrast": 1.36719,
+        "hue": 40,
+        "saturation": 0.078125,
+        "lightness": 1.71875,
+        "rgb": [72, 68, 60]
+    },
+    "leather": {
+        "brightness": 2,
+        "contrast": 1.36719,
+        "hue": 40,
+        "saturation": 0.078125,
+        "lightness": 1.71875,
+        "rgb": [72, 68, 60]
+    },
+    "metal": {
+        "brightness": 4,
+        "contrast": 1.36719,
+        "hue": 40,
+        "saturation": 0.117188,
+        "lightness": 1.99219,
+        "rgb": [94, 87, 75]
+    },
+    "item": 77524,
+    "categories": ["Gray", "Metal", "Rare"]
+}, {
+    "id": 1367,
+    "name": "Dry Silver",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": 12,
+        "contrast": 1.40625,
+        "hue": 40,
+        "saturation": 0.078125,
+        "lightness": 1.5625,
+        "rgb": [93, 89, 81]
+    },
+    "leather": {
+        "brightness": 12,
+        "contrast": 1.40625,
+        "hue": 40,
+        "saturation": 0.078125,
+        "lightness": 1.5625,
+        "rgb": [93, 89, 81]
+    },
+    "metal": {
+        "brightness": 14,
+        "contrast": 1.44531,
+        "hue": 40,
+        "saturation": 0.117188,
+        "lightness": 1.71875,
+        "rgb": [108, 101, 88]
+    },
+    "item": 77534,
+    "categories": ["Gray", "Metal", "Rare"]
+}, {
+    "id": 1368,
+    "name": "Gold Fusion",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": -8,
+        "contrast": 1.25,
+        "hue": 45,
+        "saturation": 0.429688,
+        "lightness": 1.99219,
+        "rgb": [79, 63, 18]
+    },
+    "leather": {
+        "brightness": -8,
+        "contrast": 1.25,
+        "hue": 45,
+        "saturation": 0.390625,
+        "lightness": 1.99219,
+        "rgb": [77, 62, 21]
+    },
+    "metal": {
+        "brightness": -8,
+        "contrast": 1.25,
+        "hue": 42,
+        "saturation": 0.625,
+        "lightness": 1.99219,
+        "rgb": [93, 64, 3]
+    },
+    "item": 77540,
+    "categories": ["Yellow", "Metal", "Rare"]
+}, {
+    "id": 1369,
+    "name": "Golden Sheen",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": 12,
+        "contrast": 1.40625,
+        "hue": 40,
+        "saturation": 0.46875,
+        "lightness": 1.5625,
+        "rgb": [122, 95, 45]
+    },
+    "leather": {
+        "brightness": 12,
+        "contrast": 1.40625,
+        "hue": 40,
+        "saturation": 0.46875,
+        "lightness": 1.5625,
+        "rgb": [122, 95, 45]
+    },
+    "metal": {
+        "brightness": 17,
+        "contrast": 1.48438,
+        "hue": 42,
+        "saturation": 0.585938,
+        "lightness": 1.83594,
+        "rgb": [156, 124, 55]
+    },
+    "item": 77559,
+    "categories": ["Yellow", "Metal", "Rare"]
+}, {
+    "id": 1370,
+    "name": "Ominous Yellow",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": -13,
+        "contrast": 1.25,
+        "hue": 55,
+        "saturation": 1.99219,
+        "lightness": 1.11719,
+        "rgb": [116, 90, 0]
+    },
+    "leather": {
+        "brightness": -13,
+        "contrast": 1.25,
+        "hue": 55,
+        "saturation": 1.99219,
+        "lightness": 1.11719,
+        "rgb": [116, 90, 0]
+    },
+    "metal": {
+        "brightness": -13,
+        "contrast": 1.25,
+        "hue": 55,
+        "saturation": 1.99219,
+        "lightness": 1.11719,
+        "rgb": [116, 90, 0]
+    },
+    "item": 70329,
+    "categories": ["Yellow", "Metal", "Rare"]
+}, {
+    "id": 1371,
+    "name": "Harrowing Maroon Dye",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": -43,
+        "contrast": 1.25,
+        "hue": 48,
+        "saturation": 1.99219,
+        "lightness": 1.17188,
+        "rgb": [62, 1, 0]
+    },
+    "leather": {
+        "brightness": -43,
+        "contrast": 1.25,
+        "hue": 48,
+        "saturation": 1.99219,
+        "lightness": 1.17188,
+        "rgb": [62, 1, 0]
+    },
+    "metal": {
+        "brightness": -43,
+        "contrast": 1.25,
+        "hue": 48,
+        "saturation": 1.99219,
+        "lightness": 1.17188,
+        "rgb": [62, 1, 0]
+    },
+    "item": 70362,
+    "categories": ["Orange", "Vibrant", "Rare"]
+}, {
+    "id": 1372,
+    "name": "Eerie Purple",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": -17,
+        "contrast": 1,
+        "hue": 330,
+        "saturation": 0.234375,
+        "lightness": 1.83594,
+        "rgb": [61, 33, 47]
+    },
+    "leather": {
+        "brightness": -17,
+        "contrast": 1,
+        "hue": 330,
+        "saturation": 0.234375,
+        "lightness": 1.83594,
+        "rgb": [61, 33, 47]
+    },
+    "metal": {
+        "brightness": -17,
+        "contrast": 1,
+        "hue": 330,
+        "saturation": 0.234375,
+        "lightness": 1.83594,
+        "rgb": [61, 33, 47]
+    },
+    "item": 70322,
+    "categories": ["Purple", "Leather", "Rare"]
+}, {
+    "id": 1373,
+    "name": "Carnage Orange",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": -13,
+        "contrast": 1.25,
+        "hue": 47,
+        "saturation": 1.99219,
+        "lightness": 1.32813,
+        "rgb": [138, 72, 0]
+    },
+    "leather": {
+        "brightness": -13,
+        "contrast": 1.25,
+        "hue": 47,
+        "saturation": 1.99219,
+        "lightness": 1.32813,
+        "rgb": [138, 72, 0]
+    },
+    "metal": {
+        "brightness": -13,
+        "contrast": 1.25,
+        "hue": 47,
+        "saturation": 1.99219,
+        "lightness": 1.32813,
+        "rgb": [138, 72, 0]
+    },
+    "item": 70308,
+    "categories": ["Brown", "Vibrant", "Rare"]
+}, {
+    "id": 1374,
+    "name": "Crushed Bone",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": 45,
+        "contrast": 1.25,
+        "hue": 60,
+        "saturation": 0.234375,
+        "lightness": 1.48438,
+        "rgb": [207, 207, 177]
+    },
+    "leather": {
+        "brightness": 45,
+        "contrast": 1.25,
+        "hue": 60,
+        "saturation": 0.234375,
+        "lightness": 1.48438,
+        "rgb": [207, 207, 177]
+    },
+    "metal": {
+        "brightness": 45,
+        "contrast": 1.25,
+        "hue": 60,
+        "saturation": 0.234375,
+        "lightness": 1.48438,
+        "rgb": [207, 207, 177]
+    },
+    "item": 70364,
+    "categories": ["Gray", "Metal", "Rare"]
+}, {
+    "id": 1375,
+    "name": "Ember Red",
+    "base_rgb": [128, 26, 26],
+    "cloth": {
+        "brightness": -28,
+        "contrast": 1.25,
+        "hue": 40,
+        "saturation": 1.99219,
+        "lightness": 1.11719,
+        "rgb": [115, 14, 0]
+    },
+    "leather": {
+        "brightness": -28,
+        "contrast": 1.25,
+        "hue": 40,
+        "saturation": 1.99219,
+        "lightness": 1.11719,
+        "rgb": [115, 14, 0]
+    },
+    "metal": {
+        "brightness": -28,
+        "contrast": 1.25,
+        "hue": 40,
+        "saturation": 1.99219,
+        "lightness": 1.11719,
+        "rgb": [115, 14, 0]
+    },
+    "item": 70368,
+    "categories": ["Red", "Vibrant", "Rare"]
 }]

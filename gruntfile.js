@@ -25,7 +25,7 @@ module.exports = function(grunt) {
             dev: {
                 script: 'server.js',
                 options: {
-                    ext: 'js,jade',
+                    ext: 'js,pug',
                     ignore: [
                         '**/node_modules/**',
                         '**/data/**',
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
             data: {
                 script: 'data.js',
                 options: {
-                    ext: 'js,jade,json',
+                    ext: 'js,pug,json',
                     ignore: [
                         './node_modules/**',
                         './data/**',

@@ -1,0 +1,100 @@
+extends layout
+
+block headClose
+	-var guildUrl = `https://guilds.gw2w2w.com/guilds/${guild.slug}`;
+	-var defaultEmblemSrc = `${guildUrl}/256.svg`;
+	-var guildFullName = `${guild.guild_name} [${guild.tag}]`;
+	-var apiUrl = `https://api.guildwars2.com/v1/guild_details?guild_id=${guild.guild_id}`;
+
+	//- link(rel="icon", type="image/svg+xml", href=defaultEmblemSrc)
+	link(itemprop="image", rel="img_src", type="image/svg+xml", href=defaultEmblemSrc)
+	meta(property="og:image", content=defaultEmblemSrc)
+	meta(itemprop="description", name="description", content="#{guildFullName} &raquo; Download or hotlink the GuildWars2 guild emblem of #{guildFullName} in any resolution and with any background color.")
+
+block content
+	-var guildFullName = guild.guild_name +  ' [' + guild.tag + ']';
+	-var defaultEmblemSrc = '/guilds/' + guild.slug + '/256.svg';
+
+	.container(itemprop="about", itemscope, itemtype="http://schema.org/Organization")
+		div.row: div.col-md-12
+			header.page-header.text-center
+				h1#guildName(itemprop="name"): a(href=guild.slug)= guildFullName
+
+			#linkBuilder(data-guildnameurl=guild.slug)
+				div.text-center
+					img#emblem(src=defaultEmblemSrc, style="width:256px;height:256px", itemprop="logo image", crossorigin="anonymous")
+				hr
+				h5.text-center: em Download or hotlink the GuildWars2 guild emblem of <a href="#{guild.slug}">#{guildFullName}</a> in any resolution and with any background color.
+				br
+				div.row
+					div.col-md-4
+						form.form-horizontal
+							.form-group
+								label.control-label.col-md-8(for="size") Emblem Dimensions
+								.col-md-4
+									input#emblemSize.form-control(name="size", type="number", value=256)
+							.form-group
+								label.control-label.col-md-8(for="bgColor") Background Color
+								.col-md-4
+									input#emblemBgColor.form-control(name="bgColor", type="text", value="none")
+									span.help-block.small.muted HTML Hex
+					div.col-md-8
+						dl.dl-horizontal
+							dt Preview
+							dd
+								a#previewSVG
+								| &nbsp;
+								a#previewPNG
+
+							dt Download
+							dd
+								a#downloadSVG
+								| &nbsp;
+								a#downloadPNG
+
+						dl#emblemCodes.dl-horizontal
+							-var fullPath = 'https://guilds.gw2w2w.com' + defaultEmblemSrc;
+							dt Emblem URL
+							dd#emblemURL.mono
+								//- a(href=thisSrc)= fullPath
+							dt HTML
+							dd#emblemHTML.mono
+								//- ='<img src="' +  fullPath + '" width=256 height=256"/>'
+							dt BBCODE
+							dd#emblemBBCODE.mono
+
+
+						dl.dl-horizontal
+							dt Guild Name
+							dd= guild.guild_name
+
+							dt Guild Tag
+							dd= guild.tag
+
+							dt Guild URL
+							dd: a(href=guildurl)= guildUrl
+
+
+						dl.dl-horizontal
+
+							dt Guild ID
+							dd.mono= guild.guild_id
+
+							dt API URL
+							dd: a(href=apiUrl)= apiUrl
+
+
+		//- dl#image-links
+		//- 	for size in [256,192,128,96,64,48,32,24,16]
+		//- 		-var thisSrc = '/guilds/' + guild.guildNameUrl + '/' + size + '.svg'
+		//- 		dt
+		//- 			h3= size + 'x' + size
+		//- 			dd: dl.dl-horizontal
+		//- 				dt URL
+		//- 				dd: a(href=thisSrc)= fullPath
+		//- 				dt HTML
+		//- 				dd='<img src="' +  fullPath + '" width=' + size + ' height=' + size + '"/>'
+		//- 				dt BBCODE
+		//- 				dd= '[img width="' + size + '" height="' + size + ']' +  fullPath + '[/img]'
+		//- 				//- dt PREVIEW
+		//- 				//- dd: img(width=size, height=size, src='/guilds/' + guild.guildNameUrl + '/' + size + '.svg')

@@ -73,42 +73,6 @@ function isCanonical(currentUrl, guild, opts, cb) {
 }
 
 
-// function sendEmblem(res, guild, size, bgColor) {
-
-//     const emblemHash = guild.get('emblem').hashCode();
-//     const emblemFile = [emblemHash, size, ''].join('/') + (bgColor || 'emblem') + '.svg';
-//     const emblemPath = path.join(dataRoot, 'emblems', emblemFile);
-
-//     // console.log(emblemHash, emblemFile, emblemPath);
-
-//     // const startTime = Date.now();
-//     fs.exists(emblemPath, function(exists) {
-//         if (exists) {
-//             res.sendFile(emblemPath);
-//             // console.log('Output Time: ', Date.now() - startTime, guild.get('slug'));
-//         }
-//         else {
-//             emblem.getGuildSVG(guild, size, bgColor, function(err, svg) {
-
-//                 fs.outputFile(emblemPath, svg, function(err) {
-//                     if (err) {
-//                         console.log('writeSvg()::err', err);
-//                         res.send(svg);
-//                     }
-//                     else {
-//                         res.sendFile(emblemPath);
-//                     }
-//                     // console.log('Render Time: ', Date.now() - startTime, guild.get('slug'));
-//                 });
-
-//             });
-//         }
-
-//     });
-
-// }
-
-
 function gaqTrackEvent(req, size) {
     const referer = req.get('referer');
 
@@ -122,10 +86,6 @@ function gaqTrackEvent(req, size) {
 
     if (isHotlink) {
         const ua = require('universal-analytics');
-        const uaUUID = (req.cookies && req.cookies.uaUUID) ? req.cookies.uaUUID : null;
-        const visitor = ua('UA-51384-40', uaUUID);
-
-        //Visitor#event(category, action, label, value)
         visitor.event('emblem-hotlink', req.params.guildSlug, referer, size).send();
     }
 }

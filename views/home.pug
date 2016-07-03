@@ -16,7 +16,7 @@ block content
 		#example
 			h1.page-header Examples
 
-			div.text-center
+			div.examples
 				each guild, ixGuild in guilds
 					a(href=`/guilds/${guild.slug}`)
-						img(src=`/guilds/${guild.slug}/256.svg`, title=guild.guild_name width=160, height=160, onerror="$(this).parent().remove()")
+						img(src=`/guilds/${guild.slug}/256.svg`, title=guild.guild_name, onerror="$(this).parent().remove()")

@@ -2,9 +2,12 @@
 
 const path = require('path');
 const async = require('async');
+const Promise = require('bluebird');
 
 const guilds = require('lib/guilds');
 const emblem = require('lib/emblem');
+
+const getSvg = Promise.promisify(emblem.getGuildSVG);
 
 
 module.exports = function(req, res) {
@@ -19,40 +22,79 @@ module.exports = function(req, res) {
 
     // const startTime = Date.now();
 
-    async.auto({
-        guild    : [guilds.getBySlug.bind(guilds, slug)],
-        canonical: ['guild', (cb, results) => isCanonical(req.url, results.guild, opts, cb)],
-        svg      : ['canonical', (cb, results) => emblem.getGuildSVG(results.guild, opts, cb)],
-    }, (err, results) => {
-        if (err) {
-            if (err === 'NotCanonical') {
-                res.redirect(301, results.canonical);
+    return guilds.getBySlug(slug)
+        .then((guild) => {
+            if (!guild.guild_id) {
+                throw({ type: 'NotFound' })
             }
-            else if (err === 'NotFound') {
-                res.status(404).send('Guild not found');
+
+            const canonicalUrl = getCanonicalUrl(guild, opts);
+            const currentUrl = req.url;
+
+            if (currentUrl !== canonicalUrl && decodeURI(currentUrl) !== decodeURI(canonicalUrl)) {
+                throw({ type: 'NotCanonical', canonicalUrl })
             }
-            else if (err === 'NoEmblem') {
-                res.sendFile('public/images/none.svg', {root: process.cwd()});
+
+            return guild;
+        })
+        .then((guild) => {
+            return getSvg(guild, opts)
+                .then((svg) => res.type('image/svg+xml').send(svg));
+        })
+        .catch((err) => {
+            // console.log(err.message, err.type, err);
+
+            if (err.type && err.type === 'NotCanonical') {
+                return res.redirect(301, err.canonicalUrl);
+            }
+            else if (err.type && err.type === 'NotFound') {
+                return res.status(404).send('Guild not found');
+            }
+            else if (err.message === 'NoEmblem' || (err.type && err.type === 'NoEmblem')) {
+                return res.sendFile('public/images/none.svg', {root: process.cwd()});
+            }
+            else if (err.response && err.error && err.statusCode === 400) {
+                return res.status(404).send(err.error);
             }
             else {
-                console.log('ERROR', slug, err);
-                res.status(500).send(JSON.stringify(err));
+                return res.send(err);
             }
-        }
-        else {
-            res.type('image/svg+xml').send(results.svg);
+        });
 
-            // console.log('Render Time: ', Date.now() - startTime, slug);
-
-            async.nextTick(gaqTrackEvent.bind(null, req, size));
-        }
-    });
+    // async.auto({
+    //     guild    : [guilds.getBySlug.bind(guilds, slug)],
+    //     canonical: ['guild', (cb, results) => isCanonical(req.url, results.guild, opts, cb)],
+    //     svg      : ['canonical', (cb, results) => emblem.getGuildSVG(results.guild, opts, cb)],
+    // }, (err, results) => {
+    //     if (err) {
+    //         if (err === 'NotCanonical') {
+    //             res.redirect(301, results.canonical);
+    //         }
+    //         else if (err === 'NotFound') {
+    //             res.status(404).send('Guild not found');
+    //         }
+    //         else if (err === 'NoEmblem') {
+    //             res.sendFile('public/images/none.svg', {root: process.cwd()});
+    //         }
+    //         else {
+    //             console.log('ERROR', slug, err);
+    //             res.status(500).send(JSON.stringify(err));
+    //         }
+    //     }
+    //     else {
+    //         res.type('image/svg+xml').send(results.svg);
+    //
+    //         // console.log('Render Time: ', Date.now() - startTime, slug);
+    //
+    //         async.nextTick(gaqTrackEvent.bind(null, req, size));
+    //     }
+    // });
 };
 
 
 
-function isCanonical(currentUrl, guild, opts, cb) {
-    let svgPath = [opts.size];
+function getCanonicalUrl(guild, opts) {
+    const svgPath = [opts.size];
     if (opts.bgColor) {
         svgPath.push(opts.bgColor);
     }
@@ -61,15 +103,11 @@ function isCanonical(currentUrl, guild, opts, cb) {
     const canonicalUrl = [
         '',
         'guilds',
-        guild.get('slug'),
+        guild.slug,
         svgPath.join('.'),
     ].join('/');
 
-    const err = (currentUrl !== canonicalUrl && decodeURI(currentUrl) !== decodeURI(canonicalUrl))
-        ? 'NotCanonical'
-        : null;
-
-    cb(err, canonicalUrl);
+    return canonicalUrl;
 }
 
 
@@ -89,3 +127,34 @@ function gaqTrackEvent(req, size) {
         visitor.event('emblem-hotlink', req.params.guildSlug, referer, size).send();
     }
 }
+
+
+
+    // async.auto({
+    //     guild    : [guilds.getBySlug.bind(guilds, slug)],
+    //     canonical: ['guild', (cb, results) => isCanonical(req.url, results.guild, opts, cb)],
+    //     svg      : ['canonical', (cb, results) => emblem.getGuildSVG(results.guild, opts, cb)],
+    // }, (err, results) => {
+    //     if (err) {
+    //         if (err === 'NotCanonical') {
+    //             res.redirect(301, results.canonical);
+    //         }
+    //         else if (err === 'NotFound') {
+    //             res.status(404).send('Guild not found');
+    //         }
+    //         else if (err === 'NoEmblem') {
+    //             res.sendFile('public/images/none.svg', {root: process.cwd()});
+    //         }
+    //         else {
+    //             console.log('ERROR', slug, err);
+    //             res.status(500).send(JSON.stringify(err));
+    //         }
+    //     }
+    //     else {
+    //         res.type('image/svg+xml').send(results.svg);
+    //
+    //         // console.log('Render Time: ', Date.now() - startTime, slug);
+    //
+    //         async.nextTick(gaqTrackEvent.bind(null, req, size));
+    //     }
+    // });

@@ -11,32 +11,33 @@ module.exports = function(req, res) {
     // console.log('Routes::guild', req.params);
 
 
-    guilds.getBySlug(slug, function(err, data) {
-        if (data && data.has('guild_name')) {
-            const canonical = '/guilds/' + data.get('slug');
+    return guilds.getBySlug(slug)
+        .then(guild => {
+            if (guild && guild.guild_name) {
+                const canonical = '/guilds/' + guild.slug;
 
-            // console.log('canonical', canonical);
-            // console.log('req.url', req.url);
-            // console.log('decodeURI', decodeURI(req.url));
-            // console.log('eq', req.url === canonical);
-            // console.log('eq decodeURI', decodeURI(req.url) === decodeURI(canonical));
+                // console.log('canonical', canonical);
+                // console.log('req.url', req.url);
+                // console.log('decodeURI', decodeURI(req.url));
+                // console.log('eq', req.url === canonical);
+                // console.log('eq decodeURI', decodeURI(req.url) === decodeURI(canonical));
 
-            if (req.url !== canonical && decodeURI(req.url) !== decodeURI(canonical)) {
-                res.redirect(301, canonical);
+                if (req.url !== canonical && decodeURI(req.url) !== decodeURI(canonical)) {
+                    return res.redirect(301, canonical);
+                }
+                else {
+                    return res.render('guild', {
+                        renderStart: renderStart,
+                        searchBar: true,
+
+                        title: guild.guild_name + ' [' + guild.tag + ']',
+                        guild,
+                    });
+                }
             }
             else {
-                res.render('guild', {
-                    renderStart: renderStart,
-                    searchBar: true,
-
-                    title: data.get('guild_name') + ' [' + data.get('tag') + ']',
-                    guild: data.toJS(),
-                });
+                return res.status(404).send('Guild not found');
             }
-        }
-        else {
-            res.status(404).send('Guild not found');
-        }
-    });
+        });
 
 };

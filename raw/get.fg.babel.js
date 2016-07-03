@@ -1,7 +1,6 @@
 import path from 'path';
 import fs from 'fs-extra';
 
-import async from 'async';
 import _ from 'lodash';
 import request from 'request';
 

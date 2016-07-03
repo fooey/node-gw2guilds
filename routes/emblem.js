@@ -1,7 +1,6 @@
 'use strict';
 
 const path = require('path');
-const async = require('async');
 const Promise = require('bluebird');
 
 const guilds = require('lib/guilds');
@@ -60,35 +59,6 @@ module.exports = function(req, res) {
                 return res.send(err);
             }
         });
-
-    // async.auto({
-    //     guild    : [guilds.getBySlug.bind(guilds, slug)],
-    //     canonical: ['guild', (cb, results) => isCanonical(req.url, results.guild, opts, cb)],
-    //     svg      : ['canonical', (cb, results) => emblem.getGuildSVG(results.guild, opts, cb)],
-    // }, (err, results) => {
-    //     if (err) {
-    //         if (err === 'NotCanonical') {
-    //             res.redirect(301, results.canonical);
-    //         }
-    //         else if (err === 'NotFound') {
-    //             res.status(404).send('Guild not found');
-    //         }
-    //         else if (err === 'NoEmblem') {
-    //             res.sendFile('public/images/none.svg', {root: process.cwd()});
-    //         }
-    //         else {
-    //             console.log('ERROR', slug, err);
-    //             res.status(500).send(JSON.stringify(err));
-    //         }
-    //     }
-    //     else {
-    //         res.type('image/svg+xml').send(results.svg);
-    //
-    //         // console.log('Render Time: ', Date.now() - startTime, slug);
-    //
-    //         async.nextTick(gaqTrackEvent.bind(null, req, size));
-    //     }
-    // });
 };
 
 
@@ -127,34 +97,3 @@ function gaqTrackEvent(req, size) {
         visitor.event('emblem-hotlink', req.params.guildSlug, referer, size).send();
     }
 }
-
-
-
-    // async.auto({
-    //     guild    : [guilds.getBySlug.bind(guilds, slug)],
-    //     canonical: ['guild', (cb, results) => isCanonical(req.url, results.guild, opts, cb)],
-    //     svg      : ['canonical', (cb, results) => emblem.getGuildSVG(results.guild, opts, cb)],
-    // }, (err, results) => {
-    //     if (err) {
-    //         if (err === 'NotCanonical') {
-    //             res.redirect(301, results.canonical);
-    //         }
-    //         else if (err === 'NotFound') {
-    //             res.status(404).send('Guild not found');
-    //         }
-    //         else if (err === 'NoEmblem') {
-    //             res.sendFile('public/images/none.svg', {root: process.cwd()});
-    //         }
-    //         else {
-    //             console.log('ERROR', slug, err);
-    //             res.status(500).send(JSON.stringify(err));
-    //         }
-    //     }
-    //     else {
-    //         res.type('image/svg+xml').send(results.svg);
-    //
-    //         // console.log('Render Time: ', Date.now() - startTime, slug);
-    //
-    //         async.nextTick(gaqTrackEvent.bind(null, req, size));
-    //     }
-    // });

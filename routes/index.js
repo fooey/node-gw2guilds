@@ -30,10 +30,10 @@ module.exports = function(app /*, express*/) {
     app.get('/robots.txt', require('routes/robots.js'));
     app.get('/sitemap.xml', require('routes/sitemap.js'));
 
-    app.get('/dump',
-        (req, res) =>
-        res.redirect(301, '/data/guilds/guilds-index.json')
-    );
+    // app.get('/dump',
+    //     (req, res) =>
+    //     res.redirect(301, '/data/guilds/guilds-index.json')
+    // );
 
     return routes;
 };

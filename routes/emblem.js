@@ -1,6 +1,8 @@
 'use strict';
 
 const path = require('path');
+
+const ua = require('universal-analytics');
 const Promise = require('bluebird');
 
 const guilds = require('lib/guilds');
@@ -58,6 +60,9 @@ module.exports = function(req, res) {
             else {
                 return res.send(err);
             }
+        })
+        .finally(() => {
+            setTimeout(() => gaqTrackEvent(req, size), 0);
         });
 };
 
@@ -93,7 +98,6 @@ function gaqTrackEvent(req, size) {
     );
 
     if (isHotlink) {
-        const ua = require('universal-analytics');
         visitor.event('emblem-hotlink', req.params.guildSlug, referer, size).send();
     }
 }

@@ -29,6 +29,8 @@ libData.init().then(() => {
         console.log('Arch:     %s', process.arch);
         console.log('Node:     %s', process.versions.node);
         console.log('V8:       %s', process.versions.v8);
+        console.log('cwd:      %s', process.cwd());
+        console.log('dir:      %s', __dirname);
         // console.log('Env:      %s', JSON.stringify(process.env));
         console.log('**************************************************');
         console.log('');

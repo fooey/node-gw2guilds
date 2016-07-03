@@ -1,0 +1,2 @@
+SELECT *
+FROM guilds;

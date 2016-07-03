@@ -11,25 +11,25 @@ module.exports = function(req, res) {
     const extension = req.params.extension;
 
 
-    guilds.getById(guildId, function(err, data) {
-        if (data && data.has('guild_name')) {
+    return guilds.getById(guildId).then((data)  => {
+        if (data && data.guild_name) {
             if (!extension) {
-                res.redirect(301, '/guilds/' + data.get('slug'));
+                return res.redirect(301, '/guilds/' + data.slug);
             }
             else if (extension === 'svg') {
                 let svgPath = [size];
                 if (bgColor) {svgPath.push(bgColor);}
                 svgPath.push('svg');
 
-                res.redirect(301, '/guilds/' + data.get('slug') + '/' + svgPath.join('.'));
+                return res.redirect(301, '/guilds/' + data.slug + '/' + svgPath.join('.'));
             }
             else {
                 console.log(req.params);
-                res.status(500).send('kaboom');
+                return res.status(500).send('kaboom');
             }
         }
         else {
-            res.status(404).send('Guild not found');
+            return res.status(404).send('Guild not found');
         }
     });
 

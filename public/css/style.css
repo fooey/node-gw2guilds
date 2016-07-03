@@ -40,3 +40,14 @@ h1, h2, h3, h4, h5, h6, strong {
 #linkBuilder dl.dl-horizontal dd {
 	margin-left: 120px;
 }
+
+.examples {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+}
+.examples img {
+    display: block;
+    width: 160px;
+    height: 160px;
+}

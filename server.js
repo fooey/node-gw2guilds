@@ -1,6 +1,5 @@
-'use strict';
-require('babel/register');
-
+require("babel-register");
+require('dotenv').load();
 
 if (process.env.NODE_ENV === 'production') {
     console.log('enabling newrelic service');

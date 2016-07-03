@@ -98,6 +98,7 @@ function gaqTrackEvent(req, size) {
     );
 
     if (isHotlink) {
+        const visitor = ua('UA-51384-40');
         visitor.event('emblem-hotlink', req.params.guildSlug, referer, size).send();
     }
 }

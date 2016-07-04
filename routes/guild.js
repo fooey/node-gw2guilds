@@ -18,6 +18,7 @@ module.exports = function(req, res) {
             }
 
             const canonicalUrl = '/guilds/' + guild.slug;
+            const currentUrl = req.url;
 
             // console.log('canonical', canonical);
             // console.log('req.url', req.url);
@@ -29,16 +30,13 @@ module.exports = function(req, res) {
                 throw({ type: 'NotCanonical', canonicalUrl })
             }
 
-            return guild;
-        })
-        .then(guild => {
             return res.render('guild', {
                 renderStart: renderStart,
                 searchBar: true,
 
                 title: guild.guild_name + ' [' + guild.tag + ']',
                 guild,
-            })
+            });
         })
         .catch((err) => {
             // console.log(err.message, err.type, err);

@@ -12,32 +12,49 @@ module.exports = function(req, res) {
 
 
     return guilds.getBySlug(slug)
-        .then(guild => {
-            if (guild && guild.guild_name) {
-                const canonical = '/guilds/' + guild.slug;
-
-                // console.log('canonical', canonical);
-                // console.log('req.url', req.url);
-                // console.log('decodeURI', decodeURI(req.url));
-                // console.log('eq', req.url === canonical);
-                // console.log('eq decodeURI', decodeURI(req.url) === decodeURI(canonical));
-
-                if (req.url !== canonical && decodeURI(req.url) !== decodeURI(canonical)) {
-                    return res.redirect(301, canonical);
-                }
-                else {
-                    return res.render('guild', {
-                        renderStart: renderStart,
-                        searchBar: true,
-
-                        title: guild.guild_name + ' [' + guild.tag + ']',
-                        guild,
-                    });
-                }
+        .then((guild) => {
+            if (!guild.guild_id) {
+                throw({ type: 'NotFound' })
             }
-            else {
+
+            const canonicalUrl = '/guilds/' + guild.slug;
+
+            // console.log('canonical', canonical);
+            // console.log('req.url', req.url);
+            // console.log('decodeURI', decodeURI(req.url));
+            // console.log('eq', req.url === canonical);
+            // console.log('eq decodeURI', decodeURI(req.url) === decodeURI(canonical));
+
+            if (currentUrl !== canonicalUrl && decodeURI(currentUrl) !== decodeURI(canonicalUrl)) {
+                throw({ type: 'NotCanonical', canonicalUrl })
+            }
+
+            return guild;
+        })
+        .then(guild => {
+            return res.render('guild', {
+                renderStart: renderStart,
+                searchBar: true,
+
+                title: guild.guild_name + ' [' + guild.tag + ']',
+                guild,
+            })
+        })
+        .catch((err) => {
+            // console.log(err.message, err.type, err);
+
+            if (err.type && err.type === 'NotCanonical') {
+                return res.redirect(301, err.canonicalUrl);
+            }
+            else if (err.type && err.type === 'NotFound') {
                 return res.status(404).send('Guild not found');
             }
-        });
+            else if (err.response && err.error && err.statusCode === 400) {
+                return res.status(404).send(err.error);
+            }
+            else {
+                return res.send(err);
+            }
+        })
 
 };

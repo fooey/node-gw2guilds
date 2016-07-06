@@ -9,10 +9,10 @@ block headClose
 	//- link(rel="icon", type="image/svg+xml", href=defaultEmblemSrc)
 	link(itemprop="image", rel="img_src", type="image/svg+xml", href=defaultEmblemSrc)
 	meta(property="og:image", content=defaultEmblemSrc)
-	meta(itemprop="description", name="description", content="#{guildFullName} &raquo; Download or hotlink the GuildWars2 guild emblem of #{guildFullName} in any resolution and with any background color.")
+	meta(itemprop="description", name="description", content=`${guildFullName} &raquo; Download or hotlink the GuildWars2 guild emblem of ${guildFullName} in any resolution and with any background color.`)
 
 block content
-	-var guildFullName = guild.guild_name +  ' [' + guild.tag + ']';
+	-var guildFullName = `${guild.guild_name} [${guild.tag}]`;
 	-var defaultEmblemSrc = '/guilds/' + guild.slug + '/256.svg';
 
 	.container(itemprop="about", itemscope, itemtype="http://schema.org/Organization")

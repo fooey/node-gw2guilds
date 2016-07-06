@@ -5,36 +5,38 @@ const DB = require('lib/data');
 
 
 module.exports = function(req, res) {
-    // const renderStart = Date.now();
-
+    const svgMode = (req.originalUrl === '/sitemap-svg.xml');
 
     return DB.guilds.dbGetAll()
-        .then(guilds => guilds.map(guild => `
-            <url>
-                <loc>http://guilds.gw2w2w.com/guilds/${guild.slug}</loc>
-                <lastmod>${getDateFormat(guild.modified_date)}</lastmod>
-            </url>
-            ${guild.emblem.background_id
-                ? `<url>
-                    <loc>http://guilds.gw2w2w.com/guilds/${guild.slug}/256.svg</loc>
-                    <lastmod>${getDateFormat(guild.modified_date)}</lastmod>
-                </url>`
-                : ''
-            }
-        `))
-        .then(nodes => res.type('xml').send(xml(nodes)));
+        .then(guilds => filterResults(guilds))
+        .then(guilds => guilds.slice(0, 50))
+        .then(guilds => guilds.map(guild => getNode(guild)))
+        .then(nodes => res.type('xml').send(getXml(nodes)));
 
 
-    function xml(nodes) {
-        return (
-            `<?xml version="1.0" encoding="UTF-8"?>
-            <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-                ${nodes.join('\n')}
-            </urlset>`
-        );
+
+
+    function filterResults(guilds) {
+        return (!svgMode)
+            ? guilds
+            : guilds.filter(g => g.emblem.background_id);
     }
 
-    function getDateFormat(epochTime) {
-        return new Date(epochTime * 1000).toISOString()
+
+    function getNode(guild) {
+        return `<url><loc>${getLoc(guild)}</loc><lastmod>${getLastMod(guild)}</lastmod></url>`;
+    }
+
+    function getXml(nodes) {
+        return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${nodes.join('\n')}</urlset>`;
+    }
+
+
+    function getLoc(guild) {
+        return `http://guilds.gw2w2w.com/guilds/${guild.slug}${svgMode ? '.svg' : ''}`;
+    }
+
+    function getLastMod(guild) {
+        return new Date(guild.modified_date * 1000).toISOString()
     }
 };

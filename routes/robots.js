@@ -13,5 +13,6 @@ module.exports = function(req, res) {
         // 'Disallow: *.svg$',
         // '',
         'Sitemap: http://guilds.gw2w2w.com/sitemap.xml',
+        'Sitemap: http://guilds.gw2w2w.com/sitemap-svg.xml',
     ].join('\n'));
 };

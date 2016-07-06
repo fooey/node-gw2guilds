@@ -9,7 +9,7 @@ module.exports = function(req, res) {
 
     return DB.guilds.dbGetAll()
         .then(guilds => filterResults(guilds))
-        .then(guilds => guilds.slice(0, 50))
+        // .then(guilds => guilds.slice(0, 50))
         .then(guilds => guilds.map(guild => getNode(guild)))
         .then(nodes => res.type('xml').send(getXml(nodes)));
 

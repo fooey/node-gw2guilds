@@ -8,35 +8,44 @@ module.exports = function(req, res) {
     const svgMode = (req.originalUrl === '/sitemap-svg.xml');
 
     return DB.guilds.dbGetAll()
-        .then(guilds => filterResults(guilds))
-        // .then(guilds => guilds.slice(0, 50))
+        // .then(guilds => filterResults(guilds))
+        .then(guilds => guilds.slice(0, 50))
         .then(guilds => guilds.map(guild => getNode(guild)))
         .then(nodes => res.type('xml').send(getXml(nodes)));
 
 
 
 
-    function filterResults(guilds) {
-        return (!svgMode)
-            ? guilds
-            : guilds.filter(g => g.emblem.background_id);
-    }
+    // function filterResults(guilds) {
+    //     return (!svgMode)
+    //         ? guilds
+    //         : guilds.filter(g => g.emblem.background_id);
+    // }
 
 
     function getNode(guild) {
-        return `<url><loc>${getLoc(guild)}</loc><lastmod>${getLastMod(guild)}</lastmod></url>`;
+        return `<url><loc>${getGuildUrl(guild)}</loc><lastmod>${getLastMod(guild)}</lastmod>${getImageElement(guild)}</url>`;
     }
 
     function getXml(nodes) {
-        return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${nodes.join('\n')}</urlset>`;
+        return `<?xml version="1.0" encoding="UTF-8"?>
+            <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+                ${nodes.join('\n')}
+            </urlset>`;
     }
 
 
-    function getLoc(guild) {
-        return `http://guilds.gw2w2w.com/guilds/${guild.slug}${svgMode ? '.svg' : ''}`;
+    function getGuildUrl(guild) {
+        return `http://guilds.gw2w2w.com/guilds/${guild.slug}`;
     }
 
     function getLastMod(guild) {
-        return new Date(guild.modified_date * 1000).toISOString()
+        return new Date(guild.modified_date * 1000).toISOString();
+    }
+
+    function getImageElement(guild) {
+        return (guild.emblem.background_id)
+            ? `<image:image><image:loc>${getGuildUrl(guild)}.svg</image:loc></image:image>`
+            : ``;
     }
 };

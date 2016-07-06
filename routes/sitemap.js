@@ -45,7 +45,11 @@ module.exports = function(req, res) {
 
     function getImageElement(guild) {
         return (guild.emblem.background_id)
-            ? `<image:image><image:loc>${getGuildUrl(guild)}.svg</image:loc></image:image>`
+            ? `<image:image>
+                <image:loc>${getGuildUrl(guild)}.svg</image:loc>
+                <image:title>${guild.guild_name}</image:title>
+                <image:caption>GuildWars2 Emblem of ${guild.guild_name}</image:caption>
+            </image:image>`
             : ``;
     }
 };

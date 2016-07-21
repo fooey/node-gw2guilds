@@ -1,17 +1,10 @@
-'use strict';
 
+module.exports = (req, res) => {
+    return res.type('text').send(`
+#${req.headers.host}
+Sitemap: http://guilds.gw2w2w.com/sitemap.xml
 
-
-module.exports = function(req, res) {
-    // const renderStart = Date.now()
-
-    // res.header('content-type', 'text/plain');
-    res.type('text').send([
-        '#' + req.headers.host,
-        '',
-        // 'User-agent: *',
-        // 'Disallow: *.svg$',
-        // '',
-        'Sitemap: http://guilds.gw2w2w.com/sitemap.xml',
-    ].join('\n'));
+User-agent: BLEXBot
+Disallow: /
+    `);
 };

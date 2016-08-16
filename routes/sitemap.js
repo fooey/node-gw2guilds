@@ -51,7 +51,7 @@ export let index = (req, res) => {
         <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
             ${'0123456789abcdef'.split('').map(section => (`
                 <sitemap><loc>http://guilds.gw2w2w.com/sitemap/${section}.xml</loc></sitemap>
-            `))}
+            `)).join('')}
         </sitemapindex>`
    );
 };

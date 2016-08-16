@@ -4,23 +4,15 @@
 const DB = require('lib/data');
 
 
-module.exports = function(req, res) {
-    const svgMode = (req.originalUrl === '/sitemap-svg.xml');
+export let sitemap = (req, res) => {
+    const section = req.params.section;
 
     return DB.guilds.dbGetAll()
+        .filter(g => g.guild_id[0] === section)
         // .then(guilds => filterResults(guilds))
         // .then(guilds => guilds.slice(0, 50))
         .then(guilds => guilds.map(guild => getNode(guild)))
         .then(nodes => res.type('xml').send(getXml(nodes)));
-
-
-
-
-    // function filterResults(guilds) {
-    //     return (!svgMode)
-    //         ? guilds
-    //         : guilds.filter(g => g.emblem.background_id);
-    // }
 
 
     function getNode(guild) {
@@ -52,4 +44,14 @@ module.exports = function(req, res) {
             </image:image>`
             : ``;
     }
+};
+
+export let index = (req, res) => {
+    return res.type('xml').send(`<?xml version="1.0" encoding="UTF-8"?>
+        <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            ${'0123456789abcdef'.split('').map(section => (`
+                <sitemap><loc>http://guilds.gw2w2w.com/sitemap/${section}.xml</loc></sitemap>
+            `))}
+        </sitemapindex>`
+   );
 };

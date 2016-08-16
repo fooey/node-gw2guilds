@@ -28,7 +28,8 @@ module.exports = function(app /*, express*/) {
 
 
     app.get('/robots.txt', require('routes/robots.js'));
-    app.get('/sitemap.xml', require('routes/sitemap.js'));
+    app.get('/sitemap.xml', require('routes/sitemap.js').index);
+    app.get('/sitemap/:section.xml', require('routes/sitemap.js').sitemap);
 
     // app.get('/dump',
     //     (req, res) =>

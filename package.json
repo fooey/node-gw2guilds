@@ -2,6 +2,10 @@
   "name": "node-gw2guilds",
   "description": "node-gw2guilds",
   "version": "0.0.1",
+  "scripts": {
+      "start": "node server.js",
+      "dev": "grunt"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/fooey/node-gw2guilds.git"

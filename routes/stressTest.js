@@ -1,9 +1,9 @@
 
 import _ from 'lodash';
 
-const guildList = require('data/guilds/guilds-index');
-const guildNames = Object.keys(guildList);
-const sampleSize = 128; // guildList.length;
+// const guildList = require('data/guilds/guilds-index');
+// const guildNames = Object.keys(guildList);
+// const sampleSize = 128; // guildList.length;
 
 
 module.exports = function(req, res) {

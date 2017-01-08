@@ -157,7 +157,7 @@ $(function() {
 
     function __getCanonical(stub) {
         var hostName = (window.location.port === '80') ? window.location.hostname : window.location.host;
-        return 'http://' + hostName + stub;
+        return 'https://' + hostName + stub;
     }
 
 

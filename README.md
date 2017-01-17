@@ -1,2 +1,1 @@
-node-gw2guilds
-==============
+http://guilds.gw2w2w.com

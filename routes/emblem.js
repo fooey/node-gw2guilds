@@ -58,7 +58,7 @@ module.exports = function(req, res) {
                 return res.status(404).send(err.error);
             }
             else {
-                return res.send(err);
+                return res.status(500).send(err);
             }
         })
         .finally(() => {

@@ -9,12 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/better-sqlite3": "^7.5.0",
+    "better-sqlite3": "^7.5.3",
     "next": "12.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/node": "18.0.0",
+    "@types/prettier": "^2.6.3",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",
     "autoprefixer": "^10.4.7",
@@ -22,7 +25,9 @@
     "eslint-config-next": "12.1.6",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
+    "prettier-plugin-sql": "^0.8.0",
     "prettier-plugin-tailwindcss": "^0.1.11",
+    "prettier-sql": "^5.1.1",
     "tailwindcss": "^3.1.3",
     "typescript": "4.7.4"
   }

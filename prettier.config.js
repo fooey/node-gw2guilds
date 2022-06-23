@@ -1,5 +1,5 @@
 module.exports = {
-  plugins: [require('prettier-plugin-tailwindcss')],
+  plugins: [require('prettier-plugin-tailwindcss'), require('prettier-sql')],
   arrowParens: 'always',
   bracketSameLine: false,
   bracketSpacing: true,
@@ -12,4 +12,6 @@ module.exports = {
   tabWidth: 2,
   trailingComma: 'es5',
   useTabs: false,
+  commaPosition: 'before',
+  uppercase: true,
 };

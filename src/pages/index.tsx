@@ -1,6 +1,6 @@
-import { LayoutMain } from 'components/layout/Main';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { LayoutMain } from '~/components/layout/Main';
 
 const Home: NextPage = () => {
   return (

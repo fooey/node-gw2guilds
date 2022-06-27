@@ -1,6 +1,7 @@
 import { ServerResponse } from 'http';
 import { GetServerSidePropsContext, NextPage } from 'next';
 import Image from 'next/image';
+import { LayoutMain } from '~/components/layout/Main';
 import { db } from '~/lib/sql';
 import { IGuild } from '~/types/Guild';
 
@@ -12,9 +13,9 @@ export interface IGuildProps {
 }
 
 const guildSql = `
-SELECT *
-from guilds
-where slug = @slug
+  SELECT *
+  from guilds
+  WHERE slug = @slug
 `;
 
 const guildStatement = db.prepare(guildSql);
@@ -23,7 +24,7 @@ const Guild: NextPage<IGuildProps> = ({ guild }) => {
   const { slug } = guild;
   console.log(`🚀 ~ file: [guild].tsx ~ line 11 ~ guild`, guild);
   return (
-    <div>
+    <LayoutMain>
       <h1>{slug}</h1>
       <ul>
         <li>
@@ -36,7 +37,7 @@ const Guild: NextPage<IGuildProps> = ({ guild }) => {
       </ul>
 
       <pre>{JSON.stringify(guild, null, 2)}</pre>
-    </div>
+    </LayoutMain>
   );
 };
 

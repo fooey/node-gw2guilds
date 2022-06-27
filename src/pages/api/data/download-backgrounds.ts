@@ -1,6 +1,6 @@
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import path from 'node:path';
+import path from 'path';
 
 const dataPath = path.resolve(process.cwd(), `data`);
 const rawDataPath = path.resolve(dataPath, `raw`, `emblem-backgrounds`);

@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="mx-auto flex max-w-prose flex-col place-content-center gap-2 text-center text-sm">
+    <footer className="mx-auto flex max-w-3xl flex-col place-content-center gap-2 text-center text-sm">
       <p>
         Please send comments and bugs to <a href="mailto:gw2w2w@schtuph.com">gw2w2w@schtuph.com</a>
       </p>

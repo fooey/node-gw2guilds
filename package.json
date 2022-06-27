@@ -11,18 +11,27 @@
   "dependencies": {
     "@types/better-sqlite3": "^7.5.0",
     "better-sqlite3": "^7.5.3",
+    "classnames": "^2.3.1",
+    "lodash": "^4.17.21",
     "next": "12.1.6",
+    "pngjs": "^6.0.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-icons": "^4.4.0",
+    "upng-js": "^2.1.0"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.182",
     "@types/node": "18.0.0",
+    "@types/pngjs": "^6.0.1",
     "@types/prettier": "^2.6.3",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",
+    "@types/upng-js": "^2.1.2",
     "autoprefixer": "^10.4.7",
     "eslint": "8.18.0",
     "eslint-config-next": "12.1.6",
+    "imagetracerjs": "^1.2.6",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "prettier-plugin-sql": "^0.8.0",

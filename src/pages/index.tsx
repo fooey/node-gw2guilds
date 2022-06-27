@@ -92,7 +92,7 @@ const Home: NextPage<IHomeProps> = ({ guilds }) => {
 };
 
 const Section: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <section className="mx-auto mt-4 flex flex-wrap ">{children}</section>
+  <section className="mx-auto mt-4 flex flex-col flex-wrap ">{children}</section>
 );
 
 const SectionTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -233,80 +233,86 @@ const EmblemBuilder = () => {
     return handleChange({ foreground_id: id });
   };
 
+  const emblemSize = '512';
+  const emblemUrl = getEmblemUrl(emblem, emblemSize);
+
   return (
     <Section>
       <SectionTitle>Emblem Builder</SectionTitle>
+      <div className="pb-4">
+        <input value={emblemUrl} className="w-full p-1 text-sm" readOnly />
+      </div>
       <div className="flex flex-row align-top">
         <div>
-          <EmblemPreview emblem={emblem} />
+          <div className="p-2">
+            <img src={emblemUrl} width={emblemSize} height={emblemSize} />
+          </div>
         </div>
-        <div className="flex flex-row align-top">
-          <LayerOptions>
-            <h3>Background</h3>
-            <LayerPreview
-              url={emblem.background_id ? getBgUrl(emblem, EMBLEM_SWATCH_SIZE) : null}
-              size={EMBLEM_SWATCH_SIZE}
-              onClick={() => setShowBgPicker(!showBgPicker)}
-              onPrev={handlePrevBg}
-              onNext={handleNextBg}
-              onClear={() => handleChange({ background_id: undefined })}
-              onRandom={handleRandomBg}
-            />
-            {showBgPicker && <BgPicker emblem={emblem} onChange={handleBgChange} />}
-            <FlagToggle
-              icon={<MdSwapHoriz />}
-              label={`Flip Horizontal`}
-              isEnabled={!!emblem.flags_flip_bg_horizontal}
-              onClick={() => handleChange({ flags_flip_bg_horizontal: !emblem.flags_flip_bg_horizontal })}
-            />
-            <FlagToggle
-              icon={<MdSwapVert />}
-              label={`Flip Vertical`}
-              isEnabled={!!emblem.flags_flip_bg_vertical}
-              onClick={() => handleChange({ flags_flip_bg_vertical: !emblem.flags_flip_bg_vertical })}
-            />
-            <ColorPicker
-              label="Color"
-              currentColor={colorsById[emblem.background_color_id ?? DEFAULT_BG_COLORID]}
-              onClick={(id: number) => handleChange({ background_color_id: id })}
-            />
-          </LayerOptions>
-          <LayerOptions>
-            <h3>Foreground</h3>
-            <LayerPreview
-              url={emblem.foreground_id ? getFgUrl(emblem, EMBLEM_SWATCH_SIZE) : null}
-              size={EMBLEM_SWATCH_SIZE}
-              onClick={() => setShowFgPicker(!showFgPicker)}
-              onPrev={handlePrevFg}
-              onNext={handleNextFg}
-              onClear={() => handleChange({ foreground_id: undefined })}
-              onRandom={handleRandomFg}
-            />
-            {showFgPicker && <FgPicker emblem={emblem} onChange={handleFgChange} />}
-            <FlagToggle
-              icon={<MdSwapHoriz />}
-              label={`Flip Horizontal`}
-              isEnabled={!!emblem.flags_flip_fg_horizontal}
-              onClick={() => handleChange({ flags_flip_fg_horizontal: !emblem.flags_flip_fg_horizontal })}
-            />
-            <FlagToggle
-              icon={<MdSwapVert />}
-              label={`Flip Vertical`}
-              isEnabled={!!emblem.flags_flip_fg_vertical}
-              onClick={() => handleChange({ flags_flip_fg_vertical: !emblem.flags_flip_fg_vertical })}
-            />
-            <ColorPicker
-              label="Primary"
-              currentColor={colorsById[emblem.foreground_primary_color_id ?? DEFAULT_FG_PRIMARY_COLORID]}
-              onClick={(id: number) => handleChange({ foreground_primary_color_id: id })}
-            />
-            <ColorPicker
-              label="Secondary"
-              currentColor={colorsById[emblem.foreground_secondary_color_id ?? DEFAULT_FG_SECONDARY_COLORID]}
-              onClick={(id: number) => handleChange({ foreground_secondary_color_id: id })}
-            />
-          </LayerOptions>
-        </div>
+        <LayerOptions>
+          <h3>Background</h3>
+          <LayerPreview
+            url={emblem.background_id ? getBgUrl(emblem, EMBLEM_SWATCH_SIZE) : null}
+            size={EMBLEM_SWATCH_SIZE}
+            onClick={() => setShowBgPicker(!showBgPicker)}
+            onPrev={handlePrevBg}
+            onNext={handleNextBg}
+            onClear={() => handleChange({ background_id: undefined })}
+            onRandom={handleRandomBg}
+          />
+          {showBgPicker && <BgPicker emblem={emblem} onChange={handleBgChange} />}
+          <FlagToggle
+            icon={<MdSwapHoriz />}
+            label={`Flip Horizontal`}
+            isEnabled={!!emblem.flags_flip_bg_horizontal}
+            onClick={() => handleChange({ flags_flip_bg_horizontal: !emblem.flags_flip_bg_horizontal })}
+          />
+          <FlagToggle
+            icon={<MdSwapVert />}
+            label={`Flip Vertical`}
+            isEnabled={!!emblem.flags_flip_bg_vertical}
+            onClick={() => handleChange({ flags_flip_bg_vertical: !emblem.flags_flip_bg_vertical })}
+          />
+          <ColorPicker
+            label="Color"
+            currentColor={colorsById[emblem.background_color_id ?? DEFAULT_BG_COLORID]}
+            onClick={(id: number) => handleChange({ background_color_id: id })}
+          />
+        </LayerOptions>
+        <LayerOptions>
+          <h3>Foreground</h3>
+          <LayerPreview
+            url={emblem.foreground_id ? getFgUrl(emblem, EMBLEM_SWATCH_SIZE) : null}
+            size={EMBLEM_SWATCH_SIZE}
+            onClick={() => setShowFgPicker(!showFgPicker)}
+            onPrev={handlePrevFg}
+            onNext={handleNextFg}
+            onClear={() => handleChange({ foreground_id: undefined })}
+            onRandom={handleRandomFg}
+          />
+          {showFgPicker && <FgPicker emblem={emblem} onChange={handleFgChange} />}
+          <FlagToggle
+            icon={<MdSwapHoriz />}
+            label={`Flip Horizontal`}
+            isEnabled={!!emblem.flags_flip_fg_horizontal}
+            onClick={() => handleChange({ flags_flip_fg_horizontal: !emblem.flags_flip_fg_horizontal })}
+          />
+          <FlagToggle
+            icon={<MdSwapVert />}
+            label={`Flip Vertical`}
+            isEnabled={!!emblem.flags_flip_fg_vertical}
+            onClick={() => handleChange({ flags_flip_fg_vertical: !emblem.flags_flip_fg_vertical })}
+          />
+          <ColorPicker
+            label="Primary"
+            currentColor={colorsById[emblem.foreground_primary_color_id ?? DEFAULT_FG_PRIMARY_COLORID]}
+            onClick={(id: number) => handleChange({ foreground_primary_color_id: id })}
+          />
+          <ColorPicker
+            label="Secondary"
+            currentColor={colorsById[emblem.foreground_secondary_color_id ?? DEFAULT_FG_SECONDARY_COLORID]}
+            onClick={(id: number) => handleChange({ foreground_secondary_color_id: id })}
+          />
+        </LayerOptions>
       </div>
     </Section>
   );
@@ -473,23 +479,6 @@ const FgPicker: React.FC<IFgPickerProps> = ({ onChange, emblem }) => {
           );
         })}
       </ul>
-    </div>
-  );
-};
-
-const EmblemPreview: React.FC<{ emblem: Partial<IGuildEmblem> }> = ({ emblem }) => {
-  const emblemSize = '512';
-  const emblemPrams = getEmblemUrl(emblem, emblemSize);
-  const emblemUrl = `/api/svg/emblem?${emblemPrams.toString()}`;
-
-  return (
-    <div>
-      <div className=" pr-4">
-        <input value={emblemUrl} className="w-full p-1 text-sm" readOnly />
-      </div>
-      <div className="p-2">
-        <img src={emblemUrl} width={emblemSize} height={emblemSize} />
-      </div>
     </div>
   );
 };

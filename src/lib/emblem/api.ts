@@ -1,4 +1,4 @@
-import { toSafeInteger } from 'lodash';
+import { has, toSafeInteger } from 'lodash';
 import { NextApiRequestQuery } from 'next/dist/server/api-utils';
 import { IGuildEmblem, IGuildEmblemBackground, IGuildEmblemForeground } from '~/types/Guild';
 
@@ -24,7 +24,7 @@ export const getValidatedBgParams = (
   const emblemBg: IGuildEmblemBackground = {} as IGuildEmblemBackground;
   const errors = [];
 
-  if (Object.hasOwn(query, 'size') && query.size !== undefined) {
+  if (has(query, 'size') && query.size !== undefined) {
     if (isValidInt(query.size)) {
       emblemBg.size = asInt(query.size as string);
     } else {
@@ -32,7 +32,7 @@ export const getValidatedBgParams = (
     }
   }
 
-  if (Object.hasOwn(query, 'background_id') && isValidInt(query.background_id)) {
+  if (has(query, 'background_id') && isValidInt(query.background_id)) {
     emblemBg.background_id = asInt(query.background_id as string);
   } else {
     errors.push(`invalid background_id:" ${query.background_id}"`);
@@ -67,7 +67,7 @@ export const getValidatedFgParams = (
   const emblemFg: IGuildEmblemForeground = {};
   const errors = [];
 
-  if (Object.hasOwn(query, 'size') && query.size !== undefined) {
+  if (has(query, 'size') && query.size !== undefined) {
     if (isValidInt(query.size)) {
       emblemFg.size = asInt(query.size as string);
     } else {
@@ -75,7 +75,7 @@ export const getValidatedFgParams = (
     }
   }
 
-  if (Object.hasOwn(query, 'foreground_id') && query.foreground_id !== '') {
+  if (has(query, 'foreground_id') && query.foreground_id !== '') {
     if (isValidInt(query.foreground_id)) {
       emblemFg.foreground_id = asInt(query.foreground_id as string);
     } else {

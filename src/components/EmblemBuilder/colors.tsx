@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import { every, includes, map } from 'lodash';
+import Image from 'next/image';
 import { useState } from 'react';
 import { EMBLEM_SWATCH_SIZE } from '~/lib/emblem/constants';
 import { colors, IColor } from '~/lib/emblem/resources';
@@ -90,7 +91,13 @@ export const ColorPicker: React.FC<IColorPickerProps> = ({ title, emblem, colorK
                 className="flex cursor-pointer flex-col gap-1 rounded-md border-4 border-b-8 hover:bg-zinc-200 hover:shadow-md"
                 style={{ borderColor: `rgb(${color.cloth.rgb.join(',')})` }}
               >
-                <img className="" src={emblemUrl} width={EMBLEM_SWATCH_SIZE} height={EMBLEM_SWATCH_SIZE} />
+                <Image
+                  unoptimized
+                  alt={color.name}
+                  src={emblemUrl}
+                  width={EMBLEM_SWATCH_SIZE}
+                  height={EMBLEM_SWATCH_SIZE}
+                />
                 <div className="text-center text-xs">{color.name}</div>
               </div>
             </li>
@@ -109,7 +116,7 @@ const ColorFilters: React.FC<IColorFiltersProps> = ({ categoryFilters, onSelect 
     <div className="mx-auto mb-4 flex w-fit flex-row flex-wrap gap-8">
       {map(categoryTypes, (v, k) => {
         return (
-          <div className="flex flex-row gap-2">
+          <div key={k} className="flex flex-row gap-2">
             {v.map((category) => {
               const isActive = categoryFilters.includes(category);
               const filterClassName = classnames({

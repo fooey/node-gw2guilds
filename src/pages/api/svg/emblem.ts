@@ -3,7 +3,7 @@ import { NextApiRequestQuery } from 'next/dist/server/api-utils';
 import { getValidatedEmblemParams } from '~/lib/emblem/api';
 import { renderEmblem } from '~/lib/emblem/render';
 
-interface IQueryParams extends NextApiRequestQuery {
+export interface IQueryParams extends NextApiRequestQuery {
   size: string | string[];
   background_id: string | string[];
   foreground_id: string | string[];
@@ -16,9 +16,9 @@ interface IQueryParams extends NextApiRequestQuery {
   flags_flip_fg_vertical: string | string[];
 }
 
-const defaultParams: IQueryParams = {
+export const defaultParams: IQueryParams = {
   size: '256',
-  background_id: '1',
+  background_id: '',
   foreground_id: '',
   background_color_id: '',
   foreground_primary_color_id: '',

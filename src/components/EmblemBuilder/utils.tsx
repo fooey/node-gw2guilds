@@ -1,6 +1,4 @@
-import classnames from 'classnames';
-import { every, includes, map } from 'lodash';
-import { useState } from 'react';
+import Image from 'next/image';
 import {
   MdArrowLeft,
   MdArrowRight,
@@ -12,10 +10,7 @@ import {
   MdMenu,
   MdShuffle,
 } from 'react-icons/md';
-import { EMBLEM_SWATCH_SIZE } from '~/lib/emblem/constants';
-import { colors, IColor } from '~/lib/emblem/resources';
-import { getEmblemUrl } from '~/lib/emblem/url';
-import { IGuildEmblem } from '~/types/Guild';
+import { IColor } from '~/lib/emblem/resources';
 
 export interface ILayerPreviewProps {
   url: string | null;
@@ -27,18 +22,14 @@ export interface ILayerPreviewProps {
   onRandom: () => void;
 }
 
-export const LayerPreview: React.FC<ILayerPreviewProps> = ({
-  url,
-  size,
-  onClick,
-  onPrev,
-  onNext,
-  onClear,
-  onRandom,
-}) => (
+export const LayerPreview: React.FC<ILayerPreviewProps> = ({ url, size, onClick, onPrev, onNext, onClear, onRandom }) => (
   <div className="rounded-md bg-zinc-200">
     <div className="cursor-pointer" onClick={onClick}>
-      {url ? <img src={url} width={size} height={size} /> : <MdBlock size={size} opacity=".2" />}
+      {url ? (
+        <Image unoptimized alt="selected" src={url} width={size} height={size} />
+      ) : (
+        <MdBlock size={size} opacity=".2" />
+      )}
     </div>
     <div className="mx-auto flex flex-row justify-center gap-1 text-xl">
       <MdArrowLeft title="Previous" onClick={onPrev} className="cursor-pointer" />

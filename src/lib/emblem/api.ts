@@ -32,10 +32,12 @@ export const getValidatedBgParams = (
     }
   }
 
-  if (has(query, 'background_id') && isValidInt(query.background_id)) {
-    emblemBg.background_id = asInt(query.background_id as string);
-  } else {
-    errors.push(`invalid background_id:" ${query.background_id}"`);
+  if (has(query, 'background_id') && query.background_id !== '') {
+    if (isValidInt(query.background_id)) {
+      emblemBg.background_id = asInt(query.background_id as string);
+    } else {
+      errors.push(`invalid background_id: "${query.background_id}"`);
+    }
   }
 
   if (query.background_color_id !== '') {

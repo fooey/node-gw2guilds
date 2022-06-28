@@ -1,4 +1,5 @@
 import { random } from 'lodash';
+import Image from 'next/image';
 import React from 'react';
 import { MdSwapHoriz, MdSwapVert } from 'react-icons/md';
 import {
@@ -111,7 +112,7 @@ const BgPicker: React.FC<IBgPickerProps> = ({ onChange, onClose, emblem, title }
             className="block cursor-pointer rounded-md p-1 hover:bg-zinc-200 hover:shadow-md"
             onClick={() => onChange(background_id)}
           >
-            <img src={emblemUrl} width={EMBLEM_SWATCH_SIZE} height={EMBLEM_SWATCH_SIZE} />
+            <Image unoptimized alt="bg sample" src={emblemUrl} width={EMBLEM_SWATCH_SIZE} height={EMBLEM_SWATCH_SIZE} />
           </li>
         );
       })}

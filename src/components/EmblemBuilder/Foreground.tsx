@@ -1,4 +1,5 @@
 import { random } from 'lodash';
+import Image from 'next/image';
 import React from 'react';
 import { MdSwapHoriz, MdSwapVert } from 'react-icons/md';
 import {
@@ -119,7 +120,7 @@ const FgPicker: React.FC<IFgPickerProps> = ({ onChange, onClose, emblem, title }
             className="block cursor-pointer rounded-md p-1 hover:bg-zinc-200 hover:shadow-md"
             onClick={() => onChange(foreground_id)}
           >
-            <img src={emblemUrl} width={EMBLEM_SWATCH_SIZE} height={EMBLEM_SWATCH_SIZE} defaultValue="" />
+            <Image unoptimized alt="fg sample" src={emblemUrl} width={EMBLEM_SWATCH_SIZE} height={EMBLEM_SWATCH_SIZE} />
           </li>
         );
       })}

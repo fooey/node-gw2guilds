@@ -2,7 +2,7 @@ export const Footer = () => {
   return (
     <footer className="mx-auto flex max-w-3xl flex-col place-content-center gap-2 text-center text-sm">
       <p>
-        Please send comments and bugs to <a href="mailto:gw2w2w@schtuph.com">gw2w2w@schtuph.com</a>
+        Please send comments and bugs to <a href="mailto:website@gw2w2w.com">website@gw2w2w.com</a>
       </p>
       <p>
         Source available at{' '}

@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "deploy": "caprover deploy -h https://caprover.the-ln.com -b next2022 -a guilds-gw2w2w",
     "lint": "next lint"
   },
   "dependencies": {

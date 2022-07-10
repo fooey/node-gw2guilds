@@ -10,7 +10,7 @@ import { EmblemBuilder } from '~/components/EmblemBuilder/EmblemBuilder';
 import { LayoutMain } from '~/components/layout/Main';
 import { Section, SectionTitle } from '~/components/layout/Section';
 import { getValidatedEmblemParams } from '~/lib/emblem/api';
-import { Emblem } from '~/lib/emblem/Emblem';
+import { EmblemSVG } from '~/components/EmblemSVG';
 import { db } from '~/lib/sql';
 import { IGuild, IGuildEmblem } from '~/types/Guild';
 import { defaultParams, IQueryParams } from './api/svg/emblem';
@@ -93,7 +93,7 @@ const ExampleGuilds: React.FC<IExampleGuildsProps> = ({ guilds, onEdit }) => {
               <div className="flex flex-col items-center justify-center">
                 <Link href={guildUrl}>
                   <a>
-                    <Emblem emblem={emblemParams} title={fullName} />
+                    <EmblemSVG emblem={emblemParams} title={fullName} />
                   </a>
                 </Link>
                 <div className="leading-0 flex flex-col items-center gap-1 p-2 text-center">

@@ -10,7 +10,7 @@ import {
   maxForegroundId,
   minForegroundId,
 } from '~/lib/emblem/constants';
-import { Emblem } from '~/lib/emblem/Emblem';
+import { EmblemSVG } from '~/components/EmblemSVG';
 import { getFgUrl } from '~/lib/emblem/url';
 import { IGuildEmblem } from '~/types/Guild';
 import { ColorSelection } from './colors';
@@ -119,7 +119,7 @@ const FgPicker: React.FC<IFgPickerProps> = ({ onChange, onClose, emblem, title }
             className="block cursor-pointer rounded-md p-1 hover:bg-zinc-200 hover:shadow-md"
             onClick={() => onChange(foreground_id)}
           >
-            <Emblem emblem={emblemParams} />
+            <EmblemSVG emblem={emblemParams} />
           </li>
         );
       })}

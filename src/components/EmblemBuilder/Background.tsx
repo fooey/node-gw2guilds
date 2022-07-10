@@ -9,7 +9,7 @@ import {
   maxBackgroundId,
   minBackgroundId,
 } from '~/lib/emblem/constants';
-import { Emblem } from '~/lib/emblem/Emblem';
+import { EmblemSVG } from '~/components/EmblemSVG';
 import { getBgUrl } from '~/lib/emblem/url';
 import { IGuildEmblem } from '~/types/Guild';
 import { ColorSelection } from './colors';
@@ -111,7 +111,7 @@ const BgPicker: React.FC<IBgPickerProps> = ({ onChange, onClose, emblem, title }
             className="block cursor-pointer rounded-md p-1 hover:bg-zinc-200 hover:shadow-md"
             onClick={() => onChange(background_id)}
           >
-            <Emblem emblem={emblemParams} />
+            <EmblemSVG emblem={emblemParams} />
           </li>
         );
       })}

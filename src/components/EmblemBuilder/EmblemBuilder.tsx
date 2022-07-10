@@ -63,7 +63,9 @@ export const EmblemBuilder: React.FC<IEmblemBuilderProps> = ({ baseEmblem }) => 
         </div>
       </div>
       <div className="flex flex-col align-top lg:flex-row">
-        <div className="p-2">{emblem && <Image unoptimized priority src={emblemPath} width={512} height={512} />}</div>
+        <div className="p-2">
+          {emblem && <Image unoptimized priority src={emblemPath} width={512} height={512} alt="emblem builder" />}
+        </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col align-top lg:flex-row">
             <BackgroundOptions emblem={emblem} handleChange={handleChange} />

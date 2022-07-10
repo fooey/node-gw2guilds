@@ -106,7 +106,7 @@ const Group: React.FC<IGroupProps> = ({ paths, fill, opacity, transform }) => {
   const rgbFill = `rgb(${fill})`;
 
   return (
-    <g fill={rgbFill} strokeWidth="0.05%" strokeOpacity="50%" opacity={pathOpacity} transform={transform}>
+    <g fill={rgbFill} opacity={pathOpacity} transform={transform} strokeWidth="0.05%" strokeOpacity="50%">
       <Paths paths={paths} />
     </g>
   );

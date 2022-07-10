@@ -1,11 +1,10 @@
 import classnames from 'classnames';
 import { every, includes, map } from 'lodash';
-import Image from 'next/image';
 import { useState } from 'react';
 import { EMBLEM_SWATCH_SIZE } from '~/lib/emblem/constants';
 import { colors, IColor } from '~/lib/emblem/resources';
-import { getEmblemUrl } from '~/lib/emblem/url';
 import { IGuildEmblem } from '~/types/Guild';
+import { EmblemSVG } from '../EmblemSVG';
 import { ColorSwatch, PickerDialog } from './utils';
 
 const categoryTypes = {
@@ -70,10 +69,11 @@ export const ColorPicker: React.FC<IColorPickerProps> = ({ title, emblem, colorK
     });
   };
   return (
-    <PickerDialog title={title} onClose={onClose}>
-      <li className="w-full ">
-        <ColorFilters categoryFilters={categoryFilters} onSelect={handleFilterClick} />
-      </li>
+    <PickerDialog
+      title={title}
+      onClose={onClose}
+      subHeader={<ColorFilters categoryFilters={categoryFilters} onSelect={handleFilterClick} />}
+    >
       {colors
         .filter((color) => {
           if (!categoryFilters.length) {
@@ -82,23 +82,16 @@ export const ColorPicker: React.FC<IColorPickerProps> = ({ title, emblem, colorK
           return every(categoryFilters, (colorCat) => includes(color.categories, colorCat));
         })
         .map((color: IColor) => {
-          const emblemParams = { ...emblem, [colorKey]: color.id };
-          const emblemUrl = getEmblemUrl(emblemParams, EMBLEM_SWATCH_SIZE);
+          const emblemParams = { ...emblem, [colorKey]: color.id, size: Number(EMBLEM_SWATCH_SIZE) };
 
           return (
             <li key={color.id} className="p-1 " onClick={() => onChange(color.id)}>
               <div
-                className="flex cursor-pointer flex-col gap-1 rounded-md border-4 border-b-8 hover:bg-zinc-200 hover:shadow-md"
+                className="flex cursor-pointer flex-col gap-1 rounded-md border border-b-[32px] hover:bg-zinc-50 hover:shadow-md"
                 style={{ borderColor: `rgb(${color.cloth.rgb.join(',')})` }}
               >
-                <Image
-                  unoptimized
-                  alt={color.name}
-                  src={emblemUrl}
-                  width={EMBLEM_SWATCH_SIZE}
-                  height={EMBLEM_SWATCH_SIZE}
-                />
-                <div className="text-center text-xs">{color.name}</div>
+                <EmblemSVG emblem={emblemParams} title={color.name} />
+                <div className="p-1 text-center text-xs">{color.name}</div>
               </div>
             </li>
           );

@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import {
   MdArrowLeft,
@@ -11,6 +12,7 @@ import {
   MdShuffle,
 } from 'react-icons/md';
 import { IColor } from '~/lib/emblem/resources';
+import { Portal } from '../layout/Portal';
 
 export interface ILayerPreviewProps {
   url: string | null;
@@ -22,9 +24,17 @@ export interface ILayerPreviewProps {
   onRandom: () => void;
 }
 
-export const LayerPreview: React.FC<ILayerPreviewProps> = ({ url, size, onClick, onPrev, onNext, onClear, onRandom }) => (
-  <div className="rounded-md bg-zinc-200">
-    <div className="cursor-pointer" onClick={onClick}>
+export const LayerPreview: React.FC<ILayerPreviewProps> = ({
+  url,
+  size,
+  onClick,
+  onPrev,
+  onNext,
+  onClear,
+  onRandom,
+}) => (
+  <div className="">
+    <div className="cursor-pointer rounded hover:bg-zinc-50" onClick={onClick}>
       {url ? (
         <Image unoptimized alt="selected" src={url} width={size} height={size} />
       ) : (
@@ -51,22 +61,33 @@ export const LayerOptions: React.FC<ILayerOptionsProps> = ({ children }) => (
 export interface IPickerDialogProps {
   title?: string;
   children: React.ReactNode;
+  subHeader?: React.ReactNode;
   onClose: () => void;
 }
-export const PickerDialog: React.FC<IPickerDialogProps> = ({ title, children, onClose }) => (
-  <div className="fixed top-0 left-0 right-0 bottom-0 z-10 flex content-center p-8">
-    <div className="mx-auto flex max-h-full flex-col rounded-md  bg-zinc-50 pb-4 shadow-lg">
-      <header className="flex w-full grow-0 flex-row items-center justify-between rounded-md rounded-b-none bg-zinc-100 px-4 py-2">
-        <h1 className="text-xl">{title}</h1>
-        <div>
-          <MdClose size="32" className="cursor-pointer" onClick={onClose} />
+export const PickerDialog: React.FC<IPickerDialogProps> = ({ title, children, subHeader, onClose }) => (
+  <Portal>
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        className="fixed top-0 left-0 right-0 bottom-0 z-10 flex content-center p-4"
+      >
+        <div className="mx-auto flex max-h-full flex-col rounded-md  bg-white pb-4 shadow-lg">
+          <header className="flex w-full flex-none flex-row items-center justify-between rounded-md rounded-b-none bg-zinc-100 px-4 py-2">
+            <h1 className="text-xl">{title}</h1>
+            <div>
+              <MdClose size="32" className="cursor-pointer" onClick={onClose} />
+            </div>
+          </header>
+          {subHeader ? <div className="-mb-4 flex-none p-2">{subHeader}</div> : null}
+          <div className="mx-auto flex flex-auto flex-col overflow-auto">
+            <ul className="flex flex-auto flex-wrap justify-center">{children}</ul>
+          </div>
         </div>
-      </header>
-      <div className="grow-1 mx-auto overflow-auto p-4">
-        <ul className=" flex flex-wrap justify-center ">{children}</ul>
-      </div>
-    </div>
-  </div>
+      </motion.div>
+    </AnimatePresence>
+  </Portal>
 );
 
 export interface IColorSwatchProps {

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
-import { MdContentCopy, MdSave } from 'react-icons/md';
+import { MdClear, MdContentCopy } from 'react-icons/md';
 import { getEmblemParams, getEmblemUrl } from '~/lib/emblem/url';
 import { IGuildEmblem } from '~/types/Guild';
 import { Section, SectionTitle } from '../layout/Section';
@@ -62,7 +62,7 @@ export const EmblemBuilder: React.FC<IEmblemBuilderProps> = ({ baseEmblem }) => 
           <MdContentCopy onClick={() => copyToClipboard(emblemUrl)} className="block cursor-pointer" />
         </div>
       </div>
-      <div className="flex flex-col align-top lg:flex-row">
+      <div className="flex flex-col rounded-md bg-white p-4 align-top shadow-md lg:flex-row">
         <div className="p-2">
           {emblem && <Image unoptimized priority src={emblemPath} width={512} height={512} alt="emblem builder" />}
         </div>
@@ -71,7 +71,7 @@ export const EmblemBuilder: React.FC<IEmblemBuilderProps> = ({ baseEmblem }) => 
             <BackgroundOptions emblem={emblem} handleChange={handleChange} />
             <ForegroundOptions emblem={emblem} handleChange={handleChange} />
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-row justify-end gap-2 pt-4">
             {/* <button
               onClick={() => updateUrl(emblem)}
               className="flex w-full items-center justify-center gap-2 rounded-lg bg-slate-200 p-4 text-lg shadow-md hover:shadow-lg"
@@ -81,10 +81,10 @@ export const EmblemBuilder: React.FC<IEmblemBuilderProps> = ({ baseEmblem }) => 
             </button> */}
             <button
               onClick={() => setEmblem({})}
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-slate-100 p-4 text-lg shadow-md hover:shadow-lg"
+              className="inline-flex w-fit items-center justify-center gap-2 rounded border py-2 px-3 text-sm text-red-700 hover:border-red-900"
             >
-              <MdSave />
-              <span>Reset</span>
+              <MdClear />
+              <span>Clear</span>
             </button>
           </div>
         </div>

@@ -108,7 +108,7 @@ const BgPicker: React.FC<IBgPickerProps> = ({ onChange, onClose, emblem, title }
         return (
           <li
             key={background_id}
-            className="block cursor-pointer rounded-md p-1 hover:bg-zinc-200 hover:shadow-md"
+            className="block cursor-pointer rounded-md hover:bg-zinc-50 hover:shadow-md"
             onClick={() => onChange(background_id)}
           >
             <EmblemSVG emblem={emblemParams} />

@@ -1,5 +1,4 @@
 import { random } from 'lodash';
-import Image from 'next/image';
 import React from 'react';
 import { MdSwapHoriz, MdSwapVert } from 'react-icons/md';
 import {
@@ -11,7 +10,8 @@ import {
   maxForegroundId,
   minForegroundId,
 } from '~/lib/emblem/constants';
-import { getEmblemUrl, getFgUrl } from '~/lib/emblem/url';
+import { Emblem } from '~/lib/emblem/Emblem';
+import { getFgUrl } from '~/lib/emblem/url';
 import { IGuildEmblem } from '~/types/Guild';
 import { ColorSelection } from './colors';
 import { FlagToggle, LayerOptions, LayerPreview, PickerDialog } from './utils';
@@ -111,8 +111,7 @@ const FgPicker: React.FC<IFgPickerProps> = ({ onChange, onClose, emblem, title }
   return (
     <PickerDialog title={title} onClose={onClose}>
       {foregroundIds.map((foreground_id) => {
-        const emblemParams = { ...emblem, foreground_id };
-        const emblemUrl = getEmblemUrl(emblemParams, EMBLEM_SWATCH_SIZE);
+        const emblemParams = { ...emblem, foreground_id, size: Number(EMBLEM_SWATCH_SIZE) };
 
         return (
           <li
@@ -120,7 +119,7 @@ const FgPicker: React.FC<IFgPickerProps> = ({ onChange, onClose, emblem, title }
             className="block cursor-pointer rounded-md p-1 hover:bg-zinc-200 hover:shadow-md"
             onClick={() => onChange(foreground_id)}
           >
-            <Image unoptimized alt="fg sample" src={emblemUrl} width={EMBLEM_SWATCH_SIZE} height={EMBLEM_SWATCH_SIZE} />
+            <Emblem emblem={emblemParams} />
           </li>
         );
       })}

@@ -1,7 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { NextApiRequestQuery } from 'next/dist/server/api-utils';
+import * as ReactDOMServer from 'react-dom/server';
 import { getValidatedEmblemParams } from '~/lib/emblem/api';
-import { renderEmblem } from '~/lib/emblem/render';
+import { Emblem } from '~/lib/emblem/Emblem';
 
 export interface IQueryParams extends NextApiRequestQuery {
   size: string | string[];
@@ -43,7 +44,7 @@ const handler = (req: NextApiRequestWithQuery<IQueryParams>, res: NextApiRespons
   }
 
   setSvgHeaders(res);
-  res.send(renderEmblem(emblem));
+  res.send(ReactDOMServer.renderToStaticMarkup(Emblem({ emblem })!));
   return res.end();
 };
 

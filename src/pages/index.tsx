@@ -3,7 +3,6 @@
 import type { NextPage } from 'next';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { MdEdit } from 'react-icons/md';
@@ -11,7 +10,7 @@ import { EmblemBuilder } from '~/components/EmblemBuilder/EmblemBuilder';
 import { LayoutMain } from '~/components/layout/Main';
 import { Section, SectionTitle } from '~/components/layout/Section';
 import { getValidatedEmblemParams } from '~/lib/emblem/api';
-import { getEmblemParams, getEmblemUrl } from '~/lib/emblem/url';
+import { Emblem } from '~/lib/emblem/Emblem';
 import { db } from '~/lib/sql';
 import { IGuild, IGuildEmblem } from '~/types/Guild';
 import { defaultParams, IQueryParams } from './api/svg/emblem';
@@ -73,7 +72,7 @@ interface IExampleGuildsProps {
   onEdit: (emblem: IGuildEmblem) => void;
 }
 const ExampleGuilds: React.FC<IExampleGuildsProps> = ({ guilds, onEdit }) => {
-  const sampleSize = '128';
+  const sampleSize = 128;
 
   const handleEdit = (emblem: IGuildEmblem) => {
     window.scrollTo(0, 0);
@@ -86,22 +85,15 @@ const ExampleGuilds: React.FC<IExampleGuildsProps> = ({ guilds, onEdit }) => {
       <ul className="flex max-w-3xl flex-wrap justify-center gap-2 text-xs">
         {guilds.map((guild) => {
           const guildUrl = `/guilds/${guild.slug}`;
-          const emblemParams = getEmblemParams(guild, sampleSize);
-          const emblemUrl = getEmblemUrl(guild, sampleSize);
+          const emblemParams = { ...guild, size: sampleSize };
+          const fullName = `[${guild.tag}] ${guild.guild_name}`;
 
           return (
-            <li key={guild.guild_id} className="w-40 rounded-sm hover:bg-slate-100   hover:shadow-md">
-              <div className="flex flex-col">
+            <li key={guild.guild_id} className="w-40 rounded-sm hover:bg-slate-100 hover:shadow-md">
+              <div className="flex flex-col items-center justify-center">
                 <Link href={guildUrl}>
                   <a>
-                    <Image
-                      unoptimized
-                      src={emblemUrl}
-                      alt={`fullName`}
-                      width={sampleSize}
-                      height={sampleSize}
-                      layout="responsive"
-                    />
+                    <Emblem emblem={emblemParams} title={fullName} />
                   </a>
                 </Link>
                 <div className="leading-0 flex flex-col items-center gap-1 p-2 text-center">

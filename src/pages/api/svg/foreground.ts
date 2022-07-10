@@ -1,7 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { NextApiRequestQuery } from 'next/dist/server/api-utils';
+import ReactDOMServer from 'react-dom/server';
 import { getValidatedFgParams } from '~/lib/emblem/api';
-import { renderEmblem } from '~/lib/emblem/render';
+import { Emblem } from '~/lib/emblem/Emblem';
 import { setSvgHeaders } from './emblem';
 
 interface IQueryParams extends NextApiRequestQuery {
@@ -35,13 +36,13 @@ const handler = (req: NextApiRequestWithQuery<IQueryParams>, res: NextApiRespons
     return res.status(400).end(errors.join('\n'));
   }
 
+  const emblem = {
+    background_id: 1,
+    ...emblemFg,
+  };
+
   setSvgHeaders(res);
-  res.send(
-    renderEmblem({
-      background_id: 1,
-      ...emblemFg,
-    })
-  );
+  res.send(ReactDOMServer.renderToStaticMarkup(Emblem({ emblem })!));
   return res.end();
 };
 

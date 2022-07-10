@@ -1,5 +1,4 @@
 import { random } from 'lodash';
-import Image from 'next/image';
 import React from 'react';
 import { MdSwapHoriz, MdSwapVert } from 'react-icons/md';
 import {
@@ -10,7 +9,8 @@ import {
   maxBackgroundId,
   minBackgroundId,
 } from '~/lib/emblem/constants';
-import { getBgUrl, getEmblemUrl } from '~/lib/emblem/url';
+import { Emblem } from '~/lib/emblem/Emblem';
+import { getBgUrl } from '~/lib/emblem/url';
 import { IGuildEmblem } from '~/types/Guild';
 import { ColorSelection } from './colors';
 import { FlagToggle, LayerOptions, LayerPreview, PickerDialog } from './utils';
@@ -103,8 +103,7 @@ const BgPicker: React.FC<IBgPickerProps> = ({ onChange, onClose, emblem, title }
   return (
     <PickerDialog title={title} onClose={onClose}>
       {backgroundIds.map((background_id) => {
-        const emblemParams = { ...emblem, background_id };
-        const emblemUrl = getEmblemUrl(emblemParams, EMBLEM_SWATCH_SIZE);
+        const emblemParams = { ...emblem, background_id, size: Number(EMBLEM_SWATCH_SIZE) };
 
         return (
           <li
@@ -112,7 +111,7 @@ const BgPicker: React.FC<IBgPickerProps> = ({ onChange, onClose, emblem, title }
             className="block cursor-pointer rounded-md p-1 hover:bg-zinc-200 hover:shadow-md"
             onClick={() => onChange(background_id)}
           >
-            <Image unoptimized alt="bg sample" src={emblemUrl} width={EMBLEM_SWATCH_SIZE} height={EMBLEM_SWATCH_SIZE} />
+            <Emblem emblem={emblemParams} />
           </li>
         );
       })}

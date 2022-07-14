@@ -1,9 +1,10 @@
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
-import { MdClear, MdContentCopy } from 'react-icons/md';
+import ReactDOMServer from 'react-dom/server';
+import { MdClear, MdContentCopy, MdDownload, MdSave } from 'react-icons/md';
 import { getEmblemParams, getEmblemUrl } from '~/lib/emblem/url';
 import { IGuildEmblem } from '~/types/Guild';
+import { EmblemSVG } from '../EmblemSVG';
 import { Section, SectionTitle } from '../layout/Section';
 import { BackgroundOptions } from './Background';
 import { ForegroundOptions } from './Foreground';
@@ -14,6 +15,7 @@ interface IEmblemBuilderProps {
 export const EmblemBuilder: React.FC<IEmblemBuilderProps> = ({ baseEmblem }) => {
   const router = useRouter();
   const [emblem, setEmblem] = React.useState<IGuildEmblem>(baseEmblem ?? { background_id: 1 });
+  const imgRef = React.useRef<HTMLImageElement>(null);
 
   const handleChange = (changedState: Partial<IGuildEmblem>) => {
     const newState: IGuildEmblem = {
@@ -64,31 +66,99 @@ export const EmblemBuilder: React.FC<IEmblemBuilderProps> = ({ baseEmblem }) => 
       </div>
       <div className="flex flex-col rounded-md bg-white p-4 align-top shadow-md lg:flex-row">
         <div className="p-2">
-          {emblem && <Image unoptimized priority src={emblemPath} width={512} height={512} alt="emblem builder" />}
+          {emblem && <img ref={imgRef} src={emblemPath} width={512} height={512} alt="emblem builder" />}
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col align-top lg:flex-row">
             <BackgroundOptions emblem={emblem} handleChange={handleChange} />
             <ForegroundOptions emblem={emblem} handleChange={handleChange} />
           </div>
-          <div className="flex flex-row justify-end gap-2 pt-4">
-            {/* <button
-              onClick={() => updateUrl(emblem)}
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-slate-200 p-4 text-lg shadow-md hover:shadow-lg"
-            >
-              <MdSave />
-              <span>Save State</span>
-            </button> */}
-            <button
-              onClick={() => setEmblem({})}
-              className="inline-flex w-fit items-center justify-center gap-2 rounded border py-2 px-3 text-sm text-red-700 hover:border-red-900"
-            >
-              <MdClear />
-              <span>Clear</span>
-            </button>
-          </div>
+          <ButtonBar emblem={emblem} setEmblem={setEmblem} img={imgRef.current} />
         </div>
       </div>
     </Section>
+  );
+};
+
+const handleSaveAsPNG = (emblem: IGuildEmblem, imageType: 'png' | 'webp') => {
+  const size = emblem.size ?? 512;
+  const svg = ReactDOMServer.renderToStaticMarkup(EmblemSVG({ emblem })!);
+  const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+  const blobURL = URL.createObjectURL(blob);
+
+  const image = new Image();
+  image.onload = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+
+    const context = canvas.getContext('2d')!;
+
+    context.drawImage(image, 0, 0, size, size);
+
+    const rendered = canvas.toDataURL(`image/${imageType}`, 1);
+    const imageName = `image-${Date.now()}.${imageType}`;
+    download(rendered, imageName);
+  };
+  image.src = blobURL;
+};
+
+const download = (href: string, name: string) => {
+  const link = document.createElement('a');
+  link.download = name;
+  link.target = '_blank';
+  link.style.opacity = '0';
+  document.body.append(link);
+  link.href = href;
+  link.click();
+  link.remove();
+};
+
+interface IButtonBarProps {
+  emblem: IGuildEmblem;
+  img: HTMLImageElement | null;
+  setEmblem: (emblem: IGuildEmblem) => void;
+}
+const ButtonBar: React.FC<IButtonBarProps> = ({ setEmblem, img, emblem }) => {
+  const handleClear = () => {
+    setEmblem({});
+  };
+
+  return (
+    <div className="flex flex-row justify-end gap-2 pt-4">
+      {img ? (
+        <>
+          <a
+            className="inline-flex w-fit items-center justify-center gap-2 rounded border bg-blue-500 py-2 px-3 text-sm text-white"
+            href={img.src}
+            download="emblem.svg"
+          >
+            <MdDownload />
+            <span>SVG</span>
+          </a>
+          <button
+            className="inline-flex w-fit items-center justify-center gap-2 rounded border bg-blue-500 py-2 px-3 text-sm text-white"
+            onClick={(e) => handleSaveAsPNG(emblem, 'png')}
+          >
+            <MdDownload />
+            <span>PNG</span>
+          </button>
+          <button
+            className="inline-flex w-fit items-center justify-center gap-2 rounded border bg-blue-500 py-2 px-3 text-sm text-white"
+            onClick={(e) => handleSaveAsPNG(emblem, 'webp')}
+          >
+            <MdDownload />
+            <span>WebP</span>
+          </button>
+        </>
+      ) : null}
+      <button
+        onClick={handleClear}
+        className="inline-flex w-fit items-center justify-center gap-2 rounded border py-2 px-3 text-sm text-red-700 hover:border-red-900"
+      >
+        <MdClear />
+        <span>Clear</span>
+      </button>
+    </div>
   );
 };

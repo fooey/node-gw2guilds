@@ -131,7 +131,7 @@ interface IGroupProps extends IReactHTMLElement<SVGGElement> {
   opacity: number;
   transform?: string;
 }
-const Group: React.FC<IGroupProps> = ({ paths, fill, opacity, transform, ...attrs }) => {
+const Group: React.FC<IGroupProps> = ({ paths, fill, opacity, transform, className, ...attrs }) => {
   if (!paths.length) {
     return null;
   }
@@ -140,7 +140,15 @@ const Group: React.FC<IGroupProps> = ({ paths, fill, opacity, transform, ...attr
   const rgbFill = `rgb(${fill})`;
 
   return (
-    <g {...attrs} fill={rgbFill} opacity={pathOpacity} transform={transform} strokeWidth="0.05%" strokeOpacity="50%">
+    <g
+      {...attrs}
+      className={`${className}`}
+      fill={rgbFill}
+      opacity={pathOpacity}
+      transform={transform}
+      strokeWidth="0.05%"
+      strokeOpacity="50%"
+    >
       {paths.map((path, i) => (
         <path key={i} d={path} />
       ))}

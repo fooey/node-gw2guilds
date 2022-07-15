@@ -1,12 +1,12 @@
 {
   "name": "node-gw2guilds",
-  "version": "2.0.0",
+  "version": "2.0.0-beta.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy-version": "npm version patch && git push --tags && npm run deploy",
+    "deploy-version": "npm version prerelease && git push --tags && npm run deploy",
     "deploy": "caprover deploy --appToken ef1cf180fbcbe3f43e931341a336b8de9f1a051af82ed528329e9d4af5147a2d --caproverUrl https://caprover.the-ln.com --branch next2022 --appName guilds-gw2w2w",
     "lint": "next lint"
   },

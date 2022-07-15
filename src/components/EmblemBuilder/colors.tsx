@@ -39,6 +39,7 @@ export const ColorSelection: React.FC<IColorSelectionProps> = ({ title, currentC
       {showColorPicker && (
         <ColorPicker
           title={title}
+          currentColor={currentColor}
           onChange={handleColorPicker}
           emblem={emblem}
           colorKey={colorKey}
@@ -51,12 +52,20 @@ export const ColorSelection: React.FC<IColorSelectionProps> = ({ title, currentC
 
 export interface IColorPickerProps {
   title: string;
+  currentColor: IColor;
   emblem: IGuildEmblem;
   colorKey: 'background_color_id' | 'foreground_primary_color_id' | 'foreground_secondary_color_id';
   onChange: (colorId: number) => void;
   onClose: () => void;
 }
-export const ColorPicker: React.FC<IColorPickerProps> = ({ title, emblem, colorKey, onChange, onClose }) => {
+export const ColorPicker: React.FC<IColorPickerProps> = ({
+  title,
+  currentColor,
+  emblem,
+  colorKey,
+  onChange,
+  onClose,
+}) => {
   const [categoryFilters, setCategoryFilters] = useState<string[]>([]);
 
   const handleFilterClick = (category: string) => {
@@ -70,7 +79,18 @@ export const ColorPicker: React.FC<IColorPickerProps> = ({ title, emblem, colorK
   };
   return (
     <PickerDialog
-      title={title}
+      title={
+        <div className="flex flex-auto flex-row justify-between">
+          <div>{title}</div>
+          <div
+            onClick={onClose}
+            className={`cursor-pointer rounded-md border border-r-[128px]`}
+            style={{ borderColor: `rgb(${currentColor.cloth.rgb.join(',')})` }}
+          >
+            <div className="p-2 pl-4 pr-8 text-center text-xs">{currentColor.name}</div>
+          </div>
+        </div>
+      }
       onClose={onClose}
       subHeader={<ColorFilters categoryFilters={categoryFilters} onSelect={handleFilterClick} />}
     >
@@ -106,7 +126,7 @@ interface IColorFiltersProps {
 }
 const ColorFilters: React.FC<IColorFiltersProps> = ({ categoryFilters, onSelect }) => {
   return (
-    <div className="mx-auto mb-4 flex w-fit flex-row flex-wrap gap-8">
+    <div className="mx-auto flex w-fit flex-row flex-wrap gap-8 pt-2">
       {map(categoryTypes, (v, k) => {
         return (
           <div key={k} className="flex flex-row gap-2">

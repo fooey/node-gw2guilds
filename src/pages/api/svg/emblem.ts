@@ -1,8 +1,9 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiResponse } from 'next';
 import { NextApiRequestQuery } from 'next/dist/server/api-utils';
 import * as ReactDOMServer from 'react-dom/server';
-import { getValidatedEmblemParams } from '~/lib/emblem/api';
 import { EmblemSVG } from '~/components/EmblemSVG';
+import { getValidatedEmblemParams } from '~/lib/emblem/api';
+import { NextApiRequestWithQuery } from '~/types/next';
 
 export interface IQueryParams extends NextApiRequestQuery {
   size: string | string[];
@@ -15,6 +16,8 @@ export interface IQueryParams extends NextApiRequestQuery {
   flags_flip_bg_vertical: string | string[];
   flags_flip_fg_horizontal: string | string[];
   flags_flip_fg_vertical: string | string[];
+  flags_bg_shadow: string | string[];
+  flags_fg_shadow: string | string[];
 }
 
 export const defaultParams: IQueryParams = {
@@ -28,11 +31,9 @@ export const defaultParams: IQueryParams = {
   flags_flip_bg_vertical: 'false',
   flags_flip_fg_horizontal: 'false',
   flags_flip_fg_vertical: 'false',
+  flags_bg_shadow: 'false',
+  flags_fg_shadow: 'false',
 };
-
-export interface NextApiRequestWithQuery<T extends NextApiRequestQuery> extends NextApiRequest {
-  query: T;
-}
 
 const handler = (req: NextApiRequestWithQuery<IQueryParams>, res: NextApiResponse): NextApiResponse<string> => {
   const query = { ...defaultParams, ...req.query };

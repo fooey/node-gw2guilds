@@ -3,7 +3,7 @@ import { MdCopyright, MdEmail } from 'react-icons/md';
 
 export const Footer = () => {
   return (
-    <footer className="mt-8 w-full bg-slate-100">
+    <footer className="mt-8 w-full flex-none bg-slate-100">
       <div className="mx-auto my-8 flex max-w-3xl flex-col place-content-center gap-2 text-center text-xs text-slate-500">
         <div className="flex flex-row items-center justify-center">
           <div className="flex w-64 flex-col items-center justify-center">

@@ -1,6 +1,6 @@
 import { random } from 'lodash';
 import React from 'react';
-import { MdSwapHoriz, MdSwapVert } from 'react-icons/md';
+import { EmblemSVG } from '~/components/EmblemSVG';
 import {
   backgroundIds,
   colorsById,
@@ -9,7 +9,6 @@ import {
   maxBackgroundId,
   minBackgroundId,
 } from '~/lib/emblem/constants';
-import { EmblemSVG } from '~/components/EmblemSVG';
 import { getBgUrl } from '~/lib/emblem/url';
 import { IGuildEmblem } from '~/types/Guild';
 import { ColorSelection } from './colors';
@@ -63,24 +62,22 @@ export const BackgroundOptions: React.FC<IBackgroundOptionsProps> = ({ emblem, h
         onRandom={handleRandomBg}
       />
       {showBgPicker && (
-        <BgPicker
-          title="Select Background"
-          emblem={emblem}
-          onChange={handleBgChange}
-          onClose={() => setShowBgPicker(!showBgPicker)}
-        />
+        <BgPicker emblem={emblem} onChange={handleBgChange} onClose={() => setShowBgPicker(!showBgPicker)} />
       )}
       <FlagToggle
-        icon={<MdSwapHoriz />}
         label={`Flip Horizontal`}
         isEnabled={!!emblem.flags_flip_bg_horizontal}
         onClick={() => handleChange({ flags_flip_bg_horizontal: !emblem.flags_flip_bg_horizontal })}
       />
       <FlagToggle
-        icon={<MdSwapVert />}
         label={`Flip Vertical`}
         isEnabled={!!emblem.flags_flip_bg_vertical}
         onClick={() => handleChange({ flags_flip_bg_vertical: !emblem.flags_flip_bg_vertical })}
+      />
+      <FlagToggle
+        label={`Shadow`}
+        isEnabled={!!emblem.flags_bg_shadow}
+        onClick={() => handleChange({ flags_bg_shadow: !emblem.flags_bg_shadow })}
       />
       <ColorSelection
         emblem={emblem}
@@ -94,14 +91,27 @@ export const BackgroundOptions: React.FC<IBackgroundOptionsProps> = ({ emblem, h
 };
 
 interface IBgPickerProps {
-  title: string;
   emblem: IGuildEmblem;
   onChange: (id: number) => void;
   onClose: () => void;
 }
-const BgPicker: React.FC<IBgPickerProps> = ({ onChange, onClose, emblem, title }) => {
+const BgPicker: React.FC<IBgPickerProps> = ({ onChange, onClose, emblem }) => {
   return (
-    <PickerDialog title={title} onClose={onClose}>
+    <PickerDialog
+      title={
+        <div className="flex flex-auto flex-row justify-between">
+          <div>Select Background</div>
+          <div>
+            <EmblemSVG
+              emblem={{ ...emblem, foreground_id: undefined, size: 32 }}
+              onClick={onClose}
+              className="cursor-pointer"
+            />
+          </div>
+        </div>
+      }
+      onClose={onClose}
+    >
       {backgroundIds.map((background_id) => {
         const emblemParams = { ...emblem, background_id, size: Number(EMBLEM_SWATCH_SIZE) };
 

@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import { isNil } from 'lodash';
+import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { IClassName } from '~/types/ClassName';
 import { IReactHTMLElement } from '~/types/ReactHTMLElement';
@@ -13,10 +14,16 @@ interface IPortalProps extends IReactHTMLElement<HTMLDivElement> {
   className?: IClassName;
 }
 export const Portal: React.FC<IPortalProps> = ({ children, mountTarget, className, ...attrs }) => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
   const element = getDomElement(mountTarget);
 
   return ReactDOM.createPortal(
-    <div {...attrs} className={`${classnames(className)} portal-mount z-20`}>
+    <div {...attrs} className={`${classnames(className)} portal-mount relative`}>
       {children}
     </div>,
     element

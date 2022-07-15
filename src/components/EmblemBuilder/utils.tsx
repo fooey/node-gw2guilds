@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import {
   MdArrowLeft,
@@ -6,8 +5,8 @@ import {
   MdBlock,
   MdCheckBox,
   MdCheckBoxOutlineBlank,
+  MdChevronLeft,
   MdClear,
-  MdClose,
   MdMenu,
   MdShuffle,
 } from 'react-icons/md';
@@ -24,19 +23,11 @@ export interface ILayerPreviewProps {
   onRandom: () => void;
 }
 
-export const LayerPreview: React.FC<ILayerPreviewProps> = ({
-  url,
-  size,
-  onClick,
-  onPrev,
-  onNext,
-  onClear,
-  onRandom,
-}) => (
+export const LayerPreview: React.FC<ILayerPreviewProps> = ({ url, size, onClick, onPrev, onNext, onClear, onRandom }) => (
   <div className="">
     <div className="cursor-pointer rounded hover:bg-zinc-50" onClick={onClick}>
       {url ? (
-        <Image unoptimized alt="selected" src={url} width={size} height={size} />
+        <Image unoptimized alt="selected" src={url} width={size} height={size} layout={'responsive'} />
       ) : (
         <MdBlock size={size} opacity=".2" />
       )}
@@ -55,38 +46,31 @@ export interface ILayerOptionsProps {
   children: React.ReactNode;
 }
 export const LayerOptions: React.FC<ILayerOptionsProps> = ({ children }) => (
-  <div className="flex shrink-0 flex-col gap-4 px-1">{children}</div>
+  <div className="flex min-w-[192px] shrink-0 flex-col gap-4 px-1">{children}</div>
 );
 
 export interface IPickerDialogProps {
-  title?: string;
+  title?: React.ReactNode;
   children: React.ReactNode;
   subHeader?: React.ReactNode;
   onClose: () => void;
 }
 export const PickerDialog: React.FC<IPickerDialogProps> = ({ title, children, subHeader, onClose }) => (
   <Portal>
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        className="fixed top-0 left-0 right-0 bottom-0 z-10 flex content-center p-4"
-      >
-        <div className="mx-auto flex max-h-full flex-col rounded-md  bg-white pb-4 shadow-lg">
-          <header className="flex w-full flex-none flex-row items-center justify-between rounded-md rounded-b-none bg-zinc-100 px-4 py-2">
-            <h1 className="text-xl">{title}</h1>
-            <div>
-              <MdClose size="32" className="cursor-pointer" onClick={onClose} />
-            </div>
-          </header>
-          {subHeader ? <div className="-mb-4 flex-none p-2">{subHeader}</div> : null}
-          <div className="mx-auto flex flex-auto flex-col overflow-auto">
-            <ul className="flex flex-auto flex-wrap justify-center">{children}</ul>
+    <div className="fixed inset-0 z-50 bg-white">
+      <div className={`flex h-full w-full flex-col`}>
+        <header className="flex flex-row items-center justify-start gap-4 border-b p-4 px-6 ">
+          <div className="flex-none">
+            <MdChevronLeft className="cursor-pointer text-4xl text-zinc-600" onClick={onClose} />
           </div>
+          <h1 className="flex-auto text-xl">{title}</h1>
+        </header>
+        {subHeader ? <div className="flex-none  p-2 ">{subHeader}</div> : null}
+        <div className={`${subHeader ? '' : 'pt-2'} flex flex-auto flex-col overflow-x-scroll overscroll-none pb-4`}>
+          <ul className="flex flex-auto flex-wrap justify-center">{children}</ul>
         </div>
-      </motion.div>
-    </AnimatePresence>
+      </div>
+    </div>
   </Portal>
 );
 
@@ -106,12 +90,11 @@ export const ColorSwatch: React.FC<IColorSwatchProps> = ({ color, label, onClick
 );
 
 export interface IFlagToggleProps {
-  icon: React.ReactElement;
   label: React.ReactNode;
   isEnabled: boolean;
   onClick: () => void;
 }
-export const FlagToggle: React.FC<IFlagToggleProps> = ({ icon, label, isEnabled, onClick }) => {
+export const FlagToggle: React.FC<IFlagToggleProps> = ({ label, isEnabled, onClick }) => {
   const CheckboxIcon = isEnabled ? MdCheckBox : MdCheckBoxOutlineBlank;
 
   return (

@@ -1,42 +1,31 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
+import axios from 'axios';
 import type { NextPage } from 'next';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
-import { MdEdit } from 'react-icons/md';
+import { MdEdit, MdRefresh } from 'react-icons/md';
 import { EmblemBuilder } from '~/components/EmblemBuilder/EmblemBuilder';
+import { EmblemSVG } from '~/components/EmblemSVG';
 import { LayoutMain } from '~/components/layout/Main';
 import { Section, SectionTitle } from '~/components/layout/Section';
+import { lookupRandomGuilds } from '~/lib/db/guilds/random';
 import { getValidatedEmblemParams } from '~/lib/emblem/api';
-import { EmblemSVG } from '~/components/EmblemSVG';
-import { db } from '~/lib/sql';
 import { IGuild, IGuildEmblem } from '~/types/Guild';
 import { defaultParams, IQueryParams } from './api/svg/emblem';
+
+const NUM_RANDOM_GUILDS = 20;
 
 type IHomeProps = {
   guilds: IGuild[];
   emblemState: IGuildEmblem | null;
 };
 
-const sqlString = `
-  SELECT *
-  FROM guilds
-  WHERE guild_id IN (
-    SELECT guild_id
-    FROM guilds
-    WHERE background_id IS NOT NULL
-      AND foreground_id IS NOT NULL
-      AND modified_date > date('2022-01-01')
-    ORDER BY RANDOM()
-     LIMIT 12
-  );
-`;
-
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const sqlStatement = db.prepare(sqlString);
-  const guilds: IGuild[] = sqlStatement.all();
+  const guilds = lookupRandomGuilds(NUM_RANDOM_GUILDS);
+
   const { errors, emblem } = getValidatedEmblemParams({ ...defaultParams, ...(query as IQueryParams) });
 
   return {
@@ -58,7 +47,7 @@ const Home: NextPage<IHomeProps> = ({ guilds, emblemState }) => {
       </Head>
 
       <LayoutMain>
-        <div className="flex flex-col gap-12">
+        <div className="mx-auto flex max-w-4xl flex-col gap-12">
           <EmblemBuilder baseEmblem={emblem} key={JSON.stringify(emblem)} />
           <ExampleGuilds guilds={guilds} onEdit={setEmblem} />
         </div>
@@ -72,7 +61,20 @@ interface IExampleGuildsProps {
   onEdit: (emblem: IGuildEmblem) => void;
 }
 const ExampleGuilds: React.FC<IExampleGuildsProps> = ({ guilds, onEdit }) => {
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [examples, setExamples] = React.useState<IGuild[]>(guilds);
   const sampleSize = 128;
+
+  const handleGetRandomGuilds = async () => {
+    setIsLoading(true);
+    axios
+      .get<IGuild[]>(`/api/guilds/random`)
+      .then((response) => response.data)
+      .then((guilds) => {
+        setExamples(guilds);
+      })
+      .finally(() => setIsLoading(false));
+  };
 
   const handleEdit = (emblem: IGuildEmblem) => {
     window.scrollTo(0, 0);
@@ -80,10 +82,16 @@ const ExampleGuilds: React.FC<IExampleGuildsProps> = ({ guilds, onEdit }) => {
   };
 
   return (
-    <Section>
-      <SectionTitle>Emblem Examples</SectionTitle>
-      <ul className="flex max-w-3xl flex-wrap justify-center gap-2 text-xs">
-        {guilds.map((guild) => {
+    <Section className="">
+      <SectionTitle className="flex flex-row items-center justify-between">
+        <div>Emblem Examples</div>
+        <MdRefresh
+          onClick={() => handleGetRandomGuilds()}
+          className={`cursor-pointer text-base ${isLoading ? 'animate-spin' : ''}`}
+        />
+      </SectionTitle>
+      <ul className="flex flex-wrap justify-center gap-2 text-xs">
+        {examples.map((guild) => {
           const guildUrl = `/guilds/${guild.slug}`;
           const emblemParams = { ...guild, size: sampleSize };
           const fullName = `[${guild.tag}] ${guild.guild_name}`;

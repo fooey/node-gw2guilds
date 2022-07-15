@@ -4,6 +4,7 @@ export interface IGuildEmblemBackground {
   background_color_id?: number;
   flags_flip_bg_horizontal?: boolean;
   flags_flip_bg_vertical?: boolean;
+  flags_bg_shadow?: boolean;
 }
 export interface IGuildEmblemForeground {
   size?: number;
@@ -12,6 +13,7 @@ export interface IGuildEmblemForeground {
   foreground_secondary_color_id?: number;
   flags_flip_fg_horizontal?: boolean;
   flags_flip_fg_vertical?: boolean;
+  flags_fg_shadow?: boolean;
 }
 
 export type IGuildEmblem = IGuildEmblemBackground & IGuildEmblemForeground;

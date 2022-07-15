@@ -60,6 +60,12 @@ export const getValidatedBgParams = (
     errors.push(`invalid flags_flip_bg_vertical: "${query.flags_flip_bg_vertical}"`);
   }
 
+  if (isValidBool(query.flags_bg_shadow)) {
+    emblemBg.flags_bg_shadow = asBool(query.flags_bg_shadow as string);
+  } else {
+    errors.push(`invalid flags_bg_shadow: "${query.flags_bg_shadow}"`);
+  }
+
   return { errors, emblemBg };
 };
 
@@ -111,6 +117,12 @@ export const getValidatedFgParams = (
     emblemFg.flags_flip_fg_vertical = asBool(query.flags_flip_fg_vertical as string);
   } else {
     errors.push(`invalid flags_flip_fg_vertical: "${query.flags_flip_fg_vertical}"`);
+  }
+
+  if (isValidBool(query.flags_fg_shadow)) {
+    emblemFg.flags_fg_shadow = asBool(query.flags_fg_shadow as string);
+  } else {
+    errors.push(`invalid flags_fg_shadow: "${query.flags_fg_shadow}"`);
   }
 
   return { errors, emblemFg };

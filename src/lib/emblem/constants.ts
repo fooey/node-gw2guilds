@@ -18,7 +18,7 @@ export const DEFAULT_BG_COLORID = COLORID_ABYSS;
 export const DEFAULT_FG_PRIMARY_COLORID = COLORID_RED;
 export const DEFAULT_FG_SECONDARY_COLORID = COLORID_CELESTIAL;
 
-export const EMBLEM_SWATCH_SIZE = '256';
+export const EMBLEM_SWATCH_SIZE = '192';
 
 export const backgroundIds = Object.keys(backgrounds).map(Number);
 export const minBackgroundId = min(backgroundIds) as number;

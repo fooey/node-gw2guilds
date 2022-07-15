@@ -4,9 +4,9 @@ import { MdClear, MdContentCopy } from 'react-icons/md';
 import { getEmblemParams, getEmblemUrl } from '~/lib/emblem/url';
 import { IGuildEmblem } from '~/types/Guild';
 import { Section, SectionTitle } from '../layout/Section';
+import { SaveButtons } from '../SaveButtons';
 import { BackgroundOptions } from './Background';
 import { ForegroundOptions } from './Foreground';
-import { SaveButtons } from '../SaveButtons';
 
 interface IEmblemBuilderProps {
   baseEmblem?: IGuildEmblem;
@@ -55,17 +55,19 @@ export const EmblemBuilder: React.FC<IEmblemBuilderProps> = ({ baseEmblem }) => 
   };
 
   return (
-    <Section>
+    <Section className=" mx-auto">
       <SectionTitle>Emblem Builder</SectionTitle>
-      <div className="mb-4 flex grow flex-row items-stretch gap-2 rounded-md border bg-white">
+      <div className="mb-4 flex grow flex-row items-stretch gap-2 border bg-white md:rounded-md">
         <input value={emblemUrl} className="grow bg-transparent  px-2 py-1 text-sm" readOnly />
         <div className="flex grow-0 items-center justify-center border-l px-2">
           <MdContentCopy onClick={() => copyToClipboard(emblemUrl)} className="block cursor-pointer" />
         </div>
       </div>
-      <div className="flex flex-col rounded-md bg-white p-4 align-top shadow-md lg:flex-row">
-        <div className="p-2">
-          {emblem && <img ref={imgRef} src={emblemPath} width={512} height={512} alt="emblem builder" />}
+      <div className="flex flex-col items-center justify-between gap-12 bg-white p-4 shadow-md md:flex-row md:items-start md:rounded-md">
+        <div className="flex-auto p-2 ">
+          {emblem && (
+            <img ref={imgRef} src={emblemPath} width={512} height={512} alt="emblem builder" className={`mx-auto`} />
+          )}
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col align-top lg:flex-row">
@@ -102,5 +104,3 @@ const ButtonBar: React.FC<IButtonBarProps> = ({ setEmblem, src, emblem }) => {
     </div>
   );
 };
-
-

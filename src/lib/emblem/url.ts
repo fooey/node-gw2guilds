@@ -6,6 +6,7 @@ export const getBgParams = (emblem: IGuildEmblemBackground, size: string): URLSe
   const background_color_id = emblem.background_color_id?.toString() ?? undefined;
   const flags_flip_bg_horizontal = !!emblem.flags_flip_bg_horizontal ? '' : undefined;
   const flags_flip_bg_vertical = !!emblem.flags_flip_bg_vertical ? '' : undefined;
+  const flags_bg_shadow = !!emblem.flags_bg_shadow ? '' : undefined;
 
   const compactParams = compactObject({
     size: size === '256' ? undefined : size,
@@ -13,6 +14,7 @@ export const getBgParams = (emblem: IGuildEmblemBackground, size: string): URLSe
     background_color_id,
     flags_flip_bg_horizontal,
     flags_flip_bg_vertical,
+    flags_bg_shadow,
   });
 
   return new URLSearchParams(compactParams);
@@ -24,6 +26,7 @@ export const getFgParams = (emblem: IGuildEmblemForeground, size: string): URLSe
   const foreground_secondary_color_id = emblem.foreground_secondary_color_id?.toString() ?? undefined;
   const flags_flip_fg_horizontal = !!emblem.flags_flip_fg_horizontal ? '' : undefined;
   const flags_flip_fg_vertical = !!emblem.flags_flip_fg_vertical ? '' : undefined;
+  const flags_fg_shadow = !!emblem.flags_fg_shadow ? '' : undefined;
 
   return new URLSearchParams(
     compactObject({
@@ -33,6 +36,7 @@ export const getFgParams = (emblem: IGuildEmblemForeground, size: string): URLSe
       foreground_secondary_color_id,
       flags_flip_fg_horizontal,
       flags_flip_fg_vertical,
+      flags_fg_shadow,
     })
   );
 };

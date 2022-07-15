@@ -1,6 +1,6 @@
 import { random } from 'lodash';
 import React from 'react';
-import { MdSwapHoriz, MdSwapVert } from 'react-icons/md';
+import { EmblemSVG } from '~/components/EmblemSVG';
 import {
   colorsById,
   DEFAULT_FG_PRIMARY_COLORID,
@@ -10,7 +10,6 @@ import {
   maxForegroundId,
   minForegroundId,
 } from '~/lib/emblem/constants';
-import { EmblemSVG } from '~/components/EmblemSVG';
 import { getFgUrl } from '~/lib/emblem/url';
 import { IGuildEmblem } from '~/types/Guild';
 import { ColorSelection } from './colors';
@@ -64,24 +63,22 @@ export const ForegroundOptions: React.FC<IForegroundOptionsProps> = ({ emblem, h
         onRandom={handleRandomFg}
       />
       {showFgPicker && (
-        <FgPicker
-          title="Select Foreground"
-          emblem={emblem}
-          onChange={handleFgChange}
-          onClose={() => setShowFgPicker(!showFgPicker)}
-        />
+        <FgPicker emblem={emblem} onChange={handleFgChange} onClose={() => setShowFgPicker(!showFgPicker)} />
       )}
       <FlagToggle
-        icon={<MdSwapHoriz />}
         label={`Flip Horizontal`}
         isEnabled={!!emblem.flags_flip_fg_horizontal}
         onClick={() => handleChange({ flags_flip_fg_horizontal: !emblem.flags_flip_fg_horizontal })}
       />
       <FlagToggle
-        icon={<MdSwapVert />}
         label={`Flip Vertical`}
         isEnabled={!!emblem.flags_flip_fg_vertical}
         onClick={() => handleChange({ flags_flip_fg_vertical: !emblem.flags_flip_fg_vertical })}
+      />
+      <FlagToggle
+        label={`Shadow`}
+        isEnabled={!!emblem.flags_fg_shadow}
+        onClick={() => handleChange({ flags_fg_shadow: !emblem.flags_fg_shadow })}
       />
       <ColorSelection
         emblem={emblem}
@@ -102,21 +99,34 @@ export const ForegroundOptions: React.FC<IForegroundOptionsProps> = ({ emblem, h
 };
 
 interface IFgPickerProps {
-  title: string;
   emblem: IGuildEmblem;
   onChange: (id: number) => void;
   onClose: () => void;
 }
-const FgPicker: React.FC<IFgPickerProps> = ({ onChange, onClose, emblem, title }) => {
+const FgPicker: React.FC<IFgPickerProps> = ({ onChange, onClose, emblem }) => {
   return (
-    <PickerDialog title={title} onClose={onClose}>
+    <PickerDialog
+      title={
+        <div className="flex flex-auto flex-row justify-between">
+          <div>Select Foreground</div>
+          <div>
+            <EmblemSVG
+              emblem={{ ...emblem, background_id: undefined, size: 32 }}
+              onClick={onClose}
+              className="cursor-pointer"
+            />
+          </div>
+        </div>
+      }
+      onClose={onClose}
+    >
       {foregroundIds.map((foreground_id) => {
         const emblemParams = { ...emblem, foreground_id, size: Number(EMBLEM_SWATCH_SIZE) };
 
         return (
           <li
             key={foreground_id}
-            className="block cursor-pointer rounded-md p-1 hover:bg-zinc-200 hover:shadow-md"
+            className="block cursor-pointer rounded-md p-1 hover:bg-zinc-50 hover:shadow-md"
             onClick={() => onChange(foreground_id)}
           >
             <EmblemSVG emblem={emblemParams} />

@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy": "caprover deploy -h https://caprover.the-ln.com -b next2022 -a guilds-gw2w2w",
+    "deploy": "caprover deploy --token ef1cf180fbcbe3f43e931341a336b8de9f1a051af82ed528329e9d4af5147a2d -caproverUrl https://caprover.the-ln.com -b next2022 -appName guilds-gw2w2w",
     "lint": "next lint"
   },
   "dependencies": {

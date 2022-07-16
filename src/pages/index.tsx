@@ -14,7 +14,7 @@ import { Section, SectionTitle } from '~/components/layout/Section';
 import { lookupRandomGuilds } from '~/lib/db/guilds/random';
 import { getValidatedEmblemParams } from '~/lib/emblem/api';
 import { IGuild, IGuildEmblem } from '~/types/Guild';
-import { defaultParams, IQueryParams } from './api/svg/emblem';
+import { defaultParams, IQueryParams } from './api/emblem';
 
 const NUM_RANDOM_GUILDS = 20;
 

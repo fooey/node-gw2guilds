@@ -82,5 +82,5 @@ export const getEmblemParams = (emblem: IGuildEmblem, size: string): URLSearchPa
 
 export const getEmblemUrl = (emblem: IGuildEmblem, size: string): string => {
   const emblemParams = getEmblemParams(emblem, size);
-  return `/api/svg/emblem?${emblemParams.toString()}`;
+  return `/api/emblem?${emblemParams.toString()}`;
 };

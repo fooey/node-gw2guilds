@@ -84,7 +84,7 @@ const ExampleGuilds: React.FC<IExampleGuildsProps> = ({ guilds, onEdit }) => {
   return (
     <Section className="">
       <SectionTitle className="flex flex-row items-center justify-between">
-        <div>Emblem Examples</div>
+        <div>Random Guild Examples</div>
         <MdRefresh
           onClick={() => handleGetRandomGuilds()}
           className={`cursor-pointer text-base ${isLoading ? 'animate-spin' : ''}`}

@@ -32,6 +32,14 @@ export const getValidatedBgParams = (
     }
   }
 
+  if (has(query, 'bg_color') && query.bg_color !== '') {
+    if (typeof query.bg_color === 'string' && /^([0-9a-fA-F]{3}){1,2}$/.test(query.bg_color)) {
+      emblemBg.bg_color = query.bg_color;
+    } else {
+      errors.push(`invalid bg_color: "${query.bg_color}"`);
+    }
+  }
+
   if (has(query, 'background_id') && query.background_id !== '') {
     if (isValidInt(query.background_id)) {
       emblemBg.background_id = asInt(query.background_id as string);

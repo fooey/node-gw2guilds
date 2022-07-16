@@ -1,5 +1,6 @@
 export interface IGuildEmblemBackground {
   size?: number;
+  bg_color?: string;
   background_id?: number;
   background_color_id?: number;
   flags_flip_bg_horizontal?: boolean;

@@ -2,6 +2,7 @@ import { IGuildEmblem, IGuildEmblemBackground, IGuildEmblemForeground } from '~/
 import { compactObject } from '../object';
 
 export const getBgParams = (emblem: IGuildEmblemBackground, size: string): URLSearchParams => {
+  const bg_color = emblem.bg_color ?? undefined;
   const background_id = emblem.background_id?.toString() ?? undefined;
   const background_color_id = emblem.background_color_id?.toString() ?? undefined;
   const flags_flip_bg_horizontal = !!emblem.flags_flip_bg_horizontal ? '' : undefined;
@@ -10,6 +11,7 @@ export const getBgParams = (emblem: IGuildEmblemBackground, size: string): URLSe
 
   const compactParams = compactObject({
     size: size === '256' ? undefined : size,
+    bg_color,
     background_id,
     background_color_id,
     flags_flip_bg_horizontal,

@@ -39,6 +39,9 @@ export const EmblemSVG: React.FC<IEmblemSVGProps> = ({ emblem, className, ...att
       viewBox={`0 0 ${size} ${size}`}
     >
       <desc>Created by https://guilds.gw2w2w.com/</desc>
+      {emblem.bg_color ? (
+        <rect x="0" y="0" width={size} height={size} fill={`#${emblem.bg_color}`} stroke="none" />
+      ) : null}
       <BackgroundLayer {...emblem} />
       <ForegroundLayer {...emblem} />
     </svg>

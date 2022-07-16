@@ -6,8 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy-version": "npm version prerelease && git push --tags && npm run deploy",
     "deploy": "caprover deploy --appToken ef1cf180fbcbe3f43e931341a336b8de9f1a051af82ed528329e9d4af5147a2d --caproverUrl https://caprover.the-ln.com --branch next2022 --appName guilds-gw2w2w",
+    "deploy:beta": "npm version prerelease && git push --follow-tags && npm run deploy",
+    "deploy:patch": "npm version patch && git push --follow-tags && npm run deploy",
     "lint": "next lint"
   },
   "dependencies": {

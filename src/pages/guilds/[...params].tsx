@@ -1,9 +1,9 @@
-import { castArray, get } from 'lodash';
+import { castArray, compact, get } from 'lodash';
 import { GetServerSidePropsContext, NextPage } from 'next';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import { MdContentCopy, MdEdit, MdOpenInNew } from 'react-icons/md';
-import { EmblemSVG } from '~/components/EmblemSVG';
+import { MdCheckBox, MdCheckBoxOutlineBlank, MdContentCopy, MdEdit, MdOpenInNew } from 'react-icons/md';
 import { LayoutMain } from '~/components/layout/Main';
 import { Section, SectionTitle } from '~/components/layout/Section';
 import { SaveButtons } from '~/components/SaveButtons';
@@ -33,7 +33,6 @@ const svgRegex = /\bsvg$/;
 export const getServerSideProps = async ({ query, resolvedUrl }: GetServerSidePropsContext) => {
   const { params } = query;
   let [guildSlug, optionsSlug] = castArray(params);
-  console.log(`🚀 ~ file: [...params].tsx ~ line 35 ~ getServerSideProps ~ guildSlug`, guildSlug);
 
   if (guildSlug === undefined || Array.isArray(guildSlug)) {
     return {
@@ -73,18 +72,21 @@ export const getServerSideProps = async ({ query, resolvedUrl }: GetServerSidePr
     };
   } else {
     return {
-      props: { guild }, // will be passed to the page component as props
+      props: {
+        guild,
+      },
     };
   }
 };
 
 const Guild: NextPage<IGuildProps> = ({ guild }) => {
-  const router = useRouter();
   const [size, setSize] = useState('512');
-  const [bg, _setBg] = useState('');
+  const [bg, _setBg] = useState('ffffff');
+  const [isTransparent, setIsTransparent] = useState(true);
+  const [fgShadow, setFgShadow] = useState(false);
+  const [bgShadow, setBgShadow] = useState(false);
 
   const setBg = (bg: string) => {
-    console.log(`🚀 ~ file: [...params].tsx ~ line 87 ~ setBg ~ bg`, { bg, first: bg.charAt(0) });
     if (bg.charAt(0) === '#') {
       bg = bg.substring(1);
     }
@@ -92,33 +94,51 @@ const Guild: NextPage<IGuildProps> = ({ guild }) => {
     _setBg(bg);
   };
 
-  const handleEdit = () => {
-    router.push('/?' + getEmblemParams({ ...guild, bg_color: bg }, size));
-  };
+  const bg_color = isTransparent ? undefined : bg;
+  const flags_fg_shadow = !!fgShadow;
+  const flags_bg_shadow = !!bgShadow;
+
+  const emblemUrl = getEmblemUrl({ ...guild, bg_color, flags_fg_shadow, flags_bg_shadow }, size);
 
   return (
     <LayoutMain>
+      <Head>
+        <title>
+          [{guild.tag}] {guild.guild_name} @ Guild Emblems by g2w2w2.com
+        </title>
+        <link rel="icon" href={emblemUrl} sizes="any" />
+      </Head>
       <div className="mx-auto flex w-fit flex-col gap-8">
         <Section className="w-full">
-          <SectionTitle className="w-full">
-            [{guild.tag}] {guild.guild_name}
+          <SectionTitle className="flex w-full flex-row items-center gap-4">
+            <div>
+              [{guild.tag}] {guild.guild_name}
+            </div>
           </SectionTitle>
 
           <div className="flex flex-col justify-center gap-4 rounded bg-white py-4 shadow-lg ">
-            <div className="mx-auto flex flex-col gap-4">
-              <EmblemSVG emblem={{ ...guild, bg_color: bg, size: Number(size) }} className="mx-auto" />
-              <div className="mx-auto flex flex-row">
-                <SaveButtons emblem={guild} name={guild.guild_name} />
-                <button
-                  className="inline-flex w-fit items-center justify-center gap-2 rounded border bg-blue-500 py-2 px-3 text-sm text-white"
-                  onClick={(e) => handleEdit()}
-                >
-                  <MdEdit />
-                  <span>Edit</span>
-                </button>
+            <div className="flex flex-col items-center gap-4 px-4 lg:flex-row lg:items-start lg:justify-around">
+              <div className="flex flex-col gap-4">
+                <h2 className="border-b pb-2 text-xl font-thin">Emblem Options</h2>
+                <EmblemOptions
+                  guild={guild}
+                  size={size}
+                  setSize={setSize}
+                  bg={bg}
+                  setBg={setBg}
+                  isTransparent={isTransparent}
+                  setIsTransparent={setIsTransparent}
+                  fgShadow={fgShadow}
+                  setFgShadow={setFgShadow}
+                  bgShadow={bgShadow}
+                  setBgShadow={setBgShadow}
+                />
+              </div>
+              <div className="max-h-[512px] max-w-[512px] overflow-auto">
+                <img src={emblemUrl} alt={guild.guild_name} width={size} height={size} className="max-w-none" />
               </div>
             </div>
-            <LinkBuilder guild={guild} size={size} setSize={setSize} bg={bg} setBg={setBg} />
+            <LinkResources guild={guild} size={size} bg_color={bg_color} />
           </div>
         </Section>
 
@@ -128,21 +148,158 @@ const Guild: NextPage<IGuildProps> = ({ guild }) => {
   );
 };
 
-interface ILinkBuilderProps {
+interface IEmblemOptionsProps {
   guild: IGuild;
   size: string;
   setSize: (size: string) => void;
   bg: string;
   setBg: (bg: string) => void;
+  isTransparent: boolean;
+  setIsTransparent: (isChecked: boolean) => void;
+  fgShadow: boolean;
+  setFgShadow: (isChecked: boolean) => void;
+  bgShadow: boolean;
+  setBgShadow: (isChecked: boolean) => void;
 }
-const LinkBuilder: React.FC<ILinkBuilderProps> = ({ guild, size, bg, setSize, setBg }) => {
+const EmblemOptions: React.FC<IEmblemOptionsProps> = ({
+  guild,
+  size,
+  setSize,
+  bg,
+  setBg,
+  isTransparent,
+  setIsTransparent,
+  fgShadow,
+  setFgShadow,
+  bgShadow,
+  setBgShadow,
+}) => {
+  const bg_color = isTransparent ? undefined : bg;
+  const flags_fg_shadow = !!fgShadow;
+  const flags_bg_shadow = !!bgShadow;
+
+  const handleTransprentToggle = () => {
+    setIsTransparent(!isTransparent);
+  };
+
+  const handleFgShadowToggle = () => {
+    setFgShadow(!fgShadow);
+  };
+
+  const handleBgShadowToggle = () => {
+    setBgShadow(!bgShadow);
+  };
+
+  const handleSetBg = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setBg(e.currentTarget.value);
+  };
+
+  const handleSetSize = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSize(e.currentTarget.value);
+  };
+
+  return (
+    <div className="flex select-none flex-col gap-4">
+      <div className="flex flex-row items-center gap-4">
+        <label className="w-32" htmlFor="transparent">
+          Transparent
+        </label>
+        <CheckboxIcon checked={isTransparent} size="18" className="" onClick={handleTransprentToggle} />
+      </div>
+      <div className={`flex flex-row items-center gap-4 ${isTransparent ? 'disabled opacity-20' : ''}`}>
+        <label className={`w-32 `} htmlFor="bg">
+          BG Color
+        </label>
+        <input
+          type="color"
+          id="bg"
+          value={`#${bg}`}
+          disabled={isTransparent}
+          onChange={handleSetBg}
+          className="w-20 rounded-md"
+        />
+      </div>
+      <div className="flex flex-row items-center gap-4">
+        <label className="w-32" htmlFor="size">
+          Dimensions
+        </label>
+        <input
+          className="w-20 rounded-md border border-slate-500 py-0 px-2 pr-0 pl-2 text-sm leading-loose shadow-inner"
+          id="size"
+          type="text"
+          value={size}
+          onChange={handleSetSize}
+          min={1}
+          step={1}
+        />
+      </div>
+      {/* <div className="flex flex-row items-center gap-4">
+        <label className="w-32" htmlFor="fgShadow">
+          FG Shadow
+        </label>
+        <CheckboxIcon checked={fgShadow} size="18" className="" onClick={handleFgShadowToggle} />
+      </div>
+      <div className="flex flex-row items-center gap-4">
+        <label className="w-32" htmlFor="bgShadow">
+          BG Shadow
+        </label>
+        <CheckboxIcon checked={bgShadow} size="18" className="" onClick={handleBgShadowToggle} />
+      </div> */}
+      <ButtonBar guild={{ ...guild, bg_color, flags_fg_shadow, flags_bg_shadow }} size={size} />
+    </div>
+  );
+};
+
+interface ICheckboxIconProps extends IReactHTMLElement<HTMLOrSVGElement> {
+  checked: boolean;
+  size?: string;
+}
+const CheckboxIcon: React.FC<ICheckboxIconProps> = ({ checked, className, size, ...props }) =>
+  checked ? (
+    <MdCheckBox className={`${className}`} size={size} {...props} />
+  ) : (
+    <MdCheckBoxOutlineBlank className={`${className}`} size={size} {...props} />
+  );
+
+interface IButtonBarProps {
+  guild: IGuild;
+  size: string;
+}
+const ButtonBar: React.FC<IButtonBarProps> = ({ guild, size }) => {
+  const router = useRouter();
+  const handleEdit = () => {
+    router.push('/?' + getEmblemParams({ ...guild, bg_color: undefined }, size));
+  };
+
+  const fileName = compact([guild.guild_name, size, guild.bg_color]).join('-');
+
+  return (
+    <div className="mx-auto flex flex-row">
+      <SaveButtons emblem={guild} name={fileName} />
+      <button
+        className="inline-flex w-fit items-center justify-center gap-2 rounded border bg-blue-500 py-2 px-3 text-sm text-white"
+        onClick={(e) => handleEdit()}
+      >
+        <MdEdit />
+        <span>Edit</span>
+      </button>
+    </div>
+  );
+};
+
+interface ILinkBuilderProps {
+  guild: IGuild;
+  size: string;
+  bg_color?: string;
+}
+const LinkResources: React.FC<ILinkBuilderProps> = ({ guild, size, bg_color }) => {
   const appUrl = `https://guilds.gw2w2w.com`;
   let emblemUrl = `/guilds/${guild.slug}`;
   let emblemOptions = [];
 
-  if (size !== '256' || bg !== '') {
-    if (bg !== '') {
-      emblemOptions.push(bg);
+  if (size !== '256' || bg_color) {
+    if (bg_color) {
+      emblemOptions.push(bg_color);
     }
     emblemOptions.push(size);
     emblemUrl += `/${emblemOptions.join('.')}`;
@@ -152,21 +309,6 @@ const LinkBuilder: React.FC<ILinkBuilderProps> = ({ guild, size, bg, setSize, se
 
   return (
     <div className="mx-auto w-full px-4">
-      <div>
-        <div>
-          <label>background color</label>
-          <input
-            type="color"
-            defaultValue={`#${bg !== '' ? bg : 'ffffff'}`}
-            onChange={(e) => setBg(e.currentTarget.value)}
-          />
-        </div>
-        <div>
-          <label>size</label>
-          <input type="number" defaultValue={size} onChange={(e) => setSize(e.currentTarget.value)} min={1} step={1} />
-        </div>
-      </div>
-
       <CodeSnippet linkable label="Emblem" value={`${appUrl}${emblemUrl}`} />
 
       <CodeSnippet
@@ -194,7 +336,7 @@ interface ICodeSnippetProps extends IReactHTMLElement<HTMLDivElement> {
   linkable?: boolean;
 }
 const CodeSnippet: React.FC<ICodeSnippetProps> = ({ label, value, rows, linkable }) => (
-  <div className="flex flex-col  justify-between gap-1 py-2 hover:bg-slate-50">
+  <div className="flex flex-col  justify-between gap-1 py-2">
     <DD>
       {label}{' '}
       {linkable ? (

@@ -40,19 +40,15 @@ const Home: NextPage<IHomeProps> = ({ guilds, emblemState }) => {
   const [emblem, setEmblem] = React.useState<IGuildEmblem | undefined>(emblemState ?? undefined);
 
   return (
-    <>
+    <LayoutMain>
       <Head>
-        <title>g2w2w2 guild emblems</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" sizes="any" />
       </Head>
-
-      <LayoutMain>
-        <div className="mx-auto flex max-w-4xl flex-col gap-12">
-          <EmblemBuilder baseEmblem={emblem} key={JSON.stringify(emblem)} />
-          <ExampleGuilds guilds={guilds} onEdit={setEmblem} />
-        </div>
-      </LayoutMain>
-    </>
+      <div className="mx-auto flex max-w-4xl flex-col gap-12">
+        <EmblemBuilder baseEmblem={emblem} key={JSON.stringify(emblem)} />
+        <ExampleGuilds guilds={guilds} onEdit={setEmblem} />
+      </div>
+    </LayoutMain>
   );
 };
 

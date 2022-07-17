@@ -1,7 +1,6 @@
-import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { MdClear, MdContentCopy } from 'react-icons/md';
-import { getEmblemParams, getEmblemUrl } from '~/lib/emblem/url';
+import { getEmblemUrl } from '~/lib/emblem/url';
 import { IGuildEmblem } from '~/types/Guild';
 import { Section, SectionTitle } from '../layout/Section';
 import { SaveButtons } from '../SaveButtons';
@@ -12,9 +11,8 @@ interface IEmblemBuilderProps {
   baseEmblem?: IGuildEmblem;
 }
 export const EmblemBuilder: React.FC<IEmblemBuilderProps> = ({ baseEmblem }) => {
-  const router = useRouter();
+  // const router = useRouter();
   const [emblem, setEmblem] = React.useState<IGuildEmblem>(baseEmblem ?? { background_id: 1 });
-  const imgRef = React.useRef<HTMLImageElement>(null);
 
   const handleChange = (changedState: Partial<IGuildEmblem>) => {
     const newState: IGuildEmblem = {
@@ -25,25 +23,25 @@ export const EmblemBuilder: React.FC<IEmblemBuilderProps> = ({ baseEmblem }) => 
     setEmblem(newState);
   };
 
-  useEffect(() => {
-    updateUrl(emblem);
-  }, [emblem]);
+  // useEffect(() => {
+  //   updateUrl(emblem);
+  // }, [emblem]);
 
-  const updateUrl = (emblem?: IGuildEmblem) => {
-    if (emblem === undefined) {
-      return window.location.assign('/');
-    }
+  // const updateUrl = (emblem?: IGuildEmblem) => {
+  //   if (emblem === undefined) {
+  //     return window.location.assign('/');
+  //   }
 
-    const queryString = getEmblemParams(emblem, emblemSize).toString();
-    const toUrl = `/?${queryString}`;
-    return router.push(
-      {
-        query: queryString,
-      },
-      undefined,
-      { shallow: true }
-    );
-  };
+  //   const queryString = getEmblemParams(emblem, emblemSize).toString();
+  //   const toUrl = `/?${queryString}`;
+  //   return router.push(
+  //     {
+  //       query: queryString,
+  //     },
+  //     undefined,
+  //     { shallow: true }
+  //   );
+  // };
 
   const emblemSize = '256';
   const emblemPath = getEmblemUrl(emblem, emblemSize);
@@ -65,9 +63,7 @@ export const EmblemBuilder: React.FC<IEmblemBuilderProps> = ({ baseEmblem }) => 
       </div>
       <div className="flex flex-col items-center justify-between gap-12 bg-white p-4 shadow-md md:flex-row md:items-start md:rounded-md">
         <div className="flex-auto p-2 ">
-          {emblem && (
-            <img ref={imgRef} src={emblemPath} width={512} height={512} alt="emblem builder" className={`mx-auto`} />
-          )}
+          {emblem && <img src={emblemPath} width={512} height={512} alt="emblem builder" className={`mx-auto`} />}
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col align-top lg:flex-row">
@@ -93,7 +89,7 @@ const ButtonBar: React.FC<IButtonBarProps> = ({ setEmblem, src, emblem }) => {
 
   return (
     <div className="flex flex-row justify-end gap-2 pt-4">
-      <SaveButtons src={src} emblem={emblem} />
+      <SaveButtons emblem={emblem} />
       <button
         onClick={handleClear}
         className="inline-flex w-fit items-center justify-center gap-2 rounded border py-2 px-3 text-sm text-red-700 hover:border-red-900"

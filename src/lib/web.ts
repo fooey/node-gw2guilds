@@ -2,7 +2,7 @@ import ReactDOMServer from 'react-dom/server';
 import { EmblemSVG } from '~/components/EmblemSVG';
 import { IGuildEmblem } from '~/types/Guild';
 
-export const downloadEmblemBinary = (emblem: IGuildEmblem, imageType: 'png' | 'webp') => {
+export const downloadEmblemBinary = (emblem: IGuildEmblem, imageType: 'png' | 'webp', name?: string) => {
   const size = emblem.size ?? 512;
   const svg = ReactDOMServer.renderToStaticMarkup(EmblemSVG({ emblem })!);
   const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
@@ -11,7 +11,7 @@ export const downloadEmblemBinary = (emblem: IGuildEmblem, imageType: 'png' | 'w
   const image = new Image();
   image.onload = () => {
     const imageData = convertImage(image, size, `image/${imageType}`);
-    const imageName = `image-${Date.now()}.${imageType}`;
+    const imageName = [name ?? `image-${Date.now()}`, imageType].join('.');
 
     downloadFile(imageData, imageName);
   };

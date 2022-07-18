@@ -233,18 +233,18 @@ const EmblemOptions: React.FC<IEmblemOptionsProps> = ({
           step={1}
         />
       </div>
-      {/* <div className="flex flex-row items-center gap-4">
-        <label className="w-32" htmlFor="fgShadow">
+      <div className="flex flex-row items-center gap-4">
+        <span className="w-32" onClick={handleFgShadowToggle}>
           FG Shadow
-        </label>
+        </span>
         <CheckboxIcon checked={fgShadow} size="18" className="" onClick={handleFgShadowToggle} />
       </div>
       <div className="flex flex-row items-center gap-4">
-        <label className="w-32" htmlFor="bgShadow">
+        <span className="w-32" onClick={handleBgShadowToggle}>
           BG Shadow
-        </label>
+        </span>
         <CheckboxIcon checked={bgShadow} size="18" className="" onClick={handleBgShadowToggle} />
-      </div> */}
+      </div>
       <ButtonBar guild={{ ...guild, bg_color, flags_fg_shadow, flags_bg_shadow }} size={size} />
     </div>
   );

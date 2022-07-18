@@ -1,6 +1,6 @@
 import { castArray } from 'lodash';
 import { GetServerSidePropsContext, NextPage } from 'next';
-import { db } from '~/lib/sql';
+import { db } from '~/lib/db/db';
 import { IGuild } from '~/types/Guild';
 
 export interface IGuildParams {

@@ -8,7 +8,7 @@ import { LayoutMain } from '~/components/layout/Main';
 import { Section, SectionTitle } from '~/components/layout/Section';
 import { SaveButtons } from '~/components/SaveButtons';
 import { getEmblemParams, getEmblemUrl } from '~/lib/emblem/url';
-import { db } from '~/lib/sql';
+import { db } from '~/lib/db/db';
 import { slugify } from '~/lib/string';
 import { IGuild } from '~/types/Guild';
 import { IReactHTMLElement } from '~/types/ReactHTMLElement';

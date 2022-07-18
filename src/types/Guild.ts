@@ -26,7 +26,8 @@ export interface IGuild extends IGuildEmblem {
   tag: string;
 }
 export interface IGuildRecord extends IGuild {
-  modified_count: number;
-  modified_date: number;
-  created_date: number;
+  modified_count: string;
+  modified_date: string;
+  created_date: string;
+  checked_date: string | null;
 }

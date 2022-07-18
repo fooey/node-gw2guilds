@@ -7,10 +7,9 @@ import { MdCheckBox, MdCheckBoxOutlineBlank, MdContentCopy, MdEdit, MdOpenInNew 
 import { LayoutMain } from '~/components/layout/Main';
 import { Section, SectionTitle } from '~/components/layout/Section';
 import { SaveButtons } from '~/components/SaveButtons';
-import { db } from '~/lib/db/db';
+import { lookupGuildBySlug } from '~/lib/db/guilds/bySlug';
 import { getEmblemParams, getEmblemUrl } from '~/lib/emblem/url';
-import { slugify } from '~/lib/string';
-import { IGuild } from '~/types/Guild';
+import { IGuild, IGuildRecord } from '~/types/Guild';
 import { IReactHTMLElement } from '~/types/ReactHTMLElement';
 
 export interface IGuildParams {
@@ -19,14 +18,6 @@ export interface IGuildParams {
 export interface IGuildProps {
   guild: IGuild;
 }
-
-const guildSql = `
-  SELECT *
-  FROM guilds
-  WHERE slug = @slug
-`;
-
-const guildStatement = db.prepare(guildSql);
 
 const svgRegex = /\bsvg$/;
 
@@ -46,7 +37,8 @@ export const getServerSideProps = async ({ query, resolvedUrl }: GetServerSidePr
     guildSlug = guildSlug.split('.')[0];
   }
 
-  const guild: IGuild = guildStatement.get({ slug: slugify(guildSlug) });
+  const guild: IGuildRecord = await lookupGuildBySlug(guildSlug);
+  console.log(`🚀 ~ file: [...params].tsx ~ line 41 ~ getServerSideProps ~ guild`, guild);
 
   if (guild === undefined) {
     return {

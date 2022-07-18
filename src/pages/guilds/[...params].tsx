@@ -7,8 +7,8 @@ import { MdCheckBox, MdCheckBoxOutlineBlank, MdContentCopy, MdEdit, MdOpenInNew 
 import { LayoutMain } from '~/components/layout/Main';
 import { Section, SectionTitle } from '~/components/layout/Section';
 import { SaveButtons } from '~/components/SaveButtons';
-import { getEmblemParams, getEmblemUrl } from '~/lib/emblem/url';
 import { db } from '~/lib/db/db';
+import { getEmblemParams, getEmblemUrl } from '~/lib/emblem/url';
 import { slugify } from '~/lib/string';
 import { IGuild } from '~/types/Guild';
 import { IReactHTMLElement } from '~/types/ReactHTMLElement';
@@ -107,6 +107,7 @@ const Guild: NextPage<IGuildProps> = ({ guild }) => {
           [{guild.tag}] {guild.guild_name} @ Guild Emblems by g2w2w2.com
         </title>
         <link rel="icon" href={emblemUrl} sizes="any" />
+        <meta name="robots" content="noindex" />
       </Head>
       <div className="mx-auto flex w-fit flex-col gap-8">
         <Section className="w-full">

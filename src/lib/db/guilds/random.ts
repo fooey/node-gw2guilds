@@ -10,7 +10,7 @@ const sqlStatement = db.prepare(`
     FROM guilds
     WHERE background_id IS NOT NULL
       AND foreground_id IS NOT NULL
-      AND modified_date > date(@date)
+      AND modified_date >= date(@date)
     ORDER BY RANDOM()
     LIMIT @limit
   );
@@ -20,7 +20,7 @@ export const DEFAULT_RANDOM_GUILDS_NUM = 20;
 const MAX_LIMIT = 100;
 
 export const lookupRandomGuilds = (num: number = DEFAULT_RANDOM_GUILDS_NUM): IGuild[] => {
-  const date = DateTime.utc().minus({ days: 30 });
+  const date = DateTime.utc().minus({ days: 60 });
   const limit = Math.min(num, MAX_LIMIT);
   const guilds: IGuild[] = sqlStatement.all({ limit, date: date.toISODate() });
 

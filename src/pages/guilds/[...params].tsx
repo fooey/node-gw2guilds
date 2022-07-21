@@ -7,9 +7,9 @@ import { MdCheckBox, MdCheckBoxOutlineBlank, MdContentCopy, MdEdit, MdOpenInNew 
 import { LayoutMain } from '~/components/layout/Main';
 import { Section, SectionTitle } from '~/components/layout/Section';
 import { SaveButtons } from '~/components/SaveButtons';
-import { lookupGuildBySlug } from '~/lib/db/guilds/bySlug';
+import { lookupGuildBySlug } from '~/lib/db/guilds/guildBySlug';
 import { getEmblemParams, getEmblemUrl } from '~/lib/emblem/url';
-import { IGuild, IGuildRecord } from '~/types/Guild';
+import { IGuild } from '~/types/Guild';
 import { IReactHTMLElement } from '~/types/ReactHTMLElement';
 
 export interface IGuildParams {
@@ -37,7 +37,7 @@ export const getServerSideProps = async ({ query, resolvedUrl }: GetServerSidePr
     guildSlug = guildSlug.split('.')[0];
   }
 
-  const guild: IGuildRecord = await lookupGuildBySlug(guildSlug);
+  const guild = await lookupGuildBySlug(guildSlug);
   console.log(`🚀 ~ file: [...params].tsx ~ line 41 ~ getServerSideProps ~ guild`, guild);
 
   if (guild === undefined) {
@@ -95,11 +95,10 @@ const Guild: NextPage<IGuildProps> = ({ guild }) => {
   return (
     <LayoutMain>
       <Head>
-        <title>
-          [{guild.tag}] {guild.guild_name} @ Guild Emblems by g2w2w2.com
-        </title>
+        <title>{`[${guild.tag}] ${guild.guild_name} @ Guild Emblems by g2w2w2.com`}</title>
         <link rel="icon" href={emblemUrl} sizes="any" />
         <meta name="robots" content="noindex" />
+        <meta name="canonical" content={`/guilds/${guild.guild_name}`} />
       </Head>
       <div className="mx-auto flex w-fit flex-col gap-8">
         <Section className="w-full">

@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { deslugify } from '~/lib/string';
+import { DateTime } from 'luxon';
+import { deslugify, slugify } from '~/lib/string';
+import { IGuild, IGuildRecord } from '~/types/Guild';
 
 const API_KEY = process.env.API_KEY;
 
@@ -43,11 +45,26 @@ export const gw2api = axios.create({
 
 export const retrieveGuildIdByNameV2 = (slug: string) => {
   const unslug = encodeURIComponent(deslugify(slug));
-  console.log(`🚀 ~ file: bySlug.ts ~ line 25 ~ lookupGuildBySlugV2 ~ unslug`, unslug);
-  return gw2api.get<string[]>(`/v2/guild/search?name=${unslug}`).then((response) => {
-    const [guildId] = response.data;
-    return retrieveGuildIdByIdV2(guildId);
+  console.log(`🚀 ~ file: bySlug.ts ~ line 25 ~ lookupGuildBySlugV2 ~ unslug`, {
+    slug,
+    unslug,
+    slugified: slugify(slug),
   });
+  return gw2api
+    .request<string[]>({
+      method: 'GET',
+      url: `/v2/guild/search?name=${unslug}`,
+    })
+    .then(({ data }) => data)
+    .then((data) => {
+      console.log(`🚀 ~ file: api.ts ~ line 54 ~ .then ~ data`, data);
+      const [guildId] = data;
+      if (!guildId) {
+        throw new Error('guild not fo und');
+      }
+
+      return retrieveGuildIdByIdV2(guildId);
+    });
 };
 
 interface IApiGuildEmblem {
@@ -60,7 +77,7 @@ interface IApiGuildEmblemLayer {
   colors: number[];
 }
 
-interface IApiGuild {
+export interface IApiGuild {
   id: string;
   name: string;
   tag: string;
@@ -70,5 +87,27 @@ interface IApiGuild {
 export const retrieveGuildIdByIdV2 = (id: string) => {
   console.log(`🚀 ~ file: bySlug.ts ~ line 36 ~ retrieveGuildIdByIdV2 ~ id`, id);
 
-  return gw2api.get<IApiGuild>(`/v2/guild/${id}`);
+  return gw2api.request<IApiGuild>({ method: 'GET', url: `/v2/guild/${id}` });
+};
+
+export const apiResultToGuild = (apiGuild: IApiGuild): IGuild => {
+  return {
+    guild_id: apiGuild.id,
+    guild_name: apiGuild.name,
+    tag: apiGuild.tag,
+    slug: slugify(apiGuild.name),
+    background_id: apiGuild.emblem.background.id,
+    background_color_id: apiGuild.emblem.background.colors[0],
+    foreground_id: apiGuild.emblem.foreground.id,
+    foreground_primary_color_id: apiGuild.emblem.foreground.colors[0],
+    foreground_secondary_color_id: apiGuild.emblem.foreground.colors[1],
+    flags_flip_bg_horizontal: apiGuild.emblem.flags.includes('FlipBackgroundHorizontal '),
+    flags_flip_bg_vertical: apiGuild.emblem.flags.includes('FlipBackgroundVertical '),
+    flags_flip_fg_horizontal: apiGuild.emblem.flags.includes('FlipForegoundHorizontal'),
+    flags_flip_fg_vertical: apiGuild.emblem.flags.includes('FlipForegoundVertical'),
+  };
+};
+
+export const isStale = (guild: IGuildRecord): boolean => {
+  return !guild.checked_date || DateTime.fromISO(guild.checked_date) < DateTime.utc().minus({ hours: 4 });
 };

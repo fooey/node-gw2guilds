@@ -3,7 +3,9 @@ import { GetServerSidePropsContext, NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import * as ReactDOMServer from 'react-dom/server';
 import { MdCheckBox, MdCheckBoxOutlineBlank, MdContentCopy, MdEdit, MdOpenInNew } from 'react-icons/md';
+import { EmblemSVG } from '~/components/EmblemSVG';
 import { LayoutMain } from '~/components/layout/Main';
 import { Section, SectionTitle } from '~/components/layout/Section';
 import { SaveButtons } from '~/components/SaveButtons';
@@ -21,8 +23,9 @@ export interface IGuildProps {
 
 const svgRegex = /\bsvg$/;
 
-export const getServerSideProps = async ({ query, resolvedUrl }: GetServerSidePropsContext) => {
+export const getServerSideProps = async ({ query, resolvedUrl, res }: GetServerSidePropsContext) => {
   const { params } = query;
+  console.log(`🚀 ~ file: [...params].tsx ~ line 28 ~ getServerSideProps ~ params`, params);
   let [guildSlug, optionsSlug] = castArray(params);
 
   if (guildSlug === undefined || Array.isArray(guildSlug)) {
@@ -37,46 +40,59 @@ export const getServerSideProps = async ({ query, resolvedUrl }: GetServerSidePr
     guildSlug = guildSlug.split('.')[0];
   }
 
-  const guild = await lookupGuildBySlug(guildSlug);
-  console.log(`🚀 ~ file: [...params].tsx ~ line 41 ~ getServerSideProps ~ guild`, guild);
+  return lookupGuildBySlug(guildSlug)
+    .then((guild) => {
+      if (guild === undefined) {
+        return {
+          notFound: true,
+        };
+      } else if (isSvg) {
+        const config = optionsSlug ? optionsSlug.split('.').filter((i) => i !== 'svg') : [];
+        console.log(`🚀 ~ file: [...params].tsx ~ line 52 ~ .then `, { optionsSlug, config });
 
-  if (guild === undefined) {
-    return {
-      notFound: true,
-    };
-  } else if (isSvg) {
-    const config = (optionsSlug ?? '').split('.');
+        let size: string | number | undefined = '256';
+        let bg_color = undefined;
 
-    let size = '256';
-    if (config.length > 1) {
-      size = config[0];
-    }
+        if (config.length === 1) {
+          [size] = config;
+        } else if (config.length === 2) {
+          [bg_color, size] = config;
+        }
 
-    if (config.length > 2) {
-      guild.bg_color = config[1];
-    }
+        if (size === '256') {
+          size = undefined;
+        } else {
+          size = Number(size);
+        }
+        console.log(`🚀 ~ file: [...params].tsx ~ line 67 ~ .then ~ size`, size);
 
-    return {
-      redirect: {
-        destination: getEmblemUrl(guild, size),
-        permanent: true,
-      },
-    };
-  } else {
-    return {
-      props: {
-        guild,
-      },
-    };
-  }
+        const svg = ReactDOMServer.renderToStaticMarkup(EmblemSVG({ emblem: { ...guild, size, bg_color } })!);
+        res.setHeader('content-type', 'image/svg+xml');
+        res.write(svg);
+        res.end();
+      }
+
+      return {
+        props: {
+          guild,
+        },
+      };
+    })
+    .catch((err) => {
+      if (err === 'NotFound') {
+        return {
+          notFound: true,
+        };
+      } else return Promise.reject(err);
+    });
 };
 
 const Guild: NextPage<IGuildProps> = ({ guild }) => {
   const [size, setSize] = useState('512');
   const [bg, _setBg] = useState('ffffff');
   const [isTransparent, setIsTransparent] = useState(true);
-  const [fgShadow, setFgShadow] = useState(false);
-  const [bgShadow, setBgShadow] = useState(false);
+  // const [fgShadow, setFgShadow] = useState(false);
+  // const [bgShadow, setBgShadow] = useState(false);
 
   const setBg = (bg: string) => {
     if (bg.charAt(0) === '#') {
@@ -87,10 +103,12 @@ const Guild: NextPage<IGuildProps> = ({ guild }) => {
   };
 
   const bg_color = isTransparent ? undefined : bg;
-  const flags_fg_shadow = !!fgShadow;
-  const flags_bg_shadow = !!bgShadow;
+  // const flags_fg_shadow = !!fgShadow;
+  // const flags_bg_shadow = !!bgShadow;
 
-  const emblemUrl = getEmblemUrl({ ...guild, bg_color, flags_fg_shadow, flags_bg_shadow }, size);
+  // const emblemUrl = getEmblemUrl({ ...guild, bg_color, flags_fg_shadow, flags_bg_shadow }, size);
+  const emblemUrl = getGuildEmblemUrl(guild, size, bg_color);
+  console.log(`🚀 ~ file: [...params].tsx ~ line 105 ~ emblemUrl`, emblemUrl);
 
   return (
     <LayoutMain>
@@ -120,14 +138,21 @@ const Guild: NextPage<IGuildProps> = ({ guild }) => {
                   setBg={setBg}
                   isTransparent={isTransparent}
                   setIsTransparent={setIsTransparent}
-                  fgShadow={fgShadow}
-                  setFgShadow={setFgShadow}
-                  bgShadow={bgShadow}
-                  setBgShadow={setBgShadow}
+                  // fgShadow={fgShadow}
+                  // setFgShadow={setFgShadow}
+                  // bgShadow={bgShadow}
+                  // setBgShadow={setBgShadow}
                 />
               </div>
               <div className="max-h-[512px] max-w-[512px] overflow-auto">
-                <img src={emblemUrl} alt={guild.guild_name} width={size} height={size} className="max-w-none" />
+                <img
+                  key={emblemUrl}
+                  src={emblemUrl}
+                  alt={guild.guild_name}
+                  width={size}
+                  height={size}
+                  className="max-w-none"
+                />
               </div>
             </div>
             <LinkResources guild={guild} size={size} bg_color={bg_color} />
@@ -148,10 +173,10 @@ interface IEmblemOptionsProps {
   setBg: (bg: string) => void;
   isTransparent: boolean;
   setIsTransparent: (isChecked: boolean) => void;
-  fgShadow: boolean;
-  setFgShadow: (isChecked: boolean) => void;
-  bgShadow: boolean;
-  setBgShadow: (isChecked: boolean) => void;
+  // fgShadow: boolean;
+  // setFgShadow: (isChecked: boolean) => void;
+  // bgShadow: boolean;
+  // setBgShadow: (isChecked: boolean) => void;
 }
 const EmblemOptions: React.FC<IEmblemOptionsProps> = ({
   guild,
@@ -161,26 +186,26 @@ const EmblemOptions: React.FC<IEmblemOptionsProps> = ({
   setBg,
   isTransparent,
   setIsTransparent,
-  fgShadow,
-  setFgShadow,
-  bgShadow,
-  setBgShadow,
+  // fgShadow,
+  // setFgShadow,
+  // bgShadow,
+  // setBgShadow,
 }) => {
   const bg_color = isTransparent ? undefined : bg;
-  const flags_fg_shadow = !!fgShadow;
-  const flags_bg_shadow = !!bgShadow;
+  // const flags_fg_shadow = !!fgShadow;
+  // const flags_bg_shadow = !!bgShadow;
 
   const handleTransprentToggle = () => {
     setIsTransparent(!isTransparent);
   };
 
-  const handleFgShadowToggle = () => {
-    setFgShadow(!fgShadow);
-  };
+  // const handleFgShadowToggle = () => {
+  //   setFgShadow(!fgShadow);
+  // };
 
-  const handleBgShadowToggle = () => {
-    setBgShadow(!bgShadow);
-  };
+  // const handleBgShadowToggle = () => {
+  //   setBgShadow(!bgShadow);
+  // };
 
   const handleSetBg = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBg(e.currentTarget.value);
@@ -225,7 +250,7 @@ const EmblemOptions: React.FC<IEmblemOptionsProps> = ({
           step={1}
         />
       </div>
-      <div className="flex flex-row items-center gap-4">
+      {/* <div className="flex flex-row items-center gap-4">
         <span className="w-32" onClick={handleFgShadowToggle}>
           FG Shadow
         </span>
@@ -236,8 +261,16 @@ const EmblemOptions: React.FC<IEmblemOptionsProps> = ({
           BG Shadow
         </span>
         <CheckboxIcon checked={bgShadow} size="18" className="" onClick={handleBgShadowToggle} />
-      </div>
-      <ButtonBar guild={{ ...guild, bg_color, flags_fg_shadow, flags_bg_shadow }} size={size} />
+      </div> */}
+      <ButtonBar
+        guild={{
+          ...guild,
+          bg_color,
+          // flags_fg_shadow,
+          // flags_bg_shadow
+        }}
+        size={size}
+      />
     </div>
   );
 };
@@ -279,13 +312,7 @@ const ButtonBar: React.FC<IButtonBarProps> = ({ guild, size }) => {
   );
 };
 
-interface ILinkBuilderProps {
-  guild: IGuild;
-  size: string;
-  bg_color?: string;
-}
-const LinkResources: React.FC<ILinkBuilderProps> = ({ guild, size, bg_color }) => {
-  const appUrl = `https://guilds.gw2w2w.com`;
+const getGuildEmblemUrl = (guild: IGuild, size: string, bg_color?: string) => {
   let emblemUrl = `/guilds/${guild.slug}`;
   let emblemOptions = [];
 
@@ -298,6 +325,18 @@ const LinkResources: React.FC<ILinkBuilderProps> = ({ guild, size, bg_color }) =
   }
 
   emblemUrl += '.svg';
+
+  return emblemUrl;
+};
+
+interface ILinkBuilderProps {
+  guild: IGuild;
+  size: string;
+  bg_color?: string;
+}
+const LinkResources: React.FC<ILinkBuilderProps> = ({ guild, size, bg_color }) => {
+  const appUrl = `https://guilds.gw2w2w.com`;
+  const emblemUrl = getGuildEmblemUrl(guild, size, bg_color);
 
   return (
     <div className="mx-auto w-full px-4">

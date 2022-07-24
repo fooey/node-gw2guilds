@@ -57,10 +57,10 @@ export const retrieveGuildIdByNameV2 = (slug: string) => {
     })
     .then(({ data }) => data)
     .then((data) => {
-      console.log(`🚀 ~ file: api.ts ~ line 54 ~ .then ~ data`, data);
       const [guildId] = data;
+
       if (!guildId) {
-        throw new Error('guild not fo und');
+        return Promise.reject('NotFound');
       }
 
       return retrieveGuildIdByIdV2(guildId);

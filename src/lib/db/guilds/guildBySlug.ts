@@ -16,22 +16,26 @@ export const lookupGuildBySlug = async (slug: string): Promise<IGuildRecord | un
   const guild: IGuildRecord | undefined = selectBySlugStatement.get({ slug: slugify(slug) });
 
   if (guild === undefined || isStale(guild)) {
-    const { data } = await retrieveGuildIdByNameV2(slug);
+    console.log(`🚀 ~ file: guildBySlug.ts ~  lookupGuildBySlug ~ miss`, { slug });
+    return retrieveGuildIdByNameV2(slug).then(({ data }) => {
+      if (data) {
+        const apiGuild = apiResultToGuild(data);
 
-    if (data) {
-      const apiGuild = apiResultToGuild(data);
+        if (!guild) {
+          insertGuild(apiGuild);
+        } else {
+          updateGuild(apiGuild);
+        }
 
-      if (!guild) {
-        insertGuild(apiGuild);
+        return lookupGuildById(apiGuild.guild_id);
+      } else if (guild) {
+        return guild;
       } else {
-        updateGuild(apiGuild);
+        return Promise.reject(`NotFound`);
       }
-
-      return lookupGuildById(apiGuild.guild_id);
-    } else {
-      return;
-    }
+    });
   }
+  console.log(`🚀 ~ file: guildBySlug.ts ~  lookupGuildBySlug ~ hit`, { slug });
 
   return guild;
 };

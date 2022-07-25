@@ -1,11 +1,23 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { ReactEventHandler } from 'react';
 import { MdLayers, MdSearch } from 'react-icons/md';
 import { IReactHTMLNode } from '~/types/ReactHTMLElement';
 import { Footer } from './Footer';
 
 export const LayoutMain: React.FC<IReactHTMLNode<HTMLDivElement>> = ({ children, className, ...attrs }) => {
+  const router = useRouter();
+  const searchRef = React.useRef<HTMLInputElement>(null);
+
+  const onSearchSubmit: ReactEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+
+    if (searchRef.current?.value) {
+      router.push(`/guilds/${searchRef.current.value}`);
+    }
+  };
+
   return (
     <>
       <Head>
@@ -23,10 +35,11 @@ export const LayoutMain: React.FC<IReactHTMLNode<HTMLDivElement>> = ({ children,
                 <a className="font-light tracking-tight">gw2w2w.com</a>
               </Link>
             </h1>
-            <form action="/" className="flex flex-row items-center">
+            <form action="/guilds/" className="flex flex-row items-center" onSubmit={onSearchSubmit}>
               <input
+                ref={searchRef}
                 type={'search'}
-                name="q"
+                placeholder="Exact guild name"
                 className="h-10 rounded-l-xl border border-slate-500 px-2 shadow-inner focus:border-slate-500"
               />
               <button className="m-0 h-10 rounded-r-xl bg-slate-500 px-3">

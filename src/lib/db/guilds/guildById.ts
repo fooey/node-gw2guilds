@@ -1,6 +1,9 @@
-import { DateTime } from 'luxon';
+import { getGuild, isStale } from '~/lib/api/api';
+import { idCache } from '~/lib/cache/id';
 import { db } from '~/lib/db/db';
 import { IGuildRecord } from '~/types/Guild';
+import { insertGuild } from './insertGuild';
+import { updateGuild } from './updateGuild';
 
 const selectByIdStatement = db.prepare(`
   SELECT *
@@ -9,25 +12,30 @@ const selectByIdStatement = db.prepare(`
 `);
 
 export const lookupGuildById = async (guild_id: string): Promise<IGuildRecord | undefined> => {
+  if (idCache.has(guild_id)) {
+    return Promise.reject('NotFound');
+  }
+
   const guild: IGuildRecord | undefined = selectByIdStatement.get({ guild_id });
 
-  // if (guild === undefined || guild.checked_date === null || isStale(guild.checked_date)) {
-  //   const { data } = await retrieveGuildIdByNameV2(slug);
+  if (guild === undefined || isStale(guild)) {
+    return getGuild(guild_id).then((guildData) => {
+      if (guildData) {
+        if (!guild) {
+          insertGuild(guildData);
+        } else {
+          updateGuild(guildData);
+        }
 
-  //   if (data) {
-  //     const apiGuild = apiResultToGuild(data);
+        return lookupGuildById(guildData.guild_id);
+      } else if (guild) {
+        return guild;
+      } else {
+        idCache.set(guild_id, 404);
+        return Promise.reject(`NotFound`);
+      }
+    });
+  }
 
-  //     if (!guild) {
-  //       insertGuild(apiGuild);
-  //       return apiGuild as unknown as IGuildRecord;
-  //     } else {
-  //       updateGuild(apiGuild);
-  //       return apiGuild as unknown as IGuildRecord;
-  //     }
-  //   } else {
-  //     return;
-  //   }
-  // }
-
-  return guild;
+  return Promise.resolve(guild);
 };

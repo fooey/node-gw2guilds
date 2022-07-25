@@ -1,7 +1,11 @@
 import axios from 'axios';
+import { isEmpty, random } from 'lodash';
 import { DateTime } from 'luxon';
-import { deslugify, slugify } from '~/lib/string';
+import { slugify } from '~/lib/string';
 import { IGuild, IGuildRecord } from '~/types/Guild';
+import { idCache } from '../cache/id';
+import { nameCache } from '../cache/name';
+import { IApiGuild } from './types';
 
 const API_KEY = process.env.API_KEY;
 
@@ -43,13 +47,7 @@ export const gw2api = axios.create({
   },
 });
 
-export const retrieveGuildIdByNameV2 = (slug: string) => {
-  const unslug = encodeURIComponent(deslugify(slug));
-  console.log(`🚀 ~ file: bySlug.ts ~ line 25 ~ lookupGuildBySlugV2 ~ unslug`, {
-    slug,
-    unslug,
-    slugified: slugify(slug),
-  });
+export const guildSearch = (unslug: string) => {
   return gw2api
     .request<string[]>({
       method: 'GET',
@@ -57,57 +55,59 @@ export const retrieveGuildIdByNameV2 = (slug: string) => {
     })
     .then(({ data }) => data)
     .then((data) => {
-      const [guildId] = data;
-
-      if (!guildId) {
+      if (isEmpty(data)) {
+        nameCache.set(unslug, 404);
         return Promise.reject('NotFound');
+      } else if (data.length !== 1) {
+        nameCache.set(unslug, 500);
+        return Promise.reject('Too many results found');
       }
-
-      return retrieveGuildIdByIdV2(guildId);
+      return getGuild(data[0]);
     });
 };
 
-interface IApiGuildEmblem {
-  background: IApiGuildEmblemLayer;
-  foreground: IApiGuildEmblemLayer;
-  flags: string[];
-}
-interface IApiGuildEmblemLayer {
-  id: number;
-  colors: number[];
-}
+export const getGuild = async (id: string) => {
+  if (idCache.has(id)) {
+    return Promise.reject('NotFound');
+  }
 
-export interface IApiGuild {
-  id: string;
-  name: string;
-  tag: string;
-  emblem: IApiGuildEmblem;
-}
-
-export const retrieveGuildIdByIdV2 = (id: string) => {
-  console.log(`🚀 ~ file: bySlug.ts ~ line 36 ~ retrieveGuildIdByIdV2 ~ id`, id);
-
-  return gw2api.request<IApiGuild>({ method: 'GET', url: `/v2/guild/${id}` });
+  return gw2api.request<IApiGuild>({ method: 'GET', url: `/v2/guild/${id}` }).then((response) => {
+    const { data, status } = response;
+    if (status === 404) {
+      idCache.set(id, status);
+      throw Error('NotFound');
+    }
+    return apiResultToGuild(data);
+  });
 };
 
 export const apiResultToGuild = (apiGuild: IApiGuild): IGuild => {
+  const { emblem } = apiGuild;
+
   return {
     guild_id: apiGuild.id,
     guild_name: apiGuild.name,
     tag: apiGuild.tag,
     slug: slugify(apiGuild.name),
-    background_id: apiGuild.emblem.background.id,
-    background_color_id: apiGuild.emblem.background.colors[0],
-    foreground_id: apiGuild.emblem.foreground.id,
-    foreground_primary_color_id: apiGuild.emblem.foreground.colors[0],
-    foreground_secondary_color_id: apiGuild.emblem.foreground.colors[1],
-    flags_flip_bg_horizontal: apiGuild.emblem.flags.includes('FlipBackgroundHorizontal '),
-    flags_flip_bg_vertical: apiGuild.emblem.flags.includes('FlipBackgroundVertical '),
-    flags_flip_fg_horizontal: apiGuild.emblem.flags.includes('FlipForegoundHorizontal'),
-    flags_flip_fg_vertical: apiGuild.emblem.flags.includes('FlipForegoundVertical'),
+    background_id: emblem?.background.id,
+    background_color_id: emblem?.background.colors[0],
+    foreground_id: emblem?.foreground.id,
+    foreground_primary_color_id: emblem?.foreground.colors[0],
+    foreground_secondary_color_id: emblem?.foreground.colors[1],
+    flags_flip_bg_horizontal: emblem?.flags.includes('FlipBackgroundHorizontal '),
+    flags_flip_bg_vertical: emblem?.flags.includes('FlipBackgroundVertical '),
+    flags_flip_fg_horizontal: emblem?.flags.includes('FlipForegoundHorizontal'),
+    flags_flip_fg_vertical: emblem?.flags.includes('FlipForegoundVertical'),
   };
 };
 
+const getStaleCutoff = () => {
+  const base = DateTime.utc().minus({ hours: 4 });
+  const jitter = random(-15, 15);
+
+  return base.plus({ minutes: jitter });
+};
+
 export const isStale = (guild: IGuildRecord): boolean => {
-  return !guild.checked_date || DateTime.fromISO(guild.checked_date) < DateTime.utc().minus({ hours: 4 });
+  return !guild.checked_date || DateTime.fromISO(guild.checked_date) < getStaleCutoff();
 };

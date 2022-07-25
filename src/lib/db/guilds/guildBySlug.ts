@@ -1,7 +1,8 @@
+import { nameCache } from '~/lib/cache/name';
 import { db } from '~/lib/db/db';
-import { slugify } from '~/lib/string';
+import { deslugify, slugify } from '~/lib/string';
 import { IGuildRecord } from '~/types/Guild';
-import { apiResultToGuild, isStale, retrieveGuildIdByNameV2 } from './api';
+import { guildSearch, isStale } from '../../api/api';
 import { lookupGuildById } from './guildById';
 import { insertGuild } from './insertGuild';
 import { updateGuild } from './updateGuild';
@@ -13,29 +14,32 @@ const selectBySlugStatement = db.prepare<{ slug: string }>(`
 `);
 
 export const lookupGuildBySlug = async (slug: string): Promise<IGuildRecord | undefined> => {
+  const unslug = encodeURIComponent(deslugify(slug));
+
+  if (nameCache.has(unslug)) {
+    return Promise.reject(`NotFound`);
+  }
+
   const guild: IGuildRecord | undefined = selectBySlugStatement.get({ slug: slugify(slug) });
 
   if (guild === undefined || isStale(guild)) {
-    console.log(`🚀 ~ file: guildBySlug.ts ~  lookupGuildBySlug ~ miss`, { slug });
-    return retrieveGuildIdByNameV2(slug).then(({ data }) => {
-      if (data) {
-        const apiGuild = apiResultToGuild(data);
-
+    return guildSearch(unslug).then((guildData) => {
+      if (guildData) {
         if (!guild) {
-          insertGuild(apiGuild);
+          insertGuild(guildData);
         } else {
-          updateGuild(apiGuild);
+          updateGuild(guildData);
         }
 
-        return lookupGuildById(apiGuild.guild_id);
+        return lookupGuildById(guildData.guild_id);
       } else if (guild) {
         return guild;
       } else {
+        nameCache.set(unslug, 404);
         return Promise.reject(`NotFound`);
       }
     });
   }
-  console.log(`🚀 ~ file: guildBySlug.ts ~  lookupGuildBySlug ~ hit`, { slug });
 
-  return guild;
+  return Promise.resolve(guild);
 };

@@ -1,5 +1,6 @@
 import { castArray } from 'lodash';
 import { GetServerSidePropsContext, NextPage } from 'next';
+import Link from 'next/link';
 import { db } from '~/lib/db/db';
 import { IGuild } from '~/types/Guild';
 
@@ -26,7 +27,6 @@ export const getServerSideProps = async ({ query, resolvedUrl }: GetServerSidePr
   let [uuid] = castArray(params);
 
   const isSvg = svgRegex.test(resolvedUrl);
-  console.log(`🚀 ~ file: [...params].tsx ~ line 30 ~ getServerSideProps ~ isSvg`, { isSvg, resolvedUrl });
 
   if (isSvg) {
     uuid = uuid.split('.')[0];
@@ -38,7 +38,7 @@ export const getServerSideProps = async ({ query, resolvedUrl }: GetServerSidePr
     };
   }
 
-  const guild: IGuild = guildStatement.get({ id: uuid.toLocaleLowerCase() });
+  const guild: IGuild = guildStatement.get({ id: uuid.toLowerCase() });
 
   if (guild === undefined) {
     return {
@@ -62,7 +62,11 @@ export const getServerSideProps = async ({ query, resolvedUrl }: GetServerSidePr
 };
 
 const Guild: NextPage<IGuildProps> = ({ guild }) => {
-  return <h1>redirecting</h1>;
+  return (
+    <h1>
+      redirecting to <Link href={`/guilds/${guild.slug}`}>/guilds/${guild.slug}</Link>
+    </h1>
+  );
 };
 
 export default Guild;

@@ -23,7 +23,6 @@ const updateStatement = db.prepare(`
 `);
 
 export const updateGuild = (guild: IGuild) => {
-  console.log(`🚀 ~ file: updateGuild.ts ~ line 25 ~ updateGuild ~ guild`, guild);
   const now = DateTime.utc().set({ millisecond: 0 }).toISO({ suppressMilliseconds: true });
 
   const bindable = {
@@ -35,7 +34,6 @@ export const updateGuild = (guild: IGuild) => {
     flags_flip_fg_horizontal: guild.flags_flip_fg_horizontal ? 1 : 0,
     flags_flip_fg_vertical: guild.flags_flip_fg_vertical ? 1 : 0,
   };
-  console.log(`🚀 ~ file: updateGuild.ts ~ line 30 ~ updateGuild ~ bindable`, bindable);
 
   return updateStatement.run(bindable);
 };

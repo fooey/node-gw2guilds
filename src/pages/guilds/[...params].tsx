@@ -2,7 +2,7 @@ import { castArray, compact, get } from 'lodash';
 import { GetServerSidePropsContext, NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import * as ReactDOMServer from 'react-dom/server';
 import { MdCheckBox, MdCheckBoxOutlineBlank, MdContentCopy, MdEdit, MdOpenInNew } from 'react-icons/md';
 import { EmblemSVG } from '~/components/EmblemSVG';
@@ -25,7 +25,6 @@ const svgRegex = /\bsvg$/;
 
 export const getServerSideProps = async ({ query, resolvedUrl, res }: GetServerSidePropsContext) => {
   const { params } = query;
-  console.log(`🚀 ~ file: [...params].tsx ~ line 28 ~ getServerSideProps ~ params`, params);
   let [guildSlug, optionsSlug] = castArray(params);
 
   if (guildSlug === undefined || Array.isArray(guildSlug)) {
@@ -48,7 +47,6 @@ export const getServerSideProps = async ({ query, resolvedUrl, res }: GetServerS
         };
       } else if (isSvg) {
         const config = optionsSlug ? optionsSlug.split('.').filter((i) => i !== 'svg') : [];
-        console.log(`🚀 ~ file: [...params].tsx ~ line 52 ~ .then `, { optionsSlug, config });
 
         let size: string | number | undefined = '256';
         let bg_color = undefined;
@@ -64,7 +62,6 @@ export const getServerSideProps = async ({ query, resolvedUrl, res }: GetServerS
         } else {
           size = Number(size);
         }
-        console.log(`🚀 ~ file: [...params].tsx ~ line 67 ~ .then ~ size`, size);
 
         const svg = ReactDOMServer.renderToStaticMarkup(EmblemSVG({ emblem: { ...guild, size, bg_color } })!);
         res.setHeader('content-type', 'image/svg+xml');
@@ -108,7 +105,6 @@ const Guild: NextPage<IGuildProps> = ({ guild }) => {
 
   // const emblemUrl = getEmblemUrl({ ...guild, bg_color, flags_fg_shadow, flags_bg_shadow }, size);
   const emblemUrl = getGuildEmblemUrl(guild, size, bg_color);
-  console.log(`🚀 ~ file: [...params].tsx ~ line 105 ~ emblemUrl`, emblemUrl);
 
   return (
     <LayoutMain>
@@ -116,7 +112,7 @@ const Guild: NextPage<IGuildProps> = ({ guild }) => {
         <title>{`[${guild.tag}] ${guild.guild_name} @ Guild Emblems by g2w2w2.com`}</title>
         <link rel="icon" href={emblemUrl} sizes="any" />
         <meta name="robots" content="noindex" />
-        <meta name="canonical" content={`/guilds/${guild.guild_name}`} />
+        <link rel="canonical" href={`/guilds/${guild.guild_name}`} />
       </Head>
       <div className="mx-auto flex w-fit flex-col gap-8">
         <Section className="w-full">
@@ -160,6 +156,7 @@ const Guild: NextPage<IGuildProps> = ({ guild }) => {
         </Section>
 
         <GuildData guild={guild} />
+        <GuildLinks guild={guild} />
       </div>
     </LayoutMain>
   );
@@ -416,37 +413,65 @@ const dataSection = {
 
 const GuildData: React.FC<{ guild: IGuild }> = ({ guild }) => {
   return (
-    <div className="flex flex-col gap-4 rounded bg-white p-4 shadow-lg">
-      <div className="grid grid-cols-1 gap-4  text-[10px] leading-tight lg:grid-cols-2">
-        {Object.entries(dataSection).map(([section, sectionKeys]) => (
-          <div key={section} className="divide-y divide-slate-50 font-mono">
-            <h2 className="py-2 font-sans text-lg font-light tracking-wide">{section}</h2>
-            <div className="flex flex-col divide-y divide-slate-50">
-              {sectionKeys.map((key: string) => (
-                <div key={key} className="flex flex-row items-center justify-between gap-4 py-2 hover:bg-slate-50">
-                  <div className="uppercase">{key}</div>
-                  <code className="w-52 overflow-scroll whitespace-nowrap border-neutral-400 bg-neutral-50 py-1 px-2 text-neutral-600">
-                    {get(guild, key) ?? '—'}
-                  </code>
-                </div>
-              ))}
+    <Section className="w-full">
+      <div className="flex flex-col gap-4 rounded bg-white p-4 shadow-lg">
+        <div className="grid grid-cols-1 gap-4  text-[10px] leading-tight lg:grid-cols-2">
+          {Object.entries(dataSection).map(([section, sectionKeys]) => (
+            <div key={section} className="divide-y divide-slate-50 font-mono">
+              <h2 className="py-2 font-sans text-lg font-light tracking-wide">{section}</h2>
+              <div className="flex flex-col divide-y divide-slate-50">
+                {sectionKeys.map((key: string) => (
+                  <div key={key} className="flex flex-row items-center justify-between gap-4 py-2 hover:bg-slate-50">
+                    <div className="uppercase">{key}</div>
+                    <code className="w-52 overflow-scroll whitespace-nowrap border-neutral-400 bg-neutral-50 py-1 px-2 text-neutral-600">
+                      {get(guild, key) ?? '—'}
+                    </code>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      <div>
-        <a
-          className="ml-auto flex w-fit cursor-pointer flex-row items-center gap-2 text-sm text-blue-500 hover:text-blue-800"
-          href={`https://api.guildwars2.com/v2/guild/${guild.guild_id}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span>https://api.guildwars2.com/v2/guild/{guild.guild_id}</span>
-          <MdOpenInNew />
-        </a>
-      </div>
-    </div>
+    </Section>
   );
 };
+const GuildLinks: React.FC<{ guild: IGuild }> = ({ guild }) => {
+  return (
+    <Section className="w-full">
+      <div className="flex flex-col gap-4 rounded bg-white p-4 shadow-lg">
+        <div>
+          <h2 className="py-2 font-sans text-lg font-light tracking-wide">Links</h2>
+          <dl>
+            <LinkRef label="Canonical" href={`https://guilds.gw2w2w.com/guilds/${guild.guild_name}`} />
+            <LinkRef label="Canonical SVG" href={`https://guilds.gw2w2w.com/guilds/${guild.guild_name}.svg`} />
+            <LinkRef label="ID redirect" href={`https://guilds.gw2w2w.com/${guild.guild_id}`} />
+            <LinkRef label="ID SVG redirect" href={`https://guilds.gw2w2w.com/${guild.guild_id}.svg`} />
+            <LinkRef label="GuildWars2 API" href={`https://api.guildwars2.com/v2/guild/${guild.guild_id}`}>
+              <span>https://api.guildwars2.com/v2/guild/{guild.guild_id}</span>
+              <MdOpenInNew />
+            </LinkRef>
+          </dl>
+        </div>
+      </div>
+    </Section>
+  );
+};
+
+const LinkRef: React.FC<{ label: string; href: string; children?: ReactNode }> = ({ label, href, children }) => (
+  <>
+    <dd className="text-sm font-semibold">{label}</dd>
+    <dt className="mb-4">
+      <a
+        className="flex w-fit cursor-pointer flex-row items-center gap-2 text-sm text-blue-500 hover:text-blue-800"
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {children ?? href}
+      </a>
+    </dt>
+  </>
+);
 
 export default Guild;

@@ -10,5 +10,5 @@ export const db: IDatabase = new Database(dbFilePath, {
   fileMustExist: true,
   readonly: false,
 
-  // verbose: console.log,
+  // verbose: console.info,
 });

@@ -41,6 +41,22 @@ const insertStatement = db.prepare(`
     , @now
     , @now
   )
+  ON CONFLICT(guild_id) DO UPDATE SET
+    guild_name = @guild_name
+    , slug = @slug
+    , tag = @tag
+    , background_id = @background_id
+    , foreground_id = @foreground_id
+    , background_color_id = @background_color_id
+    , foreground_primary_color_id = @foreground_primary_color_id
+    , foreground_secondary_color_id = @foreground_secondary_color_id
+    , flags_flip_bg_horizontal = @flags_flip_bg_horizontal
+    , flags_flip_bg_vertical = @flags_flip_bg_vertical
+    , flags_flip_fg_horizontal = @flags_flip_fg_horizontal
+    , flags_flip_fg_vertical = @flags_flip_fg_vertical
+    , modified_count = modified_count + 1
+    , modified_date = @now
+    , checked_date = @now
 `);
 
 export const insertGuild = (guild: IGuild) => {

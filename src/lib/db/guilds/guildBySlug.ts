@@ -3,7 +3,7 @@ import { db } from '~/lib/db/db';
 import { deslugify, slugify } from '~/lib/string';
 import { IGuildRecord } from '~/types/Guild';
 import { guildSearch, isStale } from '../../api/api';
-import { lookupGuildById } from './guildById';
+import { selectGuildById } from './guildById';
 import { insertGuild } from './insertGuild';
 import { updateGuild } from './updateGuild';
 
@@ -31,7 +31,7 @@ export const lookupGuildBySlug = async (slug: string): Promise<IGuildRecord | un
           updateGuild(guildData);
         }
 
-        return lookupGuildById(guildData.guild_id);
+        return selectGuildById(guildData.guild_id);
       } else if (guild) {
         return guild;
       } else {

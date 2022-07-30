@@ -11,12 +11,14 @@ const selectByIdStatement = db.prepare(`
   WHERE guild_id = lower(@guild_id)
 `);
 
+export const selectGuildById = (guild_id: string): IGuildRecord | undefined => selectByIdStatement.get({ guild_id });
+
 export const lookupGuildById = async (guild_id: string): Promise<IGuildRecord | undefined> => {
   if (idCache.has(guild_id)) {
     return Promise.reject('NotFound');
   }
 
-  const guild: IGuildRecord | undefined = selectByIdStatement.get({ guild_id });
+  const guild = selectGuildById(guild_id);
 
   if (guild === undefined || isStale(guild)) {
     return getGuild(guild_id).then((guildData) => {

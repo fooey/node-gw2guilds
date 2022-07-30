@@ -75,11 +75,11 @@ export const ForegroundOptions: React.FC<IForegroundOptionsProps> = ({ emblem, h
         isEnabled={!!emblem.flags_flip_fg_vertical}
         onClick={() => handleChange({ flags_flip_fg_vertical: !emblem.flags_flip_fg_vertical })}
       />
-      <FlagToggle
+      {/* <FlagToggle
         label={`Shadow`}
         isEnabled={!!emblem.flags_fg_shadow}
         onClick={() => handleChange({ flags_fg_shadow: !emblem.flags_fg_shadow })}
-      />
+      /> */}
       <ColorSelection
         emblem={emblem}
         title="Select Foreground Primary Color"

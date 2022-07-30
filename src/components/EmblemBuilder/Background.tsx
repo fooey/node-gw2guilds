@@ -74,11 +74,11 @@ export const BackgroundOptions: React.FC<IBackgroundOptionsProps> = ({ emblem, h
         isEnabled={!!emblem.flags_flip_bg_vertical}
         onClick={() => handleChange({ flags_flip_bg_vertical: !emblem.flags_flip_bg_vertical })}
       />
-      <FlagToggle
+      {/* <FlagToggle
         label={`Shadow`}
         isEnabled={!!emblem.flags_bg_shadow}
         onClick={() => handleChange({ flags_bg_shadow: !emblem.flags_bg_shadow })}
-      />
+      /> */}
       <ColorSelection
         emblem={emblem}
         title="Select Background Color"

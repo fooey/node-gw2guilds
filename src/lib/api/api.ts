@@ -109,6 +109,5 @@ const getStaleCutoff = () => {
 };
 
 export const isStale = (guild: IGuildRecord): boolean => {
-  return true; // FIXME
-  // return !guild.checked_date || DateTime.fromISO(guild.checked_date) < getStaleCutoff();
+  return !guild.checked_date || DateTime.fromISO(guild.checked_date) < getStaleCutoff();
 };;

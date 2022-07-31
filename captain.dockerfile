@@ -1,3 +1,5 @@
+ENV NODE_ENV production
+ENV PORT 80
 FROM node:16
 COPY package*.json /usr/src/app/
 RUN set -x \
@@ -9,7 +11,5 @@ COPY ./ /usr/src/app
 RUN set -x \
   && npm run build \
   && echo
-ENV NODE_ENV production
-ENV PORT 80
 EXPOSE 80
 CMD [ "npm", "start" ]

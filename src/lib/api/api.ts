@@ -96,8 +96,8 @@ export const apiResultToGuild = (apiGuild: IApiGuild): IGuild => {
     foreground_secondary_color_id: emblem?.foreground.colors[1],
     flags_flip_bg_horizontal: emblem?.flags.includes('FlipBackgroundHorizontal '),
     flags_flip_bg_vertical: emblem?.flags.includes('FlipBackgroundVertical '),
-    flags_flip_fg_horizontal: emblem?.flags.includes('FlipForegoundHorizontal'),
-    flags_flip_fg_vertical: emblem?.flags.includes('FlipForegoundVertical'),
+    flags_flip_fg_horizontal: emblem?.flags.includes('FlipForegroundHorizontal'),
+    flags_flip_fg_vertical: emblem?.flags.includes('FlipForegroundVertical'),
   };
 };
 
@@ -109,5 +109,6 @@ const getStaleCutoff = () => {
 };
 
 export const isStale = (guild: IGuildRecord): boolean => {
-  return !guild.checked_date || DateTime.fromISO(guild.checked_date) < getStaleCutoff();
-};
+  return true; // FIXME
+  // return !guild.checked_date || DateTime.fromISO(guild.checked_date) < getStaleCutoff();
+};;

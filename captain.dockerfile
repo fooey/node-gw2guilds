@@ -1,4 +1,4 @@
-FROM node:lts-alpine
+FROM node:16-alpine
 COPY package*.json /usr/src/app/
 RUN set -x \
   && cd /usr/src/app \

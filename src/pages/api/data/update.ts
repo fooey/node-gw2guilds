@@ -38,7 +38,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   resources.forEach((resource) => {
     const filePath = path.resolve(dataFilePath, `${resource.name}.json`);
     console.log(`🚀 ~ file: update.ts ~ line 39 ~ resources.forEach ~ filePath`, filePath);
-    writeFileSync(filePath, prettier.format(resource.json, { parser: 'json' }));
+    writeFileSync(filePath, JSON.stringify(resource.json, null, 2));
   });
 
   res.json(resources);

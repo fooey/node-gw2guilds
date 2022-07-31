@@ -1,7 +1,7 @@
-ENV NODE_ENV production
-ENV PORT 80
 FROM node:16
 COPY package*.json /usr/src/app/
+ENV NODE_ENV production
+ENV PORT 80
 RUN set -x \
   && cd /usr/src/app \
   && npm ci \

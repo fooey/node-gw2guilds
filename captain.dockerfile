@@ -12,4 +12,4 @@ RUN set -x \
   && npm run build \
   && echo
 EXPOSE 80
-CMD [ ".\node_modules\.bin\next", "start" ]
+CMD [ "npm", "start" ]

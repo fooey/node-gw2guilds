@@ -140,7 +140,9 @@ export const truthyBoolValues = [undefined, '', 'true', '1'];
 export const falseyBoolValues = ['false', '0'];
 export const validBoolValues = [...truthyBoolValues, ...falseyBoolValues];
 
-export const isValidInt = (id: string | string[]): boolean => !Array.isArray(id) && /^\d+$/.test(id);
+export const isValidInt = (id: string | string[] | undefined): boolean =>
+  id !== undefined && !Array.isArray(id) && /^\d+$/.test(id);
 export const asInt = (id: string): number => toSafeInteger(Number(id));
-export const isValidBool = (bool: string | string[]): boolean => !Array.isArray(bool) && validBoolValues.includes(bool);
+export const isValidBool = (bool: string | string[] | undefined): boolean =>
+  !Array.isArray(bool) && validBoolValues.includes(bool);
 export const asBool = (bool?: string): boolean => truthyBoolValues.includes(bool);

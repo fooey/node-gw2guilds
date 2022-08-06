@@ -2,7 +2,6 @@ import { random } from 'lodash';
 import React from 'react';
 import { EmblemSVG } from '~/components/EmblemSVG';
 import {
-  colorsById,
   DEFAULT_FG_PRIMARY_COLORID,
   DEFAULT_FG_SECONDARY_COLORID,
   EMBLEM_SWATCH_SIZE,
@@ -10,6 +9,7 @@ import {
   maxForegroundId,
   minForegroundId,
 } from '~/lib/emblem/constants';
+import { colorsById } from '~/lib/emblem/resources';
 import { getFgUrl } from '~/lib/emblem/url';
 import { IGuildEmblem } from '~/types/Guild';
 import { ColorSelection } from './colors';

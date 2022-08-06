@@ -1,10 +1,8 @@
-import { castArray, compact, get, keyBy } from 'lodash';
+import { castArray, compact, get } from 'lodash';
 import prettier from 'prettier';
 import { IGuildEmblem, IGuildEmblemBackground, IGuildEmblemForeground } from '~/types/Guild';
 
-import colors from '~/data/colors.json';
-import backgrounds from '~/legacy/lib/gw2emblem/defs.background.json';
-import foregrounds from '~/legacy/lib/gw2emblem/defs.foreground.json';
+import { backgrounds, colorsById, foregrounds } from '~/lib/emblem/resources';
 import {
   BG_OPACITY,
   BLEND_OPACITY,
@@ -15,8 +13,6 @@ import {
   SHADOW_COLOR,
   SHADOW_OPACITY,
 } from './constants';
-
-const colorsById = keyBy(colors, 'id');
 
 const BASE_SIZE = 256;
 

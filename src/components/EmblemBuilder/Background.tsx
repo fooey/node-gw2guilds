@@ -3,12 +3,12 @@ import React from 'react';
 import { EmblemSVG } from '~/components/EmblemSVG';
 import {
   backgroundIds,
-  colorsById,
   DEFAULT_BG_COLORID,
   EMBLEM_SWATCH_SIZE,
   maxBackgroundId,
   minBackgroundId,
 } from '~/lib/emblem/constants';
+import { colorsById } from '~/lib/emblem/resources';
 import { getBgUrl } from '~/lib/emblem/url';
 import { IGuildEmblem } from '~/types/Guild';
 import { ColorSelection } from './colors';

@@ -1,5 +1,5 @@
 import { keyBy, max, min } from 'lodash';
-import { backgrounds, colors, foregrounds } from './resources';
+import { backgrounds, colors, colorsById, foregrounds } from './resources';
 
 export const SHADOW_COLOR = [0, 0, 0];
 export const SHADOW_OPACITY = 0.3;
@@ -31,7 +31,6 @@ export const maxForegroundId = max(foregroundIds) as number;
 export const colorIds = Object.keys(colors).map(Number);
 export const minColorId = min(colorIds) as number;
 export const maxColorId = max(colorIds) as number;
-export const colorsById = keyBy(colors, 'id');
 
 const colorCategoriesSet = colors.reduce((acc, color) => {
   color.categories.forEach((category) => {

@@ -1,9 +1,7 @@
-import { castArray, get, keyBy } from 'lodash';
+import { castArray, get } from 'lodash';
 import { IGuildEmblem } from '~/types/Guild';
 
-import colors from '~/data/colors.json';
-import backgrounds from '~/legacy/lib/gw2emblem/defs.background.json';
-import foregrounds from '~/legacy/lib/gw2emblem/defs.foreground.json';
+import { backgrounds, colorsById, foregrounds } from '~/lib/emblem/resources';
 import { IClassName } from '~/types/ClassName';
 import { IReactHTMLElement } from '~/types/ReactHTMLElement';
 import {
@@ -16,8 +14,6 @@ import {
   SHADOW_COLOR,
   SHADOW_OPACITY,
 } from '../lib/emblem/constants';
-
-const colorsById = keyBy(colors, 'id');
 
 const BASE_SIZE = 256;
 

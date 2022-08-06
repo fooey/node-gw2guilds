@@ -1,7 +1,7 @@
 import { keyBy } from 'lodash';
+import _colors from '~/assets/colors.json';
 import _backgrounds from '~/data/defs.background.json';
 import _foregrounds from '~/data/defs.foreground.json';
-import _colors from '~/data/raw/colors.json';
 
 export type IBackground = typeof backgrounds[keyof typeof backgrounds];
 export type IForeground = typeof foregrounds[keyof typeof foregrounds];

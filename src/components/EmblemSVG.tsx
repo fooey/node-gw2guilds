@@ -112,15 +112,28 @@ const ForegroundLayer: React.FC<IForegroundLayerProps> = ({
   const fgTransforms = getTransforms(!!flags_flip_fg_horizontal, !!flags_flip_fg_vertical, fg.size, size);
 
   return (
-    <g
-      transform={fgTransforms}
-      style={flags_fg_shadow ? { filter: 'drop-shadow(3px 5px 2px rgb(0 0 0 / 0.8))' } : undefined}
-    >
-      <Group paths={fg.p2} fill={color} opacity={1} />
-      <Group paths={fg.p1} fill={color2} opacity={1} />
-      <Group paths={fg.pt1} fill={color2} opacity={BLEND_OPACITY} />
-      <Group paths={fg.pto2} fill={SHADOW_COLOR} opacity={SHADOW_OPACITY} />
-    </g>
+    <>
+      <g
+        // mask={`url(#mask-fg-${foreground_id})`}
+        transform={fgTransforms}
+        style={flags_fg_shadow ? { filter: 'drop-shadow(3px 5px 2px rgb(0 0 0 / 0.8))' } : undefined}
+      >
+        {/* <defs>
+          <mask id={`mask-fg-${foreground_id}`}>
+            <image
+              style={{ filter: 'brightness(10)' }}
+              href={`http://localhost:3000/emblem-foregrounds/${foreground_id}-0.png`}
+              height={256}
+              width={256}
+            />
+          </mask>
+        </defs> */}
+        <Group paths={fg.p2} fill={color} opacity={1} />
+        <Group paths={fg.p1} fill={color2} opacity={1} />
+        <Group paths={fg.pt1} fill={color2} opacity={BLEND_OPACITY} />
+        <Group paths={fg.pto2} fill={SHADOW_COLOR} opacity={SHADOW_OPACITY} />
+      </g>
+    </>
   );
 };
 
@@ -141,8 +154,8 @@ const Group: React.FC<IGroupProps> = ({ paths, fill, opacity, transform, classNa
   return (
     <g
       {...attrs}
-      className={`${className}`}
       fill={rgbFill}
+      stroke={rgbFill}
       opacity={pathOpacity}
       transform={transform}
       strokeWidth="0.05%"

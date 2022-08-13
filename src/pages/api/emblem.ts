@@ -35,7 +35,10 @@ export const defaultParams: IQueryParams = {
   flags_fg_shadow: 'false',
 };
 
-const handler = (req: NextApiRequestWithQuery<IQueryParams>, res: NextApiResponse): NextApiResponse<string> => {
+const handler = async (
+  req: NextApiRequestWithQuery<IQueryParams>,
+  res: NextApiResponse
+): Promise<NextApiResponse<string>> => {
   const query = { ...defaultParams, ...req.query };
 
   const { errors, emblem } = getValidatedEmblemParams(query);

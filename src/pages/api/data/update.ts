@@ -1,7 +1,7 @@
 import path from 'path';
 const API_KEY = process.env.API_KEY;
 
-const dataFilePath = path.resolve(process.cwd(), 'assets');
+const dataFilePath = path.resolve(process.cwd(), 'public');
 
 interface Resource {
   name: string;

@@ -2,7 +2,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import path from 'path';
 
-const dataPath = path.resolve(process.cwd(), `assets`);
+const dataPath = path.resolve(process.cwd(), `public`);
 const rawDataPath = path.resolve(dataPath, `emblem-backgrounds`);
 const fileName = path.resolve(dataPath, `emblem-backgrounds.json`);
 const backgrounds = JSON.parse(readFileSync(fileName).toString()) as Background[];
